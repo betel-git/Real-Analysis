@@ -49,7 +49,7 @@
 \end{remark}
 
 \begin{definition}
-    $\{A_n\}_{n = 1}^{\infty}$ — последовательность попарно непересекающихся множеств, то есть $A_i \cap A_j = \emptyset \ \forall i \neq j$. Тогда $\bigsqcup_{n = 1}^{\infty} A_n$ — \textit{дизъюнктное объединение}.
+    $\{A_n\}_{n = 1}^{\infty}$ — последовательность попарно непересекающихся множеств, то есть $A_i \cap A_j = \emptyset \ \forall i \neq j$. Тогда $\bigsqcup \limits_{n = 1}^{\infty} A_n$ — \textit{дизъюнктное объединение}.
 \end{definition} 
 
 \begin{definition}
@@ -82,19 +82,19 @@
 \end{definition} 
 
 \begin{definition}
-    Кольцо с единицей называется \textit{алгеброй} $\A$.
+    Кольцо с единицей называется \textit{алгеброй} $\mathcal{A}$.
 \end{definition} 
 
 \begin{definition}
-    Алгебра $\A$ называется \textit{$\sigma$-алгеброй}, если $\bigcup\limits_{n = 1}^{\infty} A_n \in \A$ для всякой последовательности множеств $ \{A_n\} \in \A$
+    Алгебра $\mathcal{A}$ называется \textit{$\sigma$-алгеброй}, если $\bigcup\limits_{n = 1}^{\infty} A_n \in \mathcal{A}$ для всякой последовательности множеств $ \{A_n\} \in \mathcal{A}$
 \end{definition} 
 
 \begin{remark}
-    Система множеств $\A \subset 2^X$ является алгеброй тогда и только тогда, когда:
+    Система множеств $\mathcal{A} \subset 2^X$ является алгеброй тогда и только тогда, когда:
     \begin{enumerate}
-        \item $\emptyset \in \A, \ X \in \A$;
-        \item $A \bigtriangleup B \in \A \ \forall A, B \in \A$;
-        \item $A \cap B \in \A \ \forall A, B \in \A$.
+        \item $\emptyset \in \mathcal{A}, \ X \in \mathcal{A}$;
+        \item $A \bigtriangleup B \in \mathcal{A} \ \forall A, B \in \mathcal{A}$;
+        \item $A \cap B \in \mathcal{A} \ \forall A, B \in \mathcal{A}$.
     \end{enumerate}
 \end{remark}
 
@@ -102,8 +102,8 @@
     \begin{enumerate}
         \item $\{\emptyset, X\}$ — алгебра и $\sigma$-алгебра.
         \item $2^X$ — алгебра и $\sigma$-алгебра.
-        \item $X = \N$, тогда $\A$ — все такие подмножества $\N$, которые либо сами не более чем конечны, либо не более чем конечны их дополнения — это алгебра.
-        \item $X = \R$, тогда $\A$ — все такие подмножества $\R$, которые либо сами не более чем счётны, либо их дополнения не более чем счётны — это $\sigma$-алгебра.
+        \item $X = \N$, тогда $\mathcal{A}$ — все такие подмножества $\N$, которые либо сами не более чем конечны, либо не более чем конечны их дополнения — это алгебра.
+        \item $X = \R$, тогда $\mathcal{A}$ — все такие подмножества $\R$, которые либо сами не более чем счётны, либо их дополнения не более чем счётны — это $\sigma$-алгебра.
     \end{enumerate}
 \end{example}
 
@@ -121,8 +121,9 @@
 \end{remark}
 
 \begin{example}
-    Определим полуинтервалы $[a,b), \ -\infty < a < b < +\infty$.
-    Тогда $$\mathcal{P} = \{[\alpha,\beta) \ | \ a \leqslant \alpha \leqslant \beta \leqslant b\}.$$
+    Пусть $X = [a,b), \ -\infty < a < b < +\infty$.
+    Тогда $$\mathcal{P} = \{[\alpha,\beta) \ | \ a \leqslant \alpha \leqslant \beta \leqslant b\}$$
+    - полукольцо, не являющееся кольцом.
 \end{example}
 
 \begin{definition}
@@ -130,31 +131,30 @@
 \end{definition} 
 
 \begin{lemma}
-    Пусть $\{\mathcal{A}_\alpha\}_{\alpha \in I}$ — система $\sigma$-алгебр. $\A_\alpha \subset 2^X \ \forall \alpha \in I$. Тогда $\A = \bigcap\limits_{\alpha \in I} \A_\alpha$ — $\sigma$-алгебра.
+    Пусть $\{\mathcal{A}_\alpha\}_{\alpha \in I}$ — система $\sigma$-алгебр, $\mathcal{A}_\alpha \subset 2^X \ \forall \alpha \in I$. Тогда $\mathcal{A} = \bigcap\limits_{\alpha \in I} \mathcal{A}_\alpha$ — $\sigma$-алгебра.
 \end{lemma} 
 \begin{proof}
-    $$\emptyset \in \A_\alpha \ \forall \alpha \in I \Longrightarrow \emptyset \in \bigcap\limits_{\alpha \in I} \A_\alpha.$$
-    $$A, B \in \A \Longrightarrow A, B \in \A_\alpha \ \forall \alpha \in I.$$
-    Так как $\A_\alpha$ — алгебра, то $A \cap B$, $A \cup B$, $A \setminus B$ принадлежат $\A_\alpha$ для любого $\alpha \in I$, поэтому объединение, пересечение и разность принадлежат $\A_\alpha$.
+    $$\emptyset \in \mathcal{A}_\alpha \ \forall \alpha \in I \Longrightarrow \emptyset \in \bigcap\limits_{\alpha \in I} \mathcal{A}_\alpha.$$
+    $$A, B \in \mathcal{A} \Longrightarrow A, B \in \mathcal{A}_\alpha \ \forall \alpha \in I.$$
+    Так как $\mathcal{A}_\alpha$ — алгебра, то $A \cap B$, $A \cup B$, $A \setminus B$ принадлежат $\mathcal{A}_\alpha$ для любого $\alpha \in I$, поэтому объединение, пересечение и разность принадлежат $\mathcal{A}_\alpha$.
 
-    Если $\{A_n\} \subset \A$, то $\{A_n\} \subset \A_\alpha$ для любого $\alpha \in I$. Тогда каждый $A_\alpha$ является $\sigma$-алгеброй, а следовательно
-    \[\bigcup\limits_{n=1}^{\infty} A_n \in \A_\alpha \ \forall \alpha \in I \Longrightarrow \bigcup\limits_{n=1}^{\infty} A_n \in \A = \bigcap\limits_{\alpha \in I} \A_\alpha.\]
+    Если $\{A_n\} \subset \mathcal{A}$, то $\{A_n\} \subset \mathcal{A}_\alpha$ для любого $\alpha \in I$. Так как каждая $A_\alpha$ является $\sigma$-алгеброй, имеем
+    \[\bigcup\limits_{n=1}^{\infty} A_n \in \mathcal{A}_\alpha \ \forall \alpha \in I \Longrightarrow \bigcup\limits_{n=1}^{\infty} A_n \in \mathcal{A} = \bigcap\limits_{\alpha \in I} \mathcal{A}_\alpha.\]
 \end{proof} 
 
 \begin{theorem}
     Минимальная $\sigma$-алгебра существует и единственна.
 \end{theorem} 
 \begin{proof}
-    \textit{Существование.} Пусть $\{\A_\alpha\}_{\alpha \in I}$ — всевозможные $\sigma$-алгебры, содержащие данную систему $\mathcal{E}$. Эта система непуста, потому что $\mathcal{E} \subset 2^X$.
+    \textit{Существование.} Пусть $\{\mathcal{A}_\alpha\}_{\alpha \in I}$ — всевозможные $\sigma$-алгебры, содержащие данную систему $\mathcal{E}$. Эта система непуста, потому что $\mathcal{E} \subset 2^X$.
 
-    $\A = \bigcap\limits_{\alpha \in I} A_\alpha$ — $\sigma$-алгебра по лемме. Она содержит $\mathcal{E}$.
+    $\mathcal{A} = \bigcap\limits_{\alpha \in I} A_\alpha$ — $\sigma$-алгебра по лемме. Она содержит $\mathcal{E}$.
 
-    Пусть $\A'$ — произвольная $\sigma$-алгебра, содержащая $\mathcal{E}$, тогда $$M(\mathcal{E}) = \bigcap\limits_{\alpha \in I} \A_\alpha \subset \A'.$$
-    Следовательно, $M(\mathcal{E}) \in \A'$ для любой $\sigma$-алгебры $\A'$, содержащей $\mathcal{E}$.
+    Пусть $\mathcal{A}'$ — произвольная $\sigma$-алгебра, содержащая $\mathcal{E}$. Тогда $$\mathcal{A} = \bigcap\limits_{\alpha \in I} \mathcal{A}_\alpha \subset \mathcal{A}'.$$
+    Следовательно, $\mathcal{A} \subset \mathcal{A}'$ для любой $\sigma$-алгебры $\mathcal{A}'$, содержащей $\mathcal{E} \Longrightarrow \mathcal{A} = M(\mathcal{E})$.
 
-    \textit{Единственность.} Пусть $\A^1$ и $\A^2$ — две наименьшие $\sigma$-алгебры, содержащие $\mathcal{E}$. Так как они наименьшие, то
-    \[(\A^1 \subseteq \A^2 \land \A^2 \subseteq \A^1) \Longrightarrow \A^1 = \A^2.\]
-    
+    \textit{Единственность.} Пусть $\mathcal{A}^1$ и $\mathcal{A}^2$ — две наименьшие $\sigma$-алгебры, содержащие $\mathcal{E}$. Так как они наименьшие, то
+    \[(\mathcal{A}^1 \subseteq \mathcal{A}^2 \land \mathcal{A}^2 \subseteq \mathcal{A}^1) \Longrightarrow \mathcal{A}^1 = \mathcal{A}^2.\]
 \end{proof} 
 
 \begin{definition}
@@ -166,7 +166,7 @@
 \end{remark}
 
 \begin{theorem}[Дизъюнктное представление в полукольце]
-    Пусть дано $X$, $\mathcal{P} \subset 2^X$ — полукольцо.
+    $ \\$Пусть дано $X$, $\mathcal{P} \subset 2^X$ — полукольцо.
     \begin{enumerate}
         \item Тогда $\forall P \in \mathcal{P}$ и $\forall \{P_i\}_{i = 1}^N \subset \mathcal{P}$, $N \in \N$ существует набор $\{S_j\}_{j=1}^M \subset \mathcal{P}:$
         \[P \setminus \bigcup\limits_{i=1}^N P_i = \bigsqcup\limits_{j=1}^M S_j\]
