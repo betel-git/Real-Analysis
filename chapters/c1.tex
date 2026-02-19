@@ -1,0 +1,268 @@
+\section{Абстрактная теория меры}
+\begin{definition}
+    Пусть $I$ — индексное множество произвольной мощности. $\forall \alpha \in I$ задано множество $A_{\alpha}$. Тогда говорят, что задана \textit{система множеств} $ \{ A_{\alpha} \}_{\alpha \in I} $.
+\end{definition} 
+
+\begin{lemma}
+    Пусть $ \{ A_{\alpha} \}_{\alpha \in I} $ — система множеств. Тогда
+    \[A \setminus \bigcup\limits_{\alpha \in I} A_{\alpha} = \bigcap\limits_{\alpha \in I} (A \setminus A_{\alpha});\]
+    \[A \setminus \bigcap\limits_{\alpha \in I} A_{\alpha} = \bigcup\limits_{\alpha \in I} (A \setminus A_{\alpha});\]
+    \[A \cap \left( \bigcup\limits_{\alpha \in I} A_{\alpha} \right) = \bigcup\limits_{\alpha \in I} (A \cap A_{\alpha}).\]
+\end{lemma} 
+\begin{proof}
+    \[x \in A \setminus \bigcup\limits_{\alpha \in I} A_{\alpha} \Longleftrightarrow x \in A \ \text{и} \ x \notin \bigcup\limits_{\alpha \in I} A_{\alpha} \]
+    $x$ не принадлежит ни одному из множеств $A_{\alpha}$, то есть $\forall \alpha \in I$ верно $x \notin A_{\alpha}$. Тогда 
+    \[\forall \alpha \in I (x \in A \ \text{и} \ x \notin A_{\alpha}) \Longleftrightarrow x \in \bigcap\limits_{\alpha \in I} (A \setminus A_{\alpha}).\]
+    Второе равенство доказывается аналогично:
+    \[x \in A \setminus \bigcap\limits_{\alpha \in I} A_{\alpha} \Longleftrightarrow x \in A \ \text{и} \ x \notin \bigcap\limits_{\alpha \in I} A_{\alpha}\]
+    $x$ не принадлежит хотя бы одному множеству $A_{\alpha}$, то есть $\exists \alpha \in I: x \notin A_{\alpha}$. Тогда
+    \[\exists \alpha \in I (x \in A \ \text{и} \ x \notin A_{\alpha}) \Longleftrightarrow x \in \bigcup\limits_{\alpha \in I} (A \setminus A_{\alpha}).\]
+    Третье равенство:
+    \[x \in A \cap \left( \bigcup\limits_{\alpha \in I} A_{\alpha} \right) \Longleftrightarrow x \in A \ \text{и} \ x \in \bigcup\limits_{\alpha \in I} A_{\alpha} \Longleftrightarrow\]
+    \[\Longleftrightarrow x \in A \ \text{и} \ \exists \alpha \in I: x \in A_{\alpha} \Longleftrightarrow \exists \alpha \in I (x \in A \ \text{и} \ x \in A_{\alpha}) \Longleftrightarrow\]
+    \[\Longleftrightarrow \exists \alpha \in I (x \in A \cap A_{\alpha}) \Longleftrightarrow x \in \bigcup\limits_{\alpha \in I} (A \cap A_{\alpha}).\]
+\end{proof} 
+
+\begin{definition}
+    $A \bigtriangleup B$ — симметрическая разность:
+    \[A \bigtriangleup B = (A \cup B) \setminus (A \cap B).\]
+\end{definition} 
+
+\begin{definition}
+    Пусть $X$ — абстрактное множество. $\{ A_n \}$ — последовательность подмножеств множества $X$.
+    \[\lowlim\limits_{n \to \infty} A_n = \lim\limits_{n \to \infty} \inf A_n \Longleftrightarrow \forall x \in \lowlim\limits_{n \to \infty} A_n \ \exists N(x) \in \N: x \in \bigcap\limits_{n \geqslant N(x)} A_n\]
+    — все такие $x \in X$, что $x$ принадлежит всем $A_n$, начиная с некоторого номера.
+\end{definition} 
+
+\begin{definition}
+    \[\uplim\limits_{n \to \infty} A_n = \lim\limits_{n \to \infty} \sup A_n \Longleftrightarrow \forall x \in \uplim\limits_{n \to \infty} A_n \ \exists \{n_k\} \subset \N: x \in \bigcap\limits_{k = 1}^{\infty} A_{n_k}\]
+    — все такие $x \in X$, что $x$ принадлежит бесконечному числу множеств из последовательности $\{ A_n \}$.
+\end{definition} 
+
+\begin{lemma}
+    \[ \lowlim\limits_{n \to \infty} A_n = \bigcup\limits_{N \in \N} \bigcap\limits_{n \geqslant N} A_n;\]
+    \[ \uplim\limits_{n \to \infty} A_n = \bigcap\limits_{K \in \N} \bigcup\limits_{n \geqslant K} A_n.\]
+\end{lemma} 
+
+\begin{remark}
+    Говоря о системах множеств, всюду далее считаем, что все они являются подмножествами некоторого множества $X$.
+\end{remark}
+
+\begin{definition}
+    $\{A_n\}_{n = 1}^{\infty}$ — последовательность попарно непересекающихся множеств, то есть $A_i \cap A_j = \emptyset \ \forall i \neq j$. Тогда $\bigsqcup_{n = 1}^{\infty} A_n$ — \textit{дизъюнктное объединение}.
+\end{definition} 
+
+\begin{definition}
+    Пусть $E \subset X$. Система множеств $\{E_{\beta}\}_{\beta \in J}$ называется \textit{разбиением множества} $E$, если $E_{\beta} \cap E_{\beta'} = \emptyset$ при $\beta \neq \beta'$ и $E = \bigsqcup\limits_{\beta \in J} E_{\beta}$.
+\end{definition} 
+
+\begin{lemma}[О дизъюнктном объединении]
+    Пусть $X$ — множество. $\{A_n\} \subseteq 2^{X}$, $A_0 = \emptyset$. Тогда 
+    \[\bigcup\limits_{n=1}^{\infty} A_n = \bigsqcup\limits_{n=1}^{\infty} A_n \setminus \bigcup\limits_{n' = 0}^{n - 1} A_{n'}.\]
+\end{lemma} 
+\begin{proof}
+    Включение $\supset$ очевидно, потому что
+    \[A_n \setminus \bigcup\limits_{n' = 0}^{n-1} A_{n'} \subseteq A_n \ \forall n \in \N.\]
+    Пусть, наоборот, $x \in \bigcup\limits_{n=1}^{\infty} A_n$.
+    Пусть $m(x) \in \N$ — наименьший из тех $n \in \N$, что $x \in A_n$, тогда $x \notin A_{n'}$ при $n' < m(x)$, тогда 
+    $$x \in A_{m(x)} \setminus \bigcup_{n' = 0}^{m(x) - 1} A_{n'} \Longrightarrow x \in \bigsqcup\limits_{n=1}^\infty A_n \setminus \bigcup\limits_{n' = 0}^{n - 1} A_{n'}.$$
+\end{proof} 
+
+\begin{definition}
+    Система $\mathcal{R} \subset 2^X$ называется \textit{кольцом (множеств)}, если:
+    \begin{enumerate}
+        \item $\emptyset \in \mathcal{R},$
+        \item $A, B \in \mathcal{R} \Longrightarrow A \cap B \in \mathcal{R},$
+        \item $A, B \in \mathcal{R} \Longrightarrow A \setminus B \in \mathcal{R}.$
+    \end{enumerate}
+\end{definition} 
+
+\begin{definition}
+    Говорят, что $\RR$ — \textit{кольцо с единицей}, если $X \in \RR$.
+\end{definition} 
+
+\begin{definition}
+    Кольцо с единицей называется \textit{алгеброй} $\A$.
+\end{definition} 
+
+\begin{definition}
+    Алгебра $\A$ называется \textit{$\sigma$-алгеброй}, если $\bigcup\limits_{n = 1}^{\infty} A_n \in \A$ для всякой последовательности множеств $ \{A_n\} \in \A$
+\end{definition} 
+
+\begin{remark}
+    Система множеств $\A \subset 2^X$ является алгеброй тогда и только тогда, когда:
+    \begin{enumerate}
+        \item $\emptyset \in \A, \ X \in \A$;
+        \item $A \bigtriangleup B \in \A \ \forall A, B \in \A$;
+        \item $A \cap B \in \A \ \forall A, B \in \A$.
+    \end{enumerate}
+\end{remark}
+
+\begin{example}
+    \begin{enumerate}
+        \item $\{\emptyset, X\}$ — алгебра и $\sigma$-алгебра.
+        \item $2^X$ — алгебра и $\sigma$-алгебра.
+        \item $X = \N$, тогда $\A$ — все такие подмножества $\N$, которые либо сами не более чем конечны, либо не более чем конечны их дополнения — это алгебра.
+        \item $X = \R$, тогда $\A$ — все такие подмножества $\R$, которые либо сами не более чем счётны, либо их дополнения не более чем счётны — это $\sigma$-алгебра.
+    \end{enumerate}
+\end{example}
+
+\begin{definition}
+    Система $\mathcal{P} \subset 2^X$ — \textit{полукольцо}, если:
+    \begin{enumerate}
+        \item $\emptyset \in \mathcal{P}$;
+        \item $A \cap B \in \mathcal{P} \ \forall A, B \in \mathcal{P}$;
+        \item Если $A, B \in \mathcal{P}$ и $A \subset B$, то $\exists \{P_i\}_{i = 1}^N \subset \mathcal{P}: B \setminus A = \bigsqcup\limits_{i = 1}^{N'} P_i$.
+    \end{enumerate}
+\end{definition} 
+
+\begin{remark}
+    Если $\exists E \subset X: \mathcal{P} \subset 2^E$ и $E \in \mathcal{P}$, то говорят, что \textit{полукольцо имеет единицу}.
+\end{remark}
+
+\begin{example}
+    Определим полуинтервалы $[a,b), \ -\infty < a < b < +\infty$.
+    Тогда $$\mathcal{P} = \{[\alpha,\beta) \ | \ a \leqslant \alpha \leqslant \beta \leqslant b\}.$$
+\end{example}
+
+\begin{definition}
+    Пусть $\mathcal{E} \subset 2^X$ — система подмножеств. $M(\mathcal{E})$ — \textit{наименьшая $\sigma$-алгебра, содержащая $\mathcal{E}$}.
+\end{definition} 
+
+\begin{lemma}
+    Пусть $\{\mathcal{A}_\alpha\}_{\alpha \in I}$ — система $\sigma$-алгебр. $\A_\alpha \subset 2^X \ \forall \alpha \in I$. Тогда $\A = \bigcap\limits_{\alpha \in I} \A_\alpha$ — $\sigma$-алгебра.
+\end{lemma} 
+\begin{proof}
+    $$\emptyset \in \A_\alpha \ \forall \alpha \in I \Longrightarrow \emptyset \in \bigcap\limits_{\alpha \in I} \A_\alpha.$$
+    $$A, B \in \A \Longrightarrow A, B \in \A_\alpha \ \forall \alpha \in I.$$
+    Так как $\A_\alpha$ — алгебра, то $A \cap B$, $A \cup B$, $A \setminus B$ принадлежат $\A_\alpha$ для любого $\alpha \in I$, поэтому объединение, пересечение и разность принадлежат $\A_\alpha$.
+
+    Если $\{A_n\} \subset \A$, то $\{A_n\} \subset \A_\alpha$ для любого $\alpha \in I$. Тогда каждый $A_\alpha$ является $\sigma$-алгеброй, а следовательно
+    \[\bigcup\limits_{n=1}^{\infty} A_n \in \A_\alpha \ \forall \alpha \in I \Longrightarrow \bigcup\limits_{n=1}^{\infty} A_n \in \A = \bigcap\limits_{\alpha \in I} \A_\alpha.\]
+\end{proof} 
+
+\begin{theorem}
+    Минимальная $\sigma$-алгебра существует и единственна.
+\end{theorem} 
+\begin{proof}
+    \textit{Существование.} Пусть $\{\A_\alpha\}_{\alpha \in I}$ — всевозможные $\sigma$-алгебры, содержащие данную систему $\mathcal{E}$. Эта система непуста, потому что $\mathcal{E} \subset 2^X$.
+
+    $\A = \bigcap\limits_{\alpha \in I} A_\alpha$ — $\sigma$-алгебра по лемме. Она содержит $\mathcal{E}$.
+
+    Пусть $\A'$ — произвольная $\sigma$-алгебра, содержащая $\mathcal{E}$, тогда $$M(\mathcal{E}) = \bigcap\limits_{\alpha \in I} \A_\alpha \subset \A'.$$
+    Следовательно, $M(\mathcal{E}) \in \A'$ для любой $\sigma$-алгебры $\A'$, содержащей $\mathcal{E}$.
+
+    \textit{Единственность.} Пусть $\A^1$ и $\A^2$ — две наименьшие $\sigma$-алгебры, содержащие $\mathcal{E}$. Так как они наименьшие, то
+    \[(\A^1 \subseteq \A^2 \land \A^2 \subseteq \A^1) \Longrightarrow \A^1 = \A^2.\]
+    
+\end{proof} 
+
+\begin{definition}
+    Пусть $(X, \tau)$ — топологическое пространство. $\mathcal{B}(X)$ — \textit{борелевская $\sigma$-алгебра пространства $X$} — наименьшая $\sigma$-алгебра, содержащая все открытые множества.
+\end{definition} 
+
+\begin{remark}
+    $\mathcal{B}(\R)$ — континуальное семейство, $2^\R$ — мощность более чем континуальная. Факт оставим без доказательства.
+\end{remark}
+
+\begin{theorem}[Дизъюнктное представление в полукольце]
+    Пусть дано $X$, $\mathcal{P} \subset 2^X$ — полукольцо.
+    \begin{enumerate}
+        \item Тогда $\forall P \in \mathcal{P}$ и $\forall \{P_i\}_{i = 1}^N \subset \mathcal{P}$, $N \in \N$ существует набор $\{S_j\}_{j=1}^M \subset \mathcal{P}:$
+        \[P \setminus \bigcup\limits_{i=1}^N P_i = \bigsqcup\limits_{j=1}^M S_j\]
+        \item Тогда $\forall \{P_i\}_{i = 1}^N \subset \mathcal{P}$, $N \in \N$ существует дизъюнктный конечный набор $\{Q_j\}_{j=1}^L$, $L \in \N$: $\bigcup_{i=1}^N P_i = \bigsqcup_{j=1}^L Q_j$, при этом $\forall j \in \{1, \dots, L\}$ $\forall i \in \{1, \dots, N\}$ верно
+        \[
+            \left[
+            \begin{aligned}
+            Q_j &\subset P_i, \\
+            Q_j &\cap P_i = \emptyset.
+            \end{aligned}
+            \right.
+        \]
+    \end{enumerate}
+\end{theorem} 
+\begin{proof}
+\begin{enumerate}
+    \item Докажем по индукции.
+    
+    База индукции ($N = 1$). Из определения полукольца:
+    \[P \setminus P_1 = P \setminus (P \cap P_1) = \bigsqcup\limits_{j = 1}^{N_1} S_j, \ S_j \in \mathcal{P}, \ P \cap P_1 \in \mathcal{P}.\]
+    Предположим, что утверждение доказано при $N' \in \N$. Докажем, что верно при $N' + 1$.
+    \[P \setminus \bigcup\limits_{i = 1}^{N' + 1} P_i = P \setminus \bigcup\limits_{i = 1}^{N'} P_i \cup P_{N' + 1} = \left( P \setminus \bigcup\limits_{i=1}^{N'} P_i \right) \cap (P \setminus P_{N' + 1}),\]
+    где $P \setminus \bigcup\limits_{i=1}^{N'} P_i = \bigsqcup\limits_{j = 1}^{J'} S_j$ по предположению индукции, а 
+    $P \setminus P_{N' + 1} = \bigsqcup\limits_{l = 1}^{L'} Q_l, \ Q_l \in \mathcal{P}$ по базе индукции.
+    
+    Возьмём $R_{j, l} = S_j \cap Q_l \in \mathcal{P}$ — попарно непересекающиеся множества. $\{R_{j,l}\}_{j, l}$ перенумеруем единым индексом.
+
+    \item Тоже докажем по индукции.
+    
+    База индукции ($N = 2$). Пусть $P_1, P_2 \in \mathcal{P}$.
+    $$P_1 \cap P_2 \in \mathcal{P}$$
+    — по определению. 
+    $$P_1 \setminus P_2 = \bigsqcup_{j=1}^M Q_j, \ Q_j \in \mathcal{P}$$
+    — по первому свойству.
+    $$P_2 \setminus P_1 = \bigsqcup_{l=1}^L R_l, \ R_l \in \mathcal{P}$$
+    — по первому свойству.
+
+    Заметим, что $P_1 \cap P_2$, $\bigsqcup_{j=1}^M Q_j$ и $\bigsqcup_{l=1}^L R_l$ попарно не пересекаются.
+    Тогда
+    \[P_1 \cup P_2 = (P_1 \cap P_2) \sqcup \left(\bigsqcup_{j=1}^M Q_j\right) \sqcup \left(\bigsqcup_{l=1}^L R_l\right)\]
+    осталось перенумеровать единым индексом.
+
+    Пусть утверждение доказано при $M \in \N$. Покажем, что оно верно при $M + 1$:
+    \[\bigcup_{i=1}^{M+1} P_i = \left( \bigcup_{i=1}^M P_i \right) \cup P_{M+1}\]
+    Рассмотрим попарно непересекающиеся множества:
+    \[P_{M+1} \setminus \bigcup_{i=1}^M P_i, \ P_{M+1} \cap \bigcup_{i=1}^M P_i \ \text{и} \ \left( \bigcup_{i=1}^M P_i \right) \setminus P_{M+1}\]
+
+    Первое:
+    \begin{equation}
+        P_{M+1} \setminus \bigcup_{i=1}^M P_i = \bigsqcup_{j=1}^{J} Q_j, \ Q_j \in \mathcal{P}
+    \end{equation}
+    — по первому свойству.
+
+    Второе:
+    \[\bigcup_{i=1}^M P_i = \bigsqcup_{l = 1}^L S_l, \ S_l \in \mathcal{P}\]
+    — по предположению индукции.
+    Тогда
+    \begin{equation}
+        P_{M+1} \cap \bigcup_{i=1}^M P_i = P_{M+1} \cap \bigsqcup_{l = 1}^L S_l = \bigsqcup_{l = 1}^L (P_{M+1} \cap S_l), \ P_{M+1} \cap S_l \in \mathcal{P}.
+    \end{equation}
+
+    Третье аналогично второму с использованием индукционного предположения:
+    \begin{equation}
+        \left(\bigcup_{i=1}^M P_i \right) \setminus P_{M+1} = \left( \bigsqcup_{l = 1}^L S_l \right) \setminus P_{M+1} = \bigsqcup_{l = 1}^L (S_l \setminus P_{M+1}),
+    \end{equation}
+    \begin{equation}
+        S_l \setminus P_{M+1} = \bigsqcup_{k = 1}^{K_l} R_{l,k}, \ R_{l,k} \in \mathcal{P}
+    \end{equation}
+    — по первому свойству.
+
+    Объединим (1), (2), (3), (4):
+    \[\bigcup_{i=1}^{M+1} P_i = \bigsqcup_{j=1}^{J} Q_j \cup \bigsqcup_{l = 1}^L (P_{M+1} \cap S_l) \cup \bigsqcup_{l = 1}^L \bigsqcup_{k = 1}^{K_l} R_{l,k}.\]
+
+    Осталось отметить, что объединения построенных выше дизъюнктных объединений дизъюнктны. Перенумеруем единым индексом и получим утверждение теоремы.
+
+    Условие
+    \[
+        \left[
+        \begin{aligned}
+        Q_j &\subset P_i, \\
+        Q_j &\cap P_i = \emptyset.
+        \end{aligned}
+        \right.
+    \]
+    выполнено по построению.
+
+
+%    \[\forall l \ S_l \setminus P_{M+1} = \bigsqcup_{k=1}^{m_j} R_{l,k}\]
+%    — по первому свойству.
+%    \[\bigsqcup_{l=1}^{L} \bigsqcup_{k=1}^{m_j} R_{l,k} \sqcup \bigsqcup_{j=1}^{L'} Q_j = \bigcup_{i=1}^{M+1} P_i\]
+%    — объединение дизъюнктно, поскольку $P_{M+1} \setminus \bigcup_{i=1}^M P_i$ и $\bigcup_{i=1}^M P_i$ не пересекаются.
+%    \begin{figure}[H]
+%        \centering
+%        \incfig[0.5\textwidth]{1}
+%        \caption{Красным выделены попарно непересекающиеся множества $\bigcup_{i=1}^M P_i = \bigsqcup_{l = 1}^L S_l$, зелёным выделены попарно непересекающиеся множества $\bigsqcup_{j=1}^{L'} Q_j$, синим выделены попарно непересекающиеся множества $\bigsqcup_{k=1}^{m_j} R_{j,k}$, серым выделены множества $\bigcup_{i=1}^M P_i$}
+%        \label{fig:1}
+%    \end{figure}
+\end{enumerate}
+\end{proof} 
