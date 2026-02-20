@@ -266,3 +266,74 @@
 %    \end{figure}
 \end{enumerate}
 \end{proof} 
+
+% вторая лекция
+
+
+\begin{lemma}
+    Пусть $\mathcal{P}$ — полукольцо. $\{P_n\}_{n=1}^{\infty} \subset \mathcal{P}$ — счётный набор. Тогда существует набор
+    \[
+    \{
+        \{Q_{n,j}\}_{j=1}^{m_n}
+    \}_{n=1}^{\infty}:
+    \
+    \bigcup\limits_{n=1}^{\infty} P_n = \bigsqcup\limits_{n=1}^{\infty} \bigsqcup_{j=1}^{m_n} Q_{n,j}: \
+    \forall n \in \N \ Q_{n,j} \subset P_n \ \forall j \in \{1, \dots, m_n\}.
+    \]
+\end{lemma} 
+\begin{proof}
+    \[P_1 = Q_{1,1},\]
+    \[P_2 \setminus P_1 = \bigsqcup_{j=2}^{m_2} Q_{2,j},\]
+    и так далее по индукции. А почему можно сделать индукционный переход?
+    \[P_n \setminus \bigcup\limits_{k=1}^{n-1} P_k = \bigsqcup\limits_{j=1}^{m_n} Q_{n,j}, \ \forall n \in \N.\]
+\end{proof} 
+
+\begin{corollary}
+    Любое непустое открытое множество $\Omega$ в $\R^n$ можно реализовать в виде не более чем счётного объединения ячеек вида
+    \[[a,b) = \prod_{i=1}^n [a_i, b_i), \ a_i, b_i \in \Q^n.\]
+    Более того, можно считать, что такие ячейки содержатся в $\Omega$ вместе с замыканием.
+\end{corollary}
+\begin{proof}
+    $\forall x \exists P(x)$ — ячейка с рациональными вершинами, содержащая точку $x$. Тогда $\Omega = \bigcup\limits_{n=1}^{\infty} P_n$ (заметим, что $P_n$ могут пересекаться).
+
+    Применим аналогичное рассуждение из леммы, которая была выше:
+    \[\Omega = \bigsqcup\limits_{n=1}^{\infty} \bigsqcup_{j=1}^{m_n} Q_{n,j}, \ Q_{n,j} \subset P_n \ \forall n \in \N \ \forall j \in \{1, \dots, m_n\}.\]
+\end{proof} 
+
+\subsection{Тензорное произведение полуколец}
+\begin{definition}
+    Пусть $\mathcal{P}_1, \mathcal{P}_2$ — полукольца. Тогда
+    \[\mathcal{P}_1 \otimes \mathcal{P}_2 := \{A \times B \ | \ A \in \mathcal{P}_1, B \in \mathcal{P}_2\}.\]
+    Отметим, что $\mathcal{P}_1$ — подмножество некоторого более общего множества $X$, а $\mathcal{P}_2$ — подмножество некоторого более общего множества $Y$. Тогда $\mathcal{P}_1 \otimes \mathcal{P}_2$ — это подмножество $X \times Y$.
+\end{definition} 
+
+\begin{theorem}
+    $\mathcal{P}_1 \otimes \mathcal{P}_2$ — полукольцо.
+\end{theorem} 
+\begin{proof}
+    Проверим свойства полукольца:
+    \begin{enumerate}
+        \item $\emptyset \in \mathcal{P}_1$, $\emptyset \in \mathcal{P}_2$ — по определению.
+        \[\emptyset = \emptyset \times \emptyset \in \mathcal{P}_1 \otimes \mathcal{P}_2\]
+        \item $A_1 \times A_2 \in \mathcal{P}_1 \times \mathcal{P_2}$, $B_1 \times B_2 \in \mathcal{P}_1 \times \mathcal{P_2}$
+        \[(A_1 \times A_2) \cap (B_1 \times B_2) = (A_1 \cap B_1) \times (A_2 \cap B_2) \in \mathcal{P}_1 \otimes \mathcal{P}_2,\]
+        т.к. $A_1 \cap B_1 \in \mathcal{P}_1, \ A_2 \cap B_2 \in \mathcal{P}_2$.
+        \item Пусть $A \times B \in \mathcal{P_1} \otimes \mathcal{P_2}$, $C \times D \in \mathcal{P_1} \otimes \mathcal{P_2}$.
+        \[A = C \sqcup \bigsqcup\limits_{j=1}^{N_1} C_j\]
+        \[B = D \sqcup \bigsqcup\limits_{i=1}^{N_2} D_i\]
+        Определим $C_0 := A \cap C$, $D_0 := A \cap D$. Тогда
+        \begin{multline*}
+            A \times B := \left(\bigsqcup_{j=0}^{N_1} C_j\right) \times \left(\bigsqcup_{i=0}^{N_2} D_i\right) = \bigsqcup_{j=0}^{N_1} \bigsqcup_{i=0}^{N_2} (C_j \times D_i) =\\= (C_0 \times D_0) \sqcup \bigsqcup \bigsqcup_{(i,j) \neq (0,0)} (C_j \times D_i)
+        \end{multline*}
+        Отметим, что $C_j \times D_i \in \mathcal{P}_1 \otimes \mathcal{P}_2$.
+
+        Итого:
+        \[(A \times B) \setminus (C \times D) = (A \times B) \setminus (C_0 \times D_0) = \bigsqcup_{i=0}^{N_2} \bigsqcup_{\substack{j=0 \\ (i,j) \neq (0,0)}}^{N_1} (C_j \times D_i)\]
+    \end{enumerate}
+\end{proof} 
+
+\begin{corollary}
+    Зададим $[a,b)$, $a, b \in \R^n$, $a < b$ (неравенство покомпонентное, то есть $a_i < b_i \ \forall i \in \{1, \dots, n\}$). Тогда
+    \[\mathcal{P} = \{[\alpha, \beta) \ | \ a \leqslant \alpha < \beta \leqslant b\}\]
+    — полукольцо.
+\end{corollary}

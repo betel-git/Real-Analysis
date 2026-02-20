@@ -1,0 +1,35 @@
+\section{Меры на полукольцах}
+
+\begin{definition}
+    Пусть $\mathcal{P}$ — полукольцо и $\mu: \mathcal{P} \to [0, +\infty]$.
+    Будем говорить, что $\mu$ — \textit{конечно-аддитивная мера} на $\mathcal{P}$, если:
+    \begin{enumerate}
+        \item $\mu(\emptyset) = 0,$
+        \item $A \in \mathcal{P}$, $A = \bigsqcup\limits_{i=1}^N A_i$, $\{A_i\} \in \mathcal{P}$, то $\mu(A) = \sum\limits_{i=1}^N \mu(A_i)$.
+    \end{enumerate}
+    Если же выполнено условие
+    \begin{enumerate}
+        \item[$2'.$] $A = \bigsqcup\limits_{i=1}^{\infty} A_i$, $A, \{A_i\} \in \mathcal{P}$, то $\mu(A) = \sum\limits_{i=1}^{\infty} \mu(A_i)$,
+    \end{enumerate}
+    то говорят, что $\mu$ — \textit{счётно-аддитивная мера} (или просто \textit{мера}) на $\mathcal{P}$.
+\end{definition} 
+
+\begin{lemma}[Свойства конечно-аддитивной меры на полукольце]
+    Пусть $\mathcal{P}$ — полукольцо, $\mu$ — конечно-аддитивная мера на $\mathcal{P}$. Тогда справедливы следующие свойства:
+    \begin{enumerate}
+        \item Монотонность: если $A \subset B$, $A, B \in \mathcal{P}$, то $\mu(A) \leqslant \mu(B)$.
+        \item Усиленная монотонность: если $A_i \cap A_j = \emptyset$ при $i \neq j$, $\{A_i\}_{i=1}^N \subset \mathcal{P}$, $B \in \mathcal{P}$ и $\bigsqcup\limits_{i=1}^N A_i \subset B$, то $\sum\limits_{i=1}^N \mu(A_i) \leqslant \mu(B)$.
+        \item Конечная полуаддитивность: если $B \in \mathcal{P}$ и $\{C_j\}_{j=1}^M \subset \mathcal{P}$, $B \subset \bigcup\limits_{j=1}^M C_j$, то $\mu(B) \leqslant \sum\limits_{j=1}^M \mu(C_j).$
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item Первое — это следствие второго утверждение, если $\{A_i\}$ состоит из одного элемента $A$.
+        \item Из теоремы о дизъюнктом представлении в полукольце существует дизъюнктный набор $\{Q_l\}_{l=1}^L \subset \mathcal{P}$:
+        \[B = \bigsqcup_{i=1}^N A_i \sqcup \bigsqcup_{l=1}^L Q_l = \bigsqcup_{i=1}^N \bigsqcup_{l=1}^L (A_i \sqcup Q_l)\]
+        По определению меры на полукольце
+        \[\mu(B)\]
+        продолжение завтра...
+    \end{enumerate}
+    
+\end{proof} 
