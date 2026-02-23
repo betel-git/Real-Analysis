@@ -24,12 +24,108 @@
 \end{lemma}
 \begin{proof}
     \begin{enumerate}
-        \item Первое — это следствие второго утверждение, если $\{A_i\}$ состоит из одного элемента $A$.
+        \item Первое — это следствие второго утверждения, если $\{A_i\}$ состоит из одного элемента $A$.
         \item Из теоремы о дизъюнктом представлении в полукольце существует дизъюнктный набор $\{Q_l\}_{l=1}^L \subset \mathcal{P}$:
         \[B = \bigsqcup_{i=1}^N A_i \sqcup \bigsqcup_{l=1}^L Q_l = \bigsqcup_{i=1}^N \bigsqcup_{l=1}^L (A_i \sqcup Q_l)\]
         По определению меры на полукольце
-        \[\mu(B)\]
-        продолжение завтра...
+        \[\mu(B) = \sum\limits_{i=1}^{N} \mu(A_i) + \sum\limits_{l=1}^{L} \mu(Q_l) \geqslant \sum\limits_{i=1}^{N} \mu(A_i),\]
+        т.к. $\sum\limits_{l=1}^{L}\mu(Q_l) \geqslant 0$.
+        \item $C_j \cap B =: B_j$, где $C_j \cap B \in \mathcal{P}$ $\forall j \in \{1, \dots, M\}$. Тогда
+        \[B = \bigcup\limits_{j=1}^{M} = \bigsqcup\limits_{l=1}^{L}B_l^{'},\]
+        где для любого $l$ и $j$ либо $B_l^{'} \subset B_j$, либо не пересекаются.
+        
+        В силу конечной аддитивности $\mu$:
+        \[\mu(B) = \sum\limits_{l=1}^{L}\mu(B_l^{'}) \leqslant \sum\limits_{j=1}^{M} \underbrace{\sum\limits_{\substack{l=1 \\ B_l^{'} \subset B_j}}^{L} \mu(B_l^{'})}_{\leqslant \mu(B_j) \text{ по св.2}} \leqslant \sum\limits_{j=1}^{M}\underbrace{\mu(B_j)}_{\leqslant \mu(C_j) \text{ по св.1}} \leqslant \sum\limits_{j=1}^{M} \mu(C_j).\]
     \end{enumerate}
+\end{proof} 
+
+\begin{definition}
+    $\mu_1$ — конечно-аддитивная мера на $\mathcal{P}_1$, $\mu_2$ — конечно-аддитивная мера на $\mathcal{P}_2$. Тогда
+    \[\mu_1 \otimes \mu_2 (A \times B) := \mu_1(A) \cdot \mu_2(B),\]
+    где $A \in \mathcal{P}_1$, $B \in \mathcal{P}_2$.
+\end{definition} 
+
+\begin{lemma}
+    Если $\mu_i$ — конечно-аддитивная мера на $\mathcal{P}_i$, $i = 1, 2$, то $\mu = \mu_1 \otimes \mu_2$ — конечно-аддитивная мера на $\mathcal{P}_1 \otimes \mathcal{P}_2$.
+\end{lemma} 
+\begin{proof}
+    Нужно доказать, что если $A \times B = C \in \mathcal{P}_1 \otimes \mathcal{P}_2$ и $C = \bigsqcup\limits_{k=1}^{N}C_k$, то $\mu(C) = \sum\limits_{k=1}^{N}\mu(C_k)$.
     
+    Рассмотрим простой случай $$A \times B = \bigsqcup\limits_{i=1}^{N} \bigsqcup\limits_{j=1}^{M} (P_i \times Q_j),$$
+    где $\bigsqcup\limits_{i=1}^{N}P_i = A$, $\bigsqcup\limits_{j=1}^{M}Q_j = B$ — \textit{сеточные представления}.
+    
+    \begin{figure}[H]
+        \centering
+        \incfig[0.5\textwidth]{2}
+        \caption{Сеточное и произвольное представления}
+        \label{fig:2}
+    \end{figure}
+
+    \begin{multline*}
+        \mu(A \times B) := \mu_1(A) \cdot \mu_2(B) = \left(\sum\limits_{i=1}^{N}\mu_1(P_i)\right) \left(\sum\limits_{j=1}^{M}\mu_2(Q_j)\right) =\\= \sum\limits_{i=1}^{N} \sum\limits_{j=1}^{M} \mu_1(P_i) \mu_2(Q_j) = \sum\limits_{i=1}^{N} \sum\limits_{j=1}^{M} \mu(P_i \times Q_j).
+    \end{multline*}
+
+    В общем случае:
+    \[C = A \times B = \bigsqcup\limits_{k=1}^{L} (A_k \times B_k) \Longrightarrow A = \bigcup\limits_{k=1}^{L} A_k \text{ и } B = \bigcup\limits_{k=1}^{L} B_k.\]
+
+    В силу теоремы о дизъюнктном представлении в полукольце $A = \bigsqcup\limits_{s=1}^{L'} A'_s$, $B = \bigsqcup\limits_{m=1}^{M'} B'_m$.
+    $A \times B = \bigsqcup\limits_{s=1}^{L'} \bigsqcup\limits_{m=1}^{M'} (A'_s \times B'_m)$ — сеточное разбиение, для которого всё доказано.
+    \begin{multline*}
+        \mu(A \times B) = \sum\limits_{s=1}^{L'} \sum\limits_{m=1}^{M'} \mu_1 (A'_s) \mu_2(B'_m) =\\= \sum\limits_{k=1}^{L} \underbrace{\sum\limits_{(s,m): A'_s \times B'_m \subset A_k \times B_k} \mu_1(A'_s) \mu_2(B'_m)}_{= \mu_1(A_k) \mu_2(B_k)} = \sum\limits_{k=1}^{L} \mu(A_k \times B_k).
+    \end{multline*}
+\end{proof} 
+
+\begin{theorem}
+    Пусть $\mathcal{P}$ — полукольцо, $\mu$ — конечно-аддитивная мера на $\mathcal{P}$. Тогда следующие условия эквивалентны:
+    \begin{enumerate}
+        \item $\mu$ — счётно-аддитивная мера на $\mathcal{P}$;
+        \item $\mu$ — счётно-полуаддитивная мера на $\mathcal{P}$, то есть если $A \in \mathcal{P}$ и $A \subset \bigcup\limits_{i=1}^{\infty} A_i$, то $\mu(A) \leqslant \sum\limits_{i=1}^{\infty}\mu(A_i)$.
+    \end{enumerate}
+\end{theorem} 
+\begin{proof}
+    $\underline{2 \Longrightarrow 1}$.
+    \[A = \bigsqcup\limits_{j=1}^{\infty} A_j, \ \{A_j\} \subset \mathcal{P}, \ A \in \mathcal{P}.\]
+    \[\mu(A) \leqslant \sum\limits_{j=1}^{\infty}\mu(A_j)\]
+    — в силу счётной полуаддитивности.
+
+    \noindent Поскольку $\mu$ — конечно-аддитивна, в силу продвинутой монотонности $\forall N \in \N$ $\mu(A) \geqslant \sum\limits_{j=1}^{N}\mu(A_j)$, то возьмём супремум по $N$ и получим $\mu(A) = \sum\limits_{j=1}^{\infty} \mu(A_j)$.
+
+    \noindent $\underline{1 \Longrightarrow 2}$.
+    \[\{A_i\} \subset \mathcal{P}, \ A'_i = A \cap A_i\]
+    В силу теоремы о дизъюнктном представлении:
+    \[\bigcup\limits_{i=1}^{\infty} A'_i = \bigsqcup\limits_{j=1}^{\infty} B_j\]
+    и 
+    \[\bigcup\limits_{i=1}^{\infty} A'_i = \bigsqcup\limits_{i=1}^{\infty} \bigsqcup\limits_{j=1}^{N_i} Q_{i,j}, \ Q_{i,j} \in \mathcal{P}\]
+    в силу счётной аддитивности.
+    При этом
+    \[\bigsqcup\limits_{j=1}^{N_i} Q_{i,j} \subset A'_i \subset A_i \ \forall i \in \N.\]
+    Поскольку $\mu$ — счётно-аддитивна, то:
+    \[\mu(A) = \sum\limits_{i=1}^{\infty} \sum\limits_{j=1}^{N_i} \mu(Q_{i,j}) \leqslant \underbrace{\sum\limits_{i=1}^{\infty} \mu(A_i)}_{\text{продв. монот.}}.\]
+\end{proof} 
+
+\begin{remark}
+    Мера на полукольце называется \textit{конечной}, если она принимает только конечные значения.
+\end{remark}
+
+Пусть $g: \R \to \R$ — строго возрастающая и непрерывная слева в каждой точке функция.
+\[\mu_g([a,b)) := g(b) - g(a) > 0.\]
+Доказать, что $\mu_g$ — конечно-аддитивна — упражнение.
+
+\noindent Также определим
+\[\mathcal{P} := \{[\alpha, \beta) \ | \ \alpha < \beta\}.\]
+
+\begin{lemma}
+    $\mu_g$ — счётно-аддитивна на $\mathcal{P}$.
+\end{lemma} 
+\begin{proof}
+    \[[a,b) \supset [c,d) = \bigsqcup\limits_{j=1}^{\infty} \underbrace{[c_j, d_j)}_{\subset [a,b)}.\]
+    Поскольку $g$ непрерывна слева, то 
+    \[\forall \epsilon > 0 \ \exists t \in (c,d): \ |g(t) - g(d)| < \frac{\epsilon}{2}.\]
+    \[\forall j \in \N \ \exists c'_j < c_j: \ |g(c'_j) - g(c_j)| < \frac{\epsilon}{2^{j+1}}.\]
+    Рассмотрим $[c,t] \subset \bigsqcup\limits_{j=1}^{\infty} [c_j, d_j) \subset \bigcup\limits_{j=1}^{\infty} (c'_j, d_j)$, тогда по лемме Гейне-Бореля
+    \[\underbrace{[c,t]}_{[c,t) \subset} \subset \bigcup\limits_{j=1}^{N}(c'_j, d_j) \subset \bigcup\limits_{j=1}^{N}[c'_j, d_j)\]
+    Тогда
+    \[\mu_g([c,t)) \leqslant \sum\limits_{j=1}^{N} \mu_g([c'_j, d_j)) \leqslant \sum\limits_{j=1}^{N} \mu_g([c_j, d_j)) + \sum\limits_{j=1}^{N} \frac{\epsilon}{2^{j+1}} \leqslant \sum\limits_{j=1}^{\infty} \mu_g([c_j, d_j)) + \frac{\epsilon}{2}.\]
+    Поскольку $|\mu_g([c,t)) - \mu_g([c,d))| < \frac{\epsilon}{2}$, то $\mu_g([c,d)) \leqslant \sum\limits_{j=1}^{\infty} \mu_g([c_j, d_j)) + \epsilon$,
+    но $\epsilon$ был выбран произвольно, поэтому можно сказать, что \textit{счётная полуаддитивность с конечной аддитивностью дают счётную аддитивность.}
 \end{proof} 
