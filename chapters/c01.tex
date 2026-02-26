@@ -282,10 +282,16 @@
     \]
 \end{lemma} 
 \begin{proof}
+    База индукции:
     \[P_1 = Q_{1,1},\]
     \[P_2 \setminus P_1 = \bigsqcup_{j=2}^{m_2} Q_{2,j},\]
-    и так далее по индукции. А почему можно сделать индукционный переход?
+    Пусть для $n-1$ существует заданное представление.
+
+    \noindent Шаг индукции:
+    Выделим из $P_n$ часть, которая не пересекается с предыдущими $\{P_i\}_{i=1}^{n-1}$:
     \[P_n \setminus \bigcup\limits_{k=1}^{n-1} P_k = \bigsqcup\limits_{j=1}^{m_n} Q_{n,j}, \ \forall n \in \N.\]
+    — по теореме о дизъюнктном представлении.
+    Все $Q_{n,j}$ не пересекаются с ранее построенными в предположении множествами, поскольку они лежат в дополнении, следовательно, получаем необходимое дизъюнктное объединение.
 \end{proof} 
 
 \begin{corollary}
@@ -315,10 +321,10 @@
     \begin{enumerate}
         \item $\emptyset \in \mathcal{P}_1$, $\emptyset \in \mathcal{P}_2$ — по определению.
         \[\emptyset = \emptyset \times \emptyset \in \mathcal{P}_1 \otimes \mathcal{P}_2\]
-        \item $A_1 \times A_2 \in \mathcal{P}_1 \times \mathcal{P_2}$, $B_1 \times B_2 \in \mathcal{P}_1 \times \mathcal{P_2}$
+        \item $A_1 \times A_2 \in \mathcal{P}_1 \times \mathcal{P}_2$, $B_1 \times B_2 \in \mathcal{P}_1 \times \mathcal{P}_2$
         \[(A_1 \times A_2) \cap (B_1 \times B_2) = (A_1 \cap B_1) \times (A_2 \cap B_2) \in \mathcal{P}_1 \otimes \mathcal{P}_2,\]
         т.к. $A_1 \cap B_1 \in \mathcal{P}_1, \ A_2 \cap B_2 \in \mathcal{P}_2$.
-        \item Пусть $A \times B \in \mathcal{P_1} \otimes \mathcal{P_2}$, $C \times D \in \mathcal{P_1} \otimes \mathcal{P_2}$.
+        \item Пусть $A \times B \in \mathcal{P}_1 \otimes \mathcal{P}_2$, $C \times D \in \mathcal{P}_1 \otimes \mathcal{P}_2$.
         \[A = C \sqcup \bigsqcup\limits_{j=1}^{N_1} C_j\]
         \[B = D \sqcup \bigsqcup\limits_{i=1}^{N_2} D_i\]
         Определим $C_0 := A \cap C$, $D_0 := A \cap D$. Тогда

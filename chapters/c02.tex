@@ -69,6 +69,7 @@
     \[C = A \times B = \bigsqcup\limits_{k=1}^{L} (A_k \times B_k) \Longrightarrow A = \bigcup\limits_{k=1}^{L} A_k \text{ и } B = \bigcup\limits_{k=1}^{L} B_k.\]
 
     В силу теоремы о дизъюнктном представлении в полукольце $A = \bigsqcup\limits_{s=1}^{L'} A'_s$, $B = \bigsqcup\limits_{m=1}^{M'} B'_m$.
+
     $A \times B = \bigsqcup\limits_{s=1}^{L'} \bigsqcup\limits_{m=1}^{M'} (A'_s \times B'_m)$ — сеточное разбиение, для которого всё доказано.
     \begin{multline*}
         \mu(A \times B) = \sum\limits_{s=1}^{L'} \sum\limits_{m=1}^{M'} \mu_1 (A'_s) \mu_2(B'_m) =\\= \sum\limits_{k=1}^{L} \underbrace{\sum\limits_{(s,m): A'_s \times B'_m \subset A_k \times B_k} \mu_1(A'_s) \mu_2(B'_m)}_{= \mu_1(A_k) \mu_2(B_k)} = \sum\limits_{k=1}^{L} \mu(A_k \times B_k).
@@ -88,7 +89,7 @@
     \[\mu(A) \leqslant \sum\limits_{j=1}^{\infty}\mu(A_j)\]
     — в силу счётной полуаддитивности.
 
-    \noindent Поскольку $\mu$ — конечно-аддитивна, в силу продвинутой монотонности $\forall N \in \N$ $\mu(A) \geqslant \sum\limits_{j=1}^{N}\mu(A_j)$, то возьмём супремум по $N$ и получим $\mu(A) = \sum\limits_{j=1}^{\infty} \mu(A_j)$.
+    \noindent Поскольку $\mu$ конечно-аддитивна, в силу продвинутой монотонности $\forall N \in \N$ $\mu(A) \geqslant \sum\limits_{j=1}^{N}\mu(A_j)$, то возьмём супремум по $N$ и получим $\mu(A) = \sum\limits_{j=1}^{\infty} \mu(A_j)$.
 
     \noindent $\underline{1 \Longrightarrow 2}$.
     \[\{A_i\} \subset \mathcal{P}, \ A'_i = A \cap A_i\]
@@ -99,7 +100,7 @@
     в силу счётной аддитивности.
     При этом
     \[\bigsqcup\limits_{j=1}^{N_i} Q_{i,j} \subset A'_i \subset A_i \ \forall i \in \N.\]
-    Поскольку $\mu$ — счётно-аддитивна, то:
+    Поскольку $\mu$ счётно-аддитивна, то:
     \[\mu(A) = \sum\limits_{i=1}^{\infty} \sum\limits_{j=1}^{N_i} \mu(Q_{i,j}) \leqslant \underbrace{\sum\limits_{i=1}^{\infty} \mu(A_i)}_{\text{продв. монот.}}.\]
 \end{proof} 
 
@@ -109,13 +110,13 @@
 
 Пусть $g: \R \to \R$ — строго возрастающая и непрерывная слева в каждой точке функция.
 \[\mu_g([a,b)) := g(b) - g(a) > 0.\]
-Доказать, что $\mu_g$ — конечно-аддитивна — упражнение.
+Доказать, что $\mu_g$ конечно-аддитивна — упражнение.
 
 \noindent Также определим
 \[\mathcal{P} := \{[\alpha, \beta) \ | \ \alpha < \beta\}.\]
 
 \begin{lemma}
-    $\mu_g$ — счётно-аддитивна на $\mathcal{P}$.
+    $\mu_g$ — счётно-аддитивная мера на $\mathcal{P}$.
 \end{lemma} 
 \begin{proof}
     \[[a,b) \supset [c,d) = \bigsqcup\limits_{j=1}^{\infty} \underbrace{[c_j, d_j)}_{\subset [a,b)}.\]
