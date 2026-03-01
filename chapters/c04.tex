@@ -1,0 +1,109 @@
+\section{Продолжение меры с полукольца}
+
+\begin{definition}
+    Пусть $\mu_0: \mathcal{P} \to [0, + \infty]$ — счётно-аддитивная мера на полукольце $\mathcal{P}$.
+    \[\mu_0^*(E) := \inf \sum\limits_{j=1}^{\infty} \mu_0(P_j),\]
+    где инфимум берётся по всем покрывающим множество $E$ последовательностям $\{P_j\} \subset \mathcal{P}$.
+\end{definition} 
+
+\begin{theorem}
+    $\mu_0^*$ является внешней мерой и $\mu_0^*|_{\mathcal{P}} = \mu_0$.
+\end{theorem} 
+\begin{proof}
+    Пусть $P \in \mathcal{P}$.
+    Покажем, что $\mu_0^*(P) = \mu_0(P)$.
+    Очевидно, что $P$ можно покрыть $\{P, \emptyset, \dots, \emptyset\}$.
+
+    С одной стороны, $\mu_0^*(P) \leqslant \mu_0(P)$.
+    С другой стороны, счётно-аддитивная мера на $\mathcal{P}$ является счётно-полуаддитивной, поэтому для любого покрытия $P \subset \bigcup\limits_{j=1}^{\infty} P_j$, где $\{P_j\} \subset \mathcal{P}$ верно $\mu_0(P) \leqslant \sum\limits_{j=1}^{\infty} \mu_0(P_j)$, поэтому, взяв инфимум по всем покрытиям, получим
+    \[\mu_0(P) \leqslant \mu_0^*(P) \implies \mu_0(P) = \mu_0^*(P), \ \forall P \in \mathcal{P}.\]
+    
+    Покажем, что $\mu_0^*$ — счётно-полуаддитивная мера на $2^X$.
+    Пусть $E \subset \bigcup\limits_{i=1}^{\infty} E_i$, где $E \in 2^X$, $\{E_i\} \subset 2^X$.
+    Если существует $i \in \N$: $\mu_0^*(E_i) = + \infty$, то $\mu_0^*(E) \leqslant \sum\limits_{i=1}^{\infty} \mu_0^*(E_i)$ очевидно, поэтому далее считаем, что $\mu_0^*(E_i) \leqslant + \infty$ для любого $i \in \N$.
+
+    Фиксируем $\epsilon > 0$ и для любого $i \in \N$ выберем $\{P_{i,j}\}_{j=1}^{\infty} \subset \mathcal{P}$ так, что 
+    \[\mu_0^*(E_i) + \frac{\epsilon}{2^i} \geqslant \sum\limits_{j=1}^{\infty} \mu_0 (P_{i,j}).\]
+    Итого $E \subset \bigcup\limits_{i=1}^{\infty} \bigcup\limits_{j=1}^{\infty} P_{i,j}$, следовательно, по определению $\mu_0^*$:
+    \[\mu_0^* (E) \leqslant \sum\limits_{i=1}^{\infty} \sum\limits_{j=1}^{\infty} \mu_0(P_{i,j}) \leqslant \sum\limits_{i=1}^{\infty} \mu_0^*(E_i) + \frac{\epsilon}{2^i} \leqslant \epsilon + \sum\limits_{i=1}^{\infty} \mu_0^*(E_i).\]
+    Поскольку $\epsilon > 0$ выбран произвольно, то $\mu_0^*(E) \leqslant \sum\limits_{i=1}^{\infty} \mu_0^*(E_i)$.
+\end{proof} 
+
+\begin{theorem}
+    Пусть $\mu_0: \mathcal{P} \to [0, +\infty]$ — счётно-аддитивная мера на полукольце $\mathcal{P}$.
+    Тогда $\mu_0^*$ является продолжением $\mu_0$ c $\mathcal{P}$ на $\sigma$-алгебру $\mathfrak{M}_{\mu_0^*}$, то есть:
+    \begin{enumerate}
+        \item $\mathcal{P} \subset \mathfrak{M}_{\mu_0^*}$;
+        \item $\mu_0^*$ — $\sigma$-аддитивная мера на $\mathfrak{M}_{\mu_0^*}$;
+        \item $\mu_0^*\vert_{\mathcal{P}} = \mu_0$.
+    \end{enumerate}
+\end{theorem} 
+\begin{proof}
+    2 и 3 утверждения теоремы следуют из прошлых теорем. Докажем первое.
+
+    Требуется доказать, что 
+    \[\forall E \subset X \ \forall P \in \mathcal{P} \ \mu_0^*(E) \geqslant \mu_0^*(P \cap E) + \mu_0^*(E \setminus P)\]
+    (равенство в другую сторону очевидно).
+
+    \begin{enumerate}
+        \item Предположим, что $E \in \mathcal{P}$.
+        Тогда $E \cap P \in \mathcal{P}$, где $P \in \mathcal{P}$, и $E \setminus P = \bigsqcup\limits_{j=1}^{N} Q_j$, где $\{Q_j\}_{j=1}^N \subset \mathcal{P}$.
+        \begin{multline*}
+            \underbrace{\mu_0(E)}_{\mu_0^*(E)} = (1) = \mu_0(E \cap P) + \sum\limits_{j=1}^{N} \mu_0(Q_j) = \mu_0^*(E \cap P) + \sum\limits_{j=1}^{N} \mu_0^*(Q_j) \geqslant (2) \\
+            (2) \geqslant \mu_0^*(E \cap P) + \mu_0^*\left(\bigsqcup\limits_{j=1}^{N} Q_j\right) = \mu_0^*(E \cap P) + \mu_0^*(E \setminus P).
+        \end{multline*}
+        (1) — поскольку $\mu_0$ — мера на полукольце.
+        (2) — ещё не знаем, что $Q_j$ измеримо, поэтому можем записать только такое неравенство.
+
+        \item Пусть $E \subset X$ произвольно.
+        Если $\mu_0^*(E) = + \infty$, то доказывать нечего.
+        Если же $\mu_0^*(E) < + \infty$, то по определению инфимума зафиксируем $\epsilon > 0$ и найдём $\{P_j\}_{j=1}^{\infty} \subset \mathcal{P}$:
+        \begin{multline*}
+            \underbrace{\mu_0^*(E) + \epsilon}_{\bigcup\limits_{j=1}^{\infty} P_j \supset E} \geqslant \sum\limits_{j=1}^{\infty} \underbrace{\mu_0^*(P_j)}_{\geqslant \mu_0^*(P_j \cap P) + \mu_0^*(P_j \setminus P)} \geqslant \sum\limits_{j=1}^{\infty} \mu_0^*(P_j \cap P) + \mu_0^*(P_j \setminus P) \geqslant (1) \\
+            (1) \geqslant \mu_0^*\left(P \cap \bigcup\limits_{j=1}^{\infty} P_j\right) + \mu_0^* \left(\bigcup\limits_{j=1}^{\infty} P_j \setminus P\right) \geqslant (2) \geqslant \mu_0^*(P \cap E) + \mu_0^*(E \setminus P).
+        \end{multline*}
+        (1) — в силу счётной полуаддитивности $\mu_0^*$.
+        (2) — в силу монотонности $\mu_0^*$.
+
+        В итоге для любого $\epsilon > 0$ верно
+        \[\mu_0^*(E) + \epsilon \geqslant \mu_0^*(P \cap E) + \mu_0^*(E \setminus P) \implies \mu_0^*(E) \geqslant \mu_0^*(E \cap P) + \mu_0^*(E \setminus P).\]
+    \end{enumerate}
+\end{proof} 
+
+\noindent \textbf{Вопрос.} А что, если ещё раз провернуть эту конструкцию не для полукольца $\mathcal{P}$, а для $\mathfrak{M}_{\mu_0^*}$?
+
+\noindent \textbf{Ответ.} Ничего нового не получится.
+С одной стороны, поскольку $\mathcal{P} \subset \mathfrak{M}_{\mu_0^*}$, то инфимум по большему запасу не может быть больше исходного инфимума.
+Обозначим $\mu_0^*$ — мера на $\mathcal{P}$, $\mu^*$ — мера на $\mathfrak{M}_{\mu_0^*}$, тогда $\mu^* (E) \leqslant \mu_0^*(E)$.
+
+С другой стороны,
+\[\mu_0^*(E) \leqslant \sum\limits_{j=1}^{\infty} \mu_0^*(E_j) = \sum\limits_{j=1}^{\infty} \mu(E_j)\]
+— продолженная на $\sigma$-алгебру мера.
+
+\noindent Если $E \subset \bigcup\limits_{j=1}^{\infty} E_j$, $\{E_j\} \subset \mathfrak{M}_{\mu_0^*}$, то, взяв инфимум по всем покрытиям $\{E_j\}$:
+\[\mu_0^*(E) \leqslant \mu^*(E) \implies \mu_0^*(E) = \mu^*(E) \ \forall E \subset X \implies \mathfrak{M}_{\mu_0^*} = \mathfrak{M}_{\mu^*}.\]
+
+\begin{theorem}
+    Пусть $\mu$ — конечно-аддитивная мера (со значениями $[0, + \infty]$) на $\sigma$-алгебре $\mathfrak{M}$.
+    Тогда $\mu$ счётно-аддитивна тогда и только тогда, если $\mu$ непрерывна снизу по включению, то есть если
+    \[A_1 \subset A_2 \subset \dots \subset A_n \subset \dots, \ \{A_i\} \in \mathfrak{M},\]
+    то
+    \[\exists \lim\limits_{i \to \infty} \mu(A_i) = \mu\left(\bigcup\limits_{i=1}^{\infty} A_i\right).\]
+\end{theorem} 
+\begin{proof}\tab
+
+    \noindent\underline{$\implies$}
+    Пусть $\mu$ счётно-аддитивна.
+    \[B_1 = A_1, B_2 = A_2 \setminus A_1, \dots, B_n = A_n \setminus \bigcup\limits_{i=1}^{n-1} A_i.\]
+    \begin{multline*}
+        \bigcup\limits_{i=1}^{\infty} A_i = \bigsqcup\limits_{i=1}^{\infty} B_i \implies \mu\left(\bigcup\limits_{i=1}^{\infty} A_i\right) = \mu\left(\bigsqcup\limits_{i=1}^{\infty} B_i\right) =\\= \sum\limits_{i=1}^{\infty} \mu(B_i) = \underbrace{\sum\limits_{i=1}^{n} \mu(B_i)}_{\mu(A_n)} + \sum\limits_{i=n+1}^{\infty} \mu(B_i).
+    \end{multline*}
+    Если $\mu\left(\bigcup\limits_{i=1}^{\infty} A_i\right) < +\infty$, то остаток сходящегося ряда стремится к нулю, поэтому
+    \[\mu\left(\bigcup\limits_{i=1}^{\infty} A_i\right) = \lim\limits_{n \to \infty} \mu(A_n).\]
+    Для бесконечных значений утверждение следует из определения расходящегося ряда.
+
+    \noindent\underline{$\impliedby$}
+    Пусть $A = \bigsqcup\limits_{i=1}^{\infty} A_i$,
+    \[\mu(A) = \lim\limits_{n \to \infty} \mu(B_n) = \lim\limits_{n \to \infty} \sum\limits_{i=1}^{n} \mu(A_i) = \sum\limits_{i=1}^{\infty} \mu(A_i).\]
+    \[B_1 = A_1, \dots, B_n = \bigsqcup\limits_{i=1}^{n} A_i \implies B_1 \subset B_2 \subset \dots \subset B_n \subset \dots.\]
+\end{proof} 

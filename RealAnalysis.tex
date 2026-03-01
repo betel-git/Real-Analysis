@@ -63,6 +63,8 @@
 \titleformat{\subsection}{\Large\bfseries}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\large\bfseries}{\thesubsubsection}{1em}{}
 
+\numberwithin{equation}{section}
+
 \newcommand\tab[1][.5cm]{\hspace*{#1}}
 
 \usepackage{hyperref}
@@ -112,7 +114,12 @@
 \fontsize{14pt}{20pt}\selectfont
 
 \import{chapters/}{c01.tex}
+\newpage
 \import{chapters/}{c02.tex}
+\newpage
+\import{chapters/}{c03.tex}
+\newpage
+\import{chapters/}{c04.tex}
 \newpage
 
 \end{document}

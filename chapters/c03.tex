@@ -1,0 +1,132 @@
+\section{Измеримость по Каратеодори}
+
+\begin{definition}
+    Пусть $X$ — абстрактное множество.
+    
+    \noindent$\tau: 2^X \to [0, + \infty]$ называется \textit{внешней мерой}, если:
+    \begin{enumerate}
+        \item $\tau(\emptyset) = 0$;
+        \item $\forall E \in 2^X, \ \forall \{E_i\} \in 2^X: E \subset \bigcup\limits_{i=1}^{\infty} E_i \Longrightarrow \tau(E) \leqslant \sum\limits_{i=1}^{\infty} \tau(E_i)$.
+    \end{enumerate}
+\end{definition} 
+
+\begin{corollary}
+    Любая внешняя мера монотонна, то есть $\tau(A) \leqslant \tau(B)$, если $A \subset B$.
+\end{corollary}
+
+\begin{corollary}
+    Любая внешняя мера обладает свойством конечной полуаддитивности, то есть если $E \subset \bigcup\limits_{j=1}^{N} E_j$, $E \in 2^X$ и $\{E_j\}_{j=1}^N \subset 2^X$, то $\tau(E) \leqslant \sum\limits_{j=1}^{N} \tau(E_j)$.
+\end{corollary}
+
+Отметим, что $E = (E \cap A) \cup (E \setminus A)$ и дадим
+
+\begin{definition}
+    Пусть $\tau: 2^X \to [0, + \infty]$ — внешняя мера.
+    Множество $A \subset X$ является \textit{$\tau$-измеримым по Каратеодори}, если $\forall E \in 2^X$ определено равенство
+    \begin{equation}
+        \tau(E) = \tau(E \cap A) + \tau(E \setminus A), \label{eq:3main}
+    \end{equation}
+    то есть \textit{$A$ аддитивно разбивает любое множество $E$}.
+\end{definition} 
+
+\begin{remark}
+    В силу полуаддитивности внешней меры \eqref{eq:3main} $\Longleftrightarrow$ $\tau(E) \geqslant \tau(E \cap A) + \tau(E \setminus A)$. Обратное неравенство выполнено всегда.
+\end{remark}
+
+\begin{definition}
+    $\mathfrak{M}_{\tau} (X)$ — класс всех $\tau$-измеримых подмножеств множества $X$.
+\end{definition} 
+
+\begin{lemma}
+    Если $\tau(A) = 0$, то $A \in \mathfrak{M}_{\tau}$. 
+\end{lemma}
+\begin{proof}
+    Действительно, если $\tau(A) = 0$, то в силу монотонности внешней меры $$\tau(E \cap A) = 0 \ \forall E \subset X.$$
+    Тогда $\tau(E) \geqslant \tau(E \setminus A) + \underbrace{\tau(E \cap A)}_{0}$, следовательно, $A$ является $\tau$-измеримым.
+
+    В частности, $\emptyset \in \mathfrak{M}_{\tau}$.
+\end{proof} 
+
+\begin{theorem}
+    Если $\tau: 2^X \to [0, + \infty]$ — внешняя мера, то система $\mathfrak{M}_{\tau}$ является $\sigma$-алгеброй. Более того, $\tau|_{\mathfrak{M}_{\tau}}$ является счётно-аддитивной мерой.
+\end{theorem} 
+\begin{proof}\tab
+    \begin{enumerate}
+        \item Система $\mathfrak{M}_{\tau}$ симметрична, то есть для любого $A \in \mathfrak{M}$ верно $A^c \in \mathfrak{M}_{\tau}$:
+        
+        Отметим, что $E \setminus A = E \cap A^c$.
+        Тогда \eqref{eq:3main} равносильно $\tau(E) = \tau(E \cap A) + \tau(E \cap A^c)$.
+
+        В частности, $\emptyset, X \in \mathfrak{M}_{\tau}$.
+
+        \item Пусть $A, B \in \mathfrak{M}_{\tau}$.
+        Покажем, что $A \cup B \in \mathfrak{M}_{\tau}$.
+
+        Поскольку $A \in \mathfrak{M}_{\tau}$, то
+        \begin{equation}
+            \tau(E) \geqslant \tau(E \cap A) + \tau(E \setminus A) \ \forall E \subset X. \label{eq:3.2}
+        \end{equation}
+        Так как $B$ $\tau$-измеримо, то
+        \begin{equation}
+            \tau(E \setminus A) = \tau((E \setminus A) \cap B) + \tau((E \setminus A) \setminus B). \label{eq:3.3}
+        \end{equation}
+        Подставим \eqref{eq:3.3} в \eqref{eq:3.2}:
+
+        \begin{multline*}
+            \tau(E) \geqslant \tau(E \cap A) + \tau((E \setminus A) \cap B) + \tau(\underbrace{(E \setminus A) \setminus B}_{= E \setminus (A \cup B)}) \geqslant (1) \\(1) \geqslant \tau(\underbrace{(E \cap A) \cup ((E \setminus A) \cap B)}_{=E \cap (A \cup B)}) + \tau(E \setminus (A \cup B)) \geqslant\\ \geqslant \tau(E \cap (A \cup B)) + \tau(E \setminus (A \cup B)) \Longrightarrow (A \cup B) \in \mathfrak{M}_{\tau} \text{— это алгебра!}
+        \end{multline*}
+        (1) — пользуемся конечной полуаддитивностью.
+
+        (Пересечение получим из двойственности, а разность — из дополнения, объединения и пересечения.)
+
+        \item Пусть $A, B \in \mathfrak{M}_{\tau}$ и $A \cap B = \emptyset$.
+        
+        Для любого $E \subset X$ верно
+        \[\tau(\underbrace{E \cap (A \sqcup B)}_{\text{разбиваем его}}) = \tau(E \cap A) + \tau(E \cap B).\]
+
+        Поскольку $A$ $\tau$-измеримо, оно должно аддитивно разбить $E \cap (A \sqcup B)$.
+        \[E \cap (A \sqcup B) \cap A = E \cap A\]
+        \[(E \cap (A \sqcup B)) \setminus A = E \cap B.\]
+
+        Отсюда по индукции легко видеть, что $A_1, \dots, A_N$ — дизъюнктные $\tau$-измеримые множества.
+        Тогда для любого $E \subset X$
+        \begin{equation}
+            \tau\left(E \cap \left(\bigsqcup\limits_{i=1}^{N} A_i\right)\right) = \sum\limits_{i=1}^{N} \tau(E \cap A_i). \label{eq:3main2}
+        \end{equation}
+        Действительно,
+        \begin{itemize}
+            \item База индукции ($N = 2$) очевидна.
+            \item Шаг индукции: предположим, что доказали для какого-то $N' \in \N$. Рассмотрим для $N' + 1$.
+            Применим базу к $A \in \mathfrak{M}_{\tau}$, $A = \bigsqcup\limits_{i=1}^{N'} A_i$, $B = A_{N' + 1}$.
+        \end{itemize}
+        В частности, если вместо $E$ взять $X$, то получим
+        \[\tau\left(\bigsqcup\limits_{i=1}^{N} A_i\right) = \sum\limits_{i=1}^{N} \tau(A_i)\]
+        — конечно-аддитивная мера на алгебре $\mathfrak{M}_{\tau}$.
+
+        \item Докажем, что $\mathfrak{M}_{\tau}$ является $\sigma$-алгеброй.
+        
+        Сначала $A = \bigsqcup\limits_{i=1}^{\infty} A_i$, где $A_i \in \mathfrak{M}_{\tau}$ для любого $i \in \N$.
+        Покажем, что $A \in \mathfrak{M}_{\tau}$.
+
+        Пусть $n \in \N$ произвольно.
+        \[\tau(E) \geqslant \tau\left(E \cap \bigsqcup\limits_{i=1}^{n}A_i\right) + \underbrace{\tau\left(E \setminus \bigsqcup\limits_{i=1}^{n} A_i\right)}_{\geqslant \tau\left(E \setminus \bigsqcup\limits_{i=1}^{\infty} A_i\right)} \geqslant\]
+        в силу монотонности $\tau$ и \eqref{eq:3main2}
+        \[\geqslant \sum\limits_{i=1}^{n} \tau(E \cap A_i) + \tau(E \setminus A).\]
+        Теперь, взяв супремум по $n \in \N$ от обеих частей, получим:
+        \begin{multline*}
+            \tau(E) \geqslant \sum\limits_{i=1}^{\infty} \tau(E \cap A) + \tau(E \setminus A) \geqslant \tau\left(\bigsqcup\limits_{i=1}^{\infty} E \cap A_i\right) + \tau(E \setminus A) =\\=
+            \tau\left(E \cap \bigsqcup\limits_{i=1}^{\infty} A_i\right) + \tau(E \setminus A) = \tau(E \cap A) + \tau(E \setminus A) \Longrightarrow A \in \mathfrak{M}_{\tau}.
+        \end{multline*}
+        Если 
+        \[A = \bigcup\limits_{i=1}^{\infty} \underbrace{B_i}_{\in \mathfrak{M}_{\tau}}, \ A_1 = B_1, \ \underbrace{A_2}_{\in \mathfrak{M}_{\tau}} = B_2 \setminus B_1, \dots, A_n = B_n \setminus \bigcup\limits_{i=1}^{n-1} B_i,\]
+        то по редукции к только что доказанному:
+        \[A = \bigcup\limits_{i=1}^{\infty} B_i = \bigsqcup\limits_{i=1}^{\infty} A_i.\]
+
+        \item Таким образом, $\mathfrak{M}_{\tau}$ является $\sigma$-алгеброй и $\tau$ — конечно-аддитивная мера на $\mathfrak{M}_{\tau}$.
+        С другой стороны, по определению внешней меры $\tau$ счётно-полуаддитивна.
+
+        Поскольку $\sigma$-алгебра является полукольцом, то по последней теореме из прошлого параграфа конечная аддитивность с счётной полуаддитивностью дают счётную аддитивность.
+    \end{enumerate}
+    
+    
+\end{proof} 
