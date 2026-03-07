@@ -1,0 +1,76 @@
+\section{Мера Лебега в $\R^n$}
+
+Напомним, что 
+\[\mathcal{P}_n := \{[a,b) \ | \ a = (a_1, \dots, a_n), \ b = (b_1, \dots, b_n), \ \forall i \ a_i \leqslant b_i\}\]
+— полукольцо.
+\[\mu([a,b)) := \prod\limits_{j=1}^{n} \mu([a_j, b_j)) = \prod\limits_{j=1}^{n} (b_j - a_j).\]
+
+\begin{remark}
+    Используя рассуждения, аналогичные одномерным, доказывается, что $\mu$ — счётно-аддитивная мера на $\mathcal{P}_n$.
+    Кроме того, $\mu$ — $\sigma$-конечная мера на $\mathcal{P}_n$, поскольку
+    \[\R^n = \bigcup\limits_{n=1}^{\infty}[-d, d).\]
+\end{remark}
+
+Применим всю предыдущую схему к мере $\mu$ на полукольце ячеек и получим
+\begin{definition}
+    \[\mu^*(E) := \inf \left\{ \sum\limits_{j=1}^{\infty} \mu(P_j) \ \Big| \ \{P_j\} \subset \mathcal{P}, \ E \subset \bigcup\limits_{j=1}^{\infty} P_j\right\}\]
+    — \textit{внешняя мера Лебега в $\R^n$ (далее обозначается $\mathcal{L}_n$}).
+\end{definition} 
+
+\begin{definition}
+    Минимальная $\sigma$-алгебра, порождённая $\mathcal{P}_n$, называется \textit{борелевской $\sigma$-алгеброй} $\mathcal{B}(\R^n)$.
+\end{definition} 
+
+\begin{definition}
+    $\mathfrak{M}_n$ — класс всех измеримых множеств в $\R^n$.
+\end{definition} 
+
+\noindent \textbf{Аксиома выбора.}
+\textit{Пусть $\{E_{\alpha}\}_{\alpha \in I}$ — семейство абстрактных множеств.
+Тогда существует функция
+\[F: I \to \bigcup\limits_{\alpha \in I} E_{\alpha}: \ F(\alpha) \in E_{\alpha} \ \forall \alpha \in I\]
+и
+\[E := \{F(\alpha) \ | \ \alpha \in I\}\]
+можно считать множеством.}
+
+\begin{theorem}
+    Для любого измеримого по Лебегу множества $A \subset \R^n$ положительной меры существует неизмеримое подмножество $E \subset A$.
+\end{theorem} 
+\begin{proof}
+    Введём на множестве $A$ введём отношение эквивалентности:
+    \[x \sim y \Longleftrightarrow x - y \in \Q^n.\]
+    Получили разбиение $A$ на классы эквивалентности.
+    $\{E_{\alpha}\}_{\alpha \in I}$ — семейство классов эквивалентности. 
+    Пользуясь аксиомой выбора, построим множество $E \subset A$:
+    \[E \cap E_\alpha = \{X_\alpha\} \ \forall \alpha \in I, \ E = \{X_\alpha\}_{\alpha \in I}.\]
+    Утверждается, что $E$ неизмеримо.
+    Поскольку $A$ ограничено, то
+    \[\exists R > 0: \ \forall x, y \in A: \ \|x-y\| \leqslant R.\]
+    Рассмотрим всевозможные рациональные сдвиги множества $E$, по модулю не превосходящие $R$.
+    По построению
+    \[\forall r, r' \in \Q^n: \ (E + r) \cap (E + r') = \emptyset.\]
+    С другой стороны,
+    \[A \subset \bigcup\limits_{\substack{r \in \Q^n \\ \|r\| \leqslant R}} (E + r).\]
+    Предположим, что $E$ измеримо, тогда:
+        \[
+        \left[
+        \begin{aligned}
+        \mu(E) = 0 \\
+        \mu(E) > 0.
+        \end{aligned}
+        \right.
+    \]
+    Случай равенства нулю невозможен, поскольку тогда 
+    \[\mu(A) \leqslant \sum\limits_{\|r\| \leqslant R} \mu(E + r) = 0.\]
+    Если же $\mu(A) > 0$, то
+    \[\mu(E + r) = \mu(E)\]
+    — сдвиг не меняет меру.
+    Тогда
+    \[\mu\left(\bigcup\limits_{\substack{r \in \Q^n \\ \|r\| \leqslant R}} (E + r)\right) = \sum\limits_{n=1}^{\infty} \mu(E + r) = \sum\limits_{n=1}^{\infty} \mu(E) = +\infty.\]
+    Однако такого быть не может, поскольку
+    \[\bigcup\limits_{\substack{r \in \Q^n \\ \|r\| \leqslant R}} (E + r) \subset B_{2R} (x) \ \forall x \in E,\]
+    значит,
+    \[\mu\left(\bigcup\limits_{\substack{r \in \Q^n \\ \|r\| \leqslant R}} (E + r)\right) \leqslant \mu(B_{2R}(x)) < + \infty\]
+    — противоречие с монотонностью меры.
+\end{proof} 
+

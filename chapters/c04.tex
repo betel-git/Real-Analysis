@@ -107,3 +107,146 @@
     \[\mu(A) = \lim\limits_{n \to \infty} \mu(B_n) = \lim\limits_{n \to \infty} \sum\limits_{i=1}^{n} \mu(A_i) = \sum\limits_{i=1}^{\infty} \mu(A_i).\]
     \[B_1 = A_1, \dots, B_n = \bigsqcup\limits_{i=1}^{n} A_i \implies B_1 \subset B_2 \subset \dots \subset B_n \subset \dots.\]
 \end{proof} 
+
+% конец 3 лекции
+
+% начало 4 лекции
+\paragraph{4 лекция.}
+
+\begin{definition}
+    Конечно-аддитивная мера $\mu$ на полукольце $\mathcal{P}$ подмножеств множества $X$ называется \textit{$\sigma$-конечной}, если 
+    \[X = \bigcup\limits_{n=1}^{\infty} P_n, \ P_n \in \mathcal{P} \ \forall n \in \N\]
+    и при этом 
+    \[\mu(P_n) < + \infty \ \forall n \in \N.\]
+\end{definition} 
+
+\begin{definition}
+    Тройка $(X, \mathfrak{M}, \mu)$ называется \textit{измеримым пространством}, если:
+    \begin{itemize}
+        \item $X$ — абстрактное множество;
+        \item $\mathfrak{M}$ — $\sigma$-алгебра подмножеств множества $X$;
+        \item $\mu: \mathfrak{M} \to [0, +\infty]$ — счётно-аддитивная функция на $\mathfrak{M}$ (называется мерой на $\mathfrak{M}$).
+    \end{itemize}
+\end{definition} 
+
+\begin{definition}
+    Пусть $(X, \mathfrak{M}, \mu)$ — измеримое пространство.
+    Тогда $\mu$ называется \textit{полной мерой}, если $\forall E: \ \mu(E) = 0$ и $\forall E' \subset E$ выполнено $E' \in \mathfrak{M}$.
+\end{definition} 
+
+\begin{theorem}[О единственности продолжения меры]
+    Пусть $\mu^*$ — продолжение $\sigma$-аддитивной меры $\mu$ с $\mathcal{P}$ на $\sigma$-алгебру $\mathfrak{M}_{\mu^*}$, $\nu$ — продолжение $\mu$ с $\mathcal{P}$ на $\sigma$-алгебру $\mathfrak{M}_{\nu}$.
+    Тогда:
+    \begin{enumerate}
+        \item \[\forall A \in \mathfrak{M}_{\mu^*} \cap \mathfrak{M}_{\nu}: \ \nu(A) \leqslant \mu^*(A).\]
+        Если $\mu(A) < +\infty$, то $\nu(A) = \mu^*(A)$.
+        \item $\mu$ — $\sigma$-конечна, то 
+        \[\forall A \in \mathfrak{M}_{\mu^*} \cap \mathfrak{M}_{\nu}: \ \nu(A) = \mu^*(A).\]
+    \end{enumerate}
+\end{theorem} 
+\begin{proof}\tab
+    \begin{enumerate}
+        \item Пусть $A \subset \bigcup\limits_{j=1}^{\infty} P_j$.
+        В силу счётной-полуаддитивности $\nu$:
+        \begin{equation}
+            \nu(A) \leqslant \sum\limits_{j=1}^{\infty} \nu(P_j) = (1) = \sum\limits_{j=1}^{\infty} \mu(P_j) \label{eq:4.1}
+        \end{equation}
+        (1) — поскольку $\nu$ — продолжение.
+        Возьмём инфимум в \eqref{eq:4.1} по всем возможным покрытиям $A$ последовательностями $\{P_j\}$. Тогда:
+        \[\nu(A) \leqslant \inf\limits_{A \subset \bigcup\limits_{j=1}^{\infty} P_j} \sum\limits_{j=1}^{\infty} \mu(P_j) = \mu^*(A).\]
+
+        \item Докажем, что для любого $P \in \mathcal{P}$: $\mu(P) < +\infty$ и для любого $A \in \mathfrak{M}_{\mu^*} \cap \mathfrak{M}_{\nu}$
+        \[\mu^*(\underbrace{P \cap A}_{\in \mathfrak{M}_{\mu^*} \cap \mathfrak{M}_{\nu}}) = \nu(P \cap A).\]
+        Предположим противное, то есть
+        \[\nu(P \cap A) < \mu^*(P \cap A).\]
+        $P \in \mathfrak{M}_{\mu^*}$, то есть $P$ измеримо по Каратеодори.
+        Тогда 
+        \[\mu^*(P) = \nu(P) = \nu(P \cap A) + \nu(P \setminus A) < \mu^*(P \cap A) + \mu^*(P \setminus A) = \mu^*(P)\]
+        — противоречие.
+
+        \item Если $\mu$ $\sigma$-конечна, либо если $\mu^*(A) < +\infty$, то можно покрыть $A \subset \bigcup\limits_{j=1}^{\infty} P_j$: $\mu(P_j) < +\infty \ \forall j \in \N$ и $\{P_j\} \subset \mathcal{P}$.
+        Но $\mu^*(A \cap P_j) = \nu(A \cap P_j)$, следовательно,
+        \[\sum\limits_{j=1}^{\infty} \underbrace{\mu^*(A \cap P_j)}_{\leqslant \mu^*(A)} = \sum\limits_{j=1}^{\infty} \nu(A \cap P_j) = (*)\]
+        По теореме о дизъюнктном представлении в полукольце можно считать, что $P_j$ попарно не пересекаются, поэтому
+        \[(*) = \nu(A) \implies \mu^*(A) \leqslant \nu(A),\]
+        а обратное неравенство мы уже имеем.
+    \end{enumerate}
+\end{proof} 
+
+\begin{lemma}
+    Если $\mu^*$ — внешняя мера, построенная по счётно-аддитивной мере $\mu$ на полукольце $\mathcal{P}$.
+    Пусть есть $E \subset X$: $\mu^*(E) < +\infty$, тогда
+    \[\exists C: \ C = \bigcap\limits_{n=1}^{\infty} \bigcup\limits_{j=1}^{\infty} P_{n,j}, \ P_{n,j} \in \mathcal{P},\]
+    такое, что:
+    \[\mu^*(C) = \mu^*(E).\]
+\end{lemma} 
+\begin{proof}
+    Так как $\mu^*(E) < + \infty$, то $\forall n \in \N$ $\exists \{P_{n,j}\} \subset \mathcal{P}:$
+    \[\frac{1}{2^n} + \mu^*(E) \geqslant \sum\limits_{j=1}^{\infty} \mu(P_{n,j}).\]
+    Тогда
+    \[C^N = \bigcap\limits_{n=1}^{N} \bigcup\limits_{j=1}^{\infty} P_{n,j} \supset E \ \forall N \in \N \implies 
+    C = \bigcap\limits_{n=1}^{\infty} \bigcup\limits_{j=1}^{\infty} P_{n,j} \supset E,\]
+    значит, $C \in \mathfrak{M}_{\mu^*}$.
+    Тогда 
+    \[\mu^*(C) \leqslant \mu^*(C^N) \leqslant \mu^*\left(\bigcup\limits_{j=1}^{\infty} P_{N,j}\right) \leqslant (1) \leqslant \sum\limits_{j=1}^{\infty} \mu^*(P_{N,j}) \leqslant \mu^*(E) + \frac{1}{2^N}.\]
+    (1) — в силу счётной полуаддитивности $\mu^*$.
+
+    А поскольку $N$ произвольно, то $\mu^*(C) \leqslant \mu^*(E)$. Но $C \supset E$, поэтому в силу монотонности $\mu^*$:
+    \[\mu^*(E) \leqslant \mu^*(C) \implies \mu^*(C) = \mu^*(E).\]
+\end{proof} 
+
+\begin{remark}
+    Заметим, что $C \in \mathfrak{M}(\mathcal{P})$, где $\mathfrak{M}(\mathcal{P})$ — наименьшая $\sigma$-алгебра, содержащая $\mathcal{P}$.
+\end{remark}
+
+\begin{theorem}
+    Пусть $E \in \mathfrak{M}_{\mu^*}$ и $\mu^*(E) < + \infty$.
+    Тогда $\exists B, C \in \mathfrak{M}(\mathcal{P}):$
+    \[B \subset E \subset C\]
+    и
+    \[\mu^*(C \setminus B) = 0.\]
+\end{theorem} 
+\begin{proof}
+    Берём $C$ из прошлой леммы.
+    Определим \[e := C \setminus E\]
+    — оно измеримо.
+    Применим к $e$ предыдущую лемму, получим $\underbrace{\widetilde{e}}_{e \subset} \in \mathfrak{M}(\mathcal{P})$ и $\mu^*(\widetilde{e}) = 0$.
+    Определим \[B := C \setminus \widetilde{e}.\]
+    Тогда \[\mu^*(B) = \mu^*(E) = \mu^*(C).\]
+\end{proof} 
+
+\begin{theorem}
+    Пусть $\mu$ — счётно-аддитивная и $\sigma$-конечная мера на $\mathcal{P}$, $\mathcal{P}$ — полукольцо подмножеств множества $X$.
+    $\nu$ — полная мера на $\sigma$-алгебре $\mathfrak{M}_{\nu}$, $\nu$ — продолжение $\mu$.
+    Тогда \[\mathfrak{M}_{\mu^*} \subset \mathfrak{M}_{\nu}.\]
+\end{theorem} 
+\begin{proof}
+    По теореме о единственности представления меры:
+    \[\nu\bigm|_{\mathfrak{M}(\mathcal{P})} = \mu^*\bigm|_{\mathfrak{M}(\mathcal{P})}.\]
+    Фиксируем произвольное $e$: $\mu^*(e) = 0$ и покажем, что $e \in \mathfrak{M}_{\nu}$ и $\nu(e) = 0$.
+    Поскольку $e \in \mathfrak{\mu^*}$ в силу полноты $\mu^*$, то
+    \[\exists \widetilde{e} \in \mathfrak{M}(\mathcal{P}): \ \mu^*(\widetilde{e}) = 0 \text{ и } e \subset \widetilde{e} 
+    \implies 
+    \nu(\widetilde{e}) = 0 \text{ и } \widetilde{e} \in \mathfrak{M}_{\nu},\]
+    но $\nu$ полна, поэтому $e \in \mathfrak{M}_{\nu}$.
+
+    Теперь пусть $A \in \mathfrak{M}_{\mu^*}$ и $\mu^*(A) < +\infty$. Покажем, что $A \in \mathfrak{M}_{\nu}$.
+    По предыдущей лемме: 
+    \[\exists C \in \mathfrak{M}(\mathcal{P}) \subset \mathfrak{M}_{\nu}: \
+    \mu^*(C) = \mu^*(A).\]
+    Но $A$ измеримо, значит,
+    \[C \setminus A \in \mathfrak{M}_{\mu^*} \text{ и } \mu^*(C \setminus A) = \mu^*(C) - \mu^*(A) = 0.\]
+    Из $e = C \setminus A$ также следует, что $A = C \setminus e$.
+    При этом $C$ и $e$ лежат в $\mathfrak{M}_{\nu}$, поэтому и $A \in \mathfrak{M}_{\nu}$.
+
+    В общем случае, если $A$ только лишь измеримо (то есть не обязательно $\mu^*(A) < + \infty$), то в силу $\sigma$-конечности $\mu$
+    \[X = \bigcup\limits_{n=1}^{\infty} X_n, \ X_n \in \mathcal{P}, \ \mu(X_n) < +\infty.\]
+    Тогда
+    \[A = \bigcup\limits_{n=1}^{\infty} (A \cap X_n) \text{ и }
+    \forall n \in \N \ \mu^*(A \cap X_n) < +\infty,
+    \]
+    следовательно,
+    \[A \cap X_n \in \mathfrak{M}_{\nu} \ \forall n \in \N
+    \implies
+    A \in \mathfrak{M}_{\nu}.\]
+\end{proof} 
