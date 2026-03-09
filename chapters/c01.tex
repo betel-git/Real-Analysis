@@ -74,9 +74,18 @@
     \begin{enumerate}
         \item $\emptyset \in \mathcal{R},$
         \item $A, B \in \mathcal{R} \Longrightarrow A \cap B \in \mathcal{R},$
+        \item $A, B \in \mathcal{R} \Longrightarrow A \cup B \in \mathcal{R},$
         \item $A, B \in \mathcal{R} \Longrightarrow A \setminus B \in \mathcal{R}.$
     \end{enumerate}
 \end{definition} 
+
+\begin{remark}
+    Имея замкнутость относительно разности, можно получить первые два условия:
+    \[\emptyset = A \setminus A,\]
+    \[A \cap B = A \setminus (A \setminus B),\]
+    а также симметрическую разность
+    \[A \bigtriangleup B = (A \setminus B) \cup (B \setminus A).\]
+\end{remark}
 
 \begin{definition}
     Говорят, что $\RR$ — \textit{кольцо с единицей}, если $X \in \RR$.

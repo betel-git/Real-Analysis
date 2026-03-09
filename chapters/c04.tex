@@ -135,7 +135,7 @@
 \end{definition} 
 
 \begin{theorem}[О единственности продолжения меры]
-    Пусть $\mu^*$ — продолжение $\sigma$-аддитивной меры $\mu$ с $\mathcal{P}$ на $\sigma$-алгебру $\mathfrak{M}_{\mu^*}$, $\nu$ — продолжение $\mu$ с $\mathcal{P}$ на $\sigma$-алгебру $\mathfrak{M}_{\nu}$.
+    Пусть $\mu^*$ — продолжение счётно-аддитивной меры $\mu$ с $\mathcal{P}$ на $\sigma$-алгебру $\mathfrak{M}_{\mu^*}$, $\nu$ — продолжение $\mu$ с $\mathcal{P}$ на $\sigma$-алгебру $\mathfrak{M}_{\nu}$.
     Тогда:
     \begin{enumerate}
         \item \[\forall A \in \mathfrak{M}_{\mu^*} \cap \mathfrak{M}_{\nu}: \ \nu(A) \leqslant \mu^*(A).\]
@@ -184,11 +184,11 @@
     Так как $\mu^*(E) < + \infty$, то $\forall n \in \N$ $\exists \{P_{n,j}\} \subset \mathcal{P}:$
     \[\frac{1}{2^n} + \mu^*(E) \geqslant \sum\limits_{j=1}^{\infty} \mu(P_{n,j}).\]
     Тогда
-    \[C^N = \bigcap\limits_{n=1}^{N} \bigcup\limits_{j=1}^{\infty} P_{n,j} \supset E \ \forall N \in \N \implies 
+    \[C_N = \bigcap\limits_{n=1}^{N} \bigcup\limits_{j=1}^{\infty} P_{n,j} \supset E \ \forall N \in \N \implies 
     C = \bigcap\limits_{n=1}^{\infty} \bigcup\limits_{j=1}^{\infty} P_{n,j} \supset E,\]
     значит, $C \in \mathfrak{M}_{\mu^*}$.
     Тогда 
-    \[\mu^*(C) \leqslant \mu^*(C^N) \leqslant \mu^*\left(\bigcup\limits_{j=1}^{\infty} P_{N,j}\right) \leqslant (1) \leqslant \sum\limits_{j=1}^{\infty} \mu^*(P_{N,j}) \leqslant \mu^*(E) + \frac{1}{2^N}.\]
+    \[\mu^*(C) \leqslant \mu^*(C_N) \leqslant \mu^*\left(\bigcup\limits_{j=1}^{\infty} P_{N,j}\right) \leqslant (1) \leqslant \sum\limits_{j=1}^{\infty} \mu^*(P_{N,j}) \leqslant \mu^*(E) + \frac{1}{2^N}.\]
     (1) — в силу счётной полуаддитивности $\mu^*$.
 
     А поскольку $N$ произвольно, то $\mu^*(C) \leqslant \mu^*(E)$. Но $C \supset E$, поэтому в силу монотонности $\mu^*$:
