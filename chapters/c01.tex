@@ -59,14 +59,14 @@
 
 \begin{lemma}[О дизъюнктном объединении]
     Пусть $X$ — множество. $\{A_n\} \subseteq 2^{X}$, $A_0 = \emptyset$. Тогда 
-    \[\bigcup\limits_{n=1}^{\infty} A_n = \bigsqcup\limits_{n=1}^{\infty} A_n \setminus \bigcup\limits_{n' = 0}^{n - 1} A_{n'}.\]
+    \[\bigcup\limits_{n=1}^{\infty} A_n = \bigsqcup\limits_{n=1}^{\infty} \left(A_n \setminus \bigcup\limits_{n' = 0}^{n - 1} A_{n'}\right).\]
 \end{lemma} 
 \begin{proof}
     Включение $\supset$ очевидно, потому что
     \[A_n \setminus \bigcup\limits_{n' = 0}^{n-1} A_{n'} \subseteq A_n \ \forall n \in \N.\]
     Пусть, наоборот, $x \in \bigcup\limits_{n=1}^{\infty} A_n$.
     Пусть $m(x) \in \N$ — наименьший из тех $n \in \N$, что $x \in A_n$, тогда $x \notin A_{n'}$ при $n' < m(x)$, тогда 
-    $$x \in A_{m(x)} \setminus \bigcup_{n' = 0}^{m(x) - 1} A_{n'} \Longrightarrow x \in \bigsqcup\limits_{n=1}^\infty A_n \setminus \bigcup\limits_{n' = 0}^{n - 1} A_{n'}.$$
+    $$x \in A_{m(x)} \setminus \bigcup_{n' = 0}^{m(x) - 1} A_{n'} \Longrightarrow x \in \bigsqcup\limits_{n=1}^\infty \left(A_n \setminus \bigcup\limits_{n' = 0}^{n - 1} A_{n'} \right).$$
 \end{proof} 
 
 \begin{definition}
@@ -96,7 +96,7 @@
 \end{definition} 
 
 \begin{definition}
-    Алгебра $\mathcal{A}$ называется \textit{$\sigma$-алгеброй}, если $\bigcup\limits_{n = 1}^{\infty} A_n \in \mathcal{A}$ для всякой последовательности множеств $ \{A_n\} \in \mathcal{A}$
+    Алгебра $\mathcal{A}$ называется \textit{$\sigma$-алгеброй}, если $\bigcup\limits_{n = 1}^{\infty} A_n \in \mathcal{A}$ для всякой последовательности множеств $ \{A_n\} \in \mathcal{A}$.
 \end{definition} 
 
 \begin{remark}
@@ -133,7 +133,7 @@
 \begin{example}
     Пусть $X = [a,b), \ -\infty < a < b < +\infty$.
     Тогда $$\mathcal{P} = \{[\alpha,\beta) \ | \ a \leqslant \alpha \leqslant \beta \leqslant b\}$$
-    - полукольцо, не являющееся кольцом.
+    — полукольцо, не являющееся кольцом.
 \end{example}
 
 \begin{definition}

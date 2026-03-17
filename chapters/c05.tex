@@ -14,8 +14,7 @@
 Применим всю предыдущую схему к мере $\mu$ на полукольце ячеек и получим
 \begin{definition}
     \[\mu^*(E) := \inf \left\{ \sum\limits_{j=1}^{\infty} \mu(P_j) \ \Big| \ \{P_j\} \subset \mathcal{P}, \ E \subset \bigcup\limits_{j=1}^{\infty} P_j\right\}\]
-    — \textit{внешняя мера Лебега в $\R^n$}.
-     %(далее обозначается $\mathcal{L}_n$}).
+    — \textit{внешняя мера Лебега в $\R^n$} (далее обозначается $\mathcal{L}^n$).
 \end{definition} 
 
 \begin{definition}
@@ -75,3 +74,242 @@
     — противоречие с монотонностью меры.
 \end{proof} 
 
+
+\paragraph{Лекция 5.}
+
+\begin{theorem}[1]
+    Пусть $E \subset \R^n$ измеримо по Лебегу.
+    Тогда $\forall \epsilon > 0 \ \exists G_{\epsilon}$ — открытое множество:
+    \begin{enumerate}
+        \item $$G_{\epsilon} \supset E;$$
+        \item $$\mathcal{L}^n (G_\epsilon \setminus E) < \epsilon.$$
+    \end{enumerate}
+\end{theorem} 
+\begin{proof}\tab
+\begin{enumerate}
+    \item Сначала рассмотрим случай $\mathcal{L}^n(E) < + \infty$.
+    Тогда $\forall \epsilon > 0 \ \exists \{P_k\}_{k=1}^{\infty}$ — ячейки в $\R^n$:
+    \[E \subset  \bigcup\limits_{k=1}^{\infty} P_k \text{ и } \sum\limits_{k=1}^{\infty} \mathcal{L}^n (P_k) < \mathcal{L}^n(E) + \frac{\epsilon}{2},\]
+    где $P_k = [a^k, b^k) = \prod\limits_{i=1}^{n} [a_i^k, b_i^k).$
+    Определим $\widetilde{P_k} = [\widetilde{a^k}, b^k),$
+    где $\widetilde{a^k}$ настолько близко к $a^k$, что $\text{int} \widetilde{P_k} \supset P_k$.
+    Тогда
+    \[\mathcal{L}^n(\widetilde{P_k}) < \mathcal{L}^n(P_k) + \frac{\epsilon}{2^{k+1}} \text{ и } \text{int} \widetilde{P_k} = (\widetilde{a^k}, b^k).\]
+    Определим $G_\epsilon := \bigcup\limits_{k=1}^{\infty} \text{int} \widetilde{P_k}$ — открытое множество.
+    Кроме того,
+    \[E \subset \bigcup\limits_{k=1}^{\infty} P_k \subset \bigcup\limits_{k=1}^{\infty} \text{int} \widetilde{P_k} = G_\epsilon.\]
+    
+    \begin{multline*}
+        \mathcal{L}^n (G_\epsilon \setminus E) = \mathcal{L}^n \left(\underbrace{\bigcup\limits_{k=1}^{\infty} \text{int} \widetilde{P_k}}_{\text{изм. по Л.}} \setminus E\right) = \mathcal{L}^n \left(\bigcup\limits_{k=1}^{\infty} \text{int} \widetilde{P_k}\right) - \mathcal{L}^n (E) 
+        \leqslant\\\text{(счётная полуаддитивность $\mathcal{L}^n$)} \leqslant \sum\limits_{k=1}^{\infty} \mathcal{L}^n(\text{int} \widetilde{P_k}) - \mathcal{L}^n(E)
+        \leqslant\\\leqslant
+        \sum\limits_{k=1}^{\infty} \mathcal{L}^n(P_k) + \frac{\epsilon}{2^{k-1}} - \mathcal{L}^n(E) 
+        \leqslant \mathcal{L}^n(E) + \frac{\epsilon}{2} + \sum\limits_{k=1}^{\infty} \frac{\epsilon}{2^{k-1}} - \mathcal{L}^n(E) = \epsilon.
+    \end{multline*}
+
+    \item Пусть $E$ — произвольное измеримое множество.
+    Поскольку $\mathcal{L}^n$ — $\sigma$-конечная мера, то:
+    \[E = \bigcup\limits_{m=1}^{\infty} E_m,\]
+    где $\mu(E_m) < +\infty \ \forall m \in \N$.
+    \[\bigcup\limits_{m=1}^{\infty} E_m = \bigsqcup\limits_{m=1}^{\infty} E'_m,\]
+    где 
+    \[E'_1 = E_1, \ E'_m = E_m \setminus \bigcup\limits_{k=1}^{m-1}E_k, \ m \geqslant 2.\]
+    Применим к каждому $E'_n$ предыдущий шаг.
+    \[\forall \epsilon > 0 \ \exists \underbrace{G_m}_{\text{откр.}} \supset E'_m: \ \mathcal{L}^n (G_m \setminus E'_m) < \frac{\epsilon}{2^m}.\]
+    Заметим, что
+    $G = \bigcup\limits_{m=1}^{\infty} G_m$ — открытое множество и $E \subset G$.
+    \begin{multline*}
+        \mathcal{L}^n(G \setminus E) \leqslant \mathcal{L}^n \left(\bigcup\limits_{m=1}^{\infty} G_m \setminus E\right) \leqslant \text{(счёт. полуадд.)} \leqslant \\ \leqslant
+         \sum\limits_{m=1}^{\infty} \underbrace{\mathcal{L}^n(G_m \setminus E)}_{\leqslant \mathcal{L}^n (G_m \setminus E'_m)} 
+        \leqslant
+        \sum\limits_{m=1}^{\infty} \mathcal{L}^n (G_m \setminus E'_m) \leqslant \sum\limits_{m=1}^{\infty} \frac{\epsilon}{2^m} = \epsilon.
+    \end{multline*} 
+\end{enumerate}  
+\end{proof} 
+
+\begin{theorem}[2]
+    Пусть $E \in \mathfrak{M}_n$.
+    Тогда
+    \begin{enumerate}
+        \item \[\mathcal{L}^n (E) = \inf\{\mathcal{L}^n(G): \ G \supset E, \ G \text{ — открытое}\};\]
+        \item \[\mathcal{L}^n (E) = \sup\{\mathcal{L}^n(F): \ F \subset E, \ F \text{ — замкнутое}\};\]
+        \item \[\mathcal{L}^n (E) = \sup\{\mathcal{L}^n(K): \ K \subset E, \ K \text{ — компакт}\}.\]
+    \end{enumerate}
+\end{theorem} 
+\begin{proof}
+    \begin{enumerate}
+        \item Если $\mathcal{L}^n(E) = + \infty$, то $\forall G \supset E$ открытого $\mathcal{L}^n(G) = + \infty$.
+        Если же $\mathcal{L}^n(E) < + \infty$, то в силу предыдущей теоремы
+        \[\forall \epsilon > 0 \ \exists \underbrace{G_\epsilon}_{\text{откр.}} \supset E: \ \mathcal{L}^n(E) \leqslant \mathcal{L}^n(G_\epsilon) < \mathcal{L}^n(E) + \epsilon.\]
+
+        \item Пусть $E^c := \R^n \setminus E$.
+        По первой теореме:
+        \[\forall \epsilon > 0 \ \exists G_\epsilon \supset E^c \text{ и } \mathcal{L}^n(G_\epsilon \setminus E^c) < \epsilon.\]
+        Определим $F_\epsilon := \R^n \setminus G_\epsilon \subset E$.
+        Тогда 
+        \[E \setminus F_\epsilon = G_\epsilon \setminus E^c \implies \mathcal{L}^n(E \setminus F_\epsilon) < \epsilon.\]
+
+        \item Если знаем 2., то $\mathcal{L}^n (E) = \sup\limits_{\substack{F \subset E \\ F \text{-замк.}}} \mathcal{L}^n(F)$.
+        \[\mathcal{L}^n(F) = \sup\limits_{N \in \N} \mathcal{L}^n(F \cap [-N, N]) = \lim\limits_{N \to \infty} \mathcal{L}^n (F \cap [-N, N])\]
+        — это следует из непрерывности снизу меры Лебега, поэтому существует последовательность замкнутых множеств $\{F_j\}$:
+        \[\mathcal{L}^n(E) = \lim\limits_{j \to \infty} \mathcal{L}^n(F_j).\]
+        Рассмотрим теперь $\widetilde{F_l} := \bigcup\limits_{j=1}^{l} F_j, \ l \in \N$ — она монотонна, то есть
+        \[\widetilde{F_1} \subset \dots \subset \widetilde{F_l} \subset \dots.\]
+        Рассмотрим множества $F_{l, N} := \widetilde{F_l} \cap [-N, N]$, где $F_{l, N}$ — компакты.
+        \begin{multline*}
+            F_{l+1, N} \supset F_{l, N} \ \forall l \in \N \text{ и } F_{l,N} \subset F_{l, N+1} \ \forall N \in \N
+            \implies\\\implies
+            \sup\limits_{l \in \N} \sup\limits_{N \in \N} \mathcal{L}^n(F_{l,N}) = \mathcal{L}^n(E).
+        \end{multline*} 
+    \end{enumerate}
+\end{proof} 
+
+\begin{theorem}[3]
+    Пусть $E \in \mathfrak{M}_n$.
+    Тогда:
+    \begin{enumerate}
+        \item Существует последовательность открытых множеств $\{G_j\}$:
+        \[G_{j+1} \subset G_j \ \forall j \in \N \text{ и } \bigcap\limits_{j=1}^{\infty} G_j = E \cup e,\]
+        где $\mathcal{L}^n(e) = 0$.
+
+        \item Существует последовательность замнкутых множеств $\{F_j\}$:
+        \[F_j \subset F_{j+1} \ \forall j \in \N \text{ и } E = \bigcup\limits_{j=1}^{\infty} F_j \cup \widetilde{e},\]
+        где $\mathcal{L}^n(\widetilde{e}) = 0$
+    \end{enumerate}
+\end{theorem} 
+\begin{proof}
+    Докажем сначала второе утверждение.
+    Предположим сначала, что $\mathcal{L}^n(E) < +\infty$.
+    Тогда по предыдущей теореме
+    \[\mathcal{L}^n(E) = \sup\limits_{\substack{F \subset E \\ F \text{-замк.}}} \mathcal{L}^n(F).\]
+    Следовательно, существует последовательность вложимых замкнутых множеств:
+    \[F_1 \subset \dots \subset F_n \subset \dots\]
+    и
+    \[\mathcal{L}^n(E) = \lim\limits_{j \to \infty} \mathcal{L}^n(F_j).\]
+    \[0 \leqslant \mathcal{L}^n \left(E \setminus \bigcup\limits_{j=1}^{\infty} F_j\right) \leqslant \mathcal{L}^n \left(E \setminus \bigcup\limits_{j=1}^{\infty} F_j\right) = \mathcal{L}^n(E) - \mathcal{L}^n(F_N) \ \forall N \in \N.\]
+    Перейдём к пределу при $N \to \infty$ в неравенстве:
+    \[\mathcal{L}^n \left(E \setminus \bigcup\limits_{j=1}^{\infty}F_j\right) = 0.\]
+    Определим
+    \[\widetilde{e} := E \setminus \bigcup\limits_{j=1}^{\infty} F_j.\]
+    
+    В общем случае, когда $\mathcal{L}^n(E) = +\infty$, тогда
+    $E = \bigcup\limits_{j=1}^{\infty} E_j$ и $\mathcal{L}^n(E_j) < +\infty$ — в силу $\sigma$-конечности $\mathcal{L}^n$.
+
+    Пользуясь предыдущим шагом,
+    \[\forall j \in \N \ \exists \widetilde{e_j} \text{ и } \{F_{j,l}\}_{l=1}^\infty: \ E_j = \bigcup\limits_{l=1}^{\infty} F_{j,l} \cup \widetilde{e_j} \text{ и } \mathcal{L}^n(\widetilde{e_j}) = 0.\]
+    Тогда
+    \[E = \bigcup\limits_{j=1}^{\infty} \bigcup\limits_{l=1}^{\infty} F_{j,l} \cup \underbrace{\bigcup\limits_{j=1}^{\infty} \widetilde{e_j}}_{\widetilde{e}}.\]
+    В силу счётной полуаддитивности
+    \[\mathcal{L}^n(\widetilde{e}) \leqslant \sum\limits_{j=1}^{\infty} \mathcal{L}^n(\widetilde{e_j}) = 0.\]
+    Перенумеруем $\{F_{j,l}\}$ одним индексом $\{\widetilde{F_s}\}$.
+    Если она не является монотонной, то
+    \[\widetilde{\widetilde{F_s}} = \bigcup\limits_{i=1}^{s} \widetilde{F_i}, \ s \in \N\]
+    — эта последовательность уже монотонна.
+    
+    К тому же, $\widetilde{\widetilde{F_s}}$ — монотонная последовательность замкнутых множеств.
+
+    Первый пункт следует из второго по двойственности (когда-то будет).
+\end{proof}
+
+\begin{lemma}[Витали, $5B$-covering lemma]
+    Пусть $E \subset \R^n$ — произвольное непустое ограниченное множество.
+    Пусть $\{B_\alpha\}_{\alpha \in I}$, где $I$ — индексное множество произвольной мощности, со следующими свойствами:
+    \begin{enumerate}
+        \item $$E \subset \bigcup\limits_{\alpha \in I} B_\alpha;$$
+        \item $\sup\limits_{\alpha \in I} r(B_\alpha) < + \infty$.
+    \end{enumerate}
+    Тогда существует не более чем счётное подсемейство $\{B_j\}_{j=1}^N$, $N \in \N \cup \{+ \infty\}$:
+    \begin{enumerate}
+        \item $B_j \cap B_{j'} = \emptyset$ при $j \neq j'$.
+        \item $E \subset \bigcup\limits_{j=1}^{N} 5 B_j$.
+    \end{enumerate}
+\end{lemma} 
+\begin{proof}
+    Из ограниченности $E$ и равномерной ограниченности радиусов следует, что существует $R > 0$:
+    \[\begin{cases}
+        E \subset B_R(0),\\
+        B_\alpha \subset B_r(0) \ \forall \alpha \in I.
+    \end{cases}\]
+    Так как $r(B_\alpha) \leqslant R$ $\forall \alpha \in I$, то:
+    \[R_1 := \sup\{r(B_\alpha) \ | \ \alpha \in I\} < +\infty.\]
+    \[\exists B_1 \in \{B_\alpha\}_{\alpha \in I}: \ r(B_1) > \frac{R_1}{2}.\]
+    Определим
+    \[\mathcal{F}_1 = \{B_\alpha\}_{\alpha \in I},\]
+    \[\mathcal{F}_2 = \{B_\alpha \in \mathcal{F}_1 \ | \ B_\alpha \cap B_1 = \emptyset\}, \ \mathcal{F}_2 \subset \mathcal{F}_1,\]
+    \[R_2 := \sup\{r(B_\alpha) \ | \ B_\alpha \in \mathcal{F}_2\},\]
+    \[B_2 \in \mathcal{F}_2: \ r(B_2) > \frac{R_2}{2}\]
+    и т.д.
+
+    Предположим, что при некоторых $l \in \N$:
+    \begin{itemize}
+        \item По построению $R_1 \geqslant \dots \geqslant R_l$;
+        \item По построению $\mathcal{F}_1 \supset \dots \supset \mathcal{F}_l$;
+        \item $B_1, \dots, B_l$:
+        \begin{enumerate}
+            \item Попарно не пересекаются;
+            \item $r(B_i) > \frac{R_i}{2} ,\ \forall i = 1, \dots, l$;
+            \item $B_i \in \mathcal{F}_i, \ \forall i = 1, \dots, l$.
+        \end{enumerate}
+    \end{itemize}
+    Определим
+    \[\mathcal{F}_{l+1} := \{B \in \mathcal{F}_l: \ B \cap B_l = \emptyset\}\]
+    По построению все шары из $\mathcal{F}_{l+1}$ будут иметь пустое пересечение не только с $B_l$, но и с предыдущими шарами.
+
+    Если $\mathcal{F}_{l+1} = \emptyset$, то завершаем построение.
+    Если же $\mathcal{F}_{l+1} \neq \emptyset$, то
+    \[R_{l+1} = \sup\{r(B) \ | \ B \in \mathcal{F}_{l+1}\}\]
+    и выберем
+    \[B_{l+1} \in \mathcal{F}_{l+1}: \ r(B_{l+1}) > \frac{R_{l+1}}{2}.\]
+    В итоге либо процедура обрывается за конечное число шагов, либо получили бесконечную последовательность $\{\mathcal{F}_l\}_{l=1}^\infty$ и бесконечную последовательность дизъюнктных шаров $\{B_l\}_{l=1}^\infty$.
+
+    Рассмотрим случай
+    \[\mathcal{F}_1 \supset \dots \supset \mathcal{F}_N, \ \mathcal{F}_{N+1} = \emptyset.\]
+    Тогда любой шар $B \in \mathcal{F}_1$ обязан пересекаться с каким-то из шаров $B_1, \dots, B_N$.
+    Если $B \in \mathcal{F}_1$, то пусть $i = 1, \dots, N$.
+    Возьмём наименьший номер, для которого $B_i \cap B \neq \emptyset$,
+    тогда
+    $r(B) \leqslant R_i$, а $r(B_i) > \frac{R_i}{2}$.
+
+    \begin{figure}[H]
+        \centering
+        \incfig[0.5\textwidth]{3}
+        \caption{К доказательству леммы Витали.}
+        \label{fig:3}
+    \end{figure}
+
+    \begin{multline*}
+        \|z - x_i\| \leqslant \underbrace{\|z - y\|}_{2R_i} + \|y - x_i\| < 2R_i + r(B_i) 
+        \leqslant\\\leqslant
+        4r(B_i) + r(B_i) = 5r(B_i)
+        \implies
+        5B_i \supset B
+        \implies E \subset \bigcup\limits_{\alpha \in I} B_\alpha \subset \bigcup\limits_{l=1}^{N} 5 B_l.
+    \end{multline*} 
+    
+    Второй случай: если $\mathcal{F}_l \neq \emptyset \ \forall l \in \N$. Тогда получаем $\{B_l\}_{l=1}^\infty$ — попарно непересекающиеся множества.
+    
+    \begin{multline*}
+        \sum\limits_{l=1}^{\infty} \mathcal{L}^n(B_l) \leqslant \mathcal{L}^n\left(\bigcup\limits_{l=1}^{\infty} B_l\right) \leqslant \mathcal{L}^n(B_r(0)) < +\infty
+        \implies
+        \mathcal{L}^n(B_l) \xrightarrow{l \to \infty} 0
+        \implies\\\implies
+        R_l \xrightarrow{l \to \infty} 0
+        \implies
+        \forall B \in \{B_\alpha\}_{\alpha \in I} \ \exists l' \in \N: \ B \cap B_{l'} \neq \emptyset,
+    \end{multline*} 
+    поскольку в противном случае $B \in \mathcal{F}_l \ \forall l \in \N$, то $r(B) = 0$, что невозможно, поэтому для любого шара $B \in \{B_\alpha\}_{\alpha \in I}$ можно найти наименьший номер $L = l(B): B_L \cap B \neq \emptyset$.
+    Рассуждая как раньше, получим $5B_L \supset B$, поэтому
+    \[E \subset \bigcup\limits_{\alpha \in I} B_\alpha \subset \bigcup\limits_{l=1}^{\infty} 5B_l.\]
+\end{proof} 
+
+\begin{definition}
+    Пусть $E \subset \R^n$ — произвольное множество.
+    Пусть $\{B_\alpha\}_{\alpha \in I}$ — семейство шаров.
+
+    Будем говорить, что $\mathcal{F}$ — \textit{fine covering (или покрытие Витали) множества $E$}, если $\forall x \in E \ \forall r > 0 \ \exists \alpha(x,r) \in I:$
+    \begin{enumerate}
+        \item Центр шара $B_{\alpha(x,r)}$ есть $x$;
+        \item Радиус $B_{\alpha(x,r)}$ меньше $r$, то есть для любой точки можно найти последовательность шаров из $\mathcal{F}$ с центром в этой точке и ряд стремится к нулю.
+    \end{enumerate}
+    
+\end{definition} 
