@@ -92,16 +92,16 @@
     \[E \subset  \bigcup\limits_{k=1}^{\infty} P_k \text{ и } \sum\limits_{k=1}^{\infty} \mathcal{L}^n (P_k) < \mathcal{L}^n(E) + \frac{\epsilon}{2},\]
     где $P_k = [a^k, b^k) = \prod\limits_{i=1}^{n} [a_i^k, b_i^k).$
     Определим $\widetilde{P_k} = [\widetilde{a^k}, b^k),$
-    где $\widetilde{a^k}$ настолько близко к $a^k$, что $\text{int} \widetilde{P_k} \supset P_k$.
-    Тогда
-    \[\mathcal{L}^n(\widetilde{P_k}) < \mathcal{L}^n(P_k) + \frac{\epsilon}{2^{k+1}} \text{ и } \text{int} \widetilde{P_k} = (\widetilde{a^k}, b^k).\]
+    где $\widetilde{a^k}$ настолько близко к $a^k$, что $(\widetilde{a^k}, b^k) = \text{int} \widetilde{P_k} \supset P_k$
+    и
+    \[\mathcal{L}^n(\widetilde{P_k}) < \mathcal{L}^n(P_k) + \frac{\epsilon}{2^{k+1}}.\]
     Определим $G_\epsilon := \bigcup\limits_{k=1}^{\infty} \text{int} \widetilde{P_k}$ — открытое множество.
     Кроме того,
     \[E \subset \bigcup\limits_{k=1}^{\infty} P_k \subset \bigcup\limits_{k=1}^{\infty} \text{int} \widetilde{P_k} = G_\epsilon.\]
     
     \begin{multline*}
         \mathcal{L}^n (G_\epsilon \setminus E) = \mathcal{L}^n \left(\underbrace{\bigcup\limits_{k=1}^{\infty} \text{int} \widetilde{P_k}}_{\text{изм. по Л.}} \setminus E\right) = \mathcal{L}^n \left(\bigcup\limits_{k=1}^{\infty} \text{int} \widetilde{P_k}\right) - \mathcal{L}^n (E) 
-        \leqslant\\\text{(счётная полуаддитивность $\mathcal{L}^n$)} \leqslant \sum\limits_{k=1}^{\infty} \mathcal{L}^n(\text{int} \widetilde{P_k}) - \mathcal{L}^n(E)
+        \leqslant\\\leqslant \text{(счётная полуаддитивность $\mathcal{L}^n$)} \leqslant \sum\limits_{k=1}^{\infty} \mathcal{L}^n(\text{int} \widetilde{P_k}) - \mathcal{L}^n(E)
         \leqslant\\\leqslant
         \sum\limits_{k=1}^{\infty} \mathcal{L}^n(P_k) + \frac{\epsilon}{2^{k-1}} - \mathcal{L}^n(E) 
         \leqslant \mathcal{L}^n(E) + \frac{\epsilon}{2} + \sum\limits_{k=1}^{\infty} \frac{\epsilon}{2^{k-1}} - \mathcal{L}^n(E) = \epsilon.
@@ -220,15 +220,18 @@
     \end{enumerate}
     Тогда существует не более чем счётное подсемейство $\{B_j\}_{j=1}^N$, $N \in \N \cup \{+ \infty\}$:
     \begin{enumerate}
-        \item $B_j \cap B_{j'} = \emptyset$ при $j \neq j'$.
+        \item $B_j \cap B_{j'} = \emptyset$ при $j \neq j'$;
         \item $E \subset \bigcup\limits_{j=1}^{N} 5 B_j$.
     \end{enumerate}
 \end{lemma} 
 \begin{proof}
+    \begin{remark}
+        Если $E = \emptyset$, то лемма тривиально верна.
+    \end{remark}
     Из ограниченности $E$ и равномерной ограниченности радиусов следует, что существует $R > 0$:
     \[\begin{cases}
         E \subset B_R(0),\\
-        B_\alpha \subset B_r(0) \ \forall \alpha \in I.
+        B_\alpha \subset B_R(0) \ \forall \alpha \in I.
     \end{cases}\]
     Так как $r(B_\alpha) \leqslant R$ $\forall \alpha \in I$, то:
     \[R_1 := \sup\{r(B_\alpha) \ | \ \alpha \in I\} < +\infty.\]
@@ -252,7 +255,7 @@
         \end{enumerate}
     \end{itemize}
     Определим
-    \[\mathcal{F}_{l+1} := \{B \in \mathcal{F}_l: \ B \cap B_l = \emptyset\}\]
+    \[\mathcal{F}_{l+1} := \{B \in \mathcal{F}_l: \ B \cap B_l = \emptyset\}.\]
     По построению все шары из $\mathcal{F}_{l+1}$ будут иметь пустое пересечение не только с $B_l$, но и с предыдущими шарами.
 
     Если $\mathcal{F}_{l+1} = \emptyset$, то завершаем построение.
@@ -278,7 +281,7 @@
     \end{figure}
 
     \begin{multline*}
-        \|z - x_i\| \leqslant \underbrace{\|z - y\|}_{2R_i} + \|y - x_i\| < 2R_i + r(B_i) 
+        \|z - x_i\| \leqslant \underbrace{\|z - y\|}_{\leqslant 2R_i} + \|y - x_i\| < 2R_i + r(B_i) 
         \leqslant\\\leqslant
         4r(B_i) + r(B_i) = 5r(B_i)
         \implies
@@ -304,7 +307,7 @@
 
 \begin{definition}
     Пусть $E \subset \R^n$ — произвольное множество.
-    Пусть $\{B_\alpha\}_{\alpha \in I}$ — семейство шаров.
+    Пусть $\mathcal{F} = \{B_\alpha\}_{\alpha \in I}$ — семейство шаров.
 
     Будем говорить, что $\mathcal{F}$ — \textit{fine covering (или покрытие Витали) множества $E$}, если $\forall x \in E \ \forall r > 0 \ \exists \alpha(x,r) \in I:$
     \begin{enumerate}

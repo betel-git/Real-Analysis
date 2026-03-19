@@ -9,7 +9,7 @@
    id="svg1"
    inkscape:version="1.4 (86a8ad7, 2024-10-11)"
    sodipodi:docname="3.svg"
-   inkscape:export-filename="3.pdf"
+   inkscape:export-filename="3.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -26,9 +26,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="7.7909517"
-     inkscape:cx="398.28254"
-     inkscape:cy="243.03834"
+     inkscape:zoom="3.8954759"
+     inkscape:cx="399.18101"
+     inkscape:cy="438.07228"
      inkscape:window-width="1920"
      inkscape:window-height="991"
      inkscape:window-x="-9"
@@ -36,7 +36,27 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
-     id="defs1" />
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="DartArrow"
+       refX="6"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Dart arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         transform="scale(-0.5)"
+         id="path6" />
+    </marker>
+  </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
@@ -86,8 +106,8 @@
     <circle
        style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0;paint-order:markers stroke fill"
        id="path4-5"
-       cx="119.84565"
-       cy="132.79187"
+       cx="107.34824"
+       cy="128.44495"
        r="0.99088341" />
     <text
        xml:space="preserve"
@@ -113,7 +133,7 @@
          y="145.55058">$y$</tspan></text>
     <g
        id="g1"
-       transform="translate(72.30327,11.224991)">
+       transform="translate(59.805867,6.8780681)">
       <text
          xml:space="preserve"
          style="font-weight:500;font-size:1.41111px;font-family:'CMU Typewriter Text Variable Width';-inkscape-font-specification:'CMU Typewriter Text Variable Width Medium';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0;paint-order:markers stroke fill"
@@ -141,5 +161,26 @@
            x="49.480209"
            y="123.99973">$B_i$</tspan></text>
     </g>
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0;paint-order:markers stroke fill"
+       id="path4-8-5"
+       cx="87.171883"
+       cy="140.32402"
+       r="0.99088341" />
+    <path
+       style="fill:#000000;stroke-width:0.5;paint-order:markers stroke fill;stroke:#000000;stroke-opacity:1;stroke-dasharray:2, 4;stroke-dashoffset:0;marker-end:url(#DartArrow)"
+       d="m 87.176336,140.32072 57.659904,33.06047"
+       id="path5" />
+    <text
+       xml:space="preserve"
+       style="font-weight:500;font-size:1.41111px;font-family:'CMU Typewriter Text Variable Width';-inkscape-font-specification:'CMU Typewriter Text Variable Width Medium';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0;paint-order:markers stroke fill"
+       x="138.13736"
+       y="188.96657"
+       id="text4-5"><tspan
+         sodipodi:role="line"
+         id="tspan4-2"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none"
+         x="138.13736"
+         y="188.96657">$5B_i$</tspan></text>
   </g>
 </svg>

@@ -58,7 +58,9 @@
     \put(0,0){\includegraphics[width=\unitlength,page=2]{3.pdf}}%
     \put(0.30868774,0.28519705){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$z$}\end{tabular}}}}%
     \put(0.47337288,0.46034837){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$y$}\end{tabular}}}}%
-    \put(0.7551484,0.53871156){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$x_i$}\end{tabular}}}}%
+    \put(0.66030531,0.57170046){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$x_i$}\end{tabular}}}}%
     \put(0.50944962,0.84783414){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$B_i$}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{3.pdf}}%
+    \put(0.87925838,0.13086344){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$5B_i$}\end{tabular}}}}%
   \end{picture}%
 \endgroup%
