@@ -54,12 +54,12 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{3.pdf}}%
-    \put(0.20643718,0.62389828){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$B$}\end{tabular}}}}%
+    \put(0.11771644,0.60348749){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$B$}\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{3.pdf}}%
-    \put(0.30868774,0.28519705){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$z$}\end{tabular}}}}%
-    \put(0.47337288,0.46034837){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$y$}\end{tabular}}}}%
-    \put(0.66030531,0.57170046){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$x_i$}\end{tabular}}}}%
-    \put(0.50944962,0.84783414){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$B_i$}\end{tabular}}}}%
+    \put(0.21996699,0.2564032){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$z$}\end{tabular}}}}%
+    \put(0.36802631,0.41253148){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$y$}\end{tabular}}}}%
+    \put(0.50641326,0.5166006){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$x_i$}\end{tabular}}}}%
+    \put(0.35633074,0.75768357){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$B_i$}\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{3.pdf}}%
     \put(0.87925838,0.13086344){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$5B_i$}\end{tabular}}}}%
   \end{picture}%

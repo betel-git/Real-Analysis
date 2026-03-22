@@ -1,0 +1,133 @@
+\section{Измеримые функции}
+\begin{definition}
+    Зафиксируем измеримое пространство, то есть пару $(X, \mathfrak{M})$, где $X$ — абстрактное множество, $\mathfrak{M}$ — $\sigma$-алгебра его подмножеств.
+    Пусть $E \in \mathfrak{M}$ и
+    \[f: E \to \overline{\R} = [-\infty, +\infty]\]
+    — некоторая функция.
+    Тогда
+    $\forall c \in \R$:
+    \[E(f<c) := \{x \in E \ | \ f(x) < c\},\]
+    \[E(f>c) := \{x \in E \ | \ f(x) > c\},\]
+    \[E(f \leqslant c) := \{x \in E \ | \ f(x) \leqslant c\},\]
+    \[E(f \geqslant c) := \{x \in E \ | \ f(x) \geqslant c\}\]
+    — \textit{лебеговы множества функции $f$}.
+\end{definition} 
+
+Теоретико-множественное напоминание:
+Пусть $F: X \to Y$:
+\begin{enumerate}
+    \item $F^{-1}(A \setminus B) = F^{-1}(A) \setminus F^{-1}(B);$
+    \item Если $\{A_\alpha\}_{\alpha \in I}$ — семейство подмножеств в $Y$, то:
+    \begin{enumerate}
+        \item $F^{-1} \left(\bigcup\limits_{\alpha \in I} A_\alpha\right) = \bigcup\limits_{\alpha \in I} F^{-1}(A_\alpha);$
+        \item $F^{-1} \left(\bigcap\limits_{\alpha \in I} A_\alpha\right) = \bigcap\limits_{\alpha \in I} F^{-1}(A_\alpha)$.
+    \end{enumerate}
+    \item Если $\mathfrak{M}$ — $\sigma$-алгебра подмножеств множества $X$, то 
+    $$\mathfrak{N} := \{A \subset Y \ | \ F^{-1}(A) \in \mathfrak{M}\},$$
+    тогда $\mathfrak{N}$ — $\sigma$-алгебра.
+\end{enumerate}
+
+\begin{lemma}
+    Пусть $(X, \mathfrak{M})$ — измеримое пространство, $E \in \mathfrak{M}$, $f: E \to \overline{\R}$.
+    Следующие условия эквивалентны $\forall c \in \R$:
+    \begin{enumerate}
+        \item $E(f < c) \in \mathfrak{M};$
+        \item $E(f \leqslant c) \in \mathfrak{M};$
+        \item $E(F > c) \in \mathfrak{M};$
+        \item $E(f \geqslant c) \in \mathfrak{M}.$
+    \end{enumerate}
+\end{lemma} 
+\begin{proof}\tab
+
+    \noindent\underline{$1 \implies 2$}
+    \[E(f \leqslant c) = \bigcap\limits_{n=1}^{\infty} E(f < c + \frac{1}{n}),\]
+    \[f(x) < c + \frac{1}{n} \ \forall n \in \N \Longleftrightarrow f(x) \leqslant c.\]
+    \underline{$2 \implies 3$}
+    \[E(f > c) = E \setminus E(f \leqslant c) \ \forall c \in \R.\]
+    \underline{$3 \implies 4$}
+    \[E(f \geqslant c) = \bigcap\limits_{n=1}^{\infty} E(f > c + \frac{1}{n})\]
+    — аналогично.
+
+    \noindent\underline{$4 \implies 1$}
+    \[E(f < c) = E \setminus E(f \geqslant c) \ \forall c \in \R.\]
+\end{proof} 
+
+\begin{definition}
+    $(X, \mathfrak{M})$ — измеримое пространство $E \in \mathfrak{M}$.
+    Функция $f: E \to \overline{\R}$ называется \textit{измеримой на $E$}, если $\forall c \in \R$ верно $E(f < c) \in \mathfrak{M}$.
+\end{definition} 
+
+\begin{remark}
+    \[E(f<c) = f^{-1}([-\infty, c));\]
+    \[E(f>c) = f^{-1}((c, +\infty]).\]
+\end{remark}
+
+\begin{lemma}
+    Пусть $(X, \mathfrak{M})$ — измеримое пространство, $f$ — измеримая на $E$ функция.
+    Тогда:
+    \begin{enumerate}
+        \item $f^{-1}(\{-\infty\}) \in \mathfrak{M}$, $f^{-1}(\{+\infty\}) \in \mathfrak{M}$, $f^{-1}(\{c\}) \in \mathfrak{M}$;
+        \item $f^{-1}(\left\lfloor a, b\right\rceil ) \in \mathfrak{M}, \ \forall - \infty \leqslant a \leqslant b \leqslant + \infty$;
+        \item $|f|$ измеримо на $E$;
+        \item Если $f, g$ измеримо на $E$, то
+        $\max\{f,g\}$ измеримо на $E$,
+        $\min\{f,g\}$ измеримо на $E$.
+        \item Для любого борелевского множества $B$ верно $f^{-1}(B) \in \mathfrak{M}$.
+    \end{enumerate}
+\end{lemma} 
+\begin{proof}\tab
+
+    \begin{enumerate}
+        \item $f^{-1}(\{+\infty\}) = \bigcap\limits_{n=1}^{\infty} f^{-1}((n, +\infty]) = \bigcap\limits_{n=1}^{\infty} E(f > n) \in \mathfrak{M}$.
+        $f^{-1}(\{-\infty\})$ — аналогично.
+        $f^{-1}(\{c\}) = f^{-1}([c, +\infty]) \setminus f^{-1}((c, +\infty]) \in \mathfrak{M}$.
+
+        \item $f^{-1}([a,b]) = E(g \geqslant a) \setminus \bigcup\limits_{n=1}^{\infty} E(f > b + \frac{1}{n}) \in \mathfrak{M}$
+        Пользуясь первым пунктом, можно аналогично доказать для интервалов и полуинтервалов.
+
+        \item $|f(x)| < c \Longleftrightarrow -c < f(x) < c \ \forall c \in \R,$
+        \[E(|f| < c) \in \mathfrak{M}, \ \forall c \in \R\]
+
+        \item $$E(\max\{f,g\} > c) = E(f > c) \cup E(g > c),$$
+        $$E(\min\{f,g\} > c) = E(f>c) \cap E(g>c).$$
+
+        \item Поскольку в силу пункта 2. прообраз любого промежутка принадлежит $\mathfrak{M}$, тогда $\{B: \ f^{-1}(B) \in \mathfrak{M}\}$ — $\sigma$-алгебра, содержащая промежуток на числовой прямой, следовательно, она содержит борелевскую $\sigma$-алгебру.
+    \end{enumerate}
+\end{proof} 
+
+\begin{theorem}
+    Пусть $(X, \mathfrak{M})$ — измеримое пространство.
+    \begin{enumerate}
+        \item Если $f: E \to \overline{\R}$ — измеримая функция на $E$, то для любого $E_0 \subset E$, $E_0 \in \mathfrak{M}$ верно, что $f$ — измеримая функция на $E_0$.
+        \item Если $\{E_n\} \subset \mathfrak{M}$ и $f$ — измеримая функция на каждом $E_n$, то $f$ измерима на $\bigcup\limits_{n=1}^{\infty}E_n$.
+    \end{enumerate}
+\end{theorem} 
+\begin{proof}\tab
+
+    \begin{enumerate}
+        \item $$E_0(f>c) = E(f>c) \cap E_0.$$
+        \item $E = \bigcup\limits_{n=1}^{\infty}E_n$:
+        \[E(f>c) = \bigcup\limits_{n=1}^{\infty}\underbrace{E_n(f>c)}_{\in \mathfrak{M}} \in \mathfrak{M}.\]
+    \end{enumerate}
+\end{proof} 
+
+\begin{theorem}
+    Пусть $(X, \mathfrak{M})$ — измеримое пространство.
+    Пусть $\{f_n\}$ — последовательность измеримых на $X$ функций.
+    Тогда
+    \begin{enumerate}
+        \item $\sup\limits_n f_n$ и $\inf\limits_n f_n$ — измеримые на $X$ функции.
+        \item $\lowlim\limits_{n\to \infty} f_n$ и $\uplim\limits_{n \to \infty} f_n$ — измеримые на $X$ функции.
+    \end{enumerate}
+\end{theorem} 
+\begin{proof}\tab
+
+    \begin{enumerate}
+        \item $$X(\sup\limits_n f_n > c) = \bigcup\limits_{n=1}^{\infty} X(f_n > c),$$
+        $$X(\inf\limits_n f_n > c) = \bigcap\limits_{n=1}^{\infty}X(f_n > c).$$
+
+        \item Следует из певрого пункта, если вычислить следующие пределы:
+        \[\uplim\limits_{n \to \infty} a_n = \inf\limits_{n \in \N} \sup\limits_{k \geqslant n} a_k,\]
+        \[\lowlim\limits_{n \to \infty} a_n = \sup\limits_{n \in \N} \inf\limits_{k \geqslant n} a_k.\]
+    \end{enumerate}
+\end{proof} 

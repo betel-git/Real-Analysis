@@ -8,7 +8,7 @@
 \begin{remark}
     Используя рассуждения, аналогичные одномерным, доказывается, что $\mu$ — счётно-аддитивная мера на $\mathcal{P}_n$.
     Кроме того, $\mu$ — $\sigma$-конечная мера на $\mathcal{P}_n$, поскольку
-    \[\R^n = \bigcup\limits_{n=1}^{\infty}[-d, d).\]
+    \[\R^n = \bigcup\limits_{d=1}^{\infty}[-d, d).\]
 \end{remark}
 
 Применим всю предыдущую схему к мере $\mu$ на полукольце ячеек и получим
@@ -243,17 +243,18 @@
     \[B_2 \in \mathcal{F}_2: \ r(B_2) > \frac{R_2}{2}\]
     и т.д.
 
-    Предположим, что при некоторых $l \in \N$:
+    \noindent При некоторых $l \in \N$:
     \begin{itemize}
         \item По построению $R_1 \geqslant \dots \geqslant R_l$;
-        \item По построению $\mathcal{F}_1 \supset \dots \supset \mathcal{F}_l$;
-        \item $B_1, \dots, B_l$:
+        \item По построению $\mathcal{F}_1 \supset \dots \supset \mathcal{F}_l$.
+    \end{itemize}
+    
+    \noindent Предположим, что $B_1, \dots, B_l$:
         \begin{enumerate}
             \item Попарно не пересекаются;
             \item $r(B_i) > \frac{R_i}{2} ,\ \forall i = 1, \dots, l$;
             \item $B_i \in \mathcal{F}_i, \ \forall i = 1, \dots, l$.
         \end{enumerate}
-    \end{itemize}
     Определим
     \[\mathcal{F}_{l+1} := \{B \in \mathcal{F}_l: \ B \cap B_l = \emptyset\}.\]
     По построению все шары из $\mathcal{F}_{l+1}$ будут иметь пустое пересечение не только с $B_l$, но и с предыдущими шарами.
@@ -316,3 +317,142 @@
     \end{enumerate}
     
 \end{definition} 
+
+% лекция 6
+\paragraph{Лекция 6.}
+\begin{theorem}[Витали о тонком покрытии]
+    Пусть $E \subset \R^n$ — ограниченное множество и $\mathcal{F} = \{B_\alpha\}_{\alpha \in I}$ — покрытие по Витали множества $E$.
+    Тогда существует не более чем счётное семейство $\{B_n\}_{n=1}^N \subset \mathcal{F}, N \in \N \cup \{+\infty\}:$
+    \begin{enumerate}
+        \item \[B_k \cap B_j = \emptyset, \ k \neq j;\]
+        \item \[\mathcal{L}^n \left(E \setminus \bigcup\limits_{k=1}^{N}B_k\right) = 0.\]
+    \end{enumerate}
+\end{theorem} 
+\begin{proof}
+    Исключим из $\mathcal{F}$ шары радиуса больше 1, тогда всё равно получим покрытие Витали.
+    Применим те же рассуждения, которые были использованы при доказательстве леммы Витали:
+
+    Имеется упорядоченная по включению последовательность
+    \[\mathcal{F}_1 \supset \mathcal{F}_2 \supset \dots \mathcal{F}_N, \ N \in \N \cup \{+\infty\}\]
+    и набор дизъюнктных шаров $B_1, \dots, B_N$:
+    \[E \subset \bigcup\limits_{i=1}^{N} 5B_i.\]
+
+    \noindent Рассмотрим два случая:
+    \begin{enumerate}
+        \item Семейство $\{B_i\}_{i=1}^N$ конечно.
+        $$\mathcal{F}_{N+1} = 0 \implies \left\{B \in \mathcal{F} \ | \ B \cap \bigcup\limits_{i=1}^{N} B_i\right\} = \emptyset.$$
+        Тогда любой шар из $\mathcal{F}$ пересекается с каким-то из шаров $B_i$.
+
+        Если $x \in E$, то поскольку $\mathcal{F}$ — покрытие Витали, то $\forall r > 0 \ \exists B \in \mathcal{F}: \ B \cap \bigcup\limits_{i=1}^{N} B_i \neq \emptyset$ и $r(B) < r$.
+
+        Тогда любая $x \in E$ является точкой прикосновения для $\bigcup\limits_{i=1}^{N}B_i$, тогда $x \in \overline{\bigcup\limits_{i=1}^{N}B_i}$, то есть $E \subset \overline{\bigcup\limits_{i=1}^{N}B_i}$, тогда
+        \begin{multline*}
+            \left(E \setminus \bigcup\limits_{i=1}^{N}B_i\right) \subset \bigcup\limits_{i=1}^{N} \partial B_i
+            \implies\\\implies
+            \mathcal{L}^n \left(E \setminus \bigcup\limits_{i=1}^{N}B_i\right) \leqslant \mathcal{L}^n \left(\bigcup\limits_{i=1}^{N} \partial B_i\right) \leqslant \sum\limits_{i=1}^{N} \mathcal{L}^n(\partial B_i) = 0.
+        \end{multline*} 
+        \noindent \textbf{Задача.} Доказать, что для любого шара $B \subset \R^n$ верно $\mathcal{L}^n(\partial B) = 0$.
+
+        \item Пусть теперь $\mathcal{F}_n \neq \emptyset \ \forall n \in \N$.
+        
+        Рассмотрим $\forall N \in \N \ E_N = E \setminus \bigcup\limits_{i=1}^{N} \overline{B_i}$.
+        Также рассмотрим семейство $\mathcal{F}_{N+1}$ — оно точно является покрытием Витали множества $E_N$.
+
+        Определим при фиксированном $N$:
+        \[\widetilde{\mathcal{F}_k} := \mathcal{F}_{N+k} \ \forall k \in \N,\]
+        \[\widetilde{B_k} := B_{N + k}.\]
+        Тогда сохранятся
+        \[\widetilde{B_j} \cap \bigcup\limits_{i=1}^{j-1} \widetilde{B_i} = \emptyset,\]
+        \[r(\widetilde{B_j}) \geqslant \frac{R_{N+j}}{2} = \frac{1}{2} \sup\{r(B) \ | \ B \in \widetilde{\mathcal{F}_j}\}.\]
+        И все рассуждения из леммы Витали работают теперь для множества $E_N$, семейств $\{\widetilde{\mathcal{F}_k}\}$ и шаров $\{\widetilde{B}_k\}$.
+        В частности,
+        \[E_N \subset \bigcup\limits_{k=1}^{\infty} 5 \widetilde{B_k} = \bigcup\limits_{k=1}^{\infty} B_{N+k}.\]
+        
+        \begin{multline*}
+            \sum\limits_{i=1}^{\infty} (\mathcal{L}^n(B_i))^n < + \infty
+            \implies
+            \sum\limits_{i=N+1}^{\infty} (\mathcal{L}^n(B_i))^n \xrightarrow{N \to \infty} 0
+            \implies\\\implies
+            \mathcal{L}^n(E_N) \leqslant \mathcal{L}^n \left(\bigcup\limits_{k=1}^{\infty} 5B_{N+k}\right) \leqslant \text{сч.полуадд.} \leqslant
+            \sum\limits_{k=N+1}^{\infty} 5^n \mathcal{L}^n(B_k) \xrightarrow{N \to \infty} 0.
+        \end{multline*} 
+        В итоге $\mathcal{L}^n(E_N) \xrightarrow{N \to \infty} 0$.
+        \begin{multline*}
+            \mathcal{L}^n \left(E \setminus \bigcup\limits_{i=1}^{\infty} B_i\right) 
+            \leqslant (\forall N \in \N) \leqslant
+            \mathcal{L}^n \left(E \setminus \bigcup\limits_{i=1}^{N} B_i\right) 
+            \leqslant\\\leqslant
+            \underbrace{\mathcal{L}^n \left(E \setminus \bigcup\limits_{i=1}^{N} \overline{B_i}\right)}_{\to 0,\ N \to \infty} + \underbrace{\sum\limits_{i=1}^{N} \mathcal{L}^n (\partial B_i)}_{=0}
+            \implies \mathcal{L}^n \left(E \setminus \bigcup\limits_{i=1}^{\infty}B_i\right) = 0.
+        \end{multline*} 
+    \end{enumerate}
+\end{proof} 
+
+\begin{definition}
+    Пусть $E \subset \R^n$, $E \neq \emptyset$.
+    Тогда для любого $x \in E$:
+    \[\underline{D}(x,E) := \lowlim\limits_{r \to 0} \frac{(\mathcal{L}^n)^*(B_r(x) \cap E)}{\mathcal{L}^n(B_r(x))}.\]
+    \[\overline{D}(x,E) := \uplim\limits_{r \to 0} \frac{(\mathcal{L}^n)^*(B_r(x) \cap E)}{\mathcal{L}^n(B_r(x))}.\]
+    Если для какой-то точки $x \in E$ верно $\underline{D}(x,E) = \overline{D}(x,E)$, то говорят, что существует \textit{плотность в точке $x$} и она обозначается $D(x,E)$.
+\end{definition} 
+
+\begin{theorem}[О точках плотности]
+    Пусть $E \subset \R^n$, $E \neq \emptyset$.
+    Пусть $\underline{E}$ — все точки $x \in E$, для которых существует $D(x,E) = 1$.
+    Тогда $$\mathcal{L}^n (E \setminus \underline{E}) = 0.$$
+\end{theorem} 
+\begin{proof}
+    Сначала рассмотрим случай, когда $E$ — ограниченное множество.
+    Определим $\forall \theta \in (0,1):$
+    \[E_\theta := \{x \in E \ | \ \underline{D}(x,E) < \theta\}.\]
+    Достаточно доказать, что $\mathcal{L}^n (E_\theta) = 0$ $\forall \theta \in (0,1)$.
+    Заметим, что при $0 < \theta < \theta' < 1$ верно $E_{\theta} \subset E_{\theta'}$.
+
+    На самом деле, для любого ограниченного множества $E \subset \R^n$ верно следующее:
+    \[\forall \epsilon > 0 \ \exists \underbrace{G_\epsilon}_{\text{откр.}}: G_\epsilon \supset E\]
+    и
+    \[(\mathcal{L}^n)^*(E) + \epsilon > \mathcal{L}^n (G_\epsilon).\]
+
+    \noindent Зафиксируем $\epsilon > 0$ и воспользуемся этим фактом для $E_\theta$:
+    \[G_\theta \supset E_\theta\]
+    и
+    \[\mathcal{L}^n(G_\theta) < (\mathcal{L}^n)^*(E_\theta) + \epsilon.\]
+    По определению $\forall x \in E_\theta$ $\exists \{r_l(x)\}_{l=1}^\infty:$
+    \begin{enumerate}
+        \item $r_l(x) \downarrow 0, \ l \to \infty;$
+        \item $B_{r_l}(x) \in G_\theta \ \forall l \in \N;$
+        \item $(\mathcal{L}^n)^*(E_\theta \cap B_{r_l}(x)) \leqslant \theta \mathcal{L}^n(B_{r_l}(x)) \ \forall l \in \N$.
+    \end{enumerate}
+    По теореме Витали о тонком покрытии существует не более чем счётный набор $\{B_j\}_{j=1}^N:$
+    \[\mathcal{L}^n \left(E_\theta \setminus \bigcup\limits_{j=1}^{N}B_j\right) = 0.\]
+    Тогда
+    \begin{multline*}
+        (\mathcal{L}^n)^*(E_\theta)
+        \leqslant
+        (\mathcal{L}^n)^* \left(\bigcup\limits_{j=1}^{\infty}B_j \cap E_\theta\right)
+        \leqslant
+        \sum\limits_{j=1}^{\infty} (\mathcal{L}^n)^*(B_j \cap E_\theta)
+        \leqslant
+        \theta \sum\limits_{j=1}^{\infty} \mathcal{L}^n(B_j)
+        =\\=
+        \theta \mathcal{L}^n \left(\bigcup\limits_{j=1}^{\infty}B_j\right)
+        \leqslant
+        \theta \mathcal{L}^n (G_\theta)
+        <
+        \theta ((\mathcal{L}^n)^*(E_\theta) + \epsilon).
+    \end{multline*} 
+    Поскольку $E_\theta$ — ограниченное множество, то
+    $(\mathcal{L}^n)^*(E_\theta) < + \infty$, тогда:
+    \[(\mathcal{L}^n)^*(E_\theta) < \theta ((\mathcal{L}_n)^*(E_\theta) + \epsilon)
+    \implies
+    (\mathcal{L}^n)^*(E_\theta) < \frac{\theta \epsilon}{1 - \theta},\]
+    но $\epsilon > 0$ был выбран произвольно.
+
+    Если же $E$ не является ограниченным множеством, то надо применить предыдущие рассуждения к каждому из множеств
+    \[E^N = E \cap B_N(0).\]
+\end{proof} 
+
+\begin{corollary}
+    Если $E \subset \R^n$, $E \neq \emptyset$ — измеримое множество, то для $\mathcal{L}^n$ почти всюду на $E$ (т.е. $\forall x \in E \setminus E'$, где $\mathcal{L}^n(E') = 0$) верно
+    \[\exists \lim\limits_{r \to 0} \frac{\mathcal{L}^n(B_r(x) \cap E)}{\mathcal{L}^n(B_r(x))} = 1.\]
+\end{corollary}

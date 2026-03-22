@@ -26,9 +26,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="3.8954759"
-     inkscape:cx="399.18101"
-     inkscape:cy="438.07228"
+     inkscape:zoom="7.7909518"
+     inkscape:cx="172.89287"
+     inkscape:cy="292.71135"
      inkscape:window-width="1920"
      inkscape:window-height="991"
      inkscape:window-x="-9"
@@ -65,14 +65,14 @@
     <circle
        style="fill:none;stroke:#000000;stroke-width:0.55;paint-order:markers stroke fill"
        id="path1"
-       cx="66.162613"
-       cy="150.95927"
+       cx="54.471947"
+       cy="153.64879"
        r="27.663647" />
     <circle
        style="fill:none;stroke:#000000;stroke-width:0.55;paint-order:markers stroke fill"
        id="path2"
-       cx="107.29269"
-       cy="129.00096"
+       cx="87.116325"
+       cy="140.88004"
        r="33.522961" />
     <circle
        style="fill:none;stroke:#000000;stroke-width:0.55;stroke-dasharray:2.2, 2.2;stroke-dashoffset:0;paint-order:markers stroke fill"
@@ -83,57 +83,57 @@
     <text
        xml:space="preserve"
        style="font-weight:500;font-size:1.41111px;font-family:'CMU Typewriter Text Variable Width';-inkscape-font-specification:'CMU Typewriter Text Variable Width Medium';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0;paint-order:markers stroke fill"
-       x="49.480209"
-       y="123.99973"
+       x="37.789543"
+       y="126.68925"
        id="text4"><tspan
          sodipodi:role="line"
          id="tspan4"
          style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none"
-         x="49.480209"
-         y="123.99973">$B$</tspan></text>
+         x="37.789543"
+         y="126.68925">$B$</tspan></text>
     <circle
        style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0;paint-order:markers stroke fill"
        id="path4"
-       cx="60.688648"
-       cy="167.50107"
+       cx="48.997982"
+       cy="170.19058"
        r="0.99088341" />
     <circle
        style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0;paint-order:markers stroke fill"
        id="path4-8"
-       cx="83.276299"
-       cy="142.54297"
+       cx="68.511894"
+       cy="148.40228"
        r="0.99088341" />
     <circle
        style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0;paint-order:markers stroke fill"
        id="path4-5"
-       cx="107.34824"
-       cy="128.44495"
+       cx="87.171883"
+       cy="140.32402"
        r="0.99088341" />
     <text
        xml:space="preserve"
        style="font-weight:500;font-size:1.41111px;font-family:'CMU Typewriter Text Variable Width';-inkscape-font-specification:'CMU Typewriter Text Variable Width Medium';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0;paint-order:markers stroke fill"
-       x="62.95369"
-       y="168.63014"
+       x="51.263023"
+       y="172.42429"
        id="text4-1"><tspan
          sodipodi:role="line"
          id="tspan4-1"
          style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none"
-         x="62.95369"
-         y="168.63014">$z$</tspan></text>
+         x="51.263023"
+         y="172.42429">$z$</tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:500;font-size:1.41111px;font-family:'CMU Typewriter Text Variable Width';-inkscape-font-specification:'CMU Typewriter Text Variable Width Medium';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0;paint-order:markers stroke fill"
-       x="84.654129"
-       y="145.55058"
+       x="70.77269"
+       y="151.85138"
        id="text4-6"><tspan
          sodipodi:role="line"
          id="tspan4-14"
          style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none"
-         x="84.654129"
-         y="145.55058">$y$</tspan></text>
+         x="70.77269"
+         y="151.85138">$y$</tspan></text>
     <g
        id="g1"
-       transform="translate(59.805867,6.8780681)">
+       transform="translate(39.527625,14.138536)">
       <text
          xml:space="preserve"
          style="font-weight:500;font-size:1.41111px;font-family:'CMU Typewriter Text Variable Width';-inkscape-font-specification:'CMU Typewriter Text Variable Width Medium';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0;paint-order:markers stroke fill"
@@ -148,7 +148,7 @@
     </g>
     <g
        id="g1-6"
-       transform="translate(39.927724,-29.507862)">
+       transform="translate(19.751363,-17.628788)">
       <text
          xml:space="preserve"
          style="font-weight:500;font-size:1.41111px;font-family:'CMU Typewriter Text Variable Width';-inkscape-font-specification:'CMU Typewriter Text Variable Width Medium';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0;paint-order:markers stroke fill"
