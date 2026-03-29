@@ -1,0 +1,147 @@
+\section{Различные виды сходимости}
+Пусть дана тройка $(X, \mathfrak{M}, \mu)$, $X$ — абстрактное множество, $\mathfrak{M}$ — $\sigma$-алгебра, $\mu$ — счётно-аддитивная мера на $\mathfrak{M}$, $\mu$ — полная мера.
+
+Договоримся, что $L_0(X, \mu)$ — линейное пространство измеримых относительно $\mathfrak{M}$ $\mu$-почти всюду конечных функций.
+
+\begin{definition}
+    Пусть $\{f_n\} \subset L_0(X, \mu)$, $f \in L_0(X, \mu)$, $E \in \mathfrak{M}$.
+    Будем говорить, что \textit{$\{f_n\}$ сходится к $f$ $\mu$-почти всюду на $E$}, если $\exists E' \subset E, E' \in \mathfrak{M}:$
+    \[\mu(E \setminus E') = 0\]
+    и
+    \[f_n(x) \xrightarrow[E']{n \to \infty} f(x).\]
+    Обозначение:
+    \[f_n \xrightarrow[E]{\mu-\text{п.в.}} f, \ n \to \infty.\]
+\end{definition} 
+
+\begin{definition}
+    В условиях прошлого определения будем говорить, что \textit{$\{f_n\}$ сходится по мере к функции $f$ на $E$}, если
+    \[\forall \epsilon > 0 \ \lim\limits_{n \to \infty} \mu(\{x \in E: \ |f_n(x) - f(x)| \geqslant \epsilon\}) = 0.\]
+    Обозначение:
+    \[f_n \xrightarrow[E]{\mu} f, \ n \to \infty.\]
+\end{definition} 
+
+\noindent \textbf{Вопрос.} Как связаны сходимости почти всюду и по мере?
+
+\begin{example}
+    \[f_n(x) = \chi(n, +\infty), \ n \in \N.\]
+    $f_n \xrightarrow[n \to \infty]{\R} 0$, но $f_n \cancel{\xrightarrow[\R]{\mathcal{L}^1}} 0$,
+    поскольку 
+    \[\exists \epsilon = 1: \ \mathcal{L}^1(\{x \in \R: \ |f_n(x)| \geqslant 1\}) = + \infty \ \forall n \in \N.\]
+\end{example}
+
+\begin{example}[Ф. Рисс]
+    Заметим, что
+    \[\forall m \in \N \ \exists! n \in \N \text{ и } \exists! k \in \{0, \dots, 2^n - 1\}: \ m = 2^n + k.\]
+    Определим функции
+    \[\phi_{n,k}(x) = \chi_{\left[\frac{k}{2^n}, \frac{k+1}{2^n}\right]}(x), \ x \in [0,1],\]
+    \[h_m(x) = \phi_{n,k}(x), \ x \in [0,1],\]
+    если $m = 2^n + k$.
+    
+    Фиксируем $\epsilon > 0$:
+    \[\mathcal{L}^1(\{x \in [0,1] \ | \ h_m(x) \geqslant \epsilon\}) \leqslant 2^{-n(m)} \xrightarrow{m \to \infty} 0,\]
+    поскольку $n(m) \xrightarrow{m \to \infty} + \infty$.
+    Получается,
+    \[h_m \xrightarrow[\mathcal{L}^1]{[0,1]} 0, \ m \to \infty,\]
+    но
+    \[h_m \cancel{\xrightarrow[\text{п.в.}]{[0,1]}} 0, m \to \infty,\]
+    так как $\forall x \in [0,1]$ существует бесконечный набор индексов $m \in \N$, для которых $h_m(x) = 0$ и существует бесконечный набор $m \in \N$, для которых $h_m(x) = 1$.
+\end{example}
+
+Перед доказательством теоремы Лебега сформулируем следующую теорему о непрерывности меры сверху.
+
+\begin{theorem}
+    Пусть $X$ — абстрактное множество, $\mathfrak{M}$ — $\sigma$-алгебра, $\mu$ — конечная и конечно-аддитивная мера на $X$.
+    Тогда следующие условия эквивалентны:
+    \begin{enumerate}
+        \item $\mu$ — счётно-аддитивная мера на $\mathfrak{M}$;
+        \item $\mu$ непрерывна сверху, то есть $\forall E \subset X$, $E \in \mathfrak{M}$ и для любой монотонной последовательности
+        \[E_1 \supset \dots \supset E_n \supset \dots \supset E:\]
+        \[\bigcap\limits_{n=1}^{\infty}E_n = E, \ \exists \lim\limits_{n \to \infty} \mu_n(E) = \mu(E);\]
+        \item $\mu$ непрерывна сверху в нуле, то есть если
+        \[E_1 \supset \dots \supset E_n \supset \dots,\]
+        то
+        \[\bigcap\limits_{n=1}^{\infty} E_n = \emptyset
+        \implies
+        \exists \lim\limits_{n \to \infty} \mu(E_n) = 0.\]
+    \end{enumerate}
+\end{theorem} 
+\begin{proof}\tab
+
+    $\underline{1 \implies 2}$ Пусть $\mu$ — счётно-аддитивная мера. Возьмём убывающую последовательность $\{E_n\} \subset \mathfrak{M}:$
+    \[E_1 \supset \dots \supset E_n \supset \dots \supset E:\]
+    \[\bigcap\limits_{n=1}^{\infty}E_n = E.\]
+    Определим разности:
+    \[F_1 = E_1 \setminus E_2, \dots, F_n = E_n \setminus E_{n+1}, \dots,\]
+    тогда множества $E, F_1, F_2, \dots$ попарно не пересекаются и
+    \[E_1 = E \cup \bigcup\limits_{k=1}^{\infty}F_k.\]
+    В силу счётной аддитивности
+    \begin{equation}
+        \mu(E_1) = \mu(E) + \sum\limits_{k=1}^{\infty} \mu(F_k),\label{eq:7.1}
+    \end{equation}
+    но с другой стороны,
+    \[E_1 = E_n \cup \bigcup\limits_{k=1}^{n-1}F_k,\]
+    причём это объединение дизъюнктно, поэтому из конечной аддитивности меры следует
+    \[\mu(E_1) = \mu(E_n) + \sum\limits_{k=1}^{n-1}\mu(F_k)
+    \implies
+    \mu(E_n) = \mu(E_1) - \sum\limits_{k=1}^{n-1}\mu(F_k).\]
+    Из \eqref{eq:7.1} получаем
+    \[\lim\limits_{n \to \infty} \mu(E_n) = \mu(E_1) - \sum\limits_{k=1}^{\infty}\mu(F_k) = \mu(E).\]
+    
+    \noindent$\underline{2 \implies 3}$ Возьмём убывающую последовательность из прошлого пункта с пустым пересечением $E = \emptyset$. Тогда
+    \[\lim\limits_{n \to \infty} \mu(E_n) = \mu(\emptyset) = 0.\]
+
+    \noindent$\underline{3 \implies 1}$ Возьмём произвольную последовательность попарно непересекающихся множеств $\{A_n\}_{n=1}^\infty \subset \mathfrak{M}$.
+    Определим
+    \[B_n := \bigcup\limits_{k=n}^{\infty}A_k.\]
+    Тогда $B_1 \supset B_2 \supset \dots$ — убывающая последовательность, которая имеет пустое пересечение: $\bigcup\limits_{n=1}^{\infty}B_n = \emptyset$.
+    Тогда имеем $\lim\limits_{n \to \infty}\mu(B_n) = 0.$
+    В силу конечной аддитивности меры:
+    \[\mu\left(\bigcup\limits_{k=1}^{\infty}A_k\right) = \mu\left(\bigcup\limits_{k=1}^{n}A_k\right) + \mu(B_{n+1})
+    =
+    \sum\limits_{k=1}^{n}\mu(A_k) + \mu(B_{n+1}).\]
+    Переходя к пределу, получим:
+    \[\mu\left(\bigcup\limits_{k=1}^{\infty}A_k\right) = \sum\limits_{k=1}^{\infty} \mu(A_k) + \lim\limits_{n\to \infty}\mu(B_{n+1}) = \sum\limits_{k=1}^{\infty}\mu(A_k).\]   
+\end{proof} 
+
+\begin{theorem}[Лебег]
+    Пусть $\mu(E) < + \infty$.
+    Тогда если
+    \[f_n \xrightarrow[E]{\text{п.в.}} f, \ n \to \infty,\]
+    то
+    \[f_n \xrightarrow[E]{\mu} f, \ n \to \infty.\]
+\end{theorem} 
+\begin{proof}
+    Без ограничения общности считаем, что $f \equiv 0$.
+    Если это не так, то рассмотрим
+    \[\widetilde{f_n} = f - f_n \ \forall n \in \N.\]
+    \begin{enumerate}
+        \item Предположим, что $f_n \geqslant 0$ $\forall n \in \N$ и $f_n(x) \downarrow 0$, $n \to \infty$ $\forall x \in E$.
+
+        Определим $E_n(\epsilon) := \{x \in E: \ f_n(x) \geqslant \epsilon\}$ и отметим, что
+        \[E_{n+1}(\epsilon) \subset E_n(\epsilon) \ \forall n \in \N \ \forall \epsilon > 0 \text{ и }  \bigcap\limits_{n=1}^{\infty}E_n(\epsilon) = \emptyset,\]
+        тогда в силу непрерывности счётно-аддитивной меры на пространстве $E$ (по предыдущей теореме)
+        \[\mu(E_n(\epsilon)) \xrightarrow{n \to \infty} 0.\]
+        
+        \item (общий случай)
+        \[h_n = \sup\limits_{k \geqslant n} |f_k|,\]
+        \[h_{n+1} \leqslant h_n \ \forall n \in \N\]
+        и
+        \[h_n \xrightarrow[E]{\mu-\text{п.в.}} 0, \ n \to \infty,\]
+        тогда
+        \[\exists E' \subset E: \mu(E \setminus E') = 0 \text{ и } h_n \xrightarrow{E'} 0.\]
+        Применим предыдущий шаг к $\{h_n\}$ и получим
+        \[h_n \xrightarrow[E]{\mu} 0, \ n \to \infty:\]
+        \begin{multline*}
+            E_n(\epsilon) 
+            \subset 
+            \{x \in E \ | \ h_n(x) \geqslant \epsilon\} 
+            \implies\\\implies
+            \mu(E_n(\epsilon)) \leqslant \mu(\{x \in E \ | \ h_n(x) \geqslant \epsilon\}) \xrightarrow{n \to \infty} 0
+            \implies\\\implies
+            \mu(E_n(\epsilon)) \xrightarrow{n \to \infty} 0
+            \implies
+            f_n \xrightarrow[E]{\mu} 0, \ n \to \infty.
+        \end{multline*} 
+    \end{enumerate}
+    
+\end{proof} 

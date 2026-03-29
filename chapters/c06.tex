@@ -131,3 +131,181 @@
         \[\lowlim\limits_{n \to \infty} a_n = \sup\limits_{n \in \N} \inf\limits_{k \geqslant n} a_k.\]
     \end{enumerate}
 \end{proof} 
+
+\paragraph{Лекция 7.}
+
+\subsection{Измеримость композиции}
+\begin{theorem}
+    Пусть $G \subset \R^n$, $G \neq \emptyset$.
+    Пусть $f_1, \dots, f_n$ — измеримые на $X$ функции.
+    Пусть $\forall x \in X$ $(f_1(x), \dots, f_n(x)) \in G$.
+    Пусть $\phi \in C(G)$ (в смысле предела по множеству).
+    Тогда $\phi \circ f$ — измеримая функция на $X$.
+\end{theorem} 
+\begin{proof}
+    Для любого $c \in \R$ хотим понять как устроен прообраз
+    \[(\phi \circ f)^{-1}((c,+\infty]) = f^{-1}(\phi^{-1}((c, +\infty]).\]
+    Отметим, что
+    \[\phi^{-1}((c, +\infty]) = \phi^{-1}((c, +\infty)),\]
+    потому что непрерывная функция не принимает значение $+\infty$.
+
+    \noindent Поскольку $\phi$ непрерывна на $G$, то $\phi^{-1}((c, +\infty))$ открыто в $G$, то есть
+    \[\phi^{-1}((c, +\infty)) = G \cap \Omega_c,\]
+    где $\Omega_c$ — открытое в $\R^n$ множество.
+    Так как $f$ принимает значения в $G$, то 
+    $$f^{-1}(\phi^{-1}((c, +\infty))) = f^{-1}(\Omega_c)$$
+    — достаточно рассмотреть этот прообраз.
+    
+    Так как $\Omega_c$ — открытое множество, то существует последовательность
+    \[\{[a^m, b^m)\}_{m=1}^\infty: \ \Omega_c = \bigcup\limits_{m=1}^{\infty}[a^m, b^m).\]
+    \[
+        f^{-1}\left(\bigcup\limits_{m=1}^{\infty}[a^m, b^m)\right)
+        =
+        \bigcup\limits_{m=1}^{\infty} f^{-1}([a^m, b^m))
+        =
+        \bigcup\limits_{m=1}^{\infty} \bigcap\limits_{k=1}^{n} \underbrace{f_k^{-1} ([a_k^m, b_k^m))}_{\in \mathfrak{M}} \in \mathfrak{M}
+    \]
+\end{proof} 
+
+\begin{remark}
+    Анализ доказательства позволяет сделать вывод:
+    Если $f: \R \to \R$ — измеримая функция (относительно $\sigma$-алгебры, измеримой по Лебегу),
+    $\phi: \R \to \R$ — борелевская функция, то
+    $\phi \circ f$ — измеримая функция.
+    Более того, условие борелевости $\phi$ нельзя убрать.
+\end{remark}
+\noindent \textbf{Задача.} Привести пример, почему если
+$f,g: \R \to \R$ — измеримые функции, то $f \circ g$ не обязательно измерима.
+
+\noindent \textbf{Соглашения.}
+\begin{enumerate}
+    \item $0 \cdot \pm \infty = 0;$
+    \item $(\pm \infty) + (\pm \infty) = \pm \infty;$
+    \item $(+\infty) - (+\infty) = 0;$
+    \item $\forall c \in \overline{\R} \ \frac{c}{\pm \infty} = 0;$
+    \item деление на 0 не определено;
+    \item $\forall c > 0: \ c \cdot \pm \infty = \pm \infty;$
+    \item $\forall c < 0: \ c \cdot \pm \infty = \mp \infty;$
+    \item $(+\infty)^p = +\infty, \ p > 0;$
+    \item $c + (\pm \infty) = \pm \infty \ \forall c \
+    \in \R.$
+\end{enumerate}
+
+\begin{theorem}
+    Пусть $(X, \mathfrak{M})$ — измеримое пространство (принимая соглашения выше).
+    Тогда
+    \begin{enumerate}
+        \item $f,g$ измеримы, тогда $f \pm g$ измеримо;
+        \item $f,g$ измеримы, тогда $f \cdot g$ измеримо;
+        \item $f$ измеримо, тогда $\forall c \in \R \ c \cdot f$ измеримо;
+        \item $f$ измеримо, $p>0$ и $f(x) \geqslant 0$ $\forall x \in X$, тогда $f^p$ измеримо;
+        \item $f$ измеримо, тогда $\frac{1}{f}$ измеримо на множестве, где $f \neq 0$.
+    \end{enumerate}
+\end{theorem} 
+\begin{proof}
+    \begin{enumerate}
+        \item Пусть $E$ — множество всех точек, где $f$ и $g$ конечны.
+        Определим $\phi(x,y) := x \pm y$, $\overline{f} = (f,g)$.
+        Тогда $f \pm g = \phi \circ \overline{f}$ на $E$.
+        
+        Поскольку $\phi$ непрерывна, $\overline{f}$ измерима на $E$, то в силу предыдущей теоремы $\phi \circ \overline{f}$ измеримо на $E$.
+
+        Дальше отдельно рассматриваем случаи множеств, где $f$ или $g$ принимают значения $\pm \infty$, и пользуемся соглашениями и тем, что $f^{-1}(\pm \infty) \in \mathfrak{M}$, $g^{-1}(\pm \infty) \in \mathfrak{M}$.
+
+        \item Аналогично, только $\phi(x,y) = x \cdot y$.
+        \item Аналогично, только $\phi(t) = c \cdot t, \ c \in \R$.
+        \item Аналогично, только $\phi(t) = t^p$.
+        \item На том множестве $E$, где $f$ принимает конечные значения, определим $\phi(t) = \frac{1}{t}$ и получим измеримую на этом множестве функцию. На тех множествах, где $f = \pm \infty$, определим $\frac{1}{f} \equiv 0$, тогда и это тоже измеримые множества.
+    \end{enumerate}
+\end{proof} 
+
+\subsection{Простые функции}
+Пусть $(X, \mathfrak{M})$ — измеримое пространство.
+
+\begin{definition}
+    Функция $\phi: X \to \R$ называется \textit{простой}, если
+    \[\begin{cases}
+        \exists \{a_1, \dots, a_N\} \subset \R,\\
+        \exists \{E_1, \dots, E_N\} \subset \mathfrak{M}
+    \end{cases}
+    \]
+    такие, что
+    \[\phi = \sum\limits_{k=1}^{N}a_k \chi_{E_k}.\]
+\end{definition} 
+
+\begin{example}
+    $X = \R$, $\mathfrak{M}$ — $\sigma$-алгебра подмножеств $\R$, измеримая по Лебегу, тогда
+    \[D(x) = 
+    \begin{cases}
+        1, x \in \Q,\\
+        0, x \notin \Q.
+    \end{cases}
+    \]
+    — простая функция.
+\end{example}
+
+\begin{remark}
+    Множества $\{E_N\}$ и $\{a_n\}$ можно выбрать не единственным образом (то есть, например, может случиться так, что каждый $E_k$ можно представить как конечное объединение дизъюнктных $E_{k,j}$).
+
+    Но если 
+    \[\phi = \sum\limits_{k=1}^{N} a_k \chi_{E_k},\]
+    \[\phi = \sum\limits_{j=1}^{N'}a'_j \chi_{E'_j},\]
+    то $a_k = a'_j$, если $E_k \cap E'_j \neq \emptyset$.
+\end{remark}
+
+\begin{theorem}
+    Сумма, разность, умножение на число произвольных простых функций будет простой функцией.
+\end{theorem} 
+\begin{proof}\tab
+    \begin{enumerate}
+        \item
+        \[\phi_1 = \sum\limits_{k=1}^{N_1} a_k^1 \chi_{E_k^1},\]
+        \[\phi_2 = \sum\limits_{j=1}^{N_2} a_j^2 \chi_{E_j^2}, \ N_1, N_2 \in \N.\]
+        Определим
+        \[E_{k,j} := E_k^1 \cap E_j^2 \ \forall k \in \{1, \dots, N_1\}, \ \forall j \in \{1, \dots, N_2\}.\]
+        Тогда
+        \[\phi_1 + \phi_2 = \sum\limits_{k=1}^{N_1} \sum\limits_{j=1}^{N_2} (a_k^1 + a_j^2) \chi_{E_k^1 \cap E_j^2}.\]
+        Перенумеруем $E_{k,j}$ единым индексом.
+        \item
+        \[\phi = \sum\limits_{k=1}^{N} a_k \chi_{E_k},\]
+        \[c \cdot \phi = \sum\limits_{k=1}^{N} (c \cdot a_k) \chi_{E_k},\]
+        \item Разность следует из первых двух пунктов:
+        \[\phi_1 - \phi_2 = \phi_1 + (-1) \cdot \phi_2.\]
+    \end{enumerate}
+    
+
+
+    
+\end{proof} 
+
+\begin{theorem}
+    Пусть $(X, \mathfrak{M})$ — измеримое пространство,
+    $f: X \to \overline{\R}$ — измеримая функция.
+    Тогда существует последовательность $\{f_n\}$ простых функций такая, что:
+    \[f(x) = \lim\limits_{n \to \infty} f_n(x).\]
+\end{theorem} 
+\begin{proof}
+    Рассмотрим случай $f \geqslant 0$.
+    Для любого $n \in \N$ рассмотрим 
+    $$\Delta_{n,k} := f^{-1} \left(\left[\frac{k}{n}, \frac{k+1}{n}\right)\right), \ k \in \{0, \dots, n^2 - 1\}.$$
+    Рассмотрим
+    \[\phi_n(x) = \sum\limits_{k=0}^{n^2 - 1} \frac{k}{n} \cdot \chi_{\Delta_{n,k}} + n \chi (\underbrace{f^{-1}([n, +\infty])}_{\in \mathfrak{M}}).\]
+    Заметим, что $\phi_n$ — простая.
+
+    Рассмотрим $X_f \sqcup X_i$, где $X_f$ — множество, на котором $f< +\infty$, $X_i$ — множество, на котором $f = +\infty$.
+
+    Если $x \in X_f$, то существует $N(x) \in \N$: $\forall n \geqslant N(x)$ верно
+    \[x \in \bigsqcup\limits_{k=0}^{n^2 - 1} \Delta_{n,k}.\]
+    \[|f(x) - \phi_n(x)| \leqslant \frac{1}{n}
+    \implies
+    \exists \lim\limits_{n \to \infty} \phi_n(x) = f(x).\]
+    Если же $x \in X_i$, то $x \in f^{-1}([n, +\infty])$ для любого $n \in \N$, тогда
+    \[\phi_n(x) = n \ \forall n \in \N
+    \implies
+    \exists \lim\limits_{n \to \infty} \phi_n(x) = +\infty.\]
+    Рассмотрим общий случай, когда $f: X \to \overline{\R}$.
+    Рассмотрим $f_+ := \max\{0,f\}$, $f_- := \max\{-f, 0\}$
+    и $f = f_+ - f_-$.
+    Проведём предыдущую процедуру отдельно для $f_+$ и $f_-$.
+    Тогда $\phi_n = \phi_n^+ - \phi_n^-, \ n \in \N$ — искомая последовательность простых функций.
+\end{proof} 
