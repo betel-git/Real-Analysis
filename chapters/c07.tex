@@ -145,3 +145,173 @@
     \end{enumerate}
     
 \end{proof} 
+
+% Лекция 8.
+\paragraph{Лекция 8.}
+\begin{definition}
+    Пусть $f \in L_0(X, \mu)$, $\{f_n\} \subset L_0(X, \mu)$.
+    Будем говорить, что $\{f_n\}$ \textit{сходится почти равномерно к $f$} и обозначается
+    \[f_n \overset{\text{п.р.}}{\rightrightarrows} f, \ n \to \infty,\]
+    если
+    \[\forall \epsilon > 0 \ \exists E_\epsilon \subset X: \ \mu(E_\epsilon) < \epsilon \text{ и } f_n \overset{X \setminus E_\epsilon}{\rightrightarrows} f, \ n \to \infty.\]
+\end{definition} 
+
+\begin{remark}
+    Если $E \subset X$ — измеримое множество, то можно определить почти равномерную сходимость на $E$, потребовав
+    \[\chi_E f_n \overset{\text{п.р.}}{\rightrightarrows} \chi_E f, \ n \to \infty.\]
+\end{remark}
+
+\begin{theorem}[Лемма Бореля-Кантелли]
+    Пусть $(X, \mathfrak{M}, \mu)$ — измеримое множество с мерой.
+    Пусть $\{E_n\} \subset \mathfrak{M}$: $\sum\limits_{n=1}^{\infty}\mu(E_n) < + \infty$.
+    Тогда $\mu(\uplim\limits_{n\to \infty}E_n) = 0$.
+\end{theorem} 
+\noindent \textbf{Напоминание.} $\uplim\limits_{n \to \infty} E_n = \bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k\geqslant n}E_k$.
+\begin{proof}
+    Воспользуемся определением верхнего предела, счётной аддитивностью меры и теоремой о двух милиционерах:
+    \[0 \leqslant \mu\left(\bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k \geqslant n}E_k\right) 
+    \leqslant 
+    \mu\left(\bigcap\limits_{n=1}^{N} \bigcup\limits_{k \geqslant n}E_k\right)
+    \leqslant
+    \mu\left(\bigcup\limits_{k \geqslant N}E_k\right)
+    \leqslant
+    \sum\limits_{k=N}^{\infty} \mu(E_k) \xrightarrow{N \to \infty}0.\]
+\end{proof} 
+
+\begin{corollary}
+    Пусть $(X, \mathfrak{M}, \mu)$ — пространство с мерой.
+    Пусть $\epsilon_n \downarrow 0$, $n \to \infty$, где $\epsilon_n > 0$, $\forall n \in \N$.
+    Пусть $\{g_n\}_{n=1}^\infty$ — последовательность измеримых функций:
+    \[\sum\limits_{n=1}^{\infty} \mu(X(g_n > \epsilon_n)) < + \infty.\]
+    Тогда
+    \begin{enumerate}
+        \item \[g_n \xrightarrow{\text{п.в.}} 0, \ n \to \infty,\]
+        \item \[g_n \overset{\text{п.р.}}{\rightrightarrows} 0, \ n \to \infty.\]
+    \end{enumerate}
+\end{corollary}
+\begin{proof}\tab
+\begin{enumerate}
+    \item Фиксируем произвольный $\epsilon > 0$.
+    Тогда существует $N(\epsilon) \in \N:$ $\forall n \geqslant N(\epsilon)$ верно $0 < \epsilon_n < \epsilon$.
+    Определим
+    \[X_n := X(g_n > \epsilon_n).\]
+    Тогда по определению $E_n(\epsilon) \subset X_n, \ \forall n \geqslant N(\epsilon)$.
+    Поскольку $\sum\limits_{n=1}^{\infty}\mu(E_n(\epsilon)) < + \infty$, тогда в силу леммы Бореля-Кантелли
+    $\mu\left(\bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k \geqslant n}E_k(\epsilon)\right) = 0$.
+
+    Если $x \notin \bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k \geqslant}E_k(\epsilon)$,
+    то $\exists N(x) \in \N$: $x \notin \bigcup\limits_{k \geqslant N(x)}E_k(x)$,
+    тогда
+    \[g_n(x) \leqslant x, \ \forall n \geqslant N(x).\]
+    Рассмотрим
+    \[F_j = \bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k\geqslant n} E_k\left(\frac{1}{j}\right), \ j \in \N,\]
+    \[F = \bigcup\limits_{j=1}^{\infty}F_j.\]
+    \[\mu(F) \leqslant \sum\limits_{j=1}^{\infty} \mu(F_j) = 0,\]
+    тогда если $x \notin F$, то $\forall j \in \N$ $\exists N(x,j):$ $\forall n \geqslant N(x,j)$ верно $g_n(x) \leqslant \frac{1}{j}$, следовательно,
+    \[\forall x \notin F \ \lim\limits_{n \to \infty} g_n(x) = 0
+    \implies
+    g_n \xrightarrow{\text{п.в.}} 0, \ n \to \infty.\]
+
+    \item Установим почти равномерную сходимость.
+    Зафиксируем $\epsilon > 0$.
+    Поскольку $\sum\limits_{n=1}^{\infty} \mu(X_n) < +\infty$,
+    то $\exists N(\epsilon):$ $\sum\limits_{n \geqslant N(\epsilon)} \mu(X_n) < \epsilon$.
+
+    Если $x \notin \bigcup\limits_{n \geqslant N(\epsilon)} X_n$,
+    то $\forall n \geqslant N(\epsilon)$ $0 < g_n(x) \leqslant \epsilon_n$,
+    то есть $g_n \rightrightarrows 0$ на $X \setminus \bigcup\limits_{n \geqslant N(\epsilon)}X_n$.
+    Поскольку $\epsilon > 0$ произволен, то
+    \[g_n \overset{\text{п.р.}}{\rightrightarrows} 0, \ n \to \infty \text{ на } X.\]
+\end{enumerate}
+\end{proof} 
+
+\begin{theorem}[Рисс]
+    Если $(X, \mathfrak{M}, \mu)$ — пространство с мерой.
+    Пусть $\{f_n\}_{n=1}^\infty \subset L_0(X, \mu)$ сходится по мере к нулю.
+    Тогда существует строго возрастающая последовательность $\{n_k\}_{k=1}^\infty$:
+    \begin{enumerate}
+        \item \[f_{n_k} \xrightarrow[X]{\text{п.в.}} 0, \ k \to \infty,\]
+        \item \[f_{n_k} \overset{\text{п.р.}}{\rightrightarrows} 0, \ k \to \infty \text{ на } X.\]
+    \end{enumerate}
+\end{theorem} 
+\begin{proof}
+    Пользуясь сходимостью по мере, можно сказать, что
+    \[\exists n_k \in \N: \ \forall n \geqslant n_k: \ E_n := \{x \in X: \ |f_n(x)| \geqslant 1/k\} \text{ и } \mu(E_n) < \frac{1}{2^k}.\]
+    По условию
+    \[f_n \xrightarrow{\mu} 0, \ n \to \infty,\]
+    тогда
+    \[\mu(\{x \in X: \ |f_n(x)| \geqslant \epsilon\}) \to 0, \ n \to \infty.\]
+    Без ограничения общности считаем, что $n_{k+1} > n_k$ для любого $k \in \N$, тогда $\sum\limits_{k=1}^{\infty} \mu(E_{n_k}) < +\infty$.
+    
+    По следствию леммы Бореля-Кантелли:
+    \begin{enumerate}
+        \item \[f_{n_k} \xrightarrow[X]{\text{п.в.}} 0, \ k \to \infty,\]
+        \item \[f_{n_k} \overset{\text{п.р.}}{\rightrightarrows} 0, \ k \to \infty \text{ на } X.\]
+    \end{enumerate}
+\end{proof} 
+
+\begin{theorem}[Егоров]
+    Пусть $(X, \mathfrak{M}, \mu)$ — пространство с конечной мерой.
+    Пусть $f \in L_0(X, \mu)$ и $\{f_n\} \subset L_0(X, \mu)$:
+    $f_n \xrightarrow[X]{\text{п.р.}} f$, $n \to \infty$.
+    Тогда существует подпоследовательность
+    \[f_n \overset{\text{п.р.}}{\rightrightarrows} 0, \ n \to \infty \text{ на } X.\]
+\end{theorem} 
+\begin{proof}
+    Рассмотрим последовательность
+    \[h_n(x) := \sup\limits_{k \geqslant n} |f(x) - f_k(x)|, \ x \in X.\]
+    Отметим, что
+    \[h_{n+1}(x) \leqslant h_n(x) \ \forall n \in \N \text{ и } \forall x \in X,\]
+    \[h_n \xrightarrow{\text{п.в.}} 0, \ n \to \infty.\]
+    Поскольку $\mu(X) < +\infty$, то $h_n \xrightarrow{\mu} 0$, $n \to \infty$, тогда по теореме Рисса
+    \[\exists \{h_{n_k}\}_{k=1}^\infty: \ h_{n_k} \overset{\text{п.р.}}{\rightrightarrows} 0, \ k \to \infty.\]
+    В силу монотонности последовательности $\{h_n\}$ получаем
+    \[h_n \overset{\text{п.р.}}{\rightrightarrows} 0, \ n \to \infty \text{ на } X.\]
+\end{proof} 
+
+\begin{remark}
+    Если $\mu(X) = +\infty$, то теорема Егорова, вообще говоря, неверна.
+\end{remark}
+
+\begin{example}
+    $X = \R, \ \mu = \mathcal{L}^1$.
+    \[f_n := \chi_{[n, +\infty)} \xrightarrow[\R]{\text{п.в.}} 0, \ n \to \infty,\]
+    но для любого $n \in \N$ $\mu(\{x \in \R: \ f_n(x) \geqslant 1\}) = +\infty$.
+\end{example}
+
+\begin{lemma}
+    Пусть $(X, \mathfrak{M}, \mu)$ — пространство с $\sigma$-конечной мерой, тогда существует мера $\nu$ на $\mathfrak{M}$:
+    \[\mu(E) = 0 \Longleftrightarrow \nu(E) = 0.\]
+\end{lemma} 
+\begin{proof}
+    \[X = \bigsqcup\limits_{n=1}^{\infty} X_n: \ \mu(X_n) < + \infty \ \forall n \in \N.\]
+    \[\forall E \in \mathfrak{M}: \ \nu(E) := \sum\limits_{n=1}^{\infty} \left(2^{-n} \cdot \frac{\mu(E \cap X_n)}{\mu(X_n)}\right).\]
+\end{proof} 
+
+\begin{theorem}[О диагональной последовательности]
+    Пусть $f \in L_0(X, \mu)$, $\mu$ — $\sigma$-конечная мера, $\{g_n\} \subset L_0(X, \mu)$: $g_n \xrightarrow[X]{\text{п.в.}} f$, $n \to \infty$ и для любого $n \in \N$ существует последовательность 
+    $$\{f_{n,k}\} \subset L_0(X, \mu): \ f_{n,k} \xrightarrow[X]{\text{п.в.}} g_n, \ k \to \infty.$$
+    Тогда существует строго возрастающая последовательность
+    \[\{k_n\} \subset \N: \ f_{n, n_k} \xrightarrow[X]{\text{п.в.}} f, \ n \to \infty.\]
+\end{theorem} 
+\begin{proof}
+    Пусть $\mu(X) < +\infty$. По теореме Лебега $f_{n,k} \to g_{n,k}$ при $k \to \infty$. 
+    Тогда существует индекс $k_n \in \N$:
+    \[
+    \mu\bigl(\underbrace{\{x \in X: \ |f_{n,k_n}(x) - g_n(x)| > 1/n\}}_{E_n}\bigr) < 2^{-n}.
+    \]
+    Следовательно,
+    \[
+    \sum_{n=1}^{\infty} \mu(E_n) < +\infty.
+    \]
+    Определим $h_n(x) := |f_{n,k_n}(x) - g_n(x)|$. Тогда $h_n(x) \to 0$ при $n \to \infty$ для $\mu$-почти всех $x \in X$. 
+    Для таких $x$ имеем
+    \[
+    |f(x) - f_{k_n}(x)| \leqslant |f(x) - g_n(x)| + |g_n(x) - f_{n,k_n}(x)|.
+    \]
+    Отсюда, учитывая, что $|f - g_n| \xrightarrow{\text{п.в.}} 0$ и $|g_n - f_{n,k_n}| \xrightarrow{\text{п.в.}} 0$ при $n \to \infty$, получаем
+    \[
+    |f - f_{n,k}| \xrightarrow[X]{\text{п.в.}} 0, \ n \to \infty.
+    \]
+    Вспомним предыдущую лемму и применим всё, что было для меры $\nu$ вместо меры $\mu$. Так как $\nu$ уважает множества нулевой меры $\mu$ и наоборот, то получаем утверждение теоремы.
+\end{proof}

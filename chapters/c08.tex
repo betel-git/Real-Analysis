@@ -1,0 +1,89 @@
+\section{Приближение измеримых функций непрерывными}
+Пусть далее $X = \R^n$, $\mathfrak{M}$ — $\sigma$-алгебра измеримых по Лебегу множеств, $\mu = \mathcal{L}^1$.
+\begin{lemma}
+    Пусть $K_0, K_1$ — два непустых компакта в $\R^n$.
+    Тогда $\exists h = h_{K_0, K_1} \in C(\R^n):$
+    \begin{enumerate}
+        \item \[h(x) = 0 \ \forall x \in K_0,\]
+        \item \[h(x) = 1 \ \forall x \in K_1.\]
+    \end{enumerate}
+\end{lemma} 
+\begin{proof}
+    \[h_{K_0, K_1} = \frac{dist(x, K_0)}{dist(x, K_0) + dist(x, K_1)}\]
+    — функция расстояния от точки до компакта непрерывна, поэтому и $h_{K_0, K_1}$ непрерывна как частное, а поскольку расстояние от компакта до точки, не лежащей на этом компакте, положительно, то получаем утверждение леммы.
+\end{proof} 
+
+\noindent \textbf{Упражнение.} Доказать, что
+\[|dist(x, K) - dist(x', K)| \leqslant \|x - x'\|.\]
+
+\begin{theorem}
+    Для любого непустого $K \subset \R^n$ существует последовательность $\{h_n\}$ непрерывных функций:
+    \[h_n \xrightarrow{\text{п.в.}} \chi_K, \ n \to \infty.\]
+\end{theorem} 
+\begin{proof}
+    $\R^n \setminus K$ — открытое множество, поэтому существует последовательность компактов $\{K_n\}$:
+    \[K_{n+1} \supset K_n \ \forall n \in \N \text{ и } \bigcup\limits_{n=1}^{\infty} K_n = \R^n \setminus K.\]
+    Пользуясь предыдущей леммой, определим
+    \[h_m(x) := h_{k_m, k}(x), \ m \in \N, \ x \in \R^n:\]
+    \begin{enumerate}
+        \item $h_m(x) = 1 \ \forall m \in \N,$
+        \item $h_m \in C(\R^n) \ \forall m \in \N,$
+        \item $h_m \equiv 0$ на $K_m$,
+        \item $h_m \xrightarrow{\R^n \setminus K} 0, \ m \to \infty$.
+    \end{enumerate}
+\end{proof} 
+
+\begin{theorem}[Фреше]
+    Пусть $f$ — измеримая функция на $\R^n$.
+    Тогда существует последовательность 
+    \[\{f_m\} \subset C(\R^n): \ f_m \xrightarrow{\text{п.в.}} f, \ m \to \infty.\]
+\end{theorem} 
+\begin{proof}\tab
+\begin{enumerate}
+    \item Пусть $f = \chi_E$, $E \in \mathfrak{M}$, тогда в силу внутренней регулярности меры Лебега существует последовательность
+    \[\{K_j\}_{j=1}^\infty \text{ и } e \subset \R^n: \ E = \bigcup\limits_{j=1}^{\infty}K_j \cup e, \ \mathcal{L}^n(e) = 0.\]
+    Заметим,
+    \[K_{j+1} \supset K_j \ \forall j \in \N.\]
+    Тогда
+    \[\chi_{K_j} \xrightarrow{\text{п.в.}} \chi_E, \ j \to \infty\]
+    и
+    \[\forall j \in \N \ \exists \{f_{j,m}\} \subset C(\R^n): \ f_{j,m} \xrightarrow{\R^n} \chi_{K_j}, \ m \to \infty.\]
+    Поскольку $\mathcal{L}^n$ — $\sigma$-конечная мера, то по теореме о диагональной последовательности существует строго возрастающая последовательность $\{m_j\} \subset \N$:
+    \[f_{j, m_j} \xrightarrow[\R^n]{\text{п.в.}} \chi_E, \ j \to \infty.\]
+    
+    \item Рассмотрим случай, когда $f$ — простая функция, то есть
+    \[f = \sum\limits_{i=1}^{N} a_i \chi_{E_i}, \ \{a_i\}_{i=1}^N \subset \R, \ \{E_i\} \subset \mathfrak{M}.\]
+    Тогда если 
+    \[\{f_{i,m}\} \subset C(\R^n): \ f_{i,m} \xrightarrow[\R^n]{\text{п.в.}} \chi_{E_i}, \ m \to \infty
+    \implies
+    \sum\limits_{i=1}^{N}a_i f_{i,m} \xrightarrow[\R^n]{\text{п.в.}} f, \ m \to \infty.\]
+
+    \item Если $f$ — измеримая на $\R^n$ функция, то существует последовательность простых функций $\{g_m\}_{m=1}^\infty$: $g_m \xrightarrow{\R^n} f$, $m \to \infty$.
+    Для любого $m \in \N$ существует последовательность $\{f_{m,s}\} \subset C(\R^n)$: $f_{m,s} \xrightarrow[\R^n]{\text{п.в.}} g_m$, $s \to \infty$.
+
+    По теореме о диагональной последовательности существует строго возрастающая последовательность $\{s_m\}_{m=1}^\infty$:
+    \[f_{m, s_m} \xrightarrow[\R^n]{\text{п.в.}} f, \ m \to \infty.\]
+\end{enumerate}
+\end{proof} 
+
+\begin{theorem}[Лузин]
+    Пусть $f \in L_0(\R^n, \mathcal{L}^n)$.
+    Тогда $\forall \epsilon > 0$ существует множество $E_\epsilon \subset \R^n$:
+    \begin{enumerate}
+        \item $\mathcal{L}^n(E_\epsilon) < \epsilon,$
+        \item $f \in C(\R^n \setminus E_\epsilon)$.
+    \end{enumerate}
+\end{theorem} 
+\begin{proof}
+    $$\R^n \ \bigcup\limits_{m=1}^{\infty} B_m(0) \setminus \overline{B_{m+1}(0)}.$$
+    Поскольку $\mathcal{L}^n (E_m) < +\infty$ для любого $m \in \N$, то рассмотрим $f|_{E_m}$ и построим последовательность непрерывных функций $\{f_{m,j}\} \subset C(\R^n):$
+    \[f_{m,j} \xrightarrow[E_m]{\text{п.в.}} f|_{E_m}, \ j \to \infty.\]
+    По теореме Егорова $f_{m,j} \overset{\text{п.р.}}{\rightrightarrows} f|_{E_m}$ на $E_m$, тогда
+    \[\forall \epsilon > 0 \ \exists e_m \subset E_m: \
+    \mu(E_m) < \frac{\epsilon}{2^m} \text{ и } f_{m,j} \overset{E_m \setminus e_m}{\rightrightarrows} f|_{E_m}, \ j \to \infty,\]
+    следовательно, $f$ непрерывна на $E_m \setminus e_m$ как равномерный предел непрерывных функций, поэтому из того, что
+    $$e = \bigcup\limits_{m=1}^{\infty} e_m \cup \bigcup\limits_{m=1}^{\infty} s_m(0)$$
+    следует, что
+    \[\mathcal{L}^n(e) < \sum\limits_{m=1}^{\infty} \frac{\epsilon}{2^m} < \epsilon\]
+    и $f$ непрерывна на $\R^n \setminus e$.
+\end{proof} 
