@@ -162,13 +162,13 @@
 \end{remark}
 
 \begin{theorem}[Лемма Бореля-Кантелли]
-    Пусть $(X, \mathfrak{M}, \mu)$ — измеримое множество с мерой.
+    Пусть $(X, \mathfrak{M}, \mu)$ — измеримое пространство с мерой.
     Пусть $\{E_n\} \subset \mathfrak{M}$: $\sum\limits_{n=1}^{\infty}\mu(E_n) < + \infty$.
     Тогда $\mu(\uplim\limits_{n\to \infty}E_n) = 0$.
 \end{theorem} 
 \noindent \textbf{Напоминание.} $\uplim\limits_{n \to \infty} E_n = \bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k\geqslant n}E_k$.
 \begin{proof}
-    Воспользуемся определением верхнего предела, счётной аддитивностью меры и теоремой о двух милиционерах:
+    Воспользуемся определением верхнего предела, счётной полуаддитивностью меры и теоремой о двух милиционерах:
     \[0 \leqslant \mu\left(\bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k \geqslant n}E_k\right) 
     \leqslant 
     \mu\left(\bigcap\limits_{n=1}^{N} \bigcup\limits_{k \geqslant n}E_k\right)
@@ -202,7 +202,7 @@
     Если $x \notin \bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k \geqslant}E_k(\epsilon)$,
     то $\exists N(x) \in \N$: $x \notin \bigcup\limits_{k \geqslant N(x)}E_k(x)$,
     тогда
-    \[g_n(x) \leqslant x, \ \forall n \geqslant N(x).\]
+    \[g_n(x) \leqslant \epsilon_n, \ \forall n \geqslant N(x).\]
     Рассмотрим
     \[F_j = \bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k\geqslant n} E_k\left(\frac{1}{j}\right), \ j \in \N,\]
     \[F = \bigcup\limits_{j=1}^{\infty}F_j.\]

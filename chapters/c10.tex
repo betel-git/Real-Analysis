@@ -1,0 +1,50 @@
+\section{Интеграл Лебега как функция множества}
+\begin{lemma}[Конечная аддитивность по множеству]
+    Пусть $\{E_i\}_{i=1}^N \subset \mathfrak{M}$, $E = \bigcup\limits_{i=1}^{N} E_i$.
+    Тогда для измеримой в широком смысле на $E$ функции верно следующее:
+    \begin{enumerate}
+        \item $$f \in \widetilde{L}_1(E, \mu) \Longleftrightarrow f \in \widetilde{L}_1(E_i, \mu) \ \forall i \in \{1, \dots, N\}.$$
+        \item Если $f$ интегрируема по Лебегу на $E$ и $E = \bigsqcup\limits_{i=1}^{N} E_i$, то
+        \[\int_E f d\mu = \sum\limits_{i=1}^{N} \int_{E_i} f d\mu.\]
+    \end{enumerate}
+\end{lemma} 
+\begin{proof}
+    Поскольку $f \in \widetilde{L}_1(E, \mu)$ тогда и только тогда, когда $|f| \in \widetilde{L}_1(E, \mu)$
+    отметим, что
+    \[|f| \chi_{E_j} \leqslant |f| \chi_E \leqslant |f| \sum\limits_{i=1}^{N} \chi_{E_i}, \ \forall j \in \{1, \dots, N\}.\]
+    \begin{itemize}
+        \item[$\underline{\implies}$] Так как $f$ интегрируема по Лебегу на $E$, то и $|f|$ интегрируем по Лебегу на $E$, а из первого неравенства следует, что $|f|$ интегрируем на любом $E_j$.
+        \item[$\underline{\impliedby}$] Если $|f|$ интегрируем на любом $E_j$, тогда $|f| \sum\limits_{i=1}^{N} \chi_{E_i}$ интегрируема как сумма интегрируемых функций, а тогда в силу второго неравенства интегрируема и $f$.
+    \end{itemize}
+    Докажем второе утверждение.
+    \[E = \bigsqcup\limits_{i=1}^{N}E_i \Longleftrightarrow
+    \chi_E = \sum\limits_{i=1}^{N}\chi_{E_i},\]
+    поэтому
+    \[f \cdot \chi_E = f \cdot \sum\limits_{i=1}^{N} \chi_{E_i}.\]
+    Проинтегрируем это равенство и учтём линейность интеграла.
+\end{proof} 
+
+\begin{theorem}[Счётная аддитивность интеграла Лебега по множествам]
+    Пусть $\{E_i\}_{i=1}^\infty \subset \mathfrak{M}$, $E_i \cap E_j = \emptyset$ при $i \neq j$.
+    Тогда для любой неотрицательной измеримой на $E = \bigsqcup\limits_{i=1}^{\infty}E_i$ верно
+    \[\int_E f d\mu = \sum\limits_{i=1}^{\infty}\int_{E_i} f d\mu.\]
+\end{theorem} 
+\begin{remark}
+    Возможно, обе части равны $+\infty$.
+\end{remark}
+\begin{proof}
+    Без ограничения общности считаем $f$ продолженной нулём вне множества $E$.
+
+    Рассмотрим срезки
+    \[f^N := \sum\limits_{i=1}^{N} \chi_{E_i} f, \ N \in \N.\]
+    В силу конечной аддитивности
+    \[\int_E f^N d\mu = \sum\limits_{i=1}^{N} \int_{E_i} f d\mu.\]
+    Отметим монотонность:
+    \[f^{N+1}(x) \geqslant f^N(x) \ \forall N \in \N \ \forall x \in X,\]
+    тогда по теореме Беппо-Леви
+    \[\int_E \lim\limits_{N \to \infty} f^N d\mu 
+    = \lim\limits_{N \to \infty} \int_E f^N d\mu
+    = \lim\limits_{N \to \infty} \sum\limits_{i=1}^{N} \int_{E_i} f d\mu,\]
+    а из определения $f^N$ и $E = \bigsqcup\limits_{i=1}^{\infty}E_i$ следует, что $\lim\limits_{N\to \infty} f^N = f$,
+    тогда получаем утверждение теоремы.
+\end{proof} 

@@ -1,0 +1,624 @@
+\section{Интеграл Лебега}
+\subsection{Интеграл Лебега для неотрицательных функций}
+\paragraph{Лекция 9.}
+
+Пусть даны $X = (X, \mathfrak{M}, \mu)$.
+Напомним
+\begin{definition}
+    $h: X \to \R$ называется \textit{простой}, если $h(x) = \sum\limits_{k=1}^{N} a_k \chi_{E_k}(x)$, где $a_1, \dots, a_N \in \R$,
+    $E_1, \dots, E_n \in \mathfrak{M}$.
+    
+    Также $h$ — простая функция тогда и только тогда, когда
+    \[X = \bigsqcup\limits_{k=1}^{N'} G_k, \ h(x) = \sum\limits_{k=1}^{N'}\alpha_k \chi_{G_k}(x).\]
+\end{definition} 
+\begin{definition}
+    Пусть $h: X \to [0, +\infty)$ — простая функция.
+    Пусть $E \in \mathfrak{M}$.
+    \textit{Интеграл Лебега от $h$ по множеству $E$}:
+    \[\int_E h(x) d\mu(x) := \sum\limits_{k=1}^{N'}\alpha_k \mu(E \cap G_k).\]
+\end{definition} 
+
+\begin{lemma}
+    Определение корректно, то есть не зависит от представления $h$.
+\end{lemma} 
+\begin{proof}
+    Пусть имеем два разбиения $X$:
+    \[X = \bigsqcup\limits_{i=1}^{N_1} A_i, \tab X = \bigsqcup\limits_{j=1}^{N_2}B_j.\]
+    \[h(x) = \sum\limits_{i=1}^{N_1}\chi_{A_i} (x) \cdot a_i,
+    \tab
+    h(x) = \sum\limits_{j=1}^{N_2} \chi_{B_j}(x) \cdot b_j.\]
+    Определим более мелкое разбиение
+    \[C_{ij} := A_i \cap B_j,\]
+    тогда $C_{ij} \neq C_{i'j'}$ при $(i,j) \neq (i', j')$.
+    Тогда
+    \[X = \bigsqcup\limits_{i=1}^{N_1}\bigsqcup\limits_{j=1}^{N_2}C_{ij}.\]
+
+    Пусть $E \in \mathfrak{M}$.
+    \begin{multline*}
+        \int_E h(x) d\mu(x) 
+        = \sum\limits_{i=1}^{N_1}a_i \mu(A_i \cap E) 
+        = \left| A_i \cap E 
+        = \bigsqcup\limits_{j=1}^{N_1} C_{ij} \cap E \right| 
+        =\\= 
+        \sum\limits_{i=1}^{N_1} \sum\limits_{j=1}^{N_2} a_i \mu(E \cap C_{ij})
+        = \left| h(x) = a_i = b_j \text{ при } x \in A_i \cap B_j \right| 
+        =\\=
+        \sum\limits_{i=1}^{N_1} \sum\limits_{j=1}^{N_2} b_j \mu(E \cap C_{ij}) 
+        = \sum\limits_{j=1}^{N_2}b_j \underbrace{\sum\limits_{i=1}^{N_1} \mu(E \cap C_{ij})}_{=\mu(E \cap B_j)} 
+        =\\=
+        \sum\limits_{j=1}^{N_2} b_j \mu(E \cap B_j) = \int_E h(x) d\mu(x).
+    \end{multline*} 
+\end{proof} 
+
+\begin{definition}
+    Пусть теперь $f: X \to [0, +\infty]$ измеримая на $X$ функция.
+    Тогда
+    \[\int_E f(x) d\mu(x) := \sup \left\{\int_E h(x) d\mu(x) \ | \ h \text{ — простая, } 0 \leqslant h(x) \leqslant f(x) \ \forall x \in E\right\}.\]
+\end{definition} 
+\begin{remark}
+    На простых функциях это определение переходит в предыдущее.
+\end{remark}
+\begin{statement}
+    Пусть $\widetilde{h}(x) \leqslant h(x)$ на $E$.
+    Тогда $$\int_E \widetilde{h}(x) d\mu(x) \leqslant \int_E h(x) d\mu(x).$$
+\end{statement} 
+\begin{proof}
+    Пусть $X = \bigsqcup\limits_{k=1}^{N}C_k$ — общее разбиение и для $h$, и для $\widetilde{h}$.
+    Тогда при $0 \leqslant \widetilde{c}_k \leqslant c_k$:
+    \[h(x) = \sum\limits_{k=1}^{N} c_k \chi_{C_k}(x), \tab \widetilde{h}(x) = \sum\limits_{k=1}^{N} \widetilde{c}_k \chi_{C_k}(x).\]
+    В силу предыдущей леммы
+    \[\int_E \widetilde{h}(x) d\mu(x) 
+    = \sum\limits_{k=1}^{N}\widetilde{c}_k \mu(A_k \cap E)
+    \leqslant \sum\limits_{k=1}^{N} c_k \mu(A_k \cap E)
+    = \int_E h(x) d\mu(x)\]
+    %\[\implies \sup\limits_{0 \leqslant \widetilde{h} \leqslant h}
+    %\int_E \widetilde{h}(x) d\mu(x) \leqslant \int_E h(x) d\mu(x).%\]
+\end{proof} 
+
+\begin{definition}
+    Пусть $f: X \to \R$ — измеримая функция.
+    Пусть $E \in \mathfrak{M}$.
+    Определим
+    \[f_+(x) := \max\{0, f(x)\} \geqslant 0,\]
+    \[f_-(x) := \max\{0, -f(x)\} \geqslant 0.\]
+    Тогда если 
+    \[\begin{cases}
+        \int_E f_+(x) d\mu(x) < +\infty, \tab (1)\\
+        \int_E f_-(x) d\mu(x) < +\infty, \tab (2)
+    \end{cases}
+    \]
+    то \textit{$f$ интегрируема по Лебегу на множестве $E$}, а сам интеграл обозначается
+    \[\int_E f(x) d\mu(x) := \int_E f_+(x) d\mu(x) - \int_E f_-(x) d\mu(x).\]
+\end{definition} 
+\begin{remark}
+    Если хотя бы одно из условий (1)-(2) не выполнено, то $f$ называется неинтегрируемой по Лебегу на $E$.
+\end{remark}
+
+\subsection{Свойства интеграла Лебега для неотрицательных функций}
+\begin{statement}[Монотонность по функциям]
+    Пусть $f,g: X \to [0, +\infty]$ — измеримые функции, $E \in \mathfrak{M}$.
+    Пусть $f(x) \leqslant g(x)$ для любого $X \in E$.
+    Тогда
+    \[\int_E f(x) d\mu(x) \leqslant \int_E g(x) d\mu(x).\]
+\end{statement} 
+\begin{proof}
+    Для простых функций доказано в утверждении выше.
+    Пусть $h$ — простая неотрицательная функция:
+    \begin{equation}
+        0 \leqslant h(x) \leqslant f(x) \leqslant g(x) \ \forall x \in E. \label{eq:9.1}
+    \end{equation}
+    Тогда по определению интеграла Лебега
+    \[\int_E h(x) d\mu(x) \leqslant \int_E g(x) d\mu(x).\]
+    Возьмём супремум от обеих частей по $h$, удовлетворяющим \eqref{eq:9.1}, тогда
+    \[\int_E f(x) d\mu(x) \leqslant \int_E g(x) d\mu(x).\]
+\end{proof} 
+
+\begin{statement}[Умножение на характеристическую функцию]
+    Пусть $f: X \to [0, +\infty]$ — измеримая функция,
+    $E \in \mathfrak{M}$ — измеримое множество.
+    Тогда
+    \[\int_E f(x) d\mu(x) = \int_X \chi_E(x) f(x) d\mu(x).\]
+\end{statement} 
+\begin{proof}
+    Сначала докажем для простых функций.
+    $$h(x) := \sum\limits_{k=1}^{N} a_k \chi_{A_k}(x),$$
+    где $A_1, \dots, A_N$ — разбиение $X$.
+    \[\chi_E h(x) := \sum\limits_{k=1}^{N} a_k \chi_{A_k \cap E}(x) + 0 \cdot \chi_{X \setminus E}(x).\]
+    Тогда
+    \[A_1 \cap E, \dots, A_N \cap E, X \setminus E\]
+    — разбиение $X$ для функции $\chi_E h$.
+    \begin{multline*}
+        \int_X (h \chi_E)(x) d\mu(x) 
+        = a_1 \cdot \mu(A_1 \cap E) + \dots + a_N \cdot \mu(A_N \cap E) + 0 \cdot \mu(X \setminus E)
+        =\\=
+        \sum\limits_{i=1}^{N} a_i \mu(A_i \cap E)
+        = \int_E h(x) d\mu(x).
+    \end{multline*} 
+    Пусть $f: X \to [0, +\infty]$ — неотрицательная измеримая функция, которая не является простой.
+    \[0 \leqslant h(x) \leqslant (\chi_E f)(x) \ \forall x \in X
+    \text{ и }
+    h(x) = (\chi_E h)(x).\]
+    В силу только что доказанного для простых функций:
+    \[\int_X h(x) d\mu(x) 
+    = \int_X \chi_E(x) h(x) d\mu(x)
+    = \int_E h(x) d\mu(x)
+    \leqslant \int_E f(x) d\mu(x).\]
+    Взяв супремум по всем $h$, удовлетворяющим \eqref{eq:9.1}, получим
+    \[\int_X \chi_E(x) f(x) d\mu(x) \leqslant \int_E f(x) d\mu(x).\]
+    Пусть $g$ — простая неотрицательная функция, определённая на всём $X$.
+    Пусть
+    \begin{equation}
+        0 \leqslant g(x) \leqslant f(x) \ \forall x \in E \label{eq:9.2}
+    \end{equation}
+    Поскольку $g$ — простая, то в силу доказанного выше
+    \[\int_E g(x) d\mu(x) 
+    = \int_X (\chi_E g)(x) d\mu(x)
+    \leqslant \int_X (\chi_E f)(x) d\mu(x).\]
+    Взяв супремум от обеих частей по $g$, удовлетворяющим \eqref{eq:9.2}, получим
+    \[\int_E f(x) d\mu(x) \leqslant \int_X (\chi_E f) (x) d\mu(x).\]
+\end{proof} 
+
+\begin{statement}[Монотонность по множеству]
+    $A,B \in \mathfrak{M}$ и $A \subset B$,
+    $f: X \to [0, +\infty]$ — измеримая функция.
+    Тогда
+    \[\int_A f(x) d\mu(x) \leqslant \int_B f(x) d\mu(x).\]
+\end{statement} 
+\begin{proof}
+    \[A \subset B
+    \implies
+    \chi_A f(x) \leqslant \chi_B f(x) \ \forall x \in X,\]
+    тогда в силу монотонности по функции
+    \[\underbrace{\int_X (\chi_A f)(x) d\mu(x)}_{\int_A f(x) d\mu(x)} 
+    \leqslant 
+    \underbrace{\int_X (\chi_B f)(x) d\mu(x)}_{\int_B f(x) d\mu(x)}.\]
+    Следовательно,
+    \[\int_A f(x) d\mu(x) \leqslant \int_B f(x) d\mu(x).\]
+\end{proof} 
+
+\begin{statement}
+    Пусть $f$ — интегрируемая на $X$ и неотрицательная на нём функция.
+    Тогда для любого $t>0$:
+    \[E_t := \{x \in X \ | \ f(x) \geqslant t\},\]
+    \[\mu(E_t) \leqslant \frac{1}{t} \int_X f(x) d\mu(x).\]
+\end{statement} 
+\begin{proof}
+    \[t \mu(E_t)
+    = \int_{E_t} t \chi_E(x) d\mu(x)
+    \leqslant \int_{E_t} f(x) d\mu(x)
+    \leqslant \int_X f(x) d\mu(x).\]
+    Поделив обе части на $t$, получим утверждение.
+\end{proof} 
+
+\begin{statement}
+    Если $f: X \to [0, +\infty]$ — интегрируемая по Лебегу функция, то $f(x) < +\infty$ для $\mu$-почти всех $x \in X$.
+\end{statement} 
+\begin{proof}
+    $$E_{\infty} := \{x \in X \ | \ f(x) = +\infty\}.$$
+    \[E_{\infty} = \bigcap\limits_{t>0} E_t.\]
+    По неравенству Чебышёва
+    \[\mu(E_t) \leqslant \frac{1}{t} \underbrace{\int_X f(x) d\mu(x)}_{=C},\]
+    тогда в силу монотонности меры
+    \[0 \leqslant \mu(E_\infty) \leqslant \frac{C}{t} \ \forall t \geqslant 0
+    \implies
+    \mu(E_\infty) = 0.\]
+\end{proof} 
+
+\begin{statement}
+    Пусть $f: X \to [0, +\infty]$ — измеримая функция, $\mu(E) > 0$, $E \in \mathfrak{M}$, $f(x) > 0$ для любого $x \in E$.
+    Тогда 
+    \[\int_E f(x) d\mu(x) > 0.\]
+\end{statement} 
+\begin{proof}
+    \[\exists n_0 \in \N: \ \mu\left(\underbrace{\left\{x \in E \ | \ f(x) \geqslant \frac{1}{n_0}\right\}}_{E_0}\right) > 0.\]
+    Для $\chi_{E_0} f$ применим неравенство Чебышёва:
+    \[0 < \frac{\mu(E_0)}{n_0} 
+    \leqslant \int_X (\chi_{E_0}f)(x) d\mu(x)
+    \leqslant \int_X (\chi_Ef)(x) d\mu(x)
+    = \int_E f(x) d\mu(x).\]
+\end{proof} 
+
+\begin{statement}
+    Пусть $\mu(E) = 0$, $E \in \mathfrak{M}$, $f: E \to [0, +\infty]$ — измеримая неотрицательная функция.
+    Тогда
+    \[\int_E f(x) d\mu(x) = 0.\]
+\end{statement} 
+\begin{proof}
+    Для простых функций утверждение очевидно.
+    В общем случае супремум от нуля есть ноль.
+\end{proof} 
+
+\begin{theorem}[Беппо-Леви]
+    Пусть $\{f_n\}$ — последовательность неотрицательных измеримых на $X$ функций:
+    \[0 \leqslant f_1(x) \leqslant \dots \leqslant f_n(x) \leqslant \dots.\]
+    Тогда 
+    \[\lim\limits_{n\to \infty}\int_X f_n(x) d\mu(x) = \int_X \lim\limits_{n \to \infty}f_n(x) d\mu(x),\]
+    \[\exists f(x) = \lim\limits_{n\to \infty}f_n(x) \in [0, +\infty] \ \forall x \in X, \ f \text{ — измерима на } X.\]
+\end{theorem} 
+\begin{proof}
+    Поскольку $\{f_n\}$ — монотонная последовательность, то при
+    \[L_n := \int_X f_n(x) d\mu(x), \ n \in \N.\]
+    последовательность $\{L_n\} \subset [0, +\infty]$ тоже монотонна, следовательно,
+    \[\exists \lim\limits_{n\to \infty}L_n := L \in [0, +\infty].\]
+    В силу монотонности интеграла по функции
+    \[\int_X f_n(x) d\mu(x) \leqslant \int_X f(x) d\mu(x) \ \forall n \in \N
+    \implies
+    L \leqslant \int_X f(x) d\mu(x).\]
+    Зафиксируем произвольное число $\theta \in (0, 1)$.
+    Определим простую функцию $g$: $0 \leqslant g(x) \leqslant f(x)$, тогда $\theta g(x) < f(x)$.
+    \[X_n := X(f_n > \theta g), \ n \in \N \text{ и } X_{n+1} \supset X_n \ \forall n \in \N.\]
+    Кроме того, $X = \bigcup\limits_{n=1}^{\infty} X_n$.
+    Если $g(x) = 0$, то $x \in \bigcup\limits_{n=1}^{\infty} X_n$, поскольку $f_n(x) > \theta g(x)$ для любого $x \in X_n$.
+    Если же $\theta g(x) > 0$, то по определению предела поскольку \[\lim\limits_{n \to \infty} f_n(f) \geqslant g(x) > \theta g(x),\]
+    то существует 
+    $$N(x) \in \N: f_n(x) > \theta g(x) \ \forall n \geqslant N(x)
+    \implies
+    x \in \bigcup\limits_{n \geqslant N(x)}X_n.$$
+    В силу непрерывности меры снизу если $A \in \mathfrak{M}$, то $\mu(A) = \lim\limits_{n\to \infty}\mu(A \cap X_n)$.
+
+    Поскольку $g$ — простая функция, то есть $X = \bigsqcup\limits_{k=1}^{N}A_k$ — допустимое разбиение $X$.
+    \[g(x) = \sum\limits_{k=1}^{N}a_k \chi_{A_k}(x) \ \forall x \in X.\]
+    \begin{multline*}
+        \int_X \theta g(x) d\mu(x) 
+        = \sum\limits_{k=1}^{N} \theta a_k \mu(A_k)
+        = \sum\limits_{k=1}^{N} \lim\limits_{n\to \infty} \theta a_k \mu(A_k \cap X_n)
+        =\\= 
+        \lim\limits_{n \to \infty} \sum\limits_{k=1}^{N} \theta a_k \mu(A_k \cap X_n) 
+        = \lim\limits_{n\to \infty} \int_{X_n} \theta g(x) d\mu(x)
+        \leqslant\\\leqslant 
+        \lim\limits_{n\to \infty}\int_{X_n} f_n(x) d\mu(x)
+        \leqslant \lim\limits_{n\to \infty} \int_X f_n(x) d\mu(x) = L.
+    \end{multline*} 
+    Получили $\int_X \theta g(x) d\mu(x) \leqslant L$ — это верно для любого $\theta \in (0,1)$ и для любого $g$: $0 \leqslant g \leqslant f$.
+    Сначала возьмём супремум по $\theta$:
+    \[\int_X g(x) d\mu(x) \leqslant L,\]
+    а потом берём супремум по $g$.
+\end{proof} 
+
+\begin{lemma}[Фату]
+    Пусть $\{f_n\}$ — последовательность неотрицательных измеримых на $X$ функций.
+    Тогда
+    \[\int_X \lowlim\limits_{n\to \infty} f_n(x) d\mu(x)
+    \leqslant
+    \lowlim\limits_{n\to \infty} \int_X f_n(x) d\mu(x).\]
+\end{lemma} 
+\begin{proof}
+    \[\lowlim\limits_{n\to \infty} f_n(x) = \sup\limits_{n \in \N} \underbrace{\inf\limits_{k\geqslant n} f_k(x)}_{g_n(x)} = \lim\limits_{n\to \infty} g_n(x) \ \forall x \in X\]
+    Тогда $\{g_n\}$ — последовательность таких измеримых неотрицательных функций, что $g_{n+1}(x) \geqslant g_n(x)$ для любых $x \in X$.
+    
+    Применим к $\{g_n\}$ теорему Беппо-Леви:
+    \[\underbrace{\int_X \lim\limits_{n\to \infty} g_n(x) d\mu(x)}_{\int_X \lowlim\limits_{n\to \infty} f_n(x) d\mu(x)} 
+    =
+    \underbrace{\lim\limits_{n\to \infty} \int_X g_n(x) d\mu(x)}_{\lim\limits_{n\to \infty} \int_X \inf\limits_{k \geqslant n} f_k(x) d\mu(x)},\]
+    а поскольку
+    \[\int_X \inf\limits_{k \geqslant n} f_k(x) d\mu(x) \leqslant \inf\limits_{k \geqslant n} \int_X f_k(x) d\mu(x),\]
+    то
+    \begin{multline*}
+        \int_X \lowlim\limits_{n\to \infty} f_n(x) d\mu(x)
+        =
+        \lim\limits_{n\to \infty} \int_X \inf\limits_{k \geqslant n} f_k(x) d\mu(x)
+        \leqslant\\\leqslant
+        \inf\limits_{k \geqslant n} \int_X f_k(x) d\mu(x)
+        \leqslant
+        \lowlim\limits_{n\to \infty} \int_X f_n(x) d\mu(x).
+    \end{multline*} 
+\end{proof} 
+
+
+
+\paragraph{Лекция 10.}
+\begin{lemma}[Аддитивность]
+    Пусть $f,g$ — неотрицательные измеримые функции.
+    Тогда
+    \[\int_X f(x) + g(x) d\mu(x)
+    =
+    \int_X f(x) d\mu(x) + \int_X g(x)d\mu(x).\]
+\end{lemma} 
+\begin{proof}
+    Пусть $\psi$, $h$ — такие простые функции, что:
+    \[0 \leqslant \psi \leqslant f,\]
+    \[0 \leqslant h \leqslant g.\]
+    \[\psi(x) = \sum\limits_{k=1}^{N_1} \widetilde{a}_k \chi_{E_k}(x),\]
+    \[h(x) = \sum\limits_{k=1}^{N_2} \widetilde{b}_k \chi_{G_k}(x).\]
+    Пусть $\{C_k\}_{k=1}^N$ — общее разбиение для $\psi$ и $h$, то есть 
+    \[X = \bigsqcup\limits_{k=1}^{N}C_k\]
+    и
+    \[\psi(x) = \sum\limits_{k=1}^{N}a_k \chi_{C_k}(x),\]
+    \[h(x) = \sum\limits_{k=1}^{N}b_k \chi_{C_k}(x).\]
+    Тогда
+    \begin{multline}
+        \int_X \psi(x) + h(x) d\mu(x)
+        = \sum\limits_{k=1}^{N}(a_k+b_k) \mu(C_k)
+        =\\= \sum\limits_{k=1}^{N}a_k\mu(C_k) + \sum\limits_{k=1}^{N}b_k \mu(C_k)
+        = \int_X \psi(x) d\mu(x) + \int_X h(x) d\mu(x). \label{eq:9.3}
+    \end{multline} 
+    В общем случае строим последовательность неотрицательных простых функций, которые всюду на $X$ сходятся к $f$ и $g$:
+    \[\psi_n \xrightarrow{X} f, \ n \to \infty,\]
+    \[h_n \xrightarrow{X} g, \ n \to \infty.\]
+    Более того, можно считать $\{\psi_n\}$ и $\{h_n\}$ монотонны.
+    Тогда запишем \eqref{eq:9.3} для $\psi_n$ и $h_n$ и, пользуясь теоремой Беппо-Леви, перейдём к пределу при $n\to \infty$.
+\end{proof} 
+
+\begin{lemma}[Положительная однородность]
+    Пусть $f \geqslant 0$ — измеримая на $X$ функция.
+    Тогда для любого $\alpha \geqslant 0$
+    \[\int_X \alpha \cdot f d\mu(x) = \alpha \cdot \int_X f d\mu(x).\]
+\end{lemma} 
+\begin{proof}
+    Доказательство аналогично предыдущей лемме: сначала доказываем для простых функций, а потом, пользуясь теоремой Беппо-Леви, переходим к пределу.
+\end{proof} 
+
+\begin{lemma}
+    Пусть $E \in \mathfrak{M}$ и $\{E_k\}_{k=1}^N \subset \mathfrak{M}$ и $E = \bigcup\limits_{k=1}^{N}E_k$.
+    Тогда для произвольной измеримой и неотрицательной функции $f$ верно следующее:
+    \[\int_E f d\mu(x) < +\infty
+    \Longleftrightarrow
+    \int_{E_k} f d\mu(x) < +\infty \tab \forall k \in \{1, \dots, N\}.\]
+\end{lemma} 
+\begin{proof}\tab
+    \begin{itemize}
+        \item[\underline{$\implies$}]
+        \[\int_{E_k} f d\mu(x) \leqslant \int_E f d\mu(x) < +\infty \tab \forall k \in \{1, \dots, N\}.\]
+        \item[\underline{$\impliedby$}]
+        Пусть
+        \[\int_{E_k} f d\mu(x) < +\infty \tab \forall k \in \{1, \dots, N\}.\]
+        Тогда
+        \begin{multline*}
+            \int_E f d\mu(x) = \int_X f \chi_E d\mu(x)
+            \leqslant
+            \int_X \sum\limits_{k=1}^{N} f \chi_{E_k} d\mu(x)
+            =\\= \sum\limits_{k=1}^{N} \int_X f \chi_{E_k} d\mu(x)
+            = \sum\limits_{k=1}^{N} \int_{E_k} f d\mu(x) < +\infty.
+        \end{multline*} 
+    \end{itemize}
+\end{proof} 
+
+\begin{remark}
+    В условиях предыдущей леммы если
+    \[E = \bigsqcup\limits_{k=1}^{N}E_k,\]
+    то
+    \[\int_E f d\mu(x) = \sum\limits_{k=1}^{N} \int_{E_k} f d\mu(x),\]
+    поскольку
+    \[\chi_E = \sum\limits_{k=1}^{N} \chi_{E_k}\]
+    и можно воспользоваться линейностью интеграла по функции.
+\end{remark}
+
+\begin{lemma}
+    Пусть $E \in \mathfrak{M}$ и $\mu(E) > 0$.
+    Пусть $f$ — измеримая неотрицательная функция и $f>0$ на $E$.
+    Тогда
+    \[\int_E f d\mu > 0.\]
+\end{lemma} 
+\begin{proof}
+    Для любого $n \in \N$
+    \[E_n := E\left(f > \frac{1}{n}\right) \text{ и } E = \bigcup\limits_{n=1}^{\infty} E_n \implies\]
+    \[\implies \exists n_0 \in \N: \ \mu(E_{n_0}) > 0 \implies\]
+    \[\implies \int_E f d\mu \geqslant \int_{E_{n_{0}}} f d\mu
+    \geqslant \int_{E_{n_0}} \frac{1}{n_0} d\mu = \frac{\mu(E_{n_0})}{n_0} > 0. \]
+\end{proof} 
+
+
+\subsection{Свойства интеграла Лебега от произвольных измеримых функций}
+\begin{statement}
+    $f$ интегрируема по Лебегу тогда и только тогда, когда $|f|$ интегрируема.
+\end{statement} 
+\begin{proof}\tab
+    \begin{itemize}
+        \item[\underline{$\implies$}]
+        \[f_+ := \max\{f,0\},\]
+        \[f_- := \min\{-f,0\}.\]
+        По определению $f$ интегрируема по Лебегу тогда и только тогда, когда
+        \[\begin{cases}
+            \int_X f_+(x) d\mu(x) < +\infty, \tab (1)\\
+            \int_X f_-(x) d\mu(x) < +\infty, \tab (2)
+        \end{cases}
+        \]
+        Поскольку
+        \[|f| = f_+ + f_-,\]
+        то можно сказать, что если выполнены (1)-(2), то $|f|$ интегрируема.
+
+        \item[\underline{$\impliedby$}]
+        Пусть $|f|$ интегрируема.
+        Тогда
+        \[
+        \begin{cases}
+            f_+ \leqslant |f|,\\
+            f_- \leqslant |f|,
+        \end{cases}
+        \]
+        следовательно, по свойствам интеграла Лебега для неотрицательных функций
+        $f_+$ и $f_-$ интегрируемы по Лебегу, поэтому интегрируема по Лебегу и $f$.
+    \end{itemize}
+\end{proof} 
+
+\begin{statement}
+    Пусть $f$ интегрируема по Лебегу на $E$.
+    Тогда
+    \[\left|\int_E f d\mu\right| \leqslant \int_E |f| d\mu.\]
+\end{statement} 
+\begin{proof}
+    \begin{multline*}
+        \left|\int_E f d\mu\right|
+        = \left|\int_E f_+ d\mu - \int_E f_- d\mu\right|
+        \leqslant\\\leqslant
+        \left|\int_E f_+ d\mu\right| + \left|\int_E f_- d\mu\right|
+        =\\= \int_E f_+ d\mu + \int_E f_- d\mu
+        = \int_E |f| d\mu.
+    \end{multline*}
+\end{proof} 
+
+\begin{statement}
+    Пусть $f$ интегрируема по Лебегу на $E$.
+    Тогда $|f(x)| < +\infty$ для $\mu$-почти всех $x \in E$.
+\end{statement} 
+\begin{proof}
+    Поскольку $f$ интегрируема по Лебегу тогда и только тогда, когда $|f|$ интегрируема по Лебегу, то по условию
+    \[\int_E |f| d\mu < +\infty.\]
+    Определим
+    \[E_0 := \{x \in E \ | \ f(x) = \pm \infty\}.\]
+    \[+\infty > \int_E |f|d\mu \geqslant \int_{E_0} |f| d\mu \geqslant \int_{E_0} n d\mu, \ \forall n \in \N.\]
+    При этом
+    \[\int_{E_0} n d\mu = n \cdot \int_{E_0} d\mu = n \cdot \mu(E_0).\]
+    Тогда
+    \[0 \leqslant \mu(E_0) \leqslant \frac{1}{n} \int_E |f| d\mu \to +0, n \to \infty.\]
+\end{proof} 
+
+\begin{statement}
+    Пусть $E \in \mathfrak{M}$, пусть $\int_E |f| d\mu = 0$.
+    Тогда $f = 0$ $\mu$-почти всюду на $E$.
+\end{statement} 
+\begin{proof}
+    Предположим противное, то есть пусть существует $e \in E$ такое, что $\mu(e) > 0$ и $|f| > 0$ на $e$.
+    Тогда по свойству для неотрицательных функций
+    \[\int_e |f| d\mu > 0,\]
+    чего не может быть.
+\end{proof} 
+
+\begin{statement}
+    Пусть $f$ — ограниченная измеримая функция, $E \in \mathfrak{M}$ $\mu(E) < +\infty$.
+    Тогда 
+    \[\int_E f d\mu < +\infty.\]
+\end{statement} 
+\begin{proof}
+    Пусть $\mu(E) < +\infty$.
+    Поскольку $f$ ограничена и измерима, то существует константа $C > 0$ такая, что
+    \[|f(x)| \leqslant C \ \forall x \in E.\]
+    Тогда по свойствам интеграла Лебега для неотрицательных функций:
+    \[\int_E |f| d\mu \leqslant \int_E C d\mu \leqslant C \cdot \mu(E) < +\infty \Longleftrightarrow f \text{интегрируема на } E.\]
+\end{proof} 
+
+\begin{statement}
+    Пусть $f = g$ $\mu$-почти всюду на $E \in \mathfrak{M}$, где $f,g$ — измеримые функции.
+    Тогда
+    \begin{enumerate}
+        \item $f$ интегрируема по Лебегу на $E$ тогда и только тогда, когда $g$ интегрируема по Лебегу на $E$.
+        \item При этом, если обе интегрируемы, то
+        \[\int_E f d\mu = \int_E g d\mu.\]
+    \end{enumerate}
+\end{statement} 
+\begin{proof}
+    $f$ интегрируема на $E$ тогда и только тогда, когда $|f|$ интегрируем на $E$.
+    $g$ интегрируема на $E$ тогда и только тогда, когда $|g|$ интегрируем на $E$.
+    Рассмотрим
+    \[e := \{x \in E \ | \ f(x) \neq g(x)\}.\]
+    Поскольку функции $\mu$-почти всюду совпадают, то $\mu(e) = 0$.
+    Тогда по свойству интеграла для неотрицательных функций:
+    \[\int_E |f| d\mu = \int_e |g| d\mu = 0,\]
+    \[\int_{E \setminus e} |f| d\mu = \int_E |f| d\mu\]
+    \[\int_{E \setminus e} |g| d\mu = \int_E |g| d\mu.\]
+    — в силу аддитивности по множеству.
+    Интегралы на $E \setminus e$ совпадают, поэтому
+    \[\int_E |f| d\mu = \int_{E \setminus e} |f| d\mu = \int_{E \setminus e} |g| d\mu = \int_E |g| d\mu.\]
+\end{proof} 
+
+\begin{statement}
+    Пусть $E, E' \in \mathfrak{M}$ такие, что $\mu(E \bigtriangleup E') = 0$.
+    Тогда для любой измеримой на $X$ функции $f$ верно следующее:
+    \begin{enumerate}
+        \item $f$ интегрируема на $E$ тогда и только тогда, когда $f$ интегрируема на $E'$.
+        \item Если $f$ интегрируема на $E$, то
+        \[\int_E f d\mu = \int_{E'} f d\mu.\]
+    \end{enumerate}
+\end{statement} 
+\begin{proof}
+    Сведём к предыдущему случаю если
+    \[f = \chi_E f, \tab g = \chi_{E'} f.\]
+\end{proof} 
+
+Напомним, что у нас изначально имеется тройка $(X, \mathfrak{M}, \mu)$ — абстрактное пространство с мерой.
+Но мера не обязательно полна.
+А если мера не полна, то могут быть подмножества множества меры ноль, которые неизмеримы.
+Для таких случаев удобно ввести обобщённое понятие измеримости.
+
+\begin{definition}
+    Будем говорить, что $f$ \textit{измерима в широком смысле на $E$}, если существует $E' \subset E$ такое, что
+    \[\mu(E \setminus E') = 0\]
+    и $f$ измерима на $E'$.
+\end{definition} 
+
+Без ограничения общности считаем, что $f \equiv 0$ на $E \setminus E'$.
+
+\begin{definition}
+    \[\widetilde{L}_1 (E, \mu) := \left\{f: E \to \overline{\R} \ | \ f \text{ измерима в широком смысле на } E, \int_E |f| d\mu < +\infty\right\}.\]
+\end{definition} 
+
+\begin{statement}
+    Пусть $f,g \in \widetilde{L}_1(E)$.
+    Пусть $f \leqslant g$ $\mu$-почти всюду на $E$.
+    Тогда
+    \[\int_E f d\mu \leqslant \int_E g d\mu.\]
+\end{statement} 
+\begin{proof}
+    Разложим $f$ и $g$:
+    \[f = f_+ - f_-, \tab g = g_+ - g_-,\]
+    тогда
+    \[f_+ + g_- \leqslant g_+ + f_-\]
+    $\mu$-почти всюду.
+
+    Данное неравенство осмысленно, поскольку из интегрируемости вытекает конечность почти всюду на $E$.
+    Тогда в силу монотонности интеграла
+    \[\int_E (f_+ + g_-) d\mu \leqslant \int_E (g_+ + f_-) d\mu,\]
+    а так как $f$ и $g$ интегрируемы по Лебегу на $E$, то
+    \[\int_E f_+ d\mu - \int_E f_- d\mu \leqslant \int_E g_+ d\mu - \int_E g_- d\mu.\]
+\end{proof} 
+
+\begin{statement}[Аддитивность по функциям]
+    Пусть $E \in \mathfrak{M}$, $f,g \in \widetilde{L}_1(E)$.
+    Тогда
+    \[\int_E (f+g) d\mu = \int_E f d\mu + \int_E g d\mu.\]
+\end{statement} 
+\begin{proof}
+    \[f = f_+ - f_-, \tab g = g_+ - g_-.\]
+    Пусть 
+    \[h = f + g = (f_+ - f_-) + (g_+ - g_-) = (f_+ + g_+) - (f_- + g_-)\]
+    — можем переставить слагаемые, поскольку из $f,g \in \widetilde{L}_1(E)$ следует, что они интегрируемы, значит, почти всюду конечны.
+    С другой стороны,
+    \[h = h_+ - h_-.\]
+    Получается,
+    \[h_+ + f_- + g_- = f_+ + g_+ + h_-,\]
+    следовательно,
+    \[\int_E (h_+ + f_- + g_-) d\mu = \int_E (f_+ + g_+ + h_-) d\mu,\]
+    а в силу линейности для неотрицательных функций
+    \[\int_E h_+ d\mu + \int_E f_- d\mu + \int_E g_- d\mu
+    =
+    \int_e h_- + \int_E f_+ d\mu + \int_E g_+ d\mu.\]
+    В силу конечности всех слагаемых и определения интеграла Лебега получаем утверждение.
+\end{proof} 
+
+\begin{statement}[Однородность интеграла Лебега]
+    Пусть $E \in \mathfrak{M}$, $f \in \widetilde{L}_1(E,\mu)$.
+    Тогда для любого $\alpha \in \R$ верно
+    \[\int_E \alpha \cdot f d\mu = \alpha \cdot \int_E f d\mu.\]
+\end{statement} 
+\begin{proof}
+    Пусть $\alpha \geqslant 0$.
+    Тогда для $f = f_+ - f_-$ следует $$\alpha \cdot f = \alpha \cdot f_+ - \alpha \cdot f_-.$$
+    Из положительной однородности интеграла Лебега для неотрицательных функций:
+    \[\alpha \cdot \int_E f_+ d\mu = \int_E \alpha \cdot f_+ d\mu,\]
+    \[\alpha \cdot \int_E f_- d\mu = \int_E \alpha \cdot f_- d\mu,\]
+    тогда
+    \[\int_E \alpha \cdot f d\mu
+    = \alpha \cdot \int_E f_+ d\mu - \alpha \cdot \int_E f_- d\mu
+    = \alpha \cdot \int_E f d\mu.\]
+    Если же $\alpha < 0$, то достаточно рассмотреть случай $\alpha = -1$, поскольку любое отрицательное число $\beta = (-1) \cdot \alpha$.
+    В этом случае
+    \[(-f)_+ = f_-, \tab (-f)_- = f_+,\]
+    Из предыдущих рассуждений:
+    \begin{multline*}
+    \int_E -f d\mu = \int_E (-f)_+ d\mu - \int_E (-f)_- d\mu
+    =\\= - \int_E f_+ d\mu + \int_E f_- d\mu
+    =\\= - \left(\int_E f_+ d\mu - \int_E f_- d\mu\right)
+    = - \int_E f d\mu.
+    \end{multline*} 
+\end{proof} 
+
+\begin{statement}
+    Если $f_1, \dots, f_N \widetilde{L}_1(E, \mu)$ и $\alpha_1, \dots, \alpha_N \in \R$.
+    Тогда
+    \[\sum\limits_{i=1}^{N} \alpha_i f_i \in \widetilde{L}_1(E, \mu).\]
+    Кроме того,
+    \[\int_E \left(\sum\limits_{i=1}^{N} \alpha_i f_i\right) d\mu = \sum\limits_{i=1}^{N} \left(\alpha_i \cdot \int_E f_i d\mu\right).\]
+\end{statement} 
+\begin{proof}
+    Доказательство вытекает из предыдущих свойств.
+\end{proof} 
