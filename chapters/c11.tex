@@ -1,0 +1,75 @@
+\section{Связь интеграла Римана и Лебега}
+\begin{theorem}
+    Пусть $f \in \mathcal{R}([a,b])$.
+    Тогда $f \in \widetilde{L}_1([a,b], \mathcal{L}^1)$.
+\end{theorem} 
+\begin{proof}
+    \[
+    \begin{cases}
+        \exists \lim\limits_{l(T) \to 0} \overline{\overline{s}}_f(T) = J \in \R, \\
+        \exists \lim\limits_{l(T) \to 0} \underline{\underline{S}}_f(T) = J \in \R,
+    \end{cases}
+    \]
+    — по определению того, что $f$ интегрируема по Риману.
+    Выберем зафиксированную последовательность разбиений $T_n$:
+    \[T_n := \left\{a + \frac{k(b-a)}{n}\right\}_{k=0}^n: \
+    a = x_0 < x_1 = a + \frac{1}{n} < \dots < x_n = b.\]
+    $\underline{\underline{S}}$ и $\overline{\overline{s}}$ — верхние и нижние суммы Дарбу, то есть для $\Delta_i := [x_{i-1}, x_i]$:
+    \[\overline{\overline{s}}_f(T_n) := \sum\limits_{i=1}^{n}m_i l(\Delta_i),\]
+    \[\underline{\underline{S}}_f(T) := \sum\limits_{i=1}^{n}M_i l(\Delta_i),\]
+    где $m_i = \inf\limits_{\Delta_i}f(x)$, $M_i = \sup\limits_{\Delta_i}f(x)$.
+
+    Определим для любого натурального $n$:
+    \[\underline{f_n}(x) := m_i, \text{ если } x \in \widetilde{\Delta}_i := [x_{i-1}, x_i),\]
+    \[\overline{f_n}(x) := M_i, \text{ если } x \in \widetilde{\Delta}_i := [x_{i-1}, x_i).\]
+    Будем считать, что $\underline{f_n}(b) = \overline{f_n}(b) = 0$.
+    Тогда
+    \[\int_{[a,b]} \underline{f_n}(x) d \mathcal{L}^1(x) = \overline{\overline{s}}_f(T_n) \to J, \ n \to \infty,\]
+    \[\int_{[a,b]} \overline{f_n}(x) d \mathcal{L}^1(x) = \underline{\underline{S}}_f(T_n) \to J, \ n \to \infty.\]
+    Заметим, что $\underline{f_{n+1}}(x) \geqslant \underline{f_n}(x)$ для любых натуральных $n$ и для любых $x \in [a,b]$.
+    Определим
+    $\underline{g_n}(x) = f_n(x) - f_1(x)$, $x \in [a,b]$ — уже неотрицательная функция.
+    Поскольку $f_1 \in \widetilde{L}_1([a,b], \mathcal{L}^1)$, то, применив лемму Беппо-Леви, получим:
+    \[\exists \lim\limits_{n\to \infty} \int_{[a,b]} \underline{g_n}(x) d \mathcal{L}^1(x) = \int_{[a,b]} \underline{g}(x) d \mathcal{L}^1(x),\]
+    где
+    \[\underline{g}(x) = \lim\limits_{n\to \infty} \underline{f_n}(x) - f_1(x),\]
+    где $g$ — ограниченная функция, поскольку ограничена $f$.
+
+    Пусть $\underline{f}(x) = \lim\limits_{n\to \infty} \underline{f_n}(x), \ x \in [a,b]$, тогда
+    \[\exists \lim\limits_{n\to \infty} \int_{[a,b]} \underline{f_n}(x) d \mathcal{L}^1(x) = \int_{[a,b]} \underline{f}(x) d \mathcal{L}^1(x).\]
+    Аналогично доказывается
+    \[\exists \lim\limits_{n\to \infty} \int_{[a,b]} \overline{f_n}(x) d \mathcal{L}^1(x) = \int_{[a,b]} \overline{f}(x) d \mathcal{L}^1(x),\]
+    где $\overline{f}(x) := \lim\limits_{n\to \infty} \overline{f_n}(x)$ $\forall x \in [a,b]$.
+    Итого
+    \[J = \int_{[a,b]} \underline{f}(x) d \mathcal{L}^1(x) = \int_{[a,b]} \overline{f}(x) d \mathcal{L}^1(x) \implies
+    \int_{[a,b]} (\overline{f}(x) - \underline{f}(x))d \mathcal{L}^1(x) = 0,\]
+    но $\overline{f}(x) \geqslant \underline{f}(x)$ $\forall x \in [a,b]$, поэтому
+    $\overline{f}(x) = \underline{f}(x)$ для $\mathcal{L}^1$-почти всех $x \in [a,b]$.
+    \begin{multline*}
+        \underline{f}(x) \leqslant f(x) \leqslant \overline{f}(x) \ \forall x \in [a,b]
+        \implies\\\implies
+        \underline{f}(x) = f(x) = \overline{f}(x) \ \mathcal{L}^1 \text{-п.в.} x \in [a,b]
+        \implies\\\implies
+        J = \int_{[a,b]} f(x) d \mathcal{L}^1(x).
+    \end{multline*} 
+\end{proof} 
+
+\begin{remark}
+    Вообще говоря, в силу критерия Лебега интегрируемости по Риману, $f$ просто измерима, а не только измерима в широком смысле.
+\end{remark}
+
+\begin{example}
+    \[\{r_k\}_{k=1}^\infty = \Q \cap [0,1].\]
+    Пусть $\epsilon \in (0,1)$ — зафиксированный.
+    Пусть открытое:
+    \[G = \bigcup\limits_{k=1}^{\infty} \left(r_k - \frac{\epsilon}{4^k}, r_k + \frac{\epsilon}{4^k}\right).\]
+    Обозначим компакт:
+    \[[0,1] \setminus G = K.\]
+    \[\mathcal{L}^1(G) \leqslant \sum\limits_{k=1}^{\infty} \frac{2 \epsilon}{4^k} = 2\epsilon \cdot \frac{1}{4} \cdot \frac{1}{1-\frac{1}{4}} = \frac{2\epsilon}{3}
+    \implies
+    \mathcal{L}^1(K) \geqslant \frac{\epsilon}{3}.\]
+    Определим 
+    \[f(x) := \chi_K(x) \implies f \in \widetilde{L}_1([0,1],\mathcal{L}^1) \text{ и } 
+    \int_{[0,1]}f(x) d \mathcal{L}^1(x) = \mathcal{L}^1(K)\]
+    $f$ имеет разрывы на множестве $K$ положительной меры, а множетсво точек разрыва будет иметь положительную меру Лебега, следовательно, по критерию Лебега не будет интегрируемости по Риману.
+\end{example}

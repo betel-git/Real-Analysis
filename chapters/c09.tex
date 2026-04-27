@@ -298,7 +298,7 @@
         =
         \lim\limits_{n\to \infty} \int_X \inf\limits_{k \geqslant n} f_k(x) d\mu(x)
         \leqslant\\\leqslant
-        \inf\limits_{k \geqslant n} \int_X f_k(x) d\mu(x)
+        \lim\limits_{n\to \infty}\inf\limits_{k \geqslant n} \int_X f_k(x) d\mu(x)
         \leqslant
         \lowlim\limits_{n\to \infty} \int_X f_n(x) d\mu(x).
     \end{multline*} 
@@ -406,7 +406,7 @@
     \begin{itemize}
         \item[\underline{$\implies$}]
         \[f_+ := \max\{f,0\},\]
-        \[f_- := \min\{-f,0\}.\]
+        \[f_- := \max\{-f,0\}.\]
         По определению $f$ интегрируема по Лебегу тогда и только тогда, когда
         \[\begin{cases}
             \int_X f_+(x) d\mu(x) < +\infty, \tab (1)\\
@@ -503,7 +503,7 @@
     \[e := \{x \in E \ | \ f(x) \neq g(x)\}.\]
     Поскольку функции $\mu$-почти всюду совпадают, то $\mu(e) = 0$.
     Тогда по свойству интеграла для неотрицательных функций:
-    \[\int_E |f| d\mu = \int_e |g| d\mu = 0,\]
+    \[\int_e |f| d\mu = \int_e |g| d\mu = 0,\]
     \[\int_{E \setminus e} |f| d\mu = \int_E |f| d\mu\]
     \[\int_{E \setminus e} |g| d\mu = \int_E |g| d\mu.\]
     — в силу аддитивности по множеству.

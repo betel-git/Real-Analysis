@@ -48,3 +48,197 @@
     а из определения $f^N$ и $E = \bigsqcup\limits_{i=1}^{\infty}E_i$ следует, что $\lim\limits_{N\to \infty} f^N = f$,
     тогда получаем утверждение теоремы.
 \end{proof} 
+
+
+\paragraph{Лекция 11.}
+
+\begin{corollary}[1]
+    Неотрицательная измеримая функция $f: X \to [0, +\infty]$, порождающая меру
+    \[\mu_f(E) := \int_E f(x) d\mu(x).\]
+    При этом, если $f$ интегрируема на $X$, то мера конечна.
+\end{corollary}
+
+\begin{corollary}[2]
+    Если $f: X \to [0, +\infty]$ и $\int_X f(x) d\mu(x) < +\infty$,
+    то
+    \begin{enumerate}
+        \item (непрерывность снизу) для $\{A_i\} \subset \mathfrak{M}$:
+        \[A_1 \subset \dots \subset A_n \subset \dots:\]
+        \[\int_{\bigcup\limits_{i=1}^{\infty}A_i} f d\mu = \lim\limits_{i \to \infty} \int_{A_i} f d\mu;\]
+        \item (непрерывность сверху) для $\{B_j\} \subset \mathfrak{M}$:
+        \[B_1 \supset \dots \supset B_n \supset \dots:\]
+        \[\int_{\bigcap\limits_{j=1}^{\infty} B_j} f d\mu = \lim\limits_{j \to \infty} \int_{B_j} fd\mu.\]
+    \end{enumerate}
+\end{corollary}
+
+\begin{theorem}
+    Пусть $f: X \to \overline{\R}$ и $f$ интегрируема по Лебегу на всём $X$.
+    Тогда $\forall \epsilon > 0$ существует множество конечной меры $A_\epsilon \subset X:$
+    \[\int_{X \setminus A_\epsilon} |f| d\mu < \epsilon.\]
+\end{theorem} 
+\begin{proof}
+    Пусть $E_\infty$ — множество всех $x \in X$, на которых $|f(x)| = 0$.
+
+    $f$ интегрируема по Лебегу на $X$ тогда и только тогда, когда $|f|$ интегрируема по Лебегу на $X$.
+    В силу первого следствия $\mu_{|f|}$ — конечная мера, а в силу второго следствия при
+    \[E_n := \left\{x \in X \ | \ |f(x)| < \frac{1}{n}\right\}, \ E_{n+1} \subset E_n, \ E_\infty = \bigcap\limits_{n=1}^{\infty}E_n:\]
+    \[0 = \int_{E_\infty} |f| d\mu = \lim\limits_{n \to \infty} \int_{E_n} |f|d\mu \implies\]
+    \[\implies \exists \lim\limits_{n \to \infty} \int_{X \setminus E_n} |f| d\mu = \int_X |f| d\mu \in \R\]
+    Тогда $\forall \epsilon > 0 \ \exists N(\epsilon) \in \N: \ \forall n \geqslant N(\epsilon)$ выполнено
+    \[\left|\int_X |f(x)| d\mu - \int_{X \setminus E_n} |f(x)| d\mu\right| = \left|\int_{E_n} |f|d\mu\right| < \epsilon.\]
+    Возьмём $n = N(\epsilon)$ и определим:
+    \[A_\epsilon := X \setminus E_{N(\epsilon)},\]
+    тогда
+    \[\int_{X \setminus A_\epsilon} |f|d\mu = \int_{E_N(\epsilon)} |f| d\mu < \epsilon.\]
+    Остаётся доказать, что множество $A_\epsilon$ имеет конечную меру.
+    Действительно, по неравенству Чебышёва
+    \[\mu(A_@e) 
+    \leqslant
+    \frac{1}{\frac{1}{N(\epsilon)}} \int_X |f| d\mu 
+    =
+    N(\epsilon) \int_X |f| d\mu < +\infty
+    \]
+\end{proof} 
+
+\begin{lemma}[Приближение простыми функциями]
+    Пусть $(X, \mathfrak{M}, \mu)$ — пространство с мерой.
+    Пусть $E \in \mathfrak{M}$, $f \in \widetilde{L}_1(E, \mu)$.
+    Тогда $\forall \epsilon > 0$ существует простая фунцкия $h_\epsilon$:
+    \[\int_E |f - h_\epsilon| d\mu < \epsilon.\]
+\end{lemma} 
+\begin{proof}
+    Доопределим $f$ нулём вне $E$.
+    Будем считать, что $f \in \widetilde{L}_1(X, \mu)$.
+    Пусть
+    \[f_+(x) = \max\{f(x), 0\}, \ x \in X,\]
+    \[f_-(x) = \max\{-f(x), 0\}, \ x \in X.\]
+    \[f \in \widetilde{L}_1(X, \mu)
+    \Longleftrightarrow
+    \begin{cases}
+        f_+ \in \widetilde{L}_1(X, \mu), \\
+        f_- \in \widetilde{L}_1(X, \mu).
+    \end{cases}
+    \]
+    По определению интеграла Лебега существует $h_+^\epsilon$ — простая функция:
+    \[0 \leqslant h_+^\epsilon \leqslant f_+: \
+    0 \leqslant \int_X f_+ d\mu - \int_X h_+^\epsilon d\mu < \frac{\epsilon}{2};\]
+    и существует $h_-^\epsilon$ — простая функция:
+    \[0 \leqslant h_-^\epsilon \leqslant f_-: \
+    0 \leqslant \int_X f_- d\mu - \int_X h_-^\epsilon d\mu < \frac{\epsilon}{2}.\]
+    Множества точек, где $h_+^\epsilon > 0$ и $h_-^\epsilon > 0$ не пересекаются, поэтому построим следующую цепочку:
+    \begin{multline*}
+        h^\epsilon := h_+^\epsilon - h_-^\epsilon 
+        \implies
+        \int_E |f - h^\epsilon| d\mu 
+        \leqslant
+        \int_X |f - h^\epsilon| d\mu
+        \leqslant\\\leqslant
+        \int_X |f_+ - h_+^\epsilon| d\mu + \int_X |f_- - h_-^\epsilon| d\mu
+        <
+        \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon.
+    \end{multline*} 
+\end{proof} 
+
+\begin{theorem}
+    Пусть $f \in \widetilde{L}_1(X, \mu)$.
+    Тогда $\forall \epsilon > 0 \ \exists \delta(\epsilon) > 0:$ 
+    $\forall E \in \mathfrak{M}$: $\mu(E) < \delta(\epsilon)$ 
+    выполнено
+    \[\int_E |f| d\mu < \epsilon.\]
+\end{theorem} 
+\begin{proof}\tab
+    \begin{enumerate}
+        \item Пусть $f = \chi_G$, $G \in \mathfrak{M}$.
+        \[\int_E |f| d\mu = \mu(G \cap E),\]
+        тогда, можно взять в качестве $\delta(\epsilon) = \epsilon$.
+        \item Если $f$ — простая функция, то $X = \bigsqcup\limits_{k=1}^{N}E_k$ — можно реализовать
+        \[f = \sum\limits_{k=1}^{N}a_k \chi_{E_k}
+        \implies
+        \delta(\epsilon) := \frac{\epsilon}{\sum\limits_{k=1}^{N} |a_k|}.\]
+        \item Если $f$ — произвольная функция, то аппроксимируем простыми из прошлой леммы:
+        $\forall \epsilon > 0$ $\exists h^\epsilon$ — простая:
+        \[\int_X |f - h^\epsilon| d\mu < \frac{\epsilon}{2}.\]
+        Пользуясь 2., $\forall \epsilon > 0$ $\exists \delta(\epsilon) > 0:$
+        \[\forall E \in \mathfrak{M}: \ \mu(E) < \delta(\epsilon)
+        \implies
+        \int_E |h^\epsilon| d\mu < \frac{\epsilon}{2}.\]
+    \end{enumerate}
+\end{proof} 
+
+\begin{theorem}[Лебег, о мажорируемой сходимости]
+    Пусть $X = (X, \mathfrak{m}, \mu)$ — пространство с мерой.
+    \begin{enumerate}
+        \item Пусть $\{f_n\}$ — последовательность измеримых функций на $X$.
+        \item Пусть $f_n \xrightarrow{\mu \text{-п.в.}} f$, $n \to \infty$: $f: X \to \overline{\R}$.
+        \item Пусть существует $g \in \widetilde{L}_1(X,\mu)$ — неотрицательная и такая, что $\forall n \in \N$ верно $|f_n(x)| \leqslant g(x)$ для $\mu$-почти всех $x \in X$.
+    \end{enumerate}
+    Тогда $f \in \widetilde{L}_1(X,\mu)$ и, более того,
+    \begin{equation}
+        \exists \lim\limits_{n \to \infty} \int_X f_n(x) d\mu = \int_X fd\mu. \label{eq:10.1}
+    \end{equation}
+\end{theorem} 
+\begin{proof}
+    Априори $f$ может не быть измеримой, но она измерима в широком смысле.
+    Доопределим её нулём на том множестве, где либо не существует предел $\lim\limits_{n\to \infty}f_n(x)$, либо где этот предел не равен $f$.
+    После доопределения нулём $f$ становится измеримой на $X$.
+    
+    Из условия 3. следует $|f(x)| \leqslant g(x)$ $\mu$-почти всюду.
+    Но 
+    $$g \in \widetilde{L}_1(X, \mu)
+    \implies
+    |f| \in \widetilde{L}_1(X, \mu)
+    \Longleftrightarrow
+    f \in \widetilde{L}_1(X, \mu)$$
+    Осталось доказать \eqref{eq:10.1}.
+    Рассмотрим функции
+    \[h_n(x) := \sup\limits_{k \geqslant n} |f_k(x) - f(x).\]
+    $h_n$ измеримы для любого натурального $n$ и $h_{n+1}(x) < h_n(x)$ для любых $x \in X$.
+    
+    Рассмотрим $\psi_n(x) := \underbrace{2g(x) - h_n(x)}_{\geqslant 0}$, $n \in \N$.
+    Заметим, что $\psi_{n+1}(x) \geqslant \psi_n(x)$ для $\mu$-почти всех $x \in X$ — доопределим нулями в тех точках, где эти неравенства не выполняются.
+    Тогда по лемме Беппо-Леви
+    \[\exists \lim\limits_{n \to \infty} \int_X \psi_n(x) d\mu
+    = 
+    \int_X \lim\limits_{n \to \infty} \psi_n(x) d\mu
+    =
+    \int_X 2g(x) d\mu < +\infty,\]
+    но
+    \begin{multline*}
+        \lim\limits_{n\to \infty} \int_X \psi_n(x) d\mu
+        = 
+        \lim\limits_{n\to \infty} \int_X (2g - h_n)(x)d\mu \implies\\\implies 
+        \exists \lim\limits_{n\to \infty}\int_X h_n(x)d\mu = 0 \implies
+        \exists \lim\limits_{n\to \infty}\int_X |f(x) - f_n(x)| d\mu = 0
+        \implies\\\implies
+        \lim\limits_{n\to \infty}\left|\int_X f(x)d\mu - \int_X f_n(x)d\mu\right| = 0
+    \end{multline*}
+\end{proof} 
+
+\begin{remark}
+    Заметим, что условие 3. достаточно для выполнения \eqref{eq:10.1}, но не является необходимым.
+\end{remark}
+
+\begin{example}
+    \[f_n(x) = 
+    \begin{cases}
+        n, \ x \in \left[\frac{1}{n+1}, \frac{1}{n}\right) \\
+        0, \text{ иначе.}
+    \end{cases}
+    \]
+    Мажоранта может иметь только вид:
+    \[g(x) = 
+    \begin{cases}
+        n, \ x \in \left[\frac{1}{n+1}, \frac{1}{n}\right) \\
+        0, \text{ иначе,}
+    \end{cases}
+    \]
+    но
+    \[\int_{0}^{1}g(x)d \mathcal{L}^1(x)
+    = \sum\limits_{n=1}^{\infty} \int_{\frac{1}{n+1}}^{\frac{1}{n}}g(x) d \mathcal{L}^1(x)
+    = 
+    \sum\limits_{n=1}^{\infty}\frac{n}{n(n+1)} = +\infty \implies\]
+    не существует интегрируемой мажоранты, но
+    \[\int_{\R}f_n(x) d \mathcal{L}^1(x) = \frac{1}{n+1} \xrightarrow{n\to \infty} 0.\]
+    Также существует предел $\lim\limits_{n\to \infty}f_n(x) = 0$ $\forall x \in \R$, следовательно,
+    \[\lim\limits_{n\to \infty}\int_{\R} f_n(x) d \mathcal{L}^1(x) = \int_{\R} \lim\limits_{n\to \infty} f_n(x) d \mathcal{L}^1(x) = 0.\]
+\end{example}
