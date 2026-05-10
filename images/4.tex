@@ -1,0 +1,54 @@
+\documentclass[tikz,border=10pt]{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,decorations.pathreplacing}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.1, >=Stealth]
+
+    % Центр и точка x
+    \coordinate (O) at (0,0);
+    \coordinate (X) at (2,1);
+
+    % Норма ||x||
+    \pgfmathsetmacro{\r}{sqrt(2^2 + 1^2)}
+
+    % Точка на большой окружности
+    \coordinate (Y) at (5.32, 4);
+
+    % Оси координат
+    \draw[->, thick] (-4,0) -- (7.3,0);
+    \draw[->, thick] (0,-4) -- (0,6);
+
+    % Малая окружность B_{||x||}(0)
+    \draw[thick] (O) circle[radius=\r];
+
+    % Большая окружность B_{2||x||}(x)
+    \draw[dashed, thick] (X) circle[radius={2*\r}];
+
+    % Радиус-вектор от 0 до x
+    \draw[thick, ->] (O) -- (X);
+
+    % Радиус-вектор от x до точки на большой окружности
+    \draw[thick, ->] (X) -- (Y);
+
+    % Точка x
+    \fill (X) circle (2pt);
+    \node at (2.3, 0.9) {$x$};
+
+    % Подпись ||x||
+    \node at (1,0.8) {$\|x\|$};
+
+    % Подпись 2||x||
+    \node at (4.2,2.5) {$2\|x\|$};
+
+    % Подпись малой окружности
+    \node at (2.1,-1.9) {$B_{\|x\|}(0)$};
+
+    % Подпись большой окружности
+    \node at (6,4.1) {$B_{2\|x\|}(x)$};
+
+\end{tikzpicture}
+
+\end{document}
