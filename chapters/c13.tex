@@ -1,0 +1,47 @@
+\section{Произведение мер и теорема Фубини}
+\begin{definition}
+    Пусть $X$ — абстрактное множество. Семейство $\mathcal{M} \subset 2^X$ называется \textit{монотонным классом}, если:
+    \begin{enumerate}
+        \item $\{A_i\} \subset \mathcal{M}$ и $A_1 \subset A_2 \subset \dots \subset A_n \subset \dots$, то $\bigcup\limits_{i=1}^{\infty} A_i \in \mathcal{M}$;
+        \item Если $\{B_j\} \subset \mathcal{M}$ и $B_1 \supset B_2 \supset \dots \supset B_n \supset \dots$, то $\bigcap\limits_{n=1}^{\infty}B_n \in \mathcal{M}$.
+    \end{enumerate}
+\end{definition} 
+
+\begin{example}
+    Любая $\sigma$-алгебра $\mathfrak{M} \subset 2^X$ является монотонным классом.
+\end{example}
+
+\begin{theorem}[О монотонном классе]
+    Пусть $X$ — абстрактное множество.
+    Пусть $\mathcal{A}$ — алгебра подмножеств множества $X$.
+    Если $\mathcal{M} \supset \mathcal{A}$ — монотонный класс, то $\mathcal{M} \supset \mathfrak{M}(\mathcal{A})$ — минимальная $\sigma$-алгебра, порождённая $\mathcal{A}$.
+\end{theorem} 
+\begin{proof}
+    Пусть $\mathcal{M}(\mathcal{A})$ — минимальный монотонный класс, содержащий алгебру $\mathcal{A}$.
+    Заметим, что $\mathcal{M}(\mathcal{A}) \subset \mathfrak{M}(\mathcal{A})$, поскольку $\mathfrak{M}(\mathcal{A})$ сама является монотонным классом.
+    Покажем, что на самом деле $\mathcal{M}(\mathcal{A}) = \mathfrak{M}(\mathcal{A})$.
+    Рассмотрим при $A \in \mathcal{A}$ множество
+    \[\mathcal{M}_A := \{B\in \mathcal{M}(\mathcal{A}) \ | \ A \cap B \in \mathcal{M}(\mathcal{A}) \text{ и } A \cap B^c \in \mathcal{M}(\mathcal{A})\}.\]
+    Заметим, что поскольку $\mathcal{A} \subset \mathcal{M}(\mathcal{A})$, то $\mathcal{M}_A \supset \mathcal{A}$.
+    С другой стороны, $\mathcal{M}_A$ — монотонный класс:
+    \[A \cap \left(\bigcup\limits_{i=1}^{\infty}B_i\right)^c = \bigcap\limits_{i=1}^{\infty} A \cap B_i^c, \ B_1 \subset \dots \subset B_n \subset \dots,\]
+    следовательно, $\mathcal{M}_A = \mathcal{M}(\mathcal{A})$ для любого $A \in \mathcal{A}$.
+    
+    В частности, можно взять $A = X$ и получить $\mathcal{M}_X = \mathcal{M}(\mathcal{A})$, следовательно, $\mathcal{M}(\mathcal{A})$ замкнут относительно взятия дополнения.
+    Кроме того, мы получили, что для любого $A \in \mathcal{A}$ и для любого $B \in \mathcal{M}(\mathcal{A})$ верно $A \cap B \in \mathcal{M}(\mathcal{A})$ и $A \cap B^c \in \mathcal{M}(\mathcal{A})$.
+    
+    Теперь для любого $B \in \mathcal{M}(\mathcal{A})$ рассмотрим
+    \[N_B := \{A \in \mathcal{M}(\mathcal{A}) \ | \ B \cap A \in \mathcal{M}(\mathcal{A})\}.\]
+    Очевидно, что $\mathcal{A} \subset N_B$.
+    Кроме того, $N_B$ является монотонным классом, откуда следует, что $N_B = \mathcal{M}(\mathcal{A})$.
+
+    Мы доказали, что $\mathcal{M}(\mathcal{A})$ является симметричной (содержит множество и его дополнение) системой и замкнуто относительно конечных пересечений, также он по определению монотонного класса замнкут относительно счётного возрастающего объединения, следовательно, $\mathcal{M}(\mathcal{A})$ — $\sigma$-алгебра, а потому $\mathcal{M}(\mathcal{A}) = \mathfrak{M}(\mathcal{A})$.
+\end{proof}
+
+Пусть $(X, \mathfrak{M}, \mu)$ и $(Y, \mathfrak{N}, \nu)$ — два пространства с мерами, где $\mu$ и $\nu$ — $\sigma$-конечные и полные меры.
+Рассмотрим
+\[\mathcal{P} := \{E_1 \times E_2 \ | \ E_1 \in \mathfrak{M}, \ E_2 \in \mathfrak{N}, \ \mu(E_1), \ \nu(E_2) < +\infty\}\]
+— это полукольцо.
+Зададим
+\[\mu \otimes \nu (E_1 \times E_2) := \mu(E_1) \cdot \nu(E_2).\]
+Тогда $\mathfrak{M} \otimes \mathfrak{N}$ — запас измеримых множеств при продолжении по Каратеодори.

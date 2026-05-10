@@ -1,7 +1,7 @@
 \section{Приближение измеримых функций непрерывными}
 Пусть далее $X = \R^n$, $\mathfrak{M}$ — $\sigma$-алгебра измеримых по Лебегу множеств, $\mu = \mathcal{L}^1$.
 \begin{lemma}
-    Пусть $K_0, K_1$ — два непустых компакта в $\R^n$.
+    Пусть $K_0, K_1$, $K_0 \cap K_1 = \emptyset$ — два непустых компакта в $\R^n$.
     Тогда $\exists h = h_{K_0, K_1} \in C(\R^n):$
     \begin{enumerate}
         \item \[h(x) = 0 \ \forall x \in K_0,\]
@@ -75,12 +75,12 @@
     \end{enumerate}
 \end{theorem} 
 \begin{proof}
-    $$\R^n \ \bigcup\limits_{m=1}^{\infty} B_m(0) \setminus \overline{B_{m+1}(0)}.$$
+    $$\R^n = \bigcup\limits_{m=1}^{\infty} B_m(0) \setminus \overline{B_{m+1}(0)}.$$
     Поскольку $\mathcal{L}^n (E_m) < +\infty$ для любого $m \in \N$, то рассмотрим $f|_{E_m}$ и построим последовательность непрерывных функций $\{f_{m,j}\} \subset C(\R^n):$
     \[f_{m,j} \xrightarrow[E_m]{\text{п.в.}} f|_{E_m}, \ j \to \infty.\]
     По теореме Егорова $f_{m,j} \overset{\text{п.р.}}{\rightrightarrows} f|_{E_m}$ на $E_m$, тогда
     \[\forall \epsilon > 0 \ \exists e_m \subset E_m: \
-    \mu(E_m) < \frac{\epsilon}{2^m} \text{ и } f_{m,j} \overset{E_m \setminus e_m}{\rightrightarrows} f|_{E_m}, \ j \to \infty,\]
+    \mu(e_m) < \frac{\epsilon}{2^m} \text{ и } f_{m,j} \overset{E_m \setminus e_m}{\rightrightarrows} f|_{E_m}, \ j \to \infty,\]
     следовательно, $f$ непрерывна на $E_m \setminus e_m$ как равномерный предел непрерывных функций, поэтому из того, что
     $$e = \bigcup\limits_{m=1}^{\infty} e_m \cup \bigcup\limits_{m=1}^{\infty} s_m(0)$$
     следует, что

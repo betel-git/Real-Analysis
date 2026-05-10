@@ -3,6 +3,181 @@
     $\widetilde{L}_1^{loc}(\R^n, \mathcal{L}^n)$ — множество всех измеримых в широком смысле на $\R^n$ функций, которые интегрируемы по Лебегу на любом шаре в $\R^n$.
 \end{definition} 
 \begin{definition}
-    Пусть $f \in \widetilde{L}_1^{loc}(\R^n, \mathcal{L}^n)$, то $$M_{[f]}(x) := \sup\limits_{r>0} \fint_{B_r(x)}|f(y)|d \mathcal{L}^n(y) = \frac{1}{\mathcal{L}^n(B_r(x))} \int_{B_r(x)} |f(y)|d \mu(y),$$
-    $M_{[f]}(x) \in [0, +\infty]$.
+    Пусть $f \in \widetilde{L}_1^{loc}(\R^n, \mathcal{L}^n)$, то $$M[f](x) := \sup\limits_{r>0} \fint_{B_r(x)}|f(y)|d \mathcal{L}^n(y) = \frac{1}{\mathcal{L}^n(B_r(x))} \int_{B_r(x)} |f(y)|d \mathcal{L}^n(y),$$
+    $M[f](x) \in [0, +\infty]$ — максимальная функция.
 \end{definition}
+
+\paragraph{Лекция 12.}
+
+\begin{remark}
+    Далее примем соглашение $dy:=d \mathcal{L}^n(y)$, тогда
+    \[M[f](x):= \sup_{r>0} \fint_{B_r(x)} |f(y)|dy.\]
+\end{remark}
+
+\begin{remark}
+    Отображение $\Phi: (x,r) \to \fint_{B_r(x)} |f(y)|dy$ непрерывно по совокупности переменных $(x,r)$.
+    При фиксированном $r>0$
+    \[x \to \fint_{B_r(x)}|f(y)|dy\]
+    непрерывно по $x$, тогда $M[f]$ измерима как супремум по счётному семейству непрерывных функций.
+\end{remark}
+
+\noindent \textbf{Вопрос:} Когда $M[f](x)<+\infty$?
+
+\begin{theorem}
+    Если $f \in \widetilde{L}_1(\R^n)$, то $M[f](x)<+\infty$ $\mathcal{L}^n$-почти всюду на $\R^n$.
+    Более того, справедливо неравенство:
+    \begin{equation}
+        \forall t > 0 \ \mathcal{L}^n\left(\{x \in \R^n \ | \ M[f](x) > t\}\right) \leqslant \frac{5^n}{t} \int_{\R^n} |f(y)| dy \label{eq:12.1}
+    \end{equation}
+    (оценка слабого типа).
+\end{theorem} 
+\begin{proof}
+    Достаточно доказать неравенство \eqref{eq:12.1}.
+    Если $M[f](x) > t$, то существует $B_x$ — шар с центром в точке $x$:
+    \[\fint_{B_x} |f(y)|dy > t,\]
+    следовательно, семейство таким образом отобранных шаров покрывает множество
+    \[E_t = \{x \in \R^n \ | \ M[f](x) > t\}.\]
+    Чтобы применить $5B$-лемму Витали, рассмотрим произвольный $R > 0$.
+    Рассмотрим $E_{t,r}:=E_t \cap B_r(0)$.
+    Заметим, что радиусы всех шаров равномерно ограничены, поскольку
+    \[C \cdot r_x^n = \mathcal{L}^n(B_x) \leqslant \frac{1}{t} \int_{B_x} |f(y)|dy \leqslant \frac{1}{t} \int_{\R^n} |f(y)|dy.\]
+    Теперь можно применить лемму Витали к множеству $E_{t,R}$ и получить не более чем счётный набор шаров 
+    \[\{B_i\}_{i=1}^N: \ \bigcup\limits_{i=1}^{N}5B_i \supset E_{t,R}.\]
+    \begin{multline*}
+        \mathcal{L}^n(E_{t,R})
+        \leqslant
+        \mathcal{L}^n \left(\bigcup\limits_{i=1}^{N}5B_i\right)
+        \leqslant
+        \sum\limits_{i=1}^{N} 5^n \mathcal{L}^n(B_i)
+        \leqslant\\\leqslant
+        \sum\limits_{i=1}^{N} \frac{5^n}{t} \int_{B_i} |f(y)|dy
+        =
+        (\text{шары попарно не пересекаются})
+        =\\=
+        \frac{5^n}{t} \int_{\bigsqcup\limits_{i=1}^{N}B_i} |f(y)|dy
+        \leqslant
+        \frac{5^n}{t} \int_{\R^n} |f(y)|dy.
+    \end{multline*} 
+    Поскольку правая часть не зависит от $R>0$, то
+    \[\mathcal{L}^n(E_t) = \lim\limits_{R \to \infty} \mathcal{L}^n(E_{t,R}) \leqslant \frac{5^n}{t} \int_{\R^n} |f(y)|dy.\]
+\end{proof} 
+
+\begin{remark}
+    К сожалению, $M[f] \notin L_1(\R^n)$, если $\int_{\R^n} |f(x)|dx > 0$.
+    
+    Возьмём $B_{2\|x\|}(x) \supset B_{\|x\|}(0)$.
+    Их меры Лебега:
+    \[\mathcal{L}^n(B_{\|x\|}(x)) = C_n \cdot \|x\|^n,\]
+    \[\mathcal{L}^n(B_{2\|x\|}(0)) = C_n \cdot 2^n \|x\|^n.\]
+    Для любого $x \neq 0$:
+    \[M[f](x) \geqslant \fint_{B_{2\|x\|}(x)} |f(y)|dy \geqslant \frac{C}{\|x\|^n} \int_{B_{\|x\|}(0)} |f(y)|dy \geqslant \frac{\widetilde{C}}{\|x\|^n}.\]
+    А при достаточно далёких от нуля $x$ функция
+    \[x \to \frac{1}{\|x\|^n}\]
+    неинтегрируема по Лебегу на $\R^n$.
+\end{remark}
+
+\begin{lemma}
+    Пусть $f \in \widetilde{L}_1(\R^n)$. Тогда $\forall \epsilon > 0$ существует простая функция
+    \begin{equation}
+        f_\epsilon \in \widetilde{L}_1(\R^n): \ \int_{\R^n} |f - f_\epsilon| dx < \epsilon. \label{eq:12.2}
+    \end{equation}
+\end{lemma} 
+\begin{proof}
+    Напомним, что
+    \[f = f_+ - f_-.\]
+    \[\int_{\R^n} f_+ dx = \sup_{\substack{\phi \text{-пр.} \\ 0 \leqslant \phi \leqslant f_+}} \int_{\R^n} \phi(x) dx < +\infty,\]
+    следовательно, по определению супремума существует $\phi_\epsilon$ — неотрицательная простая функция такая, что
+    \[\int_{\R^n} (f_+ - \phi_\epsilon)(x) dx < \frac{\epsilon}{2}.\]
+    Аналогично найдём $\psi_\epsilon$ для $f_-$.
+    Положим $f_\epsilon := \phi_\epsilon - \psi_\epsilon$ — это простая функция, интегрируемая на $\R^n$ и удовлетворяющая условию \eqref{eq:12.2}.
+\end{proof} 
+
+\begin{theorem}[Лебег]
+    Пусть $f \in \widetilde{L}_1^{loc}(\R^n)$. Тогда существует множество 
+    $$E \subset \R^n: \ \mathcal{L}^n(\R^n \setminus E) = 0$$
+    и $\forall x \in E$ верно
+    \[\lim\limits_{n\to 0} \fint_{B_r(x)} | f(x) - f(y)| dy = 0.\]
+\end{theorem} 
+\begin{proof}\tab
+\begin{enumerate}
+    \item Заметим, что достаточно доказать теорему для $f \in \widetilde{L}_1(\R^n)$.
+    Определим $f_R:=f \circ \chi_{B_R}(0)$.
+    Заметим, что при $x \in B_R(0)$ верно
+    \[\lim\limits_{r\to 0}\fint_{B_r(x)}|f(y) - f(x)|dy=0 \Longleftrightarrow \lim\limits_{r\to 0} \fint_{B_r(x)} |f_R(y) - f_R(x)| dy = 0.\]
+    Если какое-то свойство выполнено $\mathcal{L}^n$-почти всюду в любом $B_R(0)$, то оно выполнено $\mathcal{L}^n$-почти всюду на $\R^n$.
+    \item Пусть $E$ — измеримое множество и $f = \chi_E$.
+    \[|f(x)-f(y)| = 
+    \begin{cases}
+        1-f(y), \tab x \in E, \\
+        f(y), \tab x \notin E.
+    \end{cases}
+    \implies
+    \]
+    \[\implies \fint_{B_r(x)} |f(x) - f(y)|dy = 
+    \begin{cases}
+        1 - \frac{\mathcal{L}^n(B_r(x) \cap E)}{\mathcal{L}^n(B_r(x))}, \tab x \in E, \\
+        \frac{\mathcal{L}^n(B_r(x) \cap E)}{\mathcal{L}^n(B_r(x))}, \tab x \notin E.
+    \end{cases}
+    \]
+    По теореме о точках плотности $\mathcal{L}^n$-почти все точки $x \in E$ являются его точками плотности, то есть
+    \[\exists \lim\limits_{r\to 0} \frac{\mathcal{L}^n(B_r(x) \cap E)}{\mathcal{L}^n(B_r(x))} = 1\]
+    для $\mathcal{L}^n$-почти всех $x \in E$, следовательно, доказали теорему для $f = \chi_E$.
+    \item Пусть $f$ — простая функция, тогда
+    \[f = \sum\limits_{k=1}^{N}a_k \chi_{E_k}, \ a_1, \dots, a_N \in \R^n,\]
+    $E_1, \dots, E_N$ — измеримые множества.
+    \[\fint_{B_r(x)} |f(x) - f(y)|dy 
+    \leqslant
+    \sum\limits_{k=1}^{N}|a_k| \fint_{B_r(x)} |\chi_{E_k}(y) - \chi_{E_k}(x)| dy \to 0, \ r \to 0\]
+    при $\mathcal{L}^n$-почти всех $x \in \R^n$.
+    \item Рассмотрим
+    \[E_t(f) := \left\{x \in \R^n \ | \ \uplim\limits_{r \to 0}\fint_{B_r(x)} |f(y) - f(x)| dy > t\right\}.\]
+    Не будем доказывать измеримость $E_t(f)$, но оценим его верхнюю меру.
+    Сначала докажем, что
+    \[(\mathcal{L})^* (E_t(f))=0 \ \forall t > 0.\]
+    Этого будет достаточно, поскольку
+    \[\left\{x \in \R^n \ | \ \uplim\limits_{r\to 0} \fint_{B_r(x)}|f(y) - f(x)|dy > 0\right\} \subset \bigcup\limits_{n=1}^{\infty}E_{\frac{1}{n}}(f).\]
+    \[\forall r > 0:
+    \fint_{B_r(x)}|f(y) - f(x)| dy
+    \leqslant
+    |f(x)| + \fint_{B_r(x)}|f(y)|dy
+    \leqslant
+    |f(x)| + M[f](x)
+    \implies\]
+    \[\implies E_t(f) \subset
+    \underbrace{\left\{x \in \R^n \ | \ |f(x)| > \frac{t}{2}\right\}}_{E_{t,1}(f)}
+    \cup
+    \underbrace{\left\{x \in \R^n \ | \ M[f](x) > \frac{t}{2}\right\}}_{E_{t,2}(f)}\]
+    По неравенству Чебышёва:
+    \[\mathcal{L}^n(E_{t,1}(f)) \leqslant \frac{2}{t} \int_{\R^n} |f(y)| dy,\]
+    \[\mathcal{L}^n(E_{t,2}(f)) \leqslant \frac{2 \cdot 5^n}{t} \int_{\R^n} |f(y)|dy \implies\]
+    \[\implies (\mathcal{L}^n)^*(E_t(f)) \leqslant \mathcal{L}^n(E_{t,1}(f)) + \mathcal{L}^n(E_{t,2}(f)) \leqslant \frac{10^n}{t} \int_{\R^n} |f(y)| dy.\]
+    \item Пусть $g$ — произвольная простая функция.
+    \begin{multline*}
+    |f(y) - f(x)| - |g(y) - g(x)|
+    \leqslant\\\leqslant
+    |(f-g)(y) - (f-g)(x)|
+    \leqslant\\\leqslant
+    |f(y) - f(x)| + |g(y) - g(x)| 
+    \implies
+    \end{multline*}
+    \begin{multline*}
+    \implies \uplim\limits_{r\to0} \fint_{B_r(x)}(|f(y)-f(x)| - |g(y) - g(x)|) dy 
+    \leqslant\\\leqslant
+    \uplim\limits_{r\to0} \fint_{B_r(x)} ((f-g)(y) - (f-g)(x)) dy
+    \leqslant\\\leqslant
+    \uplim\limits_{r\to0} \fint_{B_r(x)}(|f(y)-f(x)| + |g(y)-g(x)|)dy
+    \implies
+    \end{multline*} 
+    $E_t(f)$ совпадает с $E_t(f-g)$ с точностью до меры нуль, а поскольку $g$ выбрана произвольно, то
+    \[(\mathcal{L}^n)^*(E_t(f)) = (\mathcal{L}^n)^*(E_t(f-g))\]
+    для любой простой $g$, следовательно, в силу предыдущего шага,
+    \[(\mathcal{L}^n)^*(E_t(f)) \leqslant \frac{10^n}{t} \int_{\R^n} |f(y)-f(x)|dy\]
+    для любой простой $g$.
+    
+    По теореме об аппроксимации $f$ простыми функциями получим
+    \[(\mathcal{L}^n)^*(E_t(f)) = 0.\]
+    Но поскольку мера Лебега $\mathcal{L}^n$ полна, то $E_t(f)$ измеримо и его мера Лебега равна нулю.
+    
+
+\end{enumerate}
+\end{proof} 

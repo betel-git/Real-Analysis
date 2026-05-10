@@ -195,11 +195,13 @@
     Тогда существует $N(\epsilon) \in \N:$ $\forall n \geqslant N(\epsilon)$ верно $0 < \epsilon_n < \epsilon$.
     Определим
     \[X_n := X(g_n > \epsilon_n).\]
+    Также определим
+    \[E_n(\epsilon) := \{x \in X \ | \ g_n(x) > \epsilon\}.\]
     Тогда по определению $E_n(\epsilon) \subset X_n, \ \forall n \geqslant N(\epsilon)$.
     Поскольку $\sum\limits_{n=1}^{\infty}\mu(E_n(\epsilon)) < + \infty$, тогда в силу леммы Бореля-Кантелли
     $\mu\left(\bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k \geqslant n}E_k(\epsilon)\right) = 0$.
 
-    Если $x \notin \bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k \geqslant}E_k(\epsilon)$,
+    Если $x \notin \bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k \geqslant n}E_k(\epsilon)$,
     то $\exists N(x) \in \N$: $x \notin \bigcup\limits_{k \geqslant N(x)}E_k(x)$,
     тогда
     \[g_n(x) \leqslant \epsilon_n, \ \forall n \geqslant N(x).\]
@@ -253,9 +255,9 @@
 \begin{theorem}[Егоров]
     Пусть $(X, \mathfrak{M}, \mu)$ — пространство с конечной мерой.
     Пусть $f \in L_0(X, \mu)$ и $\{f_n\} \subset L_0(X, \mu)$:
-    $f_n \xrightarrow[X]{\text{п.р.}} f$, $n \to \infty$.
+    $f_n \xrightarrow[X]{\text{п.в.}} f$, $n \to \infty$.
     Тогда существует подпоследовательность
-    \[f_n \overset{\text{п.р.}}{\rightrightarrows} 0, \ n \to \infty \text{ на } X.\]
+    \[f_{n_k} \overset{\text{п.р.}}{\rightrightarrows} f, \ k \to \infty \text{ на } X.\]
 \end{theorem} 
 \begin{proof}
     Рассмотрим последовательность

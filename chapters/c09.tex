@@ -6,7 +6,7 @@
 Напомним
 \begin{definition}
     $h: X \to \R$ называется \textit{простой}, если $h(x) = \sum\limits_{k=1}^{N} a_k \chi_{E_k}(x)$, где $a_1, \dots, a_N \in \R$,
-    $E_1, \dots, E_n \in \mathfrak{M}$.
+    $E_1, \dots, E_N \in \mathfrak{M}$.
     
     Также $h$ — простая функция тогда и только тогда, когда
     \[X = \bigsqcup\limits_{k=1}^{N'} G_k, \ h(x) = \sum\limits_{k=1}^{N'}\alpha_k \chi_{G_k}(x).\]
@@ -51,7 +51,7 @@
 \end{proof} 
 
 \begin{definition}
-    Пусть теперь $f: X \to [0, +\infty]$ измеримая на $X$ функция.
+    Пусть теперь $f: X \to [0, +\infty]$ — измеримая на $X$ функция.
     Тогда
     \[\int_E f(x) d\mu(x) := \sup \left\{\int_E h(x) d\mu(x) \ | \ h \text{ — простая, } 0 \leqslant h(x) \leqslant f(x) \ \forall x \in E\right\}.\]
 \end{definition} 
@@ -176,7 +176,7 @@
     \[\int_A f(x) d\mu(x) \leqslant \int_B f(x) d\mu(x).\]
 \end{proof} 
 
-\begin{statement}
+\begin{statement}[Неравенство Чебышёва]
     Пусть $f$ — интегрируемая на $X$ и неотрицательная на нём функция.
     Тогда для любого $t>0$:
     \[E_t := \{x \in X \ | \ f(x) \geqslant t\},\]
@@ -233,7 +233,7 @@
     \[0 \leqslant f_1(x) \leqslant \dots \leqslant f_n(x) \leqslant \dots.\]
     Тогда 
     \[\lim\limits_{n\to \infty}\int_X f_n(x) d\mu(x) = \int_X \lim\limits_{n \to \infty}f_n(x) d\mu(x),\]
-    \[\exists f(x) = \lim\limits_{n\to \infty}f_n(x) \in [0, +\infty] \ \forall x \in X, \ f \text{ — измерима на } X.\]
+    \[\exists f(x) = \lim\limits_{n\to \infty}f_n(x) \in [0, +\infty] \ \forall x \in X, \ f \text{ измерима на } X.\]
 \end{theorem} 
 \begin{proof}
     Поскольку $\{f_n\}$ — монотонная последовательность, то при
@@ -613,7 +613,7 @@
 \end{proof} 
 
 \begin{statement}
-    Если $f_1, \dots, f_N \widetilde{L}_1(E, \mu)$ и $\alpha_1, \dots, \alpha_N \in \R$.
+    Если $f_1, \dots, f_N \in \widetilde{L}_1(E, \mu)$ и $\alpha_1, \dots, \alpha_N \in \R$.
     Тогда
     \[\sum\limits_{i=1}^{N} \alpha_i f_i \in \widetilde{L}_1(E, \mu).\]
     Кроме того,
