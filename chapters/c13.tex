@@ -2,8 +2,8 @@
 \begin{definition}
     Пусть $X$ — абстрактное множество. Семейство $\mathcal{M} \subset 2^X$ называется \textit{монотонным классом}, если:
     \begin{enumerate}
-        \item $\{A_i\} \subset \mathcal{M}$ и $A_1 \subset A_2 \subset \dots \subset A_n \subset \dots$, то $\bigcup\limits_{i=1}^{\infty} A_i \in \mathcal{M}$;
-        \item Если $\{B_j\} \subset \mathcal{M}$ и $B_1 \supset B_2 \supset \dots \supset B_n \supset \dots$, то $\bigcap\limits_{n=1}^{\infty}B_n \in \mathcal{M}$.
+        \item $\{A_i\} \subset \mathcal{M}$ и $A_1 \subset A_2 \subset \dots \subset A_n \subset \dots$, то $\bigcup\limits_{i=1}^{\infty} A_i \in \mathcal{M}$ или
+        \item $\{B_j\} \subset \mathcal{M}$ и $B_1 \supset B_2 \supset \dots \supset B_n \supset \dots$, то $\bigcap\limits_{n=1}^{\infty}B_n \in \mathcal{M}$.
     \end{enumerate}
 \end{definition} 
 
@@ -38,10 +38,231 @@
     Мы доказали, что $\mathcal{M}(\mathcal{A})$ является симметричной (содержит множество и его дополнение) системой и замкнуто относительно конечных пересечений, также он по определению монотонного класса замнкут относительно счётного возрастающего объединения, следовательно, $\mathcal{M}(\mathcal{A})$ — $\sigma$-алгебра, а потому $\mathcal{M}(\mathcal{A}) = \mathfrak{M}(\mathcal{A})$.
 \end{proof}
 
+\paragraph{Лекция 13.}
+
 Пусть $(X, \mathfrak{M}, \mu)$ и $(Y, \mathfrak{N}, \nu)$ — два пространства с мерами, где $\mu$ и $\nu$ — $\sigma$-конечные и полные меры.
-Рассмотрим
-\[\mathcal{P} := \{E_1 \times E_2 \ | \ E_1 \in \mathfrak{M}, \ E_2 \in \mathfrak{N}, \ \mu(E_1), \ \nu(E_2) < +\infty\}\]
-— это полукольцо.
-Зададим
-\[\mu \otimes \nu (E_1 \times E_2) := \mu(E_1) \cdot \nu(E_2).\]
-Тогда $\mathfrak{M} \otimes \mathfrak{N}$ — запас измеримых множеств при продолжении по Каратеодори.
+Рассмотрим $X \times Y \supset A \times B$, где $A \in \mathfrak{M}$ и $B \in \mathfrak{N}$.
+Также рассмотрим
+\[\mathcal{P}:=\{A \times B \ | \ A \in \mathfrak{M}, \ B \in \mathfrak{N}, \ \mu(A) < +\infty, \ \nu(B) < +\infty\}\]
+— хотим доказать, что это полукольцо.
+Будем $A \times B$ называть обобщёнными прямоугольниками.
+
+\begin{lemma}
+    $A, A' \subset X$, $B,B' \in Y$, $\{B_\omega\}_{\omega \in I} \subset 2^X$. Тогда
+    \begin{enumerate}
+        \item \[A \times B \subset A' \times B' \Longleftrightarrow A \subset A' \text{ и } B \subset B',\]
+        \item \[(A \times B) \cap (A' \times B') = (A \cap A') \times (B \cap B'),\]
+        \item \[(A \times B) \setminus (A' \times B') = (A \setminus A') \times (B \setminus B'),\]
+        \item \[A \times \left(\bigcup\limits_{\omega \in I} B_\omega\right) = \bigcup\limits_{\omega \in I} A \times B_\omega,\]
+        \item \[A \times \left(\bigcap\limits_{\omega \in I} B_\omega\right) = \bigcap\limits_{\omega \in I} A \times B_\omega.\]
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    Без доказательства.
+\end{proof} 
+
+\begin{theorem}
+    Пусть выполнены условия выше. Тогда $\mathcal{P}$ — полукольцо.
+    При этом, $\mu \otimes \nu$ — счётно-аддитивная $\sigma$-конечная мера на $\mathcal{P}$ и
+    \[\mu \otimes \nu(A \times B) := \mu(A) \nu(B).\]
+\end{theorem} 
+\begin{proof}
+    Поскольку $\mathfrak{M}$ и $\mathfrak{N}$ — $\sigma$-алгебры, следовательно, они полукольца.
+    \begin{enumerate}
+        \item В начале семестра \hyperref[th:1.1]{было доказано}, что произведение полуколец является полукольцом.
+        \item Покажем, что $\mu \otimes \nu$ — счётно-аддитивная мера на $\mathcal{P}$:
+        рассмотрим $A \times B \in \mathcal{P}$.
+        Пусть 
+        \begin{equation}
+            \underbrace{A}_{\in \mathfrak{M}} \times \underbrace{B}_{\in \mathfrak{N}} = \bigsqcup\limits_{k=1}^{\infty} \underbrace{A_k}_{\in \mathfrak{M}} \times \underbrace{B_k}_{\in \mathfrak{N}} \label{eq:13.1}
+        \end{equation}
+        Рассмотрим
+        \[\chi_{A \times B} (x,y) = \chi_A(x) \cdot \chi_B(y).\]
+        Из \eqref{eq:13.1} следует, что
+        \[\chi_{A \times B} (x,y) = \sum\limits_{k=1}^{\infty} \chi_{A_k \times B_k} (x,y) = \sum\limits_{k=1}^{\infty} \chi_{A_k} (x) \cdot \chi_{B_k}(y).\]
+        При каждом фиксированном $x \in X$ проинтегрируем полученное равенство по $y$:
+        \[I_x = \int_Y \chi_{A \times B} (x,y) d\nu(y)
+        = \chi_A(x) \cdot \int_Y \chi_B(y) d\nu(y)
+        = \chi_A(x) \cdot \nu(B).\]
+        С другой стороны,
+        \begin{multline*}
+            I_x = \int_Y \sum\limits_{k=1}^{\infty} \chi_{A_k}(x) \chi_{B_k}(y) d\nu(y)
+            = \text{(по теореме Беппо-Леви)}
+            =\\=
+            \sum\limits_{k=1}^{\infty} \chi_{A_k}(x) \cdot \int_Y \chi_{B_k}(y) d\nu(y)
+            = \sum\limits_{k=1}^{\infty} \chi_{A_k} (x) \nu(B_k)
+        \end{multline*} 
+        — измеримая неотрицательная функция как ряд из измеримых неотрицательных функций.
+        
+        Теперь интегрируем по $X$:
+        \[\int_X I_x d\mu(x) = \mu(A) \nu(B) = (*)\]
+        С другой стороны,
+        \begin{multline*}
+            \int_X I_x d\mu(x)
+            = \int_X \sum\limits_{k=1}^{\infty} \chi_{A_k}(x) \nu(B_k) d\mu(x)
+            = \text{(по теореме Беппо-Леви)}
+            =\\=
+            \sum\limits_{k=1}^{\infty} \chi_{A_k} \nu(B_k)d \mu(x)
+            = \sum\limits_{k=1}^{\infty} \mu(A_k) \nu(B_k)
+            = \sum\limits_{k=1}^{\infty} \mu \otimes \nu(A_k \times B_k) = (*),
+        \end{multline*} 
+        следовательно, доказана счётная аддитивность $\mu \otimes \nu$.
+        \item Покажем, что $\mu \otimes \nu$ — $\sigma$-конечная мера:
+        $\mu$ — $\sigma$-конечная мера, следовательно,
+        \[X = \bigcup\limits_{k=1}^{\infty} X_k, \tab \mu(X_k) < +\infty \ \forall k \in \N.\]
+        Аналогично $\nu$ — $\sigma$-конечная мера, следовательно,
+        \[Y = \bigcup\limits_{j=1}^{\infty} Y_j, \tab \nu(Y_j) < +\infty \ \forall j \in \N,\]
+        Следовательно,
+        \[X \times Y = \bigcup\limits_{k=1}^{\infty} X_k \times Y = \bigcup\limits_{k=1}^{\infty} \bigcup\limits_{j=1}^{\infty} X_k \times Y_j\]
+        — элемент из $\mathcal{P}$ для любой пары $(k,j) \in \N^2$.
+    \end{enumerate}
+\end{proof} 
+
+Теперь, имея $\sigma$-конечную счётно-аддитивную меру $\mu \otimes \nu$ на полукольце «прямоугольников» построим продолжение $\mu \otimes \nu$ по Каратеодори.
+Тогда $\mathfrak{M} \otimes \mathfrak{N}$ — система всех $\mu \otimes \nu$ измеримых по Каратеодори множеств (отметим, что оно шире $\mathcal{P}$).
+
+\begin{remark}
+    Если $A$ и $B$ имеют конечную меру, то
+    \[A \times B \in \mathfrak{M} \otimes \mathfrak{N} \tab \forall A \in \mathfrak{M}, \ \forall B \in \mathfrak{N},\]
+    поскольку $\mathcal{P} \subset \mathfrak{M} \otimes \mathfrak{N}$.
+\end{remark}
+
+\begin{remark}
+    Пусть теперь $\mu(A) < +\infty$, $\nu(B) = +\infty$, тогда, пользуясь $\sigma$-конечностью меры, разобьём $B$:
+    \[B = \bigcup\limits_{k=1}^{\infty} B_k, \tab \nu(B_k) < +\infty \ \forall k \in \N.\]
+    \[A \times B - \bigcup\limits_{k=1}^{\infty} (\underbrace{A_k \times B_k}_{\in \mathcal{P}}) \in \mathfrak{M} \otimes \mathfrak{N},\]
+    поскольку счётное объединение не выбрасывает за пределы $\sigma$-алгебры.
+\end{remark}
+
+\begin{remark}
+    Если $\mu(e)=0$, то $\mu \otimes \nu(e \times B) = 0$ для любого $B \in \mathfrak{N}$ — если $\nu(B) < +\infty$, то это очевидно, иначе $B = \bigcup\limits_{k=1}^{\infty} B_k$, $\nu(B_k) < +\infty$, следовательно, в силу счётной-полуаддитивности
+    \[\mu \otimes \nu(e \times B) \leqslant \sum\limits_{k=1}^{\infty} \mu \otimes \nu(e \times B_k) = \sum\limits_{k=1}^{\infty} 0 = 0.\]
+\end{remark}
+
+Определение произведения двух пространств с мерой обобщается на случай произвольного числа сомножителей.
+Например, для трёх пространств
+\[(X, \mathfrak{M}, \mu), \tab (Y, \mathfrak{N}, \nu), \tab (Z, \mathfrak{T}, \tau)\]
+определяется произведение мер
+\[\mu \otimes \nu \otimes \tau = \mu(A) \nu(B) \tau(C),\]
+где $A \in \mathfrak{M}$, $B \in \mathfrak{N}$, $C \in \mathfrak{T}$.
+
+\noindent\textbf{Упражнение.} Проверить, что произведение мер ассоциативно.
+
+\subsection{Принцип Кавальери}
+Пусть снова
+$(X, \mathfrak{M}, \mu)$ — пространство с $\sigma$-конечной полной мерой $\mu$, $(Y, \mathfrak{N}, \nu)$ — пространство с $\sigma$-конечной полной мерой $\nu$.
+
+Для любого $C \subset X \times Y$ введём
+\[C_x := \{y \in Y \ | \ (x,y) \in C\},\]
+\[C^y := \{x \in X \ | \ (x,y) \in C\}.\]
+
+\begin{lemma}
+    $X$,$Y$ — абстрактные множества, $A \subset X \times Y$, $B \subset X \times Y$, $\{B_\omega\} \subset 2^{X \times Y}$.
+    \begin{enumerate}
+        \item \[(A \setminus B)_x = A_x \setminus B_x \tab \forall x \in X,\]
+        \item \[\left(\bigcup\limits_{\omega \in I}B_\omega\right)_x = \bigcup\limits_{\omega \in I}(B_\omega)_x,\]
+        \item \[\left(\bigcap\limits_{\omega \in I}B_\omega\right)_x = \bigcap\limits_{\omega \in I} (B_\omega)_x,\]
+    \end{enumerate}
+    аналогичные утверждения верны для $y$.
+\end{lemma} 
+
+\begin{theorem}[Принцип Кавальери]
+    Пусть выполнено условие выше. Тогда для любого $C \in \mathfrak{M} \otimes \mathfrak{N}$ выполнено
+    \begin{enumerate}
+        \item Для $\mu$-почти всех $x \in X$ верно $C_x \in \mathfrak{N}$,
+        \item $x \to \nu(C_x)$ — измеримая в обобщённом смысле функция (то есть эта функция измерима на множестве $X_0 \subset X$: $\mu(X \setminus X_0) = 0$.
+        \item $$\mu \otimes \nu(C) = \int_{X_0} \nu(C_x) d\mu(x).$$
+    \end{enumerate}
+    аналогичные утверждения верны по переменной $y$.
+\end{theorem} 
+\begin{proof}
+    Доказательство проведём в 4 шага. На первых трёх шагах предположим, что меры конечны. На 4 шаге избавимся от этого предположения.
+    \begin{enumerate}
+        \item Рассмотрим систему $\mathfrak{R}$ всех таких $C \in \mathfrak{M} \otimes \mathfrak{N}$, для которых $C_x$ измерима при всех $x \in X$ и $x \to \nu(C_x)$ — измеримая функция (в обычном смысле).
+        
+        Заметим, что $\mathfrak{R} \supset \mathcal{P}$.
+        Кроме того, система $\mathfrak{R}$ является монотонным классом.
+
+        Действительно, пусть $C_1 \subset \dots \subset C_n \subset \dots$, $C = \bigcup\limits_{k=1}^{\infty}C_k$ — возрастающая последовательность множеств из $\mathfrak{R}$, следовательно, для любого $x \in X$
+        \[C_x = \bigcup\limits_{k=1}^{\infty}(\underbrace{C_k}_{\in \mathfrak{N}})_x \implies C_x \in \mathfrak{N}.\]
+        Вместе с тем,
+        \[\nu(C_x) = \text{(в силу непрерывности меры снизу)} = \lim\limits_{k\to \infty}\nu((C_k)_x).\]
+        Определим
+        \[f_k(x):=\nu((C_k)_x), \tab f_{k+1}(x) \geqslant f_k(x)\]
+        — измеримая как функция от $x$ для любого $k \in \N$.
+        Также определим предельную функцию:
+        \[f(x):=\nu(C_x) = \lim\limits_{k\to \infty}f_k(x)\]
+        — измеримая функция на $X$ как предел.
+        Следовательно, $C \in \mathfrak{R}$.
+
+        Заметим, что для любого $A \in \mathfrak{R}$ дополнение $A^c$ также принадлежит $\mathfrak{R}$.
+        \[(A^c)_x = Y \setminus A_x \in \mathfrak{N}, \tab \forall x \in X.\]
+        \[\nu((A^c)_x) = \nu(Y) - \nu(A_x), \tab \forall x \in X\]
+        — именно здесь используется конечность меры.
+        Следовательно, $x \to \nu((A^c)_x)$ — измеримая как функция от $x$.
+        Тогда $\forall B_1 \supset \dots \supset B_n \supset \dots$, $B_n \in \mathfrak{R}$ верно $\bigcap\limits_{n=1}^{\infty}B_n \in \mathfrak{R}$.
+
+        Теперь покажем, что $\mathfrak{R}$ — алгебра.
+        Если $A \in \mathfrak{N}$, $B \in \mathfrak{N}$, $A \cap B = \emptyset$, то для любого $x \in X$
+        \[(A \sqcup B)_x = A_x \sqcup B_x \in \mathfrak{N}\]
+        и
+        \[\nu((A \sqcup B)_x) = \nu(A_x) + \nu(B_x),\]
+        тогда
+        $x \to \nu((A \sqcup B)_x)$ — измеримая функция на $X$.
+        В силу теоремы о дизъюнктном представлении в полукольце если $C = \bigcup\limits_{k=1}^{N} C_k$, где $C_1, \dots, C_N \in \mathcal{P}$, то существует дизъюнктный набор $\{B_j\}_{j=1}^L \subset \mathcal{P}$: $C = \bigsqcup\limits_{j=1}^{L}B_j$, следовательно, $C \in \mathfrak{R}$ ($\mathfrak{R}$ замкнуто относительно дизъюнктного объединения).
+
+        Таким образом, мы поняли, что $\mathfrak{R}$ — монотонный класс, $\mathfrak{R} \supset \mathcal{P}$, $\mathfrak{R}$ замкнуто относительно конечного объединения и относительно дополнения, следовательно, $\mathfrak{R}$ — алгебра и монотонный класс, а потому $\mathfrak{R}$ содержит минимальную алгебру полукольца $\mathcal{P}$, то есть $\mathfrak{R} \supset \mathfrak{M}(\mathcal{P})$.
+        Условия 1-2 теоремы выполнены для любых $C \in \mathfrak{M}(\mathcal{P})$.
+
+        Теперь покажем, что
+        \[\mu \otimes \nu(C) = \int_X \nu(C_x) d\mu(x) \tab \forall C \in \mathfrak{M}(\mathcal{P}).\]
+        Рассмотрим меру $\Phi$ на $\mathfrak{M}(\mathcal{P})$:
+        \[\underbrace{E}_{\in \mathfrak{M}(\mathcal{P})} \xrightarrow{\Phi} \int_X \nu(E_x)d\mu(x).\]
+        Покажем, что $\Phi$ — это мера.
+        \begin{multline*}
+            \Phi \left(\bigsqcup\limits_{n=1}^{\infty}E_n\right)
+            =
+            \int_X \nu \left(\left(\bigsqcup\limits_{n=1}^{\infty}E_n\right)_x\right) d\mu(x)
+            =
+            \int_X \sum\limits_{n=1}^{\infty} \nu((E_n)_x) d\mu(x)
+            =\\=
+            \text{(по теореме Беппо-Леви)}
+            =
+            \sum\limits_{n=1}^{\infty} \int_X \nu((E_n)_x) d\mu(x)
+            =
+            \sum\limits_{n=1}^{\infty}\Phi(E_n) \implies
+        \end{multline*} 
+        $\Phi$ — мера на $\mathfrak{M} \otimes \mathfrak{N}$.
+        Но $\Phi|_\mathcal{P} = \mu \otimes \nu|_\mathcal{P}$, следовательно, $\Phi = \mu \otimes \nu$ на $\mathfrak{M}(\mathcal{P})$ по теореме о единственности продолжения меры.
+        \item Рассмотрим множество 
+        $$e \in \mathfrak{M} \otimes \mathfrak{N}: \ \mu \otimes \nu(e) = 0.$$
+        \[\exists \widetilde{e} \in \mathfrak{M}(\mathcal{P}): \mu \otimes \nu(\widetilde{e}) = 0.\]
+        Для $\widetilde{e}$ выполнены условия 1,2,3, то есть
+        \begin{itemize}
+            \item $(\widetilde{e})_x \in \mathfrak{N}$ для любого $x \in X$;
+            \item $x \to \nu(\widetilde{e}_x)$ измерима;
+            \item $\mu \otimes \nu(\widetilde{e}) = \int_X \nu(\widetilde{e}_x)d\mu(x) = 0,$ 
+        \end{itemize}
+        следовательно, $\nu(\widetilde{e}_x) = 0$ для $\mu$-почти всех $x \in X$. Обозначим $X_0$ — множество, где выполнено данное условие.
+        Однако $\nu$ — полная мера, $e_x \subset \widetilde{e}_x$, следовательно, $e_x$ измеримо для $\mu$-почти всех $x \in X$ и $\nu(e_x) = 0$ $\mu$-почти всюду.
+        Тогда $x \to \nu(e_x)$ измерима в широком смысле на $X$.
+        Получается,
+        \[\mu \otimes \nu(e) = \int_X \nu(e_x) d\mu(x).\]
+        \item
+        \[\forall C \in \mathfrak{M} \otimes \mathfrak{N} \ \exists \widetilde{C} \in \mathfrak{M}(\mathcal{P}): \ C \subset \widetilde{C} \text{ и } \mu \otimes \nu(C) = \mu \otimes \nu(\widetilde{C}) \implies \widetilde{C} = C \cup e.\]
+        В силу предыдущих шагов $C_x \in \mathfrak{N}$ $\mu$-почти всюду (т.е. всюду на $X_0$) и $x \to \nu(C_x)$ измеримо в широком смысле на $X$ (в обычном смысле на $X$).
+        \begin{multline*}
+            \mu \otimes \nu(C)
+            =
+            \mu \otimes \nu(\widetilde{C})
+            =
+            \int_X \nu(\widetilde{C}_x) d\mu(x)
+            =
+            \int_X \nu(C_x)d\mu(x)
+            =
+            \int_{X_0}\nu(C_x)d\mu(x)
+        \end{multline*} 
+        \item Отбрасываем требование конечности меры, используя $\sigma$-конечность меры:
+        \[X = \bigsqcup\limits_{k=1}^{\infty}X_k, \tab \mu(X_k) < +\infty \ \forall k \in \N,\]
+    \end{enumerate}
+\end{proof} 
