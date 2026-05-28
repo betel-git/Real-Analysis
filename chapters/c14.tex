@@ -1,0 +1,132 @@
+\section{Заряды или знакопеременные меры}
+\begin{definition}
+    Пусть $\phi: X \to \R$ и $\mathfrak{M}$ — $\sigma$-алгебра подмножеств множества $X$.
+    Если $\phi$ — счётно-аддитивная мера на $\mathfrak{M}$, то $\phi$ называется \textit{зарядом} или \textit{знакопеременной мерой}.
+\end{definition} 
+Счётная аддитивность означает следующее: для любого $A \in \mathfrak{M}$ и любого его представления в виде $A = \bigsqcup\limits_{n=1}^{\infty}A_n$ ряд
+\[\phi(A) = \sum\limits_{n=1}^{\infty}\phi(A_n)\]
+обязан сходиться абсолютно.
+
+\begin{definition}
+    Множество $A \in \mathfrak{M}$ называется \textit{множеством положительности заряда} $\phi$, если $\phi(E) \geqslant 0$ для любого $E \subset A$, $E \in \mathfrak{M}$.
+\end{definition} 
+Если $\{A_n\}_{n=1}^\infty \subset \mathfrak{M}$ является множеством положительности заряда $\phi$, то $\bigcup\limits_{n=1}^{\infty} A_n$ тоже является множеством положительности.
+
+\begin{theorem}[Свойства зарядов]\tab
+    \begin{enumerate}
+        \item $\phi(\emptyset)=0$;
+        \item $\phi$ является конечно-аддитивной мерой;
+        \item \[A \subset B \implies \phi(B \setminus A) = \phi(B) - \phi(A);\]
+        \item $\phi$ непрерывна снизу, то есть если $A_1 \subset \dots \subset A_n \subset \dots$, то
+        \[\phi\left(\bigcup\limits_{n=1}^{\infty}A_n\right)=\lim\limits_{n\to \infty}\phi(A_n);\]
+        \item $\phi$ непрерывна сверху, то есть если $B_1 \supset \dots \supset B_n \supset \dots$, то 
+        \[\phi\left(\bigcap\limits_{n=1}^{\infty}B_n\right)=\lim\limits_{n\to \infty}\phi(B_n).\]
+    \end{enumerate}
+\end{theorem} 
+
+\begin{theorem}
+    Пусть $\phi$ — заряд на $\mathfrak{M}$.
+    Тогда для любого множества $A \in \mathfrak{M}$ существует множество положительности меры $B \in \mathfrak{M}$, $B \subset A$ и $\phi(B) \geqslant \phi(A)$.
+\end{theorem} 
+\begin{proof}
+    Будем говорить, что $E \in \mathfrak{M}$ является множеством $\epsilon$ -положительности меры (при $\epsilon>0$), если для любого $E' \subset E$, $E' \in \mathfrak{M}$ верно $\phi(E') > -\epsilon$.
+
+    Покажем, что для любого $\epsilon>0$ в $A$ существует $\epsilon$-положительное подмножество $B$: $\phi(B) \geqslant \phi(A)$.
+    Если само $A$ таким не является, то существует $\epsilon>0$ и существует множество $A_1 \subset A$: $\phi(A_1) \leqslant -\epsilon$.
+
+    Рассмотрим $A \setminus A_1$: $\phi(A \setminus A_1) = \phi(A) - \phi(A_1) > \phi(A)$.
+    Если $A \setminus A_1$ не является множеством $\epsilon$-положительности, то существует $A_2 \subset A \setminus A_1$: $\phi(A_2) \leqslant -\epsilon$.
+    По индукции строим $A_1, \dots A_n$, $A_i \cap A_j = \emptyset$ при $i \neq j$: $\phi(A_i) \leqslant -\epsilon$.
+    Если множество $A \setminus \bigsqcup\limits_{i=1}^{n}A_i$ $\epsilon$-положительно, то берём его в качестве $B$, иначе продолжим процесс.
+
+    Он оборвётся за конечное число шагов, поскольку иначе существует $\{A_i\}_{i=1}^\infty  \subset \mathfrak{M}$.
+    Множества попарно не пересекаются и $\phi(A_i) \leqslant -\epsilon$ для любого $i \in \N$, следовательно,
+    \[\phi\left(\bigsqcup\limits_{i=1}^{\infty}A_i\right) = \sum\limits_{i=1}^{\infty}\phi(A_i) = -\infty \implies\]
+    существует $N \in \N$: $A \setminus \bigsqcup\limits_{i=1}^{N}A_i$ — множество $\epsilon$-положительности.
+    \[\phi\left(A \setminus \bigsqcup\limits_{i=1}^{N}A_i\right) = \phi(A) - \sum\limits_{i=1}^{N}\phi(A_i) > \phi(A).\]
+    
+    При $\epsilon_0 = 1$ пусть $A_1 \subset A$ — множество 1-положительности.
+    Рассмотрим $A_1$: оно содержит множество $\frac{1}{2}$-положительности $A_2$ и так далее: $A_1 \supset A_2 \supset \dots \supset A_n \supset \dots$, где $A_n$ является множеством $\frac{1}{n}$-положительности и
+    \[\phi(A_n) \geqslant \dots \geqslant \phi(A_1) \geqslant \phi(A) \ \forall n \in \N.\]
+    Положим $B = \bigcap\limits_{n=1}^{\infty}A_n$ — оно является множеством положительности.
+    \[\phi(B) \geqslant \phi(A)\]
+    — это следует из построения и непрерывности заряда сверху.
+    Поскольку все множество вложимы по включению, то $B \subset A_n$ для любого $n \in \N$.
+    А так как $A_n$ — множество $\frac{1}{n}$-положительности, то $B$ — тоже множество $\frac{1}{n}$-положительности, следовательно, для любого $n \in \N$ $B$ является множеством $\frac{1}{n}$-положительности, поэтому $B$ является множеством положительности.
+\end{proof} 
+
+\begin{theorem}
+    Любой заряд достигает своего наибольшего и наименьшего значения, в частности, он ограничен.
+\end{theorem} 
+\begin{proof}
+    Докажем для наибольшего значения (и ограничения сверху). Для наименьшего значения (и ограничения снизу) аналогично.
+    Пусть $H \in \overline{\R}$,
+    \[H := \sup\{\phi(A) \ | \ A \in \mathfrak{M}\}.\]
+    Существует последовательность $\{A_n\} \subset \mathfrak{M}$: $H = \lim\limits_{n\to \infty}\phi(A_n)$.
+    В каждом $A_n$ пользуемся прошлой теоремой, найдём множество положительности:
+    \[\begin{cases}
+        B_n \subset A_n, \\
+        \phi(B_n) \geqslant \phi(A_n), \ \forall n \in \N.
+    \end{cases}
+    \]
+    Положим $B = \bigcup\limits_{n=1}^{\infty}B_n$.
+    С одной стороны, $\phi(B) \leqslant H$.
+    С другой стороны, $\phi(B) \geqslant \phi(B_n) \geqslant \phi(A_n)$ для любого $n \in \N$.
+    Теперь перейдём к пределу в множестве и получим $\phi(B) = H$.
+    Поскольку заряд конечен, то $\phi(B) \in \R$.
+\end{proof} 
+
+\begin{theorem}[Разложение Хана]
+    Пусть $(X, \mathfrak{M}, \mu)$, где $\mu$ — заряд.
+    Тогда $X = X_+ \sqcup X_-$, где $\phi(A \cap X_+) \geqslant 0$ для любого $A \in \mathfrak{M}$, $\phi(A \cap X_-) \leqslant 0$ для любого $A \in \mathfrak{M}$.
+\end{theorem} 
+\begin{proof}
+    Пользуясь предыдущей теоремой $X_+$ — множество, на котором заряд достигает максимума (оно, вообще говоря, не единственно).
+    
+    Положим $X_- = X \setminus X_+$.
+    Предположим, что существует $A \in \mathfrak{M}$: $\phi(A \cap X_-) > 0$, следовательно, $\phi(X_+ \sqcup (A \cap X_-)) = \phi(X_+) + \alpha$ — противоречие с максимальностью (здесь $\alpha > 0$).
+    $\phi(A \cap X_+) \geqslant 0$ — по определению максимума.
+\end{proof} 
+
+\begin{definition}
+    Пусть $\phi$ — заряд и $A \in \mathfrak{M}$. Полной вариацией заряда $\phi$ называется
+    \[|\phi|(A) := \sup\left\{\sum\limits_{i=1}^{N}|\phi(A_i)\right\},\]
+    где супремум взят по всем конечным разбиениям множества $A = \bigsqcup\limits_{i=1}^{N}A_i$.
+\end{definition} 
+
+\begin{remark}
+    \[|\phi|(A) \neq |\phi(A)|.\]
+\end{remark}
+
+\begin{theorem}
+    Полная вариация $|\phi|$ заряда $\phi$ является счётно-аддитивной конечной мерой на $\mathfrak{M}$.
+\end{theorem} 
+\begin{proof}
+    Без доказательства.
+\end{proof} 
+
+\begin{remark}
+    $\phi$ — заряд, то
+    \[\phi_+(A) := \sup\limits_{B \subset A} \{\phi(B)\},\]
+    \[\phi_-(A) := \sup\limits_{C \subset A} \{-\phi(C)\}.\]
+\end{remark}
+
+\begin{theorem}
+    Пусть $\phi$ — заряд на $X$. $X = X_+ \sqcup X_-$ — разложение Хана.
+    Тогда
+    \[\phi_+(A) = \phi(A \cap X_+),\]
+    \[\phi_-(A) = \phi(A \cap X_-) \ \forall A \in \mathfrak{M}.\]
+    Более того, $|\phi|(A) = \phi_+(A) = \phi_-(A)$.
+\end{theorem} 
+\begin{proof}
+    Докажем для $\phi_+$, для $\phi_-$ аналогично.
+    
+    С одной стороны, $\phi(A \cap X_+) \leqslant \phi_+(A)$.
+    С другой стороны, по определению разложения Хана для любого $B \subset A$: $B = (B \cap X_+) \sqcup (B \cap X_-)$.
+    \begin{multline*}
+        \phi(B) = \phi(B \cap X_+) + \phi(B \cap X_-) \leqslant \phi(B \cap X_+) 
+        \leqslant\\\leqslant
+        \phi(A \cap X_+) = \phi(B \cap X_+) + \phi(\underbrace{(A \setminus B)}_{\geqslant 0} \cap X_+).
+    \end{multline*} 
+    Для любого $B \in \mathfrak{M}$, $B \subset A$, $\phi(B) \leqslant \phi(A \cap X_+)$, следовательно, $\phi_+(A) \leqslant \phi(A \cap X_+)$.
+\end{proof} 

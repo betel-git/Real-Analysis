@@ -299,7 +299,11 @@ $(X, \mathfrak{M}, \mu)$ — пространство с $\sigma$-конечно
     \end{enumerate}
 \end{proof} 
 
+
+\paragraph{Лекция 14.}
+
 \begin{theorem}[Тонелли]
+    Пусть $(X, \mathfrak{M}, \mu)$ и $(Y, \mathfrak{N}, \nu)$ — пространства с $\sigma$-конечными мерами.
     Пусть $f: X \times Y \to [0, +\infty]$ — измеримая относительно $\mathfrak{M} \otimes \mathfrak{N}$ функция.
     Тогда:
     \begin{enumerate}
@@ -310,3 +314,101 @@ $(X, \mathfrak{M}, \mu)$ — пространство с $\sigma$-конечно
     \end{enumerate}
     Аналогичные утверждения справедливы при замене ролей $X$ и $Y$.
 \end{theorem} 
+\begin{proof}
+\begin{enumerate}
+    \item Пусть $f = \chi_C$, где $C \in \mathfrak{M} \otimes \mathfrak{N}$.
+    \[\chi_C(x,y) = \chi_{C_x}(y) = f_x(y) = 
+    \begin{cases}
+        1, \ (x,y) \in C,\\
+        0, \ \text{иначе}.
+    \end{cases}
+    \]
+    В силу принципа Кавальери с прошлой лекции все пункты теоремы верны.
+    \item Пусть $f$ — простая функция.
+    \[f = \sum\limits_{k=1}^{N} a_k \chi_{C_k}, \ \{C_i\}_{i=1}^N \subset \mathfrak{M} \otimes \mathfrak{N}, \ C_i \cap C_j = \emptyset \text{ при } i \neq j, \ a_k \in \R.\]
+    \[f_x = \sum\limits_{k=1}^{N}a_k (\chi_{C_k})_x.\]
+    Поскольку $C_k$ — конечное число, то из предыдущего шага легко видеть, что условия теоремы выполнены.
+    \item В силу теоремы Рисса имеется поточечая сходимость:
+    \[f = \lim\limits_{n\to \infty}f_n, \ \{f_n\} \text{ — монотонная последовательность простых функций.}\]
+    Для любого $n \in \N$ существует $E_n \subset X$: $\mu(E_n)=0$, следовательно, для любого $x \in X \setminus E_n$ $(f_n)_x$ измерима на $Y$ и $x \to \int_X (f_n)_x d\nu$ измерима на $X \setminus E_n$.
+    
+    Определим
+    \[\underline{X} := X \setminus \bigcup\limits_{n=1}^{\infty}E_n,\]
+    тогда для любого $x \in \underline{X}$ и для любого $n \in \N$ $(f_n)_x$ — измеримая на $Y$ функция, а $x \xrightarrow{\Phi_n} \int_X (f_n)_x d\nu$ — измеримая на $\underline{X}$ функция.
+
+    Очевидно, что для любого $x \in X$ $f(x,y)=\lim\limits_{n\to \infty}f_n(x,y)$ и 
+    \[f_x(y)=\lim\limits_{n\to \infty}(f_n)_x (y), \ \forall y \in Y.\]
+    В силу предыдущего рассуждения (поскольку поточечный предел не портит измеримость) $f_x$ измерима на $Y$ для любого $x \in \underline{X}$.
+    В силу монотонности последовательности
+    \[f_{n+1}(x,y) \geqslant f_n(x,y) \ \forall x,y \in X \times Y, \ \forall n \in \N \implies\]
+    \[\forall x \in X: \ (f_{n+1})_x(y) \geqslant (f_n)_x(y) \ (*) \ \forall n \in \N \text{ и } \forall y \in Y \implies\]
+    в силу теоремы Беппо-Леви:
+    \[\lim\limits_{n\to \infty} \underbrace{\int_Y (f_n)_x(y) d\nu(y)}_{=:\phi_n(x)} = \underbrace{\int_Y (f)_x (y) d\nu(y)}_{=: \phi(x)} \ \forall x \in \underline{X}
+    \implies
+    \phi_n \xrightarrow{\underline{X}} \phi, \ n \to \infty,\]
+    но $\phi_n$ измерима на $\underline{X}$, следовательно, $\phi$ измерима на $\underline{X}$, то есть $\phi$ измерима в широком смысле на $X$.
+
+    Покажем, что выполнимо равенство 3:
+    \begin{multline*}
+    \int_{X \times Y} f(x,y) d(\mu \otimes \nu)(x,y)
+    =\\=
+    \lim\limits_{n\to \infty} \int_{X \times Y} f_n(x,y) d(\mu \times \nu)(x,y)
+    =\\=
+    \lim\limits_{n\to \infty} \int_X (\phi_n)_x(y) d\nu(y) =(**)
+    \end{multline*} 
+    из $(*)$ следует, что
+    \[\phi_{n+1}(x) \geqslant \phi_n(x) \ \forall x \in \underline{X}.\]
+    \begin{multline*}
+        (**) = \lim\limits_{n\to \infty} \int_{\underline{X}} (\phi_n)_x (y) d\nu(y)
+        =
+        \int_{\underline{X}} \lim\limits_{n\to \infty} (\phi_n)_x (y) d\nu(y)
+        =
+        \int_X \phi(y) d\nu(y).
+    \end{multline*} 
+\end{enumerate}
+\end{proof} 
+
+\begin{theorem}[Фубини]
+    Пусть $(X, \mathfrak{M}, \mu)$ и $(Y, \mathfrak{N}, \nu)$ — пространства с полными $\sigma$-конечными мерами.
+    Пусть $f \in \widetilde{L}_1(X \times Y, \mathfrak{M} \times \mathfrak{N}, \mu \otimes \nu)$. Тогда
+    \begin{enumerate}
+        \item Для $\mu$-почти всех $x \in X$ $f_x \in \widetilde{L}_1(X, \mathfrak{M}, \mu)$;
+        \item \[\phi(x) = \int_Y f_x(y) d\nu(y), \ \phi \in \widetilde{L}_1(X, \mathfrak{M}, \mu);\]
+        \item \[\int_{X \times Y} f(x,y) d(\mu \otimes \nu)(x,y) = \int_X \left(\int_Y f_x(y) d\nu(y)\right)d\mu(x).\]
+    \end{enumerate}
+    Аналогичное утверждение справедливо при замене $(X, \mathfrak{M}, \mu)$ и $(Y, \mathfrak{N}, \nu)$.
+\end{theorem} 
+\begin{proof}
+    Напомним, что $f = f_+ - f_-$.
+    К $f_+$ и $f_-$ применим теорему Тонелли:
+    \[+\infty > \int_{X \times Y} f_{\pm}(x,y)d(\mu \otimes \nu)(x,y) = \int_X \left(\int_Y (f_{\pm})_x (y) d\nu(y)\right)d\mu(x).\]
+    В силу свойств интеграла Лебега для $\mu$-почти всех $x \in X$
+    \[\int_Y (f_{\pm})_x(y)d\nu(y) < +\infty,\]
+    следовательно, для $\mu$-почти всех $x \in X$ $f_x = (f_+)_x - (f_-)_x \in \widetilde{L}_1(X, \mathfrak{M}, \mu)$.
+    \begin{multline*}
+        \int_{X \times Y} f(x,y) d(\mu \otimes \nu)(x,y)
+        =\\=
+        \int_{X \times Y} f_+(x,y)d(\mu \otimes \nu)(x,y) - \int_{X \times Y} f_-(x,y) d(\mu \otimes \nu)(x,y)
+        =\\=
+        \int_X \left(\int_Y (f_+)_x(y)d\nu(y)\right)d\mu(x) - \int_X \left(\int_Y (f_+)_x(y)d\nu(y)\right)d\mu(x) = (*)
+    \end{multline*} 
+    \[\phi_+(x) = \int_Y (f_+)_x d\nu, \ \phi_-(x) = \int_X (f_-)_x d\nu, \ \phi_+, \ \phi_- \in \widetilde{L}_1(X, \mathfrak{M}, \mu).\]
+    \[(*) = \int_X (\phi_+(x) - \phi_-(x)) d\mu(x).\]
+\end{proof} 
+
+\begin{example}
+    \[Q = [-1,1]^2,\]
+    \[f(x,y) = 
+    \begin{cases}
+        \frac{x^2-y^2}{(x^2+y^2)^2}, \ x^2+y^2>0 \\
+        0, \ \text{иначе}.
+    \end{cases}
+    \]
+    \[\int_{-1}^1 \left(\int_{-1}^1 f(x,y)dx\right)dy = -\pi \neq \pi = \int_{-1}^1 \left(\int_{-1}^1 f(x,y)dy\right)dx,\]
+    \[f \notin \widetilde{L}_1(Q).\]
+\end{example}
+
+\begin{example}
+    \[\int_{-1}^1 \int_{-1}^1 \frac{xy}{(x^2+y^2)^2} dxdy = 0 = \int_{-1}^1 \int_{-1}^1 \frac{xy}{(x^2+y^2)^2}dydx,\]
+    но эта функция не интегрируема на $Q$.
+\end{example}
