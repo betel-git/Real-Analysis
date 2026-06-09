@@ -130,3 +130,116 @@
     \end{multline*} 
     Для любого $B \in \mathfrak{M}$, $B \subset A$, $\phi(B) \leqslant \phi(A \cap X_+)$, следовательно, $\phi_+(A) \leqslant \phi(A \cap X_+)$.
 \end{proof} 
+
+\paragraph{Лекция 15.}
+\begin{definition}
+    Пусть $X$ — абстрактное множество. $\mathfrak{M}$ — $\sigma$-алгебра. Пусть даны две меры
+    \[\mu, \ \nu: \mathfrak{M} \to [0, +\infty].\]
+    $\nu$ называется \textit{абсолютно непрерывной относительно меры $\mu$}, если для любого множества $E \subset X$ из условия $\mu(E)=0$ следует, что $\nu(E)=0$.
+    Обозначается:
+    \[\nu \ll \mu.\]
+\end{definition} 
+
+\begin{example}
+    Пусть $\mu$ — мера на $(X, \mathfrak{M})$, $f \in \widetilde{L}_1(\mu)$.
+    Пусть
+    \[\nu(E):= \int_E f(x) d\mu(x).\]
+    Тогда в силу свойств интеграла Лебега мера $\nu$ абсолютно непрерывна относительно меры $\mu$ и $\nu$ \textit{имеет плотность $f$ относительно $\mu$}.
+\end{example}
+
+\noindent \textbf{Вопрос.} Верно ли обратное? То есть любую ли меру, абсолютно непрерывную относительно меры $\mu$ можно представить как интеграл от некоторой функции?
+
+\begin{theorem}[Радон-Никодим]
+    Пусть есть две меры $\mu$ и $\nu$, определённые на одной и той же $\sigma$-алгебре $\mathfrak{M}$. При этом $\nu$ — конечная мера, а $\mu$ — $\sigma$-конечная мера. Если $\nu \ll \mu$, то существует единственная (с точностью до изменения на множестве $\mu$-меры ноль) измеримая функция
+    \[f: X \to [0, +\infty]:\]
+    \[\nu(E) := \int_E f(x) d\mu(x), \quad \forall E \in \mathfrak{M}.\]
+    Такая $f$ иногда называется производной Радона-Никодима $\nu$ относительно $\mu$ и обозначается
+    \[\frac{d\nu}{d\mu}.\]
+\end{theorem} 
+\begin{proof}
+    Разобьём доказательство на несколько шагов.
+\begin{enumerate}
+    \item Напомним, что $L_0$ — это множество измеримых $\mu$-почти всюду конечных фукнций на $X$. Пусть
+    \[\mathcal{E}:= \left\{f \in L_0(\mu): \ f \geqslant 0, \ \int_E f(x)d\mu(x) \leqslant \nu(E) \ \forall E \in \mathfrak{M}\right\}.\]
+    $\mathcal{E} \neq 0$, поскольку $f = 0$ $\mu$-почти всюду входит в это семейство.
+    Если $f,g \in \mathcal{E}$, то $h=\max\{f,g\} \in \mathcal{E}$.
+    Пусть $X = X' \sqcup X''$, где $X'$ — множество всех точек, где $f \geqslant g$, а $X''$ — множество всех точек, где $f < g$.
+    Пусть теперь $E \in \mathfrak{M}$ — произвольное множество.
+    \begin{multline*}
+        \int_E h(x) d\mu(x) 
+        = \int_{E \cap X'} h(x) d\mu(x) + \int_{E \cap X''}h(x)d\mu(x)
+        \leqslant\\\leqslant
+        \int_{E \cap X'} f(x) d\mu(x) + \int_{E \cap X''}g(x)d\mu(x)
+        \leqslant\\\leqslant
+        \nu(E \cap X') + \nu(E \cap X'')
+        = \nu(E).
+    \end{multline*} 
+    Так как $E$ было выбрано произвольно, то $h \in \mathcal{E}$.
+    По индукции легко видеть, что если $f_1, \dots, f_N \in \mathcal{E}$, то их максимум $h = \max\{f_1, \dots, f_N\} \in \mathcal{E}$.
+    \item \[I := \sup\left\{\int_X f(x)d\mu(x): \ f \in \mathcal{E}\right\} \in [0, +\infty).\]
+    По определению супремума существует последовательность функций $\{f_n\} \subset \mathcal{E}$ такая, что 
+    \[I = \lim\limits_{n\to \infty}\int_X f_n d\mu.\]
+    В силу предыдущего шага можно считать, что последовательность $\{f_n\}$ поточечно возрастающая, поскольку иначе можно заменить $f_n$ на максимум $\{f_1, \dots, f_n\}$.
+    \[f_{n+1}(x) \geqslant f_n(x) \quad n \in \N, \ \forall x \in X.\]
+    Тогда по теореме Леви для любого множества $E \in \mathfrak{M}$
+    \[\int_E \lim\limits_{n\to \infty}f_n(x)d\mu(x) = \lim\limits_{n\to \infty}\underbrace{\int_E f_n(x)d\mu(x)}_{\leqslant \nu(E)} \leqslant \nu(E).\]
+    Пусть по определению
+    \[f(x):=\lim\limits_{n\to \infty}f_n(x),\]
+    тогда $f \in \mathcal{E}$.
+    \item Покажем, что $f$ — искомая плотность одной меры относительно другой.
+    Предположим противное, то есть пусть существует $E_0 \in \mathfrak{M}$ такое, что
+    \begin{equation}
+        \nu(E_0) > \int_{E_0} f(x) d\mu(x). \label{eq:14.1}
+    \end{equation}
+    Очевидно, что $\mu(E_0) >0$ (поскольку иначе обе части неравенства были бы равны нулю).
+    Кроме того, без ограничения общности можно считать, что мера $\mu(E_0) < +\infty$.
+    Действительно, $\mu$ — $\sigma$-конечная мера.
+    Если бы $\mu(E_0) = +\infty$, то 
+    $$E_0 = \bigcup\limits_{n\in \N}E_n, \quad E_n \subset E_{n+1} \ \forall n \in \N$$
+    \[\mu(E_n) < +\infty \quad \forall n \in \N,\]
+    следовательно, по непрерывности меры снизу
+    \[\nu(E_n) - \int_{E_n} fd\mu \to \nu(E_0) - \int_{E_0}f d\mu > 0,\]
+    поэтому неравенство \eqref{eq:14.1} сохранится при замене $E_0$ на $E_n$ при всех достаточно больших $n \in \N$.
+    \item $\mu(E_0) \in (0, +\infty)$. Выберем столь малое число $a > 0$, что
+    \[\nu(E_0) - \int_{E_0}fd\mu > a \cdot \mu(E_0).\]
+    Рассмотрим $\phi: \mathfrak{M} \to \R$:
+    \[\phi(E) := \nu(E) - \int_E fd\mu - a \mu(E \cap E_0), \quad \forall E \in \mathfrak{M}.\]
+    То есть $\phi$ — это заряд на $\mathfrak{M}$.
+    При этом $\phi(E_0)>0$.
+    В силу предыдущей лекции существует множество положительности $B$ заряда $\phi$ и $B \subset E_0$, $\phi(B) \geqslant \phi(E_0) > 0$.
+    Но тогда $\nu(B) \geqslant \phi(B) > 0$.
+    Покажем, что $f + a \chi_B \in \mathcal{E}$.
+    Фиксируем произвольное множество $E \in \mathfrak{M}$.
+    \begin{multline*}
+        \int_E (f + a \chi_B)d\mu = \int_{E \setminus B} fd\mu + \int_{E \cap B} fd\mu + a \mu(E \cap B)
+        =\\=
+        \int_{E \setminus B} fd\mu + \nu(E \cap B) - \phi(E \cap B)
+        \leqslant\\\leqslant
+        \nu(E \setminus B) + \nu(E \cap B) - \phi(E \cap B)
+        =\\=
+        \nu(E) - \underbrace{\phi(E \cap B)}_{\geqslant 0} \leqslant \nu(E).
+    \end{multline*} 
+    $\phi(E \cap B) \geqslant 0$ потому что $B$ — множество положительности заряда $\phi$.
+    При этом $\mu(B) > 0$, так как $\nu(B) > 0$ и $\nu \ll \mu$.
+    Поэтому\[\int_X (f + a \chi_B)d\mu = I + a \mu(B) > I,\]
+    что противоречит определению $I$ ($I$ — это супремум по $f \in \mathcal{E}$), следовательно, $f$ — искомая плотность.
+
+    Очевидно, что если поменять $f$ на множестве $\mu$-меры ноль, то $f$ останется плотностью.
+
+    Верно и обратное: если $f_1$ и $f_2$ — две плотности $\nu$ относительно $\mu$, то $f_1 = f_2$ $\mu$-почти всюду, поскольку
+    \[\nu(E) = \int_E f_1 d\mu = \int_E f_2 d\mu \implies \int_E (f_1 - f_2)d\mu = 0 \quad \forall E \in \mathfrak{M}.\]
+\end{enumerate}
+\end{proof} 
+
+\begin{theorem}
+    Если $\phi$ — конечный заряд, $\mu$ — $\sigma$-конечная мера (определённые на одной и той же $\sigma$-алгебре), то следующие условия эквивалентны:
+    \begin{enumerate}
+        \item Заряд $\phi$ абсолютно непрерывен относительно $\mu$;
+        \item Вариация заряда абсолютно непрерывна относительно $\mu$;
+        \item Заряд порождается некоторой интегрируемой по мере $\mu$ функцией, то есть
+        \[\nu(E) = \int_E f d\mu \quad \forall E \in \mathfrak{M}.\]
+    \end{enumerate}
+\end{theorem} 
+\begin{proof}
+    Без доказательства.
+\end{proof} 

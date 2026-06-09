@@ -1,0 +1,191 @@
+\section{Пространства $L_p$, $p \in [1, +\infty)$}
+Пусть $(X, \mathfrak{M}, \mu)$ — пространство с полной $\sigma$-конечной мерой $\mu$.
+\begin{definition}
+    Пусть $E \in \mathfrak{M}$, определим 
+    \[\widetilde{L}_p(E, \mu) := \left\{f \in L_0(E,\mu): \ \int_E|f|^p d\mu < +\infty \right\}\]
+\end{definition} 
+
+\begin{lemma}[Неравенство Юнга]
+    $\forall a, b \geqslant 0$, $p \in (1, +\infty)$:
+    \[ab \leqslant \frac{a^p}{p} + \frac{b^{p'}}{p'},\]
+    где
+    \[\frac{1}{p} + \frac{1}{p'} = 1,\]
+    $p'$ — сопряжённый показатель Гёльдера.
+\end{lemma} 
+\begin{proof}
+    Из выпуклости логарифма:
+    \[\ln \left(\frac{a^p}{p} + \frac{b^{p'}}{p'}\right) \geqslant \frac{\ln a^p}{p} + \frac{\ln b^{p'}}{p'} = \ln a + \ln b = \ln ab.\]
+\end{proof} 
+
+\begin{theorem}[Неравенство Гёльдера для интегралов]
+    Пока что считаем, что $p \in (1, +\infty)$. Пусть $f \in \widetilde{L}_p(E, \mu)$, $g \in \widetilde{L}_{p'}(E,\mu)$.
+    Тогда $f,g \in \widetilde{L}_1(E,\mu)$. Более того,
+    \[\int_E fg d\mu \leqslant \left(\int_E |f|^p d\mu\right)^{\frac{1}{p}} \cdot \left(\int_E |g|^{p'} d\mu\right)^{\frac{1}{p'}}.\]
+    Случай, когда обе части неравенства равны $+\infty$, не исключается.
+\end{theorem} 
+\begin{proof}
+    Определим
+    \[A:= \left(\int_E |f|^p d\mu\right)^{\frac{1}{p}}, \quad B := \left(\int_E |g|^{p'} d\mu\right)^{\frac{1}{p'}}.\]
+    Предположим, что $A>0$ и $B>0$ (поскольку при $A=0$ или $B=0$ $|fg|=0$ $\mu$-почти всюду и обе части множества равны нулю).
+    Случай, когда $A = +\infty$ или $B = +\infty$ тривиален, далее считаем без ограничения общности, что $A,B \in (0, +\infty)$.
+    Рассмотрим
+    \[\widetilde{f} = \frac{f}{A}, \quad \widetilde{g} = \frac{g}{B}.\]
+    Тогда
+    \[\left(\int_E |\widetilde{f}|^p d\mu\right)^{\frac{1}{p}} = 1,\]
+    \[\left(\int_E |\widetilde{g}|^{p'} d\mu\right)^{\frac{1}{p'}} = 1.\]
+    В силу неравенства Юнга
+    \[\int_E |\widetilde{f} \widetilde{g}| d\mu \leqslant \int_E \left(\frac{|\widetilde{f}|^p}{p} + \frac{|\widetilde{g}|^{p'}}{p'}\right) d\mu = \frac{1}{p} \underbrace{\int_E |\widetilde{f}|^p d\mu}_{=1} + \frac{1}{p'} \underbrace{\int_E |\widetilde{g}|^{p'} d\mu}_{=1} = \frac{1}{p} + \frac{1}{p'} = 1.\]
+\end{proof} 
+
+\begin{theorem}[Интегральное неравенство Минковского]
+    Пусть $p \in [1, +\infty)$, $f,g \in \widetilde{L}_p(E, \mu)$.
+    Тогда $f + g \in \widetilde{L}_p(E, \mu)$.
+    Кроме того,
+    \[\left(\int_E |f+g|^p d\mu\right)^{\frac{1}{p}} \leqslant \left(\int_E |f|^p d\mu\right)^{\frac{1}{p}} + \left(\int_E |g|^p d\mu\right)^{\frac{1}{p}}.\]
+\end{theorem} 
+\begin{proof}
+    При $p=1$ очевидно из неравенства треугольника и линейности интеграла.
+    Далее считаем, что $p > 1$.
+    \[|f(x) + g(x)|^p \leqslant (2 \cdot \max\{|f(x)|, |g(x)|\})^p \leqslant 2^p \cdot (|f(x)|^p + |g(x)|^p),\]
+    а поскольку $f,g \in \widetilde{L}_p(E, \mu)$, то $f+g \in \widetilde{L}_p(E,\mu)$.
+    Запишем
+    \begin{multline*}
+        \int_E |f(x) + g(x)|^p d\mu(x) = \int_E |f(x) + g(x)| |f(x) + g(x)|^{p-1} d\mu(x) 
+        \leqslant\\\leqslant
+        \int_E (|f(x)| + |g(x)|) |f(x) + g(x)|^{p-1} d\mu(x)
+        = (\text{линейность интеграла})
+        =\\=
+        \int_E |f(x)| |f(x) + g(x)|^{p-1} d\mu(x) + \int_E |g(x)| |f(x) + g(x)|^{p-1} d\mu(x) \leqslant
+    \end{multline*} 
+    но \[p-1 = \frac{p}{p'},\]
+    поэтому применим неравенство Гёльдера:
+    \begin{multline*}
+        \leqslant \left(\int_E |f(x)|^p d\mu(x)\right)^{\frac{1}{p}} \cdot \left(\int_E |f(x) 
+        + g(x)|^p d\mu(x)\right)^{\frac{1}{p'}} 
+        +\\+ \left(\int_E |g(x)|^p d\mu(x)\right)^{\frac{1}{p}} \cdot \left(\int_E |f(x) + g(x)|^p d\mu(x)\right)^{\frac{1}{p'}}
+    \end{multline*} 
+    Воспользуемся тем, что $\frac{1}{p} + \frac{1}{p'} = 1$ и $f + g \in \widetilde{L}_p(E, \mu)$, тогда
+    \[\left(\int_E |f(x) + g(x)|^p d\mu(x)\right)^{\frac{1}{p'}} \in (0, +\infty).\]
+    Считаем, что $|f(x) + g(x)| > 0$ на множестве положительной меры, поскольку иначе неравенство из условия очевидно, следовательно, обе части неравенства можно поделить на $\left(\int_E |f(x) + g(x)|^p d\mu(x)\right)^{\frac{1}{p'}}$ и получить утверждение теоремы.
+\end{proof} 
+
+Рассмотрим $N$ — множество таких измеримых $\mu$-почти всюду конечных функций, что они равны нулю почти всюду, то есть
+\[N := \{f: X \to \overline{\R}: \ f(x) = 0 \ \mu-\text{п.в. } x \in X\}\]
+Введём
+\[L_p(E,\mu) := \widetilde{L}_p(E,\mu) / N(E)\]
+
+\begin{theorem}
+    При $p \in [1, +\infty)$ $L_p(E,\mu)$ — линейное нормированное пространство (ЛНП) с нормой 
+    \[\|[f]\|_p := \left(\int_E |f(x)|^p d\mu(x)\right)^{\frac{1}{p}},\]
+    где $f$ — любой представитель класса эквивалентности.
+\end{theorem} 
+\begin{proof}\tab
+    \begin{itemize}
+        \item Неотрицательность очевидна.
+        \item Если $\|[f]\|_p = 0$, то $[f] = 0$, то есть $[f] \in N(E)$. Это верно именно для классов эквивалентности.
+        \item $\|\alpha [f]\|_p = |\alpha| \cdot \|[f]\|_p$.
+        \item Неравенство треугольника — это неравенство Минковского.
+    \end{itemize}
+\end{proof} 
+
+Пространство $L_p(E, \mu)$ — полное ЛНП ($\Longleftrightarrow$  банахово пространство).
+Полнота означает, что любая фундаментальная по норме последовательность сходится к некоторому элементу из этого пространства.
+
+\begin{definition}
+    Рассмотрим $\left\{\sum\limits_{n=1}^{N} x_n\right\}_{N \in \N}$, где $\{x_n\} \subset E$, тогда $\sum\limits_{n=1}^{\infty}x_n$ — \textit{ряд в ЛНП}.
+\end{definition} 
+
+\begin{definition}
+    Ряд $\sum\limits_{n=1}^{\infty}x_n$ \textit{сходится в $E$}, если существует $x \in E$: \[\|x - \sum\limits_{n=1}^{N}x_n\| \to 0, \ N \to \infty.\]
+\end{definition} 
+
+\begin{definition}
+    Ряд $\sum\limits_{n=1}^{\infty}x_n$ называется \textit{абсолютно сходящимся в $E$}, если $$\sum\limits_{n=1}^{\infty}\|x_n\| < +\infty.$$
+\end{definition} 
+
+\begin{theorem}[Критерий полноты ЛНП]
+    $(E, \|\cdot\|)$ — ЛНП полно тогда и только тогда, когда любой абсолютно сходящийся в $E$ ряд сходится в $E$.
+\end{theorem} 
+\begin{proof}\tab
+    \begin{itemize}
+        \item[$\underline{\implies}$] 
+    Пусть $E$ полно и $\sum\limits_{n=1}^{\infty}x_n$ — абсолютно сходящийся ряд, тогда $\sum\limits_{n=1}^{\infty}\|x_n\|$ — сходящийся числовой ряд, тогда последовательность его частичных сумм фундаментальна, тогда $\forall \epsilon$ $\exists N(\epsilon)$: $\forall n,m \geqslant N(\epsilon)$ верно 
+    \[\sum\limits_{k=n}^{m}\|x_k\| < \epsilon.\]
+    В силу неравенства треугольника
+    \[\|\sum\limits_{k=n}^{m}x_k\| \leqslant \sum\limits_{k=n}^{m}\|x_k\| < \epsilon \quad \forall n,m \geqslant N(\epsilon),\]
+    следовательно, последовательность
+    \[\left\{\sum\limits_{k=1}^{n}x_k\right\}_{n=1}^\infty\]
+    фундаментальна в $E$.
+    Но в силу полноты $E$ существует $x \in E$: $x = \lim\limits_{n\to \infty} \sum\limits_{k=1}^{n}x_k$.
+        \item[$\underline{\impliedby}$] 
+    Пусть $\{x_n\} \subset E$ — произвольная фундаментальная последовательность.
+    \[\forall \epsilon \ \exists N(\epsilon) \in \N: \ \forall n,m \geqslant N(\epsilon): \|x_n - x_m\| < \epsilon\]
+    — фундаментальность в кванторах.
+    Для любого натурального $k$ запишем условие выше при $\epsilon_k = 2^{-k}$:
+    \[\forall k \in \N \ \exists N_k \in \N: \ \forall n,m \geqslant N_k: \ \|x_n - x_m\| \leqslant \frac{1}{2^k}.\]
+    Рассмотрим подпоследовательность последовательности $x_n$: $\{x_{N_k}\}$.
+    Определим
+    \[y_k := x_{N_{k+1}} - x_{N_k} \quad \forall k \in \N,\]
+    \[y_0 := x_{N_1}.\]
+    Рассмотрим ряд $\sum\limits_{k=0}^{\infty}y_k$. Тогда
+    \[\|y_k\| \leqslant \frac{1}{2^k} \quad \forall k \in \N,\]
+    следовательно,
+    \[\sum\limits_{k=1}^{\infty} \|y_k\| \leqslant 2 < +\infty,\]
+    следовательно, ряд $\sum\limits_{k=0}^{\infty}y_k$ абсолютно сходится, но тогда ряд $\sum\limits_{k=0}^{\infty}y_k$ сходится в $E$, следовательно, существует $x \in E$, что
+    \[\|x - \sum\limits_{k=0}^{l}y_k\| \to 0, \ l \to \infty.\]
+    \[\sum\limits_{k=0}^{l} y_k = x_{N_1} + (x_{N_2} - x_{N_1}) + \dots + (x_{N_{l+1}} - x_{N_l}) = x_{N_{l+1}},\]
+    тогда $x = \lim\limits_{l \to \infty} x_{N_l}$, то есть получили такую подпоследовательность $\{x_{N_k}\}_{k=1}^\infty$ последовательности $\{x_n\}$, что 
+    $$x_{N_k} \to x \in E, \ k \to \infty.$$
+    Покажем, что $x_n \to x$, $n \to \infty$:
+    \[\forall \epsilon > 0 \ \exists L \in \N: \ \forall l \geqslant L: \|x - x_{N_l}\| < \frac{\epsilon}{2},\]
+    \[\forall \epsilon > 0 \ \exists N \in \N: \ \forall m,n \geqslant N: \ \|x_n - x_m\| < \frac{\epsilon}{2} \implies\]
+    \begin{multline*}
+        \implies \forall \epsilon > 0 \ \exists M = \max\{N,L\}: \ \forall n \geqslant N: \ \|x - x_n\| \leqslant\\\leqslant \|x - x_{N_m}\| + \|x_{N_m} - x_n\| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon.
+    \end{multline*} 
+    \end{itemize}
+\end{proof} 
+
+\begin{theorem}
+    Пусть $p \in [1, +\infty)$. Тогда $L_p(E,\mu)$ — полное ЛНП.
+\end{theorem} 
+\begin{proof}
+    В силу предыдущей теоремы достаточно доказать, что любой абсолютно сходящийся в $L_p$ ряд будет сходиться в $L_p$.
+    Пусть $\{f_l\} \subset L_p(E, \mu)$ такова, что $\sum\limits_{k=1}^{\infty}\|f_k\|_p < +\infty$ (имеем в виду класс эквивалентности).
+    Определим
+    \[F_n(x) := \left(\sum\limits_{k=1}^{n}|f_k(x)|\right)^p, \ n \in \N.\]
+    Тогда $\{F_n\}$ — монотонная последовательность неотрицательных функций.
+    Для любого натурального $n$:
+    \begin{multline*}
+        \left(\int_E F_n(x) d\mu(x)\right)^{\frac{1}{p}}
+        =
+        \left(\int_E \left(\sum\limits_{k=1}^{n}|f_k|\right)^p d\mu(x)\right)^{\frac{1}{p}}
+        \leqslant\\\leqslant
+        (\text{неравенство Минковского})
+        \leqslant
+        \sum\limits_{k=1}^{n}\|f_k\|_p
+        \leqslant
+        \sum\limits_{k=1}^{\infty}\|f_k\|_p < +\infty.
+    \end{multline*} 
+    Следовательно, по теореме Леви:
+    \[\exists \lim\limits_{n\to \infty}\left(\int_E F_n(x) d\mu(x)\right)^{\frac{1}{p}} = \left(\int_E \lim\limits_{n\to \infty}F_n(x) d\mu(x)\right)^{\frac{1}{p}} \implies\]
+    \[\implies \left(\int_E \left(\sum\limits_{k=1}^{\infty} |f_n(x)|\right)^p d\mu(x)\right)^{\frac{1}{p}} \leqslant \sum\limits_{k=1}^{\infty} \|f_k\|_p < +\infty \implies\]
+    \[\implies \sum\limits_{k=1}^{\infty}|f_k(x)| < +\infty \quad \mu\text{-п.в. } x \in E,\]
+    следовательно, для $\mu$-почти всех $x \in E$ обычный числовой ряд $\sum\limits_{k=1}^{\infty} f_k(x)$ сходится.
+    Тогда
+    \[f(x):= \sum\limits_{k=1}^{\infty}f_k(x)\]
+    корректно определена $\mu$-почти всюду (напомним, что $\mu$ — полная мера).
+    Остаётся доказать, что
+    \[\|F - \sum\limits_{k=1}^{n} f_k\|_p \to 0, \ n \to \infty.\]
+    Определим
+    \[J_n := \left(\int_E \left|\sum\limits_{k=n+1}^{\infty} f_k(x)\right|^p d\mu(x)\right)^{\frac{1}{p}} \leqslant \left(\int_E \left(\sum\limits_{k=n+1}^{\infty}|f_k(x)|\right)^p d\mu(x)\right)^{\frac{1}{p}}, \ \forall n \in \N.\]
+    \[\sum\limits_{k=n+1}^{\infty} |f_k(x)| = \lim\limits_{m\to \infty} \sum\limits_{k=n+1}^{m}|f_k(x)| \ \mu\text{-п.в. } x \in X.\]
+    Следовательно, в силу леммы Фату:
+    \begin{multline*}
+        \left(\int_E \left(\lim\limits_{m \to \infty} \sum\limits_{k=n+1}^{m} |f_k(x)|\right)^p d\mu(x)\right)^{\frac{1}{p}} \leqslant \lowlim\limits_{m \to \infty} \left(\int_E \left(\sum\limits_{k=n+1}^{m}|f_k(x)|\right)^p d\mu(x)\right)^{\frac{1}{p}}
+        \leqslant\\\leqslant
+        (\text{неравенство Минковского}) \leqslant
+        \lim\limits_{m \to \infty} \sum\limits_{k=n+1}^{m}\left(\int_E |f_k(x)|^p d\mu(x)\right)^{\frac{1}{p}}
+        =\\=
+        \sum\limits_{k=n+1}^{\infty} \left(\int_E |f_k(x)|^p d\mu(x)\right)^{\frac{1}{p}} = \sum\limits_{k=n+1}^{\infty} \|f_k\|_p \to 0, \ n \to \infty.
+    \end{multline*} 
+\end{proof} 
