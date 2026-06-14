@@ -20,7 +20,7 @@
 \begin{theorem}[Неравенство Гёльдера для интегралов]
     Пока что считаем, что $p \in (1, +\infty)$. Пусть $f \in \widetilde{L}_p(E, \mu)$, $g \in \widetilde{L}_{p'}(E,\mu)$.
     Тогда $f,g \in \widetilde{L}_1(E,\mu)$. Более того,
-    \[\int_E fg d\mu \leqslant \left(\int_E |f|^p d\mu\right)^{\frac{1}{p}} \cdot \left(\int_E |g|^{p'} d\mu\right)^{\frac{1}{p'}}.\]
+    \[\int_E |fg| d\mu \leqslant \left(\int_E |f|^p d\mu\right)^{\frac{1}{p}} \cdot \left(\int_E |g|^{p'} d\mu\right)^{\frac{1}{p'}}.\]
     Случай, когда обе части неравенства равны $+\infty$, не исключается.
 \end{theorem} 
 \begin{proof}
@@ -131,7 +131,7 @@
     \[\|y_k\| \leqslant \frac{1}{2^k} \quad \forall k \in \N,\]
     следовательно,
     \[\sum\limits_{k=1}^{\infty} \|y_k\| \leqslant 2 < +\infty,\]
-    следовательно, ряд $\sum\limits_{k=0}^{\infty}y_k$ абсолютно сходится, но тогда ряд $\sum\limits_{k=0}^{\infty}y_k$ сходится в $E$, следовательно, существует $x \in E$, что
+    а ряд $\sum\limits_{k=0}^{\infty}y_k$ абсолютно сходится, но тогда ряд $\sum\limits_{k=0}^{\infty}y_k$ сходится в $E$, следовательно, существует $x \in E$, что
     \[\|x - \sum\limits_{k=0}^{l}y_k\| \to 0, \ l \to \infty.\]
     \[\sum\limits_{k=0}^{l} y_k = x_{N_1} + (x_{N_2} - x_{N_1}) + \dots + (x_{N_{l+1}} - x_{N_l}) = x_{N_{l+1}},\]
     тогда $x = \lim\limits_{l \to \infty} x_{N_l}$, то есть получили такую подпоследовательность $\{x_{N_k}\}_{k=1}^\infty$ последовательности $\{x_n\}$, что 
