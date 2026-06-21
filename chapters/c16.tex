@@ -303,52 +303,52 @@ $f \in C([0,1])$, но $f \notin B V([0,1])$, а значит по теорем�
 
 
 \subsection{Пространство $L_\infty$}
+Пусть $(X, \mathfrak{M}, \mu)$ — пространство с полной $\sigma$-конечной мерой $\mu$, $E \in \mathfrak{M}$.
 \begin{definition}
-    Будем называть \textit{существенным супремумом} для измеримой функции $f$ на пространстве с мерой $(X, \mathfrak{M}, \mu)$ следующее:
-    \[\esup\limits_{x \in X} |f(x)| = \inf\{L > 0 \ | \ \mu(|f| > L) = 0\}.\]
+    Будем называть \textit{существенным супремумом} для измеримой функции $f$ на пространстве с мерой $(X, \mathfrak{M}, \mu)$, где $E \in \mathfrak{M}$, следующее:
+    \[\esup\limits_{x \in E} |f(x)| = \inf\{L > 0 \ | \ \mu(|f| > L) = 0\}.\]
 \end{definition} 
 
 \begin{definition}
-    Пусть $(X, \mathfrak{M}, \mu)$ — пространство с мерой.
-    Будем говорить, что $f: X \to \overline{\R}$ \textit{существенно ограничена}, если
-    \[\esup\limits_{x \in X} |f(x)| < +\infty.\]
+    Будем говорить, что $f: E \to \overline{\R}$ \textit{существенно ограничена}, если
+    \[\esup\limits_{x \in E} |f(x)| < +\infty.\]
 \end{definition} 
 
 \begin{definition}
-    Определим $L_\infty$ как ЛНП классов эквивалентности существенно ограниченных на $X$ функций с нормой $\esup$, то есть
-    \[\|f\|_\infty = \esup\limits_X |f|.\]
+    Определим $L_\infty(E)$ как ЛНП классов эквивалентности существенно ограниченных на $E$ функций с нормой $\esup$, то есть
+    \[\|f\|_\infty = \esup\limits_E |f|.\]
 \end{definition} 
 
 \begin{theorem}[Обобщение неравенства Гёльдера]
-    Пусть $f\in L_\infty(X)$ и $g\in L_1(X)$. Тогда $fg\in L_1(X)$ и
+    Пусть $f\in L_\infty(E)$ и $g\in L_1(E)$. Тогда $fg\in L_1(E)$ и
     \[\|fg\|_1 \le \|f\|_\infty \|g\|_1.\]
 \end{theorem}
 \begin{proof}
-    По определению существенного супремума существует множество $E\subset X$ такое, что
-    \[\mu(E)=0\]
-    и для всех $x\in X\setminus E$ выполнено
+    По определению существенного супремума существует множество $E'\subset E$ такое, что
+    \[\mu(E')=0\]
+    и для всех $x\in E\setminus E'$ выполнено
     \[|f(x)|\leqslant \|f\|_\infty.\]
 
     Тогда почти всюду
     \[|f(x)g(x)|\leqslant \|f\|_\infty |g(x)|.\]
     Интегрируя это неравенство, получаем
-    \[\int_X |f g|\,d\mu
+    \[\int_E |f g| d\mu
     \leqslant
-    \int_X \|f\|_\infty |g|\,d\mu
+    \int_E \|f\|_\infty |g| d\mu
     =
-    \|f\|_\infty \int_X |g|\,d\mu.\]
+    \|f\|_\infty \int_E |g| d\mu.\]
     Следовательно,
     \[\|fg\|_1\leqslant \|f\|_\infty\|g\|_1.\]
 \end{proof}
 
 Это предельный случай неравенства Гёльдера при сопряжённых показателях
-\[p=\infty,\qquad q=1.\]
+\[p=\infty,\qquad p'=1.\]
 
-Аналогично, если $f\in L_1(X)$ и $g\in L_\infty(X)$, то
+Аналогично, если $f\in L_1(E)$ и $g\in L_\infty(E)$, то
 \[\|fg\|_1\leqslant \|f\|_1\|g\|_\infty.\]
 
 Также верен вариант для двух существенно ограниченных функций:
-если $f,g\in L_\infty(X)$, то
+если $f,g\in L_\infty(E)$, то
 \[\|fg\|_\infty\leqslant \|f\|_\infty\|g\|_\infty.\]
 
 Действительно, почти всюду
@@ -365,13 +365,13 @@ $f \in C([0,1])$, но $f \notin B V([0,1])$, а значит по теорем�
 \]
 Отсюда
 \[
-\esup_{x\in X}|f(x)g(x)|
+\esup_{x\in E}|f(x)g(x)|
 \leqslant
 \|f\|_\infty\|g\|_\infty.
 \]
 
 \begin{theorem}[Обобщение неравенства Минковского]
-    Пусть $f,g\in L_\infty(X)$. Тогда $f+g\in L_\infty(X)$ и
+    Пусть $f,g\in L_\infty(E)$. Тогда $f+g\in L_\infty(E)$ и
     \[
     \|f+g\|_\infty
     \leqslant
@@ -379,17 +379,17 @@ $f \in C([0,1])$, но $f \notin B V([0,1])$, а значит по теорем�
     \]
 \end{theorem}
 \begin{proof}
-    По определению существенного супремума существуют множества $E_f,E_g\subset X$ такие, что
+    По определению существенного супремума существуют множества $E_f,E_g\subset E$ такие, что
     \[\mu(E_f)=\mu(E_g)=0,\]
     причём при $x\notin E_f$
     \[|f(x)|\leqslant \|f\|_\infty,\]
     а при $x\notin E_g$
     \[|g(x)|\leqslant \|g\|_\infty.\]
     Положим
-    \[E:=E_f\cup E_g.\]
+    \[G:=E_f\cup E_g.\]
     Тогда
-    \[\mu(E)=0.\]
-    Для всех $x\in X\setminus E$ имеем
+    \[\mu(G)=0.\]
+    Для всех $x\in E\setminus G$ имеем
     \[
     |f(x)+g(x)|
     \leqslant
@@ -399,7 +399,7 @@ $f \in C([0,1])$, но $f \notin B V([0,1])$, а значит по теорем�
     \]
     Следовательно,
     \[
-    \operatorname{ess\,sup}_{x\in X}|f(x)+g(x)|
+    \esup_{x\in E}|f(x)+g(x)|
     \leqslant
     \|f\|_\infty+\|g\|_\infty.
     \]
@@ -412,52 +412,43 @@ $f \in C([0,1])$, но $f \notin B V([0,1])$, а значит по теорем�
 \end{proof}
 
 \begin{theorem}
-Пространство $L_\infty(X)$ полно.
+Пространство $L_\infty(E)$ полно.
 \end{theorem}
 \begin{proof}
-    Пусть $\{f_n\}_{n=1}^\infty$ — фундаментальная последовательность в $L_\infty(X)$. Это означает, что
+    Пусть $\{f_n\}_{n=1}^\infty$ — фундаментальная последовательность в $L_\infty(E)$. Это означает, что
     \[
     \forall \varepsilon>0\ \exists N\in\mathbb N:
     \forall n,m\geqslant N
     \quad
     \|f_n-f_m\|_\infty<\varepsilon.
     \]
-    Нужно доказать, что существует $f\in L_\infty(X)$ такая, что
-    \[
-    \|f_n-f\|_\infty\to 0,
-    \qquad n\to\infty.
-    \]
+    Нужно доказать, что существует $f\in L_\infty(E)$ такая, что
+    \[\|f_n-f\|_\infty\to 0,\ n\to\infty.\]
 
-    Зафиксируем $k\in\mathbb N$. По фундаментальности существует $N_k\in\mathbb N$ такое, что для всех $n,m\ge N_k$
+    Зафиксируем $k\in\mathbb N$. По фундаментальности существует $N_k\in\mathbb N$ такое, что для всех $n,m\geqslant N_k$
     \[\|f_n-f_m\|_\infty<\frac1k.\]
-    Это значит, что для каждой пары $n,m\ge N_k$ существует множество $E_{n,m}^{(k)}\subset X$ меры ноль такое, что для всех $x\notin E_{n,m}^{(k)}$
+    Это значит, что для каждой пары $n,m\geqslant N_k$ существует множество $E_{n,m}^{(k)}\subset E$ меры ноль такое, что для всех $x\notin E_{n,m}^{(k)}$
     \[|f_n(x)-f_m(x)|\leqslant \frac1k.\]
     Положим
     \[E_k:=\bigcup_{n,m\geqslant N_k} E_{n,m}^{(k)}.\]
     Так как это счётное объединение множеств меры ноль, то
     \[\mu(E_k)=0.\]
     Теперь положим
-    \[E:=\bigcup_{k=1}^{\infty}E_k.\]
+    \[G:=\bigcup_{k=1}^{\infty}E_k.\]
     Тогда снова
-    \[\mu(E)=0.\]
+    \[\mu(G)=0.\]
 
-    Покажем, что для каждого $x\in X\setminus E$ числовая последовательность $\{f_n(x)\}$ фундаментальна. Действительно, для любого $k\in\mathbb N$ и любых $n,m\geqslant N_k$ имеем
+    Покажем, что для каждого $x\in E\setminus G$ числовая последовательность $\{f_n(x)\}$ фундаментальна. Действительно, для любого $k\in\mathbb N$ и любых $n,m\geqslant N_k$ имеем
     \[|f_n(x)-f_m(x)|\leqslant \frac1k.\]
-    Следовательно, $\{f_n(x)\}$ фундаментальна в $\mathbb R$ или $\mathbb C$. Значит, она сходится.
+    Следовательно, $\{f_n(x)\}$ фундаментальна в $\mathbb R$. Значит, она сходится.
 
     Определим функцию $f$ следующим образом:
-    \[
-    f(x):=\lim_{n\to\infty} f_n(x),
-    \qquad x\in X\setminus E.
-    \]
-    На множестве $E$ доопределим $f$ произвольно, например положим
-    \[
-    f(x):=0,
-    \qquad x\in E.
-    \]
+    \[f(x):=\lim_{n\to\infty} f_n(x),\ x\in E\setminus G.\]
+    На множестве $G$ доопределим $f$ произвольно, например положим
+    \[f(x):=0,\ x\in G.\]
     Так как $f$ почти всюду является поточечным пределом измеримых функций, то $f$ измерима.
 
-    Теперь докажем, что $f\in L_\infty(X)$. Так как $\{f_n\}$ фундаментальна в $L_\infty$, существует $N\in\mathbb N$ такое, что для всех $n\geqslant N$
+    Теперь докажем, что $f\in L_\infty(E)$. Так как $\{f_n\}$ фундаментальна в $L_\infty$, существует $N\in\mathbb N$ такое, что для всех $n\geqslant N$
     \[\|f_n-f_N\|_\infty<1.\]
     Значит, вне некоторого множества меры ноль выполнено
     \[|f_n(x)-f_N(x)|\leqslant 1.\]
@@ -477,7 +468,7 @@ $f \in C([0,1])$, но $f \notin B V([0,1])$, а значит по теорем�
     <+\infty.
     \]
     Значит,
-    \[f\in L_\infty(X).\]
+    \[f\in L_\infty(E).\]
 
     Осталось доказать, что $f_n\to f$ по норме $L_\infty$. Пусть $\varepsilon>0$. Так как $\{f_n\}$ фундаментальна, существует $N\in\mathbb N$ такое, что для всех $n,m\geqslant N$
     \[\|f_n-f_m\|_\infty<\varepsilon.\]
@@ -488,10 +479,7 @@ $f \in C([0,1])$, но $f \notin B V([0,1])$, а значит по теорем�
     Следовательно,
     \[\|f_n-f\|_\infty\leqslant \varepsilon\]
     для всех $n\geqslant N$. Поэтому
-    \[
-    \|f_n-f\|_\infty\to 0,
-    \qquad n\to\infty.
-    \]
+    \[\|f_n-f\|_\infty\to 0,\ n\to\infty.\]
 
-    Итак, любая фундаментальная последовательность в $L_\infty(X)$ сходится по норме $L_\infty$ к элементу из $L_\infty(X)$. Следовательно, пространство $L_\infty(X)$ полно.
+    Итак, любая фундаментальная последовательность в $L_\infty(E)$ сходится по норме $L_\infty$ к элементу из $L_\infty(E)$. Следовательно, пространство $L_\infty(E)$ полно.
 \end{proof}

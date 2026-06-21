@@ -37,12 +37,12 @@
     Для любого измеримого по Лебегу множества $A \subset \R^n$ положительной меры существует неизмеримое подмножество $E \subset A$.
 \end{theorem} 
 \begin{proof}
-    Введём на множестве $A$ введём отношение эквивалентности:
+    Введём на множестве $A$ отношение эквивалентности:
     \[x \sim y \Longleftrightarrow x - y \in \Q^n.\]
     Получили разбиение $A$ на классы эквивалентности.
     $\{E_{\alpha}\}_{\alpha \in I}$ — семейство классов эквивалентности. 
     Пользуясь аксиомой выбора, построим множество $E \subset A$:
-    \[E \cap E_\alpha = \{X_\alpha\} \ \forall \alpha \in I, \ E = \{X_\alpha\}_{\alpha \in I}.\]
+    \[E \cap E_\alpha = \{X_\alpha\} \ \forall \alpha \in I, \quad E = \{X_\alpha\}_{\alpha \in I}.\]
     Утверждается, что $E$ неизмеримо.
     Поскольку $A$ ограничено, то
     \[\exists R > 0: \ \forall x, y \in A: \ \|x-y\| \leqslant R.\]
@@ -62,7 +62,7 @@
     \]
     Случай равенства нулю невозможен, поскольку тогда 
     \[\mu(A) \leqslant \sum\limits_{\|r\| \leqslant R} \mu(E + r) = 0.\]
-    Если же $\mu(A) > 0$, то
+    Если же $\mu(E) > 0$, то
     \[\mu(E + r) = \mu(E)\]
     — сдвиг не меняет меру.
     Тогда
@@ -103,14 +103,14 @@
         \mathcal{L}^n (G_\epsilon \setminus E) = \mathcal{L}^n \left(\underbrace{\bigcup\limits_{k=1}^{\infty} \text{int} \widetilde{P_k}}_{\text{изм. по Л.}} \setminus E\right) = \mathcal{L}^n \left(\bigcup\limits_{k=1}^{\infty} \text{int} \widetilde{P_k}\right) - \mathcal{L}^n (E) 
         \leqslant\\\leqslant \text{(счётная полуаддитивность $\mathcal{L}^n$)} \leqslant \sum\limits_{k=1}^{\infty} \mathcal{L}^n(\text{int} \widetilde{P_k}) - \mathcal{L}^n(E)
         \leqslant\\\leqslant
-        \sum\limits_{k=1}^{\infty} \mathcal{L}^n(P_k) + \frac{\epsilon}{2^{k-1}} - \mathcal{L}^n(E) 
-        \leqslant \mathcal{L}^n(E) + \frac{\epsilon}{2} + \sum\limits_{k=1}^{\infty} \frac{\epsilon}{2^{k-1}} - \mathcal{L}^n(E) = \epsilon.
+        \sum\limits_{k=1}^{\infty} \mathcal{L}^n(P_k) + \frac{\epsilon}{2^{k+1}} - \mathcal{L}^n(E) 
+        \leqslant \mathcal{L}^n(E) + \frac{\epsilon}{2} + \sum\limits_{k=1}^{\infty} \frac{\epsilon}{2^{k+1}} - \mathcal{L}^n(E) = \epsilon.
     \end{multline*}
 
     \item Пусть $E$ — произвольное измеримое множество.
     Поскольку $\mathcal{L}^n$ — $\sigma$-конечная мера, то:
     \[E = \bigcup\limits_{m=1}^{\infty} E_m,\]
-    где $\mu(E_m) < +\infty \ \forall m \in \N$.
+    где $\mathcal{L}^n(E_m) < +\infty \ \forall m \in \N$.
     \[\bigcup\limits_{m=1}^{\infty} E_m = \bigsqcup\limits_{m=1}^{\infty} E'_m,\]
     где 
     \[E'_1 = E_1, \ E'_m = E_m \setminus \bigcup\limits_{k=1}^{m-1}E_k, \ m \geqslant 2.\]
@@ -186,7 +186,7 @@
     \[F_1 \subset \dots \subset F_n \subset \dots\]
     и
     \[\mathcal{L}^n(E) = \lim\limits_{j \to \infty} \mathcal{L}^n(F_j).\]
-    \[0 \leqslant \mathcal{L}^n \left(E \setminus \bigcup\limits_{j=1}^{\infty} F_j\right) \leqslant \mathcal{L}^n \left(E \setminus \bigcup\limits_{j=1}^{\infty} F_j\right) = \mathcal{L}^n(E) - \mathcal{L}^n(F_N) \ \forall N \in \N.\]
+    \[0 \leqslant \mathcal{L}^n \left(E \setminus \bigcup\limits_{j=1}^{\infty} F_j\right) \leqslant \mathcal{L}^n \left(E \setminus \bigcup\limits_{j=1}^{N} F_j\right) = \mathcal{L}^n(E) - \mathcal{L}^n(F_N) \ \forall N \in \N.\]
     Перейдём к пределу при $N \to \infty$ в неравенстве:
     \[\mathcal{L}^n \left(E \setminus \bigcup\limits_{j=1}^{\infty}F_j\right) = 0.\]
     Определим
@@ -208,12 +208,12 @@
     
     К тому же, $\widetilde{\widetilde{F_s}}$ — монотонная последовательность замкнутых множеств.
 
-    Первый пункт следует из второго по двойственности (когда-то будет).
+    Первый пункт следует из второго по двойственности.
 \end{proof}
 
 \begin{lemma}[Витали, $5B$-covering lemma]
     Пусть $E \subset \R^n$ — произвольное непустое ограниченное множество.
-    Пусть $\{B_\alpha\}_{\alpha \in I}$, где $I$ — индексное множество произвольной мощности, со следующими свойствами:
+    Пусть $\{B_\alpha\}_{\alpha \in I}$ — семейство шаров, где $I$ — индексное множество произвольной мощности, со следующими свойствами:
     \begin{enumerate}
         \item $$E \subset \bigcup\limits_{\alpha \in I} B_\alpha;$$
         \item $\sup\limits_{\alpha \in I} r(B_\alpha) < + \infty$.
@@ -264,12 +264,12 @@
     \[R_{l+1} = \sup\{r(B) \ | \ B \in \mathcal{F}_{l+1}\}\]
     и выберем
     \[B_{l+1} \in \mathcal{F}_{l+1}: \ r(B_{l+1}) > \frac{R_{l+1}}{2}.\]
-    В итоге либо процедура обрывается за конечное число шагов, либо получили бесконечную последовательность $\{\mathcal{F}_l\}_{l=1}^\infty$ и бесконечную последовательность дизъюнктных шаров $\{B_l\}_{l=1}^\infty$.
+    В итоге либо процедура обрывается за конечное число шагов, либо получается бесконечная последовательность $\{\mathcal{F}_l\}_{l=1}^\infty$ и бесконечная последовательность дизъюнктных шаров $\{B_l\}_{l=1}^\infty$.
 
     Рассмотрим случай
     \[\mathcal{F}_1 \supset \dots \supset \mathcal{F}_N, \ \mathcal{F}_{N+1} = \emptyset.\]
     Тогда любой шар $B \in \mathcal{F}_1$ обязан пересекаться с каким-то из шаров $B_1, \dots, B_N$.
-    Если $B \in \mathcal{F}_1$, то пусть $i = 1, \dots, N$.
+    %Если $B \in \mathcal{F}_1$, то пусть $i = 1, \dots, N$.
     Возьмём наименьший номер, для которого $B_i \cap B \neq \emptyset$,
     тогда
     $r(B) \leqslant R_i$, а $r(B_i) > \frac{R_i}{2}$.
@@ -313,7 +313,7 @@
     Будем говорить, что $\mathcal{F}$ — \textit{fine covering (или покрытие Витали) множества $E$}, если $\forall x \in E \ \forall r > 0 \ \exists \alpha(x,r) \in I:$
     \begin{enumerate}
         \item Центр шара $B_{\alpha(x,r)}$ есть $x$;
-        \item Радиус $B_{\alpha(x,r)}$ меньше $r$, то есть для любой точки можно найти последовательность шаров из $\mathcal{F}$ с центром в этой точке и ряд стремится к нулю.
+        \item Радиус $B_{\alpha(x,r)}$ меньше $r$, то есть для любой точки можно найти последовательность шаров сколь угодно малого радиуса из $\mathcal{F}$ с центром в этой точке.
     \end{enumerate}
     
 \end{definition} 
@@ -340,7 +340,7 @@
     \noindent Рассмотрим два случая:
     \begin{enumerate}
         \item Семейство $\{B_i\}_{i=1}^N$ конечно.
-        $$\mathcal{F}_{N+1} = 0 \implies \left\{B \in \mathcal{F} \ | \ B \cap \bigcup\limits_{i=1}^{N} B_i\right\} = \emptyset.$$
+        $$\mathcal{F}_{N+1} = 0 \implies \left\{B \in \mathcal{F} \ | \ B \cap \bigcup\limits_{i=1}^{N} B_i = \emptyset\right\} = \emptyset.$$
         Тогда любой шар из $\mathcal{F}$ пересекается с каким-то из шаров $B_i$.
 
         Если $x \in E$, то поскольку $\mathcal{F}$ — покрытие Витали, то $\forall r > 0 \ \exists B \in \mathcal{F}: \ B \cap \bigcup\limits_{i=1}^{N} B_i \neq \emptyset$ и $r(B) < r$.
@@ -366,12 +366,12 @@
         \[r(\widetilde{B_j}) \geqslant \frac{R_{N+j}}{2} = \frac{1}{2} \sup\{r(B) \ | \ B \in \widetilde{\mathcal{F}_j}\}.\]
         И все рассуждения из леммы Витали работают теперь для множества $E_N$, семейств $\{\widetilde{\mathcal{F}_k}\}$ и шаров $\{\widetilde{B}_k\}$.
         В частности,
-        \[E_N \subset \bigcup\limits_{k=1}^{\infty} 5 \widetilde{B_k} = \bigcup\limits_{k=1}^{\infty} B_{N+k}.\]
+        \[E_N \subset \bigcup\limits_{k=1}^{\infty} 5 \widetilde{B_k} = \bigcup\limits_{k=1}^{\infty} 5B_{N+k}.\]
         
         \begin{multline*}
-            \sum\limits_{i=1}^{\infty} (\mathcal{L}^n(B_i))^n < + \infty
+            \sum\limits_{i=1}^{\infty} \mathcal{L}^n(B_i) < + \infty
             \implies
-            \sum\limits_{i=N+1}^{\infty} (\mathcal{L}^n(B_i))^n \xrightarrow{N \to \infty} 0
+            \sum\limits_{i=N+1}^{\infty} \mathcal{L}^n(B_i) \xrightarrow{N \to \infty} 0
             \implies\\\implies
             \mathcal{L}^n(E_N) \leqslant \mathcal{L}^n \left(\bigcup\limits_{k=1}^{\infty} 5B_{N+k}\right) \leqslant \text{сч.полуадд.} \leqslant
             \sum\limits_{k=N+1}^{\infty} 5^n \mathcal{L}^n(B_k) \xrightarrow{N \to \infty} 0.
@@ -453,6 +453,6 @@
 \end{proof} 
 
 \begin{corollary}
-    Если $E \subset \R^n$, $E \neq \emptyset$ — измеримое множество, то для $\mathcal{L}^n$ почти всюду на $E$ (т.е. $\forall x \in E \setminus E'$, где $\mathcal{L}^n(E') = 0$) верно
+    Если $E \subset \R^n$, $E \neq \emptyset$ — измеримое множество, то $\mathcal{L}^n$-почти всюду на $E$ (т.е. $\forall x \in E \setminus E'$, где $\mathcal{L}^n(E') = 0$) верно
     \[\exists \lim\limits_{r \to 0} \frac{\mathcal{L}^n(B_r(x) \cap E)}{\mathcal{L}^n(B_r(x))} = 1.\]
 \end{corollary}

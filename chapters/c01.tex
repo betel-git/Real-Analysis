@@ -102,9 +102,9 @@
 \begin{remark}
     Система множеств $\mathcal{A} \subset 2^X$ является алгеброй тогда и только тогда, когда:
     \begin{enumerate}
-        \item $\emptyset \in \mathcal{A}, \ X \in \mathcal{A}$;
-        \item $A \bigtriangleup B \in \mathcal{A} \ \forall A, B \in \mathcal{A}$;
-        \item $A \cap B \in \mathcal{A} \ \forall A, B \in \mathcal{A}$.
+        \item $\emptyset \in \mathcal{A} \quad X \in \mathcal{A}$;
+        \item $A \bigtriangleup B \in \mathcal{A} \quad \forall A, B \in \mathcal{A}$;
+        \item $A \cap B \in \mathcal{A} \quad \forall A, B \in \mathcal{A}$.
     \end{enumerate}
 \end{remark}
 
@@ -122,7 +122,7 @@
     \begin{enumerate}
         \item $\emptyset \in \mathcal{P}$;
         \item $A \cap B \in \mathcal{P} \ \forall A, B \in \mathcal{P}$;
-        \item Если $A, B \in \mathcal{P}$ и $A \subset B$, то $\exists \{P_i\}_{i = 1}^N \subset \mathcal{P}: B \setminus A = \bigsqcup\limits_{i = 1}^{N'} P_i$.
+        \item Если $A, B \in \mathcal{P}$ и $A \subset B$, то $\exists \{P_i\}_{i = 1}^N \subset \mathcal{P}: B \setminus A = \bigsqcup\limits_{i = 1}^{N} P_i$.
     \end{enumerate}
 \end{definition} 
 
@@ -146,7 +146,7 @@
 \begin{proof}
     $$\emptyset \in \mathcal{A}_\alpha \ \forall \alpha \in I \Longrightarrow \emptyset \in \bigcap\limits_{\alpha \in I} \mathcal{A}_\alpha.$$
     $$A, B \in \mathcal{A} \Longrightarrow A, B \in \mathcal{A}_\alpha \ \forall \alpha \in I.$$
-    Так как $\mathcal{A}_\alpha$ — алгебра, то $A \cap B$, $A \cup B$, $A \setminus B$ принадлежат $\mathcal{A}_\alpha$ для любого $\alpha \in I$, поэтому объединение, пересечение и разность принадлежат $\mathcal{A}_\alpha$.
+    Так как $\mathcal{A}_\alpha$ — алгебра, то $A \cap B$, $A \cup B$, $A \setminus B$ принадлежат $\mathcal{A}_\alpha$ для любого $\alpha \in I$, поэтому объединение, пересечение и разность принадлежат $\mathcal{A}$.
 
     Если $\{A_n\} \subset \mathcal{A}$, то $\{A_n\} \subset \mathcal{A}_\alpha$ для любого $\alpha \in I$. Так как каждая $A_\alpha$ является $\sigma$-алгеброй, имеем
     \[\bigcup\limits_{n=1}^{\infty} A_n \in \mathcal{A}_\alpha \ \forall \alpha \in I \Longrightarrow \bigcup\limits_{n=1}^{\infty} A_n \in \mathcal{A} = \bigcap\limits_{\alpha \in I} \mathcal{A}_\alpha.\]
@@ -191,14 +191,14 @@
         \]
     \end{enumerate}
 \end{theorem} 
-\begin{proof}
+\begin{proof}\tab
 \begin{enumerate}
     \item Докажем по индукции.
     
     База индукции ($N = 1$). Из определения полукольца:
     \[P \setminus P_1 = P \setminus (P \cap P_1) = \bigsqcup\limits_{j = 1}^{N_1} S_j, \ S_j \in \mathcal{P}, \ P \cap P_1 \in \mathcal{P}.\]
     Предположим, что утверждение доказано при $N' \in \N$. Докажем, что верно при $N' + 1$.
-    \[P \setminus \bigcup\limits_{i = 1}^{N' + 1} P_i = P \setminus \bigcup\limits_{i = 1}^{N'} P_i \cup P_{N' + 1} = \left( P \setminus \bigcup\limits_{i=1}^{N'} P_i \right) \cap (P \setminus P_{N' + 1}),\]
+    \[P \setminus \bigcup\limits_{i = 1}^{N' + 1} P_i = P \setminus \left(\bigcup\limits_{i = 1}^{N'} P_i \cup P_{N' + 1}\right) = \left( P \setminus \bigcup\limits_{i=1}^{N'} P_i \right) \cap (P \setminus P_{N' + 1}),\]
     где $P \setminus \bigcup\limits_{i=1}^{N'} P_i = \bigsqcup\limits_{j = 1}^{J'} S_j$ по предположению индукции, а 
     $P \setminus P_{N' + 1} = \bigsqcup\limits_{l = 1}^{L'} Q_l, \ Q_l \in \mathcal{P}$ по базе индукции.
     
@@ -307,7 +307,7 @@
 
 \begin{corollary}
     Любое непустое открытое множество $\Omega$ в $\R^n$ можно реализовать в виде не более чем счётного объединения ячеек вида
-    \[[a,b) = \prod_{i=1}^n [a_i, b_i), \ a_i, b_i \in \Q^n.\]
+    \[[a,b) = \prod_{i=1}^n [a_i, b_i), \ a_i, b_i \in \Q.\]
     Более того, можно считать, что такие ячейки содержатся в $\Omega$ вместе с замыканием.
 \end{corollary}
 \begin{proof}
@@ -332,13 +332,15 @@
     \begin{enumerate}
         \item $\emptyset \in \mathcal{P}_1$, $\emptyset \in \mathcal{P}_2$ — по определению.
         \[\emptyset = \emptyset \times \emptyset \in \mathcal{P}_1 \otimes \mathcal{P}_2\]
-        \item $A_1 \times A_2 \in \mathcal{P}_1 \times \mathcal{P}_2$, $B_1 \times B_2 \in \mathcal{P}_1 \times \mathcal{P}_2$
+        \item $A_1 \times A_2 \in \mathcal{P}_1 \otimes \mathcal{P}_2$, $B_1 \times B_2 \in \mathcal{P}_1 \otimes \mathcal{P}_2$
         \[(A_1 \times A_2) \cap (B_1 \times B_2) = (A_1 \cap B_1) \times (A_2 \cap B_2) \in \mathcal{P}_1 \otimes \mathcal{P}_2,\]
         т.к. $A_1 \cap B_1 \in \mathcal{P}_1, \ A_2 \cap B_2 \in \mathcal{P}_2$.
         \item Пусть $A \times B \in \mathcal{P}_1 \otimes \mathcal{P}_2$, $C \times D \in \mathcal{P}_1 \otimes \mathcal{P}_2$.
-        \[A = C \sqcup \bigsqcup\limits_{j=1}^{N_1} C_j\]
-        \[B = D \sqcup \bigsqcup\limits_{i=1}^{N_2} D_i\]
-        Определим $C_0 := A \cap C$, $D_0 := A \cap D$. Тогда
+        Определим $C_0 := A \cap C$, $D_0 := B \cap D$. Тогда поскольку $\mathcal{P}_1$ и $\mathcal{P}_2$ — полукольца, то
+        \[A \setminus C_0 = \bigsqcup\limits_{j=1}^{N_1} C_j \implies A = C_0 \sqcup \bigsqcup\limits_{j=1}^{N_1} C_j, \quad C_j \in \mathcal{P}_1,\]
+        \[B \setminus D_0 = \bigsqcup\limits_{i=1}^{N_2} D_i \implies B = D_0 \sqcup \bigsqcup\limits_{i=1}^{N_2} D_i, \quad D_i \in \mathcal{P}_2.\]
+        %\[A = C \sqcup \bigsqcup\limits_{j=1}^{N_1} C_j\]
+        %\[B = D \sqcup \bigsqcup\limits_{i=1}^{N_2} D_i\]
         \begin{multline*}
             A \times B := \left(\bigsqcup_{j=0}^{N_1} C_j\right) \times \left(\bigsqcup_{i=0}^{N_2} D_i\right) = \bigsqcup_{j=0}^{N_1} \bigsqcup_{i=0}^{N_2} (C_j \times D_i) =\\= (C_0 \times D_0) \sqcup \bigsqcup \bigsqcup_{(i,j) \neq (0,0)} (C_j \times D_i)
         \end{multline*}

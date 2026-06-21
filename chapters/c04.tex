@@ -2,8 +2,8 @@
 
 \begin{definition}
     Пусть $\mu_0: \mathcal{P} \to [0, + \infty]$ — счётно-аддитивная мера на полукольце $\mathcal{P}$.
-    \[\mu_0^*(E) := \inf \sum\limits_{j=1}^{\infty} \mu_0(P_j),\]
-    где инфимум берётся по всем покрывающим множество $E$ последовательностям $\{P_j\} \subset \mathcal{P}$.
+    \[\mu_0^*(E) := \inf \left\{\sum\limits_{j=1}^{\infty} \mu_0(P_j) \ : \ \{P_j\} \subset \mathcal{P}, \ E \subset \bigcup\limits_{j=1}^{\infty}P_j\right\},\]
+    то есть инфимум берётся по всем покрывающим множество $E$ последовательностям $\{P_j\} \subset \mathcal{P}$.
 \end{definition} 
 
 \begin{theorem}
@@ -42,7 +42,7 @@
     2 и 3 утверждения теоремы следуют из прошлых теорем. Докажем первое.
 
     Требуется доказать, что 
-    \[\forall E \subset X \ \forall P \in \mathcal{P} \ \mu_0^*(E) \geqslant \mu_0^*(P \cap E) + \mu_0^*(E \setminus P)\]
+    \[\forall E \subset X \ \forall P \in \mathcal{P} \quad \mu_0^*(E) \geqslant \mu_0^*(P \cap E) + \mu_0^*(E \setminus P)\]
     (равенство в другую сторону очевидно).
 
     \begin{enumerate}
@@ -85,7 +85,7 @@
 
 \begin{theorem}
     Пусть $\mu$ — конечно-аддитивная мера (со значениями $[0, + \infty]$) на $\sigma$-алгебре $\mathfrak{M}$.
-    Тогда $\mu$ счётно-аддитивна тогда и только тогда, если $\mu$ непрерывна снизу по включению, то есть если
+    Тогда $\mu$ счётно-аддитивна тогда и только тогда, когда $\mu$ непрерывна снизу по включению, то есть если
     \[A_1 \subset A_2 \subset \dots \subset A_n \subset \dots, \ \{A_i\} \in \mathfrak{M},\]
     то
     \[\exists \lim\limits_{i \to \infty} \mu(A_i) = \mu\left(\bigcup\limits_{i=1}^{\infty} A_i\right).\]
@@ -131,7 +131,7 @@
 
 \begin{definition}
     Пусть $(X, \mathfrak{M}, \mu)$ — измеримое пространство.
-    Тогда $\mu$ называется \textit{полной мерой}, если $\forall E: \ \mu(E) = 0$ и $\forall E' \subset E$ выполнено $E' \in \mathfrak{M}$.
+    Тогда $\mu$ называется \textit{полной мерой}, если $\forall E \in \mathfrak{M}: \ \mu(E) = 0$ и $\forall E' \subset E$ выполнено $E' \in \mathfrak{M}$.
 \end{definition} 
 
 \begin{theorem}[О единственности продолжения меры]
@@ -174,7 +174,7 @@
 \end{proof} 
 
 \begin{lemma}
-    Если $\mu^*$ — внешняя мера, построенная по счётно-аддитивной мере $\mu$ на полукольце $\mathcal{P}$.
+    Пусть $\mu^*$ — внешняя мера, построенная по счётно-аддитивной мере $\mu$ на полукольце $\mathcal{P}$.
     Пусть есть $E \subset X$: $\mu^*(E) < +\infty$, тогда
     \[\exists C: \ C = \bigcap\limits_{n=1}^{\infty} \bigcup\limits_{j=1}^{\infty} P_{n,j}, \ P_{n,j} \in \mathcal{P},\]
     такое, что:
@@ -224,7 +224,7 @@
     По теореме о единственности представления меры:
     \[\nu\bigm|_{\mathfrak{M}(\mathcal{P})} = \mu^*\bigm|_{\mathfrak{M}(\mathcal{P})}.\]
     Фиксируем произвольное $e$: $\mu^*(e) = 0$ и покажем, что $e \in \mathfrak{M}_{\nu}$ и $\nu(e) = 0$.
-    Поскольку $e \in \mathfrak{\mu^*}$ в силу полноты $\mu^*$, то
+    Поскольку $\mu^*$ полна и $e \in \mathfrak{M}_{\mu^*}$, то
     \[\exists \widetilde{e} \in \mathfrak{M}(\mathcal{P}): \ \mu^*(\widetilde{e}) = 0 \text{ и } e \subset \widetilde{e} 
     \implies 
     \nu(\widetilde{e}) = 0 \text{ и } \widetilde{e} \in \mathfrak{M}_{\nu},\]

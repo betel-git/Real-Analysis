@@ -11,7 +11,7 @@
     \begin{enumerate}
         \item[$2'.$] $A = \bigsqcup\limits_{i=1}^{\infty} A_i$, $A, \{A_i\} \in \mathcal{P}$, то $\mu(A) = \sum\limits_{i=1}^{\infty} \mu(A_i)$,
     \end{enumerate}
-    то говорят, что $\mu$ — \textit{счётно-аддитивная мера} (или просто \textit{мера}) на $\mathcal{P}$.
+    то говорят, что $\mu$ — \textit{счётно-аддитивная мера} (\textit{$\sigma$-аддитивная мера} или просто \textit{мера}) на $\mathcal{P}$.
 \end{definition} 
 
 \begin{lemma}[Свойства конечно-аддитивной меры на полукольце]
@@ -22,14 +22,14 @@
         \item Конечная полуаддитивность: если $B \in \mathcal{P}$ и $\{C_j\}_{j=1}^M \subset \mathcal{P}$, $B \subset \bigcup\limits_{j=1}^M C_j$, то $\mu(B) \leqslant \sum\limits_{j=1}^M \mu(C_j).$
     \end{enumerate}
 \end{lemma}
-\begin{proof}
+\begin{proof}\tab
     \begin{enumerate}
         \item Первое — это следствие второго утверждения, если $\{A_i\}$ состоит из одного элемента $A$.
         \item Из теоремы о дизъюнктом представлении в полукольце существует дизъюнктный набор $\{Q_l\}_{l=1}^L \subset \mathcal{P}$:
         \[B = \bigsqcup_{i=1}^N A_i \sqcup \bigsqcup_{l=1}^L Q_l = \bigsqcup_{i=1}^N \bigsqcup_{l=1}^L (A_i \sqcup Q_l)\]
         По определению меры на полукольце
         \[\mu(B) = \sum\limits_{i=1}^{N} \mu(A_i) + \sum\limits_{l=1}^{L} \mu(Q_l) \geqslant \sum\limits_{i=1}^{N} \mu(A_i),\]
-        т.к. $\sum\limits_{l=1}^{L}\mu(Q_l) \geqslant 0$.
+        так как $\sum\limits_{l=1}^{L}\mu(Q_l) \geqslant 0$.
         \item $C_j \cap B =: B_j$, где $C_j \cap B \in \mathcal{P}$ $\forall j \in \{1, \dots, M\}$. Тогда
         \[B = \bigcup\limits_{j=1}^{M} B_j = \bigsqcup\limits_{l=1}^{L}B_l^{'},\]
         где для любого $l$ и $j$ либо $B_l^{'} \subset B_j$, либо не пересекаются.
@@ -83,15 +83,15 @@
         \item $\mu$ — счётно-полуаддитивная мера на $\mathcal{P}$, то есть если $A \in \mathcal{P}$ и $A \subset \bigcup\limits_{i=1}^{\infty} A_i$, то $\mu(A) \leqslant \sum\limits_{i=1}^{\infty}\mu(A_i)$.
     \end{enumerate}
 \end{theorem} 
-\begin{proof}
-    $\underline{2 \Longrightarrow 1}$.
+\begin{proof}\tab
+    \begin{itemize}
+        \item[$\underline{2 \Longrightarrow 1}$]
     \[A = \bigsqcup\limits_{j=1}^{\infty} A_j, \ \{A_j\} \subset \mathcal{P}, \ A \in \mathcal{P}.\]
     \[\mu(A) \leqslant \sum\limits_{j=1}^{\infty}\mu(A_j)\]
     — в силу счётной полуаддитивности.
 
     \noindent Поскольку $\mu$ конечно-аддитивна, в силу продвинутой монотонности $\forall N \in \N$ $\mu(A) \geqslant \sum\limits_{j=1}^{N}\mu(A_j)$, то возьмём супремум по $N$ и получим $\mu(A) = \sum\limits_{j=1}^{\infty} \mu(A_j)$.
-
-    \noindent $\underline{1 \Longrightarrow 2}$.
+        \item[$\underline{1 \Longrightarrow 2}$]
     \[\{A_i\} \subset \mathcal{P}, \ A'_i = A \cap A_i\]
     В силу теоремы о дизъюнктном представлении:
     \[\bigcup\limits_{i=1}^{\infty} A'_i = \bigsqcup\limits_{j=1}^{\infty} B_j\]
@@ -102,6 +102,7 @@
     \[\bigsqcup\limits_{j=1}^{N_i} Q_{i,j} \subset A'_i \subset A_i \ \forall i \in \N.\]
     Поскольку $\mu$ счётно-аддитивна, то:
     \[\mu(A) = \sum\limits_{i=1}^{\infty} \sum\limits_{j=1}^{N_i} \mu(Q_{i,j}) \leqslant \underbrace{\sum\limits_{i=1}^{\infty} \mu(A_i)}_{\text{продв. монот.}}.\]
+    \end{itemize}
 \end{proof} 
 
 \begin{remark}
