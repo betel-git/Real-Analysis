@@ -3,8 +3,10 @@
     $\widetilde{L}_1^{loc}(\R^n, \mathcal{L}^n)$ — множество всех измеримых в широком смысле на $\R^n$ функций, которые интегрируемы по Лебегу на любом шаре в $\R^n$.
 \end{definition} 
 \begin{definition}
-    Пусть $f \in \widetilde{L}_1^{loc}(\R^n, \mathcal{L}^n)$, то $$M[f](x) := \sup\limits_{r>0} \fint_{B_r(x)}|f(y)|d \mathcal{L}^n(y) = \frac{1}{\mathcal{L}^n(B_r(x))} \int_{B_r(x)} |f(y)|d \mathcal{L}^n(y),$$
-    $M[f](x) \in [0, +\infty]$ — максимальная функция.
+    Пусть $f \in \widetilde{L}_1^{loc}(\R^n, \mathcal{L}^n)$, то $$M[f](x) := \sup\limits_{r>0} \fint_{B_r(x)}|f(y)|d \mathcal{L}^n(y),$$
+    где
+    \[\fint_{B_r(x)}|f(y)|d \mathcal{L}^n(y) = \frac{1}{\mathcal{L}^n(B_r(x))} \int_{B_r(x)} |f(y)|d \mathcal{L}^n(y),\]
+    $M[f](x) \in [0, +\infty]$ — \textit{максимальная функция Харди-Литтлвуда}.
 \end{definition}
 
 \paragraph{Лекция 12.}

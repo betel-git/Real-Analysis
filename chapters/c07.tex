@@ -23,8 +23,8 @@
 \noindent \textbf{Вопрос.} Как связаны сходимости почти всюду и по мере?
 
 \begin{example}
-    \[f_n(x) = \chi(n, +\infty), \ n \in \N.\]
-    $f_n \xrightarrow[n \to \infty]{\R} 0$, но $f_n \cancel{\xrightarrow[\R]{\mathcal{L}^1}} 0$,
+    \[f_n(x) = \chi_{(n, +\infty)}(x), \ n \in \N.\]
+    $f_n \xrightarrow[\R]{\mathcal{L}^1-\text{п.в.}} 0$, но $f_n \cancel{\xrightarrow[\R]{\mathcal{L}^1}} 0$,
     поскольку 
     \[\exists \epsilon = 1: \ \mathcal{L}^1(\{x \in \R: \ |f_n(x)| \geqslant 1\}) = + \infty \ \forall n \in \N.\]
 \end{example}
@@ -41,7 +41,7 @@
     \[\mathcal{L}^1(\{x \in [0,1] \ | \ h_m(x) \geqslant \epsilon\}) \leqslant 2^{-n(m)} \xrightarrow{m \to \infty} 0,\]
     поскольку $n(m) \xrightarrow{m \to \infty} + \infty$.
     Получается,
-    \[h_m \xrightarrow[\mathcal{L}^1]{[0,1]} 0, \ m \to \infty,\]
+    \[h_m \xrightarrow[[0,1]]{\mathcal{L}^1} 0, \ m \to \infty,\]
     но
     \[h_m \cancel{\xrightarrow[\text{п.в.}]{[0,1]}} 0, m \to \infty,\]
     так как $\forall x \in [0,1]$ существует бесконечный набор индексов $m \in \N$, для которых $h_m(x) = 0$ и существует бесконечный набор $m \in \N$, для которых $h_m(x) = 1$.

@@ -250,7 +250,8 @@
     \[X_n := X(f_n > \theta g), \ n \in \N \text{ и } X_{n+1} \supset X_n \ \forall n \in \N.\]
     Кроме того, $X = \bigcup\limits_{n=1}^{\infty} X_n$.
     Если $g(x) = 0$, то $x \in \bigcup\limits_{n=1}^{\infty} X_n$, поскольку $f_n(x) > \theta g(x)$ для любого $x \in X_n$.
-    Если же $\theta g(x) > 0$, то по определению предела поскольку \[\lim\limits_{n \to \infty} f_n(f) \geqslant g(x) > \theta g(x),\]
+    Если же $\theta g(x) > 0$, то по определению предела поскольку 
+    \[\lim\limits_{n \to \infty} f_n(x) \geqslant g(x) > \theta g(x),\]
     то существует 
     $$N(x) \in \N: f_n(x) > \theta g(x) \ \forall n \geqslant N(x)
     \implies
@@ -485,7 +486,7 @@
     Поскольку $f$ ограничена и измерима, то существует константа $C > 0$ такая, что
     \[|f(x)| \leqslant C \ \forall x \in E.\]
     Тогда по свойствам интеграла Лебега для неотрицательных функций:
-    \[\int_E |f| d\mu \leqslant \int_E C d\mu \leqslant C \cdot \mu(E) < +\infty \Longleftrightarrow f \text{интегрируема на } E.\]
+    \[\int_E |f| d\mu \leqslant \int_E C d\mu \leqslant C \cdot \mu(E) < +\infty \Longleftrightarrow f \text{ интегрируема на } E.\]
 \end{proof} 
 
 \begin{statement}
