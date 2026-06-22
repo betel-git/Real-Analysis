@@ -1,7 +1,7 @@
 \section{Продолжение меры с полукольца}
 
 \begin{definition}
-    Пусть $\mu_0: \mathcal{P} \to [0, + \infty]$ — счётно-аддитивная мера на полукольце $\mathcal{P}$.
+    Пусть $\mu_0: \mathcal{P} \to [0, + \infty]$ — счётно-аддитивная мера на полукольце $\mathcal{P}$ подмножеств множества $X$. Для любого $E \subset X$ определим его \textit{верхнюю меру по Каратеодори}:
     \[\mu_0^*(E) := \inf \left\{\sum\limits_{j=1}^{\infty} \mu_0(P_j) \ : \ \{P_j\} \subset \mathcal{P}, \ E \subset \bigcup\limits_{j=1}^{\infty}P_j\right\},\]
     то есть инфимум берётся по всем покрывающим множество $E$ последовательностям $\{P_j\} \subset \mathcal{P}$.
 \end{definition} 
@@ -18,7 +18,7 @@
     С другой стороны, счётно-аддитивная мера на $\mathcal{P}$ является счётно-полуаддитивной, поэтому для любого покрытия $P \subset \bigcup\limits_{j=1}^{\infty} P_j$, где $\{P_j\} \subset \mathcal{P}$ верно $\mu_0(P) \leqslant \sum\limits_{j=1}^{\infty} \mu_0(P_j)$, поэтому, взяв инфимум по всем покрытиям, получим
     \[\mu_0(P) \leqslant \mu_0^*(P) \implies \mu_0(P) = \mu_0^*(P), \ \forall P \in \mathcal{P}.\]
     
-    Покажем, что $\mu_0^*$ — счётно-полуаддитивная мера на $2^X$.
+    Покажем, что $\mu_0^*$ — счётно-полуаддитивная мера на $2^X$ ($\mu_0^*(\emptyset)=0$ очевидно из только что доказанного).
     Пусть $E \subset \bigcup\limits_{i=1}^{\infty} E_i$, где $E \in 2^X$, $\{E_i\} \subset 2^X$.
     Если существует $i \in \N$: $\mu_0^*(E_i) = + \infty$, то $\mu_0^*(E) \leqslant \sum\limits_{i=1}^{\infty} \mu_0^*(E_i)$ очевидно, поэтому далее считаем, что $\mu_0^*(E_i) < + \infty$ для любого $i \in \N$.
 
@@ -166,7 +166,7 @@
 
         \item Если $\mu$ $\sigma$-конечна, либо если $\mu^*(A) < +\infty$, то можно покрыть $A \subset \bigcup\limits_{j=1}^{\infty} P_j$: $\mu(P_j) < +\infty \ \forall j \in \N$ и $\{P_j\} \subset \mathcal{P}$.
         Но $\mu^*(A \cap P_j) = \nu(A \cap P_j)$, следовательно,
-        \[\sum\limits_{j=1}^{\infty} \underbrace{\mu^*(A \cap P_j)}_{\leqslant \mu^*(A)} = \sum\limits_{j=1}^{\infty} \nu(A \cap P_j) = (*)\]
+        \[\underbrace{\sum\limits_{j=1}^{\infty}\mu^*(A \cap P_j)}_{\mu^*(A) \leqslant} = \sum\limits_{j=1}^{\infty} \nu(A \cap P_j) = (*)\]
         По теореме о дизъюнктном представлении в полукольце можно считать, что $P_j$ попарно не пересекаются, поэтому
         \[(*) = \nu(A) \implies \mu^*(A) \leqslant \nu(A),\]
         а обратное неравенство мы уже имеем.

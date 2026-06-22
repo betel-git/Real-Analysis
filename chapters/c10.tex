@@ -41,7 +41,7 @@
     \[\int_E f^N d\mu = \sum\limits_{i=1}^{N} \int_{E_i} f d\mu.\]
     Отметим монотонность:
     \[f^{N+1}(x) \geqslant f^N(x) \ \forall N \in \N \ \forall x \in X,\]
-    тогда по теореме Беппо-Леви
+    тогда по теореме Беппо Леви
     \[\int_E \lim\limits_{N \to \infty} f^N d\mu 
     = \lim\limits_{N \to \infty} \int_E f^N d\mu
     = \lim\limits_{N \to \infty} \sum\limits_{i=1}^{N} \int_{E_i} f d\mu,\]
@@ -92,7 +92,7 @@
     \[\int_{X \setminus A_\epsilon} |f|d\mu = \int_{E_N(\epsilon)} |f| d\mu < \epsilon.\]
     Остаётся доказать, что множество $A_\epsilon$ имеет конечную меру.
     Действительно, по неравенству Чебышёва
-    \[\mu(A_@e) 
+    \[\mu(A_\epsilon) 
     \leqslant
     \frac{1}{\frac{1}{N(\epsilon)}} \int_X |f| d\mu 
     =
@@ -196,7 +196,7 @@
     
     Рассмотрим $\psi_n(x) := \underbrace{2g(x) - h_n(x)}_{\geqslant 0}$, $n \in \N$.
     Заметим, что $\psi_{n+1}(x) \geqslant \psi_n(x)$ для $\mu$-почти всех $x \in X$ — доопределим нулями в тех точках, где эти неравенства не выполняются.
-    Тогда по лемме Беппо-Леви
+    Тогда по теореме Беппо Леви
     \[\exists \lim\limits_{n \to \infty} \int_X \psi_n(x) d\mu
     = 
     \int_X \lim\limits_{n \to \infty} \psi_n(x) d\mu

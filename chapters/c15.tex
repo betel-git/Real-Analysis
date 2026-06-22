@@ -19,7 +19,7 @@
 
 \begin{theorem}[Неравенство Гёльдера для интегралов]
     Пока что считаем, что $p \in (1, +\infty)$. Пусть $f \in \widetilde{L}_p(E, \mu)$, $g \in \widetilde{L}_{p'}(E,\mu)$.
-    Тогда $f,g \in \widetilde{L}_1(E,\mu)$. Более того,
+    Тогда $f \cdot g \in \widetilde{L}_1(E,\mu)$. Более того,
     \[\int_E |fg| d\mu \leqslant \left(\int_E |f|^p d\mu\right)^{\frac{1}{p}} \cdot \left(\int_E |g|^{p'} d\mu\right)^{\frac{1}{p'}}.\]
     Случай, когда обе части неравенства равны $+\infty$, не исключается.
 \end{theorem} 
@@ -175,7 +175,7 @@
     \[f(x):= \sum\limits_{k=1}^{\infty}f_k(x)\]
     корректно определена $\mu$-почти всюду (напомним, что $\mu$ — полная мера).
     Остаётся доказать, что
-    \[\|F - \sum\limits_{k=1}^{n} f_k\|_p \to 0, \ n \to \infty.\]
+    \[\|f - \sum\limits_{k=1}^{n} f_k\|_p \to 0, \ n \to \infty.\]
     Определим
     \[J_n := \left(\int_E \left|\sum\limits_{k=n+1}^{\infty} f_k(x)\right|^p d\mu(x)\right)^{\frac{1}{p}} \leqslant \left(\int_E \left(\sum\limits_{k=n+1}^{\infty}|f_k(x)|\right)^p d\mu(x)\right)^{\frac{1}{p}}, \ \forall n \in \N.\]
     \[\sum\limits_{k=n+1}^{\infty} |f_k(x)| = \lim\limits_{m\to \infty} \sum\limits_{k=n+1}^{m}|f_k(x)| \ \mu\text{-п.в. } x \in X.\]

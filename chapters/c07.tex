@@ -56,7 +56,7 @@
         \item $\mu$ — счётно-аддитивная мера на $\mathfrak{M}$;
         \item $\mu$ непрерывна сверху, то есть $\forall E \subset X$, $E \in \mathfrak{M}$ и для любой монотонной последовательности
         \[E_1 \supset \dots \supset E_n \supset \dots \supset E:\]
-        \[\bigcap\limits_{n=1}^{\infty}E_n = E, \ \exists \lim\limits_{n \to \infty} \mu_n(E) = \mu(E);\]
+        \[\bigcap\limits_{n=1}^{\infty}E_n = E, \ \exists \lim\limits_{n \to \infty} \mu(E_n) = \mu(E);\]
         \item $\mu$ непрерывна сверху в нуле, то есть если
         \[E_1 \supset \dots \supset E_n \supset \dots,\]
         то
@@ -73,13 +73,13 @@
     Определим разности:
     \[F_1 = E_1 \setminus E_2, \dots, F_n = E_n \setminus E_{n+1}, \dots,\]
     тогда множества $E, F_1, F_2, \dots$ попарно не пересекаются и
-    \[E_1 = E \cup \bigcup\limits_{k=1}^{\infty}F_k.\]
+    \[E_1 = E \sqcup \bigsqcup\limits_{k=1}^{\infty}F_k.\]
     В силу счётной аддитивности
     \begin{equation}
         \mu(E_1) = \mu(E) + \sum\limits_{k=1}^{\infty} \mu(F_k),\label{eq:7.1}
     \end{equation}
     но с другой стороны,
-    \[E_1 = E_n \cup \bigcup\limits_{k=1}^{n-1}F_k,\]
+    \[E_1 = E_n \sqcup \bigsqcup\limits_{k=1}^{n-1}F_k,\]
     причём это объединение дизъюнктно, поэтому из конечной аддитивности меры следует
     \[\mu(E_1) = \mu(E_n) + \sum\limits_{k=1}^{n-1}\mu(F_k)
     \implies
@@ -92,8 +92,8 @@
 
     \noindent$\underline{3 \implies 1}$ Возьмём произвольную последовательность попарно непересекающихся множеств $\{A_n\}_{n=1}^\infty \subset \mathfrak{M}$.
     Определим
-    \[B_n := \bigcup\limits_{k=n}^{\infty}A_k.\]
-    Тогда $B_1 \supset B_2 \supset \dots$ — убывающая последовательность, которая имеет пустое пересечение: $\bigcup\limits_{n=1}^{\infty}B_n = \emptyset$.
+    \[B_n := \bigsqcup\limits_{k=n}^{\infty}A_k.\]
+    Тогда $B_1 \supset B_2 \supset \dots$ — убывающая последовательность, которая имеет пустое пересечение: $\bigcap\limits_{n=1}^{\infty}B_n = \emptyset$.
     Тогда имеем $\lim\limits_{n \to \infty}\mu(B_n) = 0.$
     В силу конечной аддитивности меры:
     \[\mu\left(\bigcup\limits_{k=1}^{\infty}A_k\right) = \mu\left(\bigcup\limits_{k=1}^{n}A_k\right) + \mu(B_{n+1})
@@ -124,7 +124,7 @@
         
         \item (общий случай)
         \[h_n = \sup\limits_{k \geqslant n} |f_k|,\]
-        \[h_{n+1} \leqslant h_n \ \forall n \in \N\]
+        \[h_{n+1} \leqslant h_n \quad \forall n \in \N\]
         и
         \[h_n \xrightarrow[E]{\mu-\text{п.в.}} 0, \ n \to \infty,\]
         тогда
@@ -155,6 +155,9 @@
     если
     \[\forall \epsilon > 0 \ \exists E_\epsilon \subset X: \ \mu(E_\epsilon) < \epsilon \text{ и } f_n \overset{X \setminus E_\epsilon}{\rightrightarrows} f, \ n \to \infty.\]
 \end{definition} 
+
+\noindent \textbf{Напоминание.} Последовательность $\{f_n\}$ \textit{равномерно сходится к $f$ на $X$}, если 
+\[\forall \epsilon > 0 \ \exists N \in \N: \ \forall n > N, \ \forall x \in X: \ |f_n(x)-f(x)| < \epsilon.\]
 
 \begin{remark}
     Если $E \subset X$ — измеримое множество, то можно определить почти равномерную сходимость на $E$, потребовав
@@ -202,9 +205,9 @@
     $\mu\left(\bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k \geqslant n}E_k(\epsilon)\right) = 0$.
 
     Если $x \notin \bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k \geqslant n}E_k(\epsilon)$,
-    то $\exists N(x) \in \N$: $x \notin \bigcup\limits_{k \geqslant N(x)}E_k(x)$,
+    то $\exists N(x) \in \N$: $x \notin \bigcup\limits_{k \geqslant N(x)}E_k(\epsilon)$,
     тогда
-    \[g_n(x) \leqslant \epsilon_n, \ \forall n \geqslant N(x).\]
+    \[g_n(x) \leqslant \epsilon, \ \forall n \geqslant N(x).\]
     Рассмотрим
     \[F_j = \bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k\geqslant n} E_k\left(\frac{1}{j}\right), \ j \in \N,\]
     \[F = \bigcup\limits_{j=1}^{\infty}F_j.\]
@@ -236,6 +239,9 @@
         \item \[f_{n_k} \overset{\text{п.р.}}{\rightrightarrows} 0, \ k \to \infty \text{ на } X.\]
     \end{enumerate}
 \end{theorem} 
+\begin{remark}
+    Заметим, что в отличие от теоремы Лебега, в этом утверждении конечность меры не предполагается.
+\end{remark}
 \begin{proof}
     Пользуясь сходимостью по мере, можно сказать, что
     \[\exists n_k \in \N: \ \forall n \geqslant n_k: \ E_n := \{x \in X: \ |f_n(x)| \geqslant 1/k\} \text{ и } \mu(E_n) < \frac{1}{2^k}.\]
@@ -256,8 +262,8 @@
     Пусть $(X, \mathfrak{M}, \mu)$ — пространство с конечной мерой.
     Пусть $f \in L_0(X, \mu)$ и $\{f_n\} \subset L_0(X, \mu)$:
     $f_n \xrightarrow[X]{\text{п.в.}} f$, $n \to \infty$.
-    Тогда существует подпоследовательность
-    \[f_{n_k} \overset{\text{п.р.}}{\rightrightarrows} f, \ k \to \infty \text{ на } X.\]
+    Тогда
+    \[f_{n} \overset{\text{п.р.}}{\rightrightarrows} f, \ n \to \infty \text{ на } X.\]
 \end{theorem} 
 \begin{proof}
     Рассмотрим последовательность
@@ -294,10 +300,10 @@
     Пусть $f \in L_0(X, \mu)$, $\mu$ — $\sigma$-конечная мера, $\{g_n\} \subset L_0(X, \mu)$: $g_n \xrightarrow[X]{\text{п.в.}} f$, $n \to \infty$ и для любого $n \in \N$ существует последовательность 
     $$\{f_{n,k}\} \subset L_0(X, \mu): \ f_{n,k} \xrightarrow[X]{\text{п.в.}} g_n, \ k \to \infty.$$
     Тогда существует строго возрастающая последовательность
-    \[\{k_n\} \subset \N: \ f_{n, n_k} \xrightarrow[X]{\text{п.в.}} f, \ n \to \infty.\]
+    \[\{k_n\} \subset \N: \ f_{n, k_n} \xrightarrow[X]{\text{п.в.}} f, \ n \to \infty.\]
 \end{theorem} 
 \begin{proof}
-    Пусть $\mu(X) < +\infty$. По теореме Лебега $f_{n,k} \to g_{n,k}$ при $k \to \infty$. 
+    Пусть $\mu(X) < +\infty$. По теореме Лебега $f_{n,k} \xrightarrow{\mu} g_{n}$ при $k \to \infty$. 
     Тогда существует индекс $k_n \in \N$:
     \[
     \mu\bigl(\underbrace{\{x \in X: \ |f_{n,k_n}(x) - g_n(x)| > 1/n\}}_{E_n}\bigr) < 2^{-n}.
@@ -313,7 +319,7 @@
     \]
     Отсюда, учитывая, что $|f - g_n| \xrightarrow{\text{п.в.}} 0$ и $|g_n - f_{n,k_n}| \xrightarrow{\text{п.в.}} 0$ при $n \to \infty$, получаем
     \[
-    |f - f_{n,k}| \xrightarrow[X]{\text{п.в.}} 0, \ n \to \infty.
+    |f - f_{n_k}| \xrightarrow[X]{\text{п.в.}} 0, \ n \to \infty.
     \]
     Вспомним предыдущую лемму и применим всё, что было для меры $\nu$ вместо меры $\mu$. Так как $\nu$ уважает множества нулевой меры $\mu$ и наоборот, то получаем утверждение теоремы.
 \end{proof}

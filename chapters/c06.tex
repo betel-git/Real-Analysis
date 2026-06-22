@@ -23,13 +23,13 @@
         \item $F^{-1} \left(\bigcap\limits_{\alpha \in I} A_\alpha\right) = \bigcap\limits_{\alpha \in I} F^{-1}(A_\alpha)$.
     \end{enumerate}
     \item Если $\mathfrak{M}$ — $\sigma$-алгебра подмножеств множества $X$, то 
-    $$\mathfrak{N} := \{A \subset Y \ | \ F^{-1}(A) \in \mathfrak{M}\},$$
-    тогда $\mathfrak{N}$ — $\sigma$-алгебра.
+    $$\mathfrak{N} := \{A \subset Y \ | \ F^{-1}(A) \in \mathfrak{M}\}$$
+    тоже $\sigma$-алгебра.
 \end{enumerate}
 
 \begin{lemma}
     Пусть $(X, \mathfrak{M})$ — измеримое пространство, $E \in \mathfrak{M}$, $f: E \to \overline{\R}$.
-    Следующие условия эквивалентны $\forall c \in \R$:
+    Следующие условия эквивалентны $\forall c \in \R:$
     \begin{enumerate}
         \item $E(f < c) \in \mathfrak{M};$
         \item $E(f \leqslant c) \in \mathfrak{M};$
@@ -40,12 +40,12 @@
 \begin{proof}\tab
 
     \noindent\underline{$1 \implies 2$}
-    \[E(f \leqslant c) = \bigcap\limits_{n=1}^{\infty} E(f < c + \frac{1}{n}),\]
+    \[E(f \leqslant c) = \bigcap\limits_{n=1}^{\infty} E\left(f < c + \frac{1}{n}\right),\]
     \[f(x) < c + \frac{1}{n} \ \forall n \in \N \Longleftrightarrow f(x) \leqslant c.\]
     \underline{$2 \implies 3$}
     \[E(f > c) = E \setminus E(f \leqslant c) \ \forall c \in \R.\]
     \underline{$3 \implies 4$}
-    \[E(f \geqslant c) = \bigcap\limits_{n=1}^{\infty} E(f > c + \frac{1}{n})\]
+    \[E(f \geqslant c) = \bigcap\limits_{n=1}^{\infty} E\left(f > c + \frac{1}{n}\right)\]
     — аналогично.
 
     \noindent\underline{$4 \implies 1$}
@@ -82,7 +82,7 @@
         $f^{-1}(\{-\infty\})$ — аналогично.
         $f^{-1}(\{c\}) = f^{-1}([c, +\infty]) \setminus f^{-1}((c, +\infty]) \in \mathfrak{M}$.
 
-        \item $f^{-1}([a,b]) = E(g \geqslant a) \setminus \bigcup\limits_{n=1}^{\infty} E(f > b + \frac{1}{n}) \in \mathfrak{M}$
+        \item $f^{-1}([a,b]) = E(f \geqslant a) \setminus \bigcup\limits_{n=1}^{\infty} E(f > b + \frac{1}{n}) \in \mathfrak{M}$
         Пользуясь первым пунктом, можно аналогично доказать для интервалов и полуинтервалов.
 
         \item $|f(x)| < c \Longleftrightarrow -c < f(x) < c \ \forall c \in \R,$
@@ -260,9 +260,9 @@ $f,g: \R \to \R$ — измеримые функции, то $f \circ g$ не о
     \begin{enumerate}
         \item
         \[\phi_1 = \sum\limits_{k=1}^{N_1} a_k^1 \chi_{E_k^1},\]
-        \[\phi_2 = \sum\limits_{j=1}^{N_2} a_j^2 \chi_{E_j^2}, \ N_1, N_2 \in \N.\]
+        \[\phi_2 = \sum\limits_{j=1}^{N_2} a_j^2 \chi_{E_j^2}, \quad N_1, N_2 \in \N.\]
         Определим
-        \[E_{k,j} := E_k^1 \cap E_j^2 \ \forall k \in \{1, \dots, N_1\}, \ \forall j \in \{1, \dots, N_2\}.\]
+        \[E_{k,j} := E_k^1 \cap E_j^2 \quad \forall k \in \{1, \dots, N_1\}, \ \forall j \in \{1, \dots, N_2\}.\]
         Тогда
         \[\phi_1 + \phi_2 = \sum\limits_{k=1}^{N_1} \sum\limits_{j=1}^{N_2} (a_k^1 + a_j^2) \chi_{E_k^1 \cap E_j^2}.\]
         Перенумеруем $E_{k,j}$ единым индексом.
@@ -272,10 +272,6 @@ $f,g: \R \to \R$ — измеримые функции, то $f \circ g$ не о
         \item Разность следует из первых двух пунктов:
         \[\phi_1 - \phi_2 = \phi_1 + (-1) \cdot \phi_2.\]
     \end{enumerate}
-    
-
-
-    
 \end{proof} 
 
 \begin{theorem}
@@ -287,7 +283,7 @@ $f,g: \R \to \R$ — измеримые функции, то $f \circ g$ не о
 \begin{proof}
     Рассмотрим случай $f \geqslant 0$.
     Для любого $n \in \N$ рассмотрим 
-    $$\Delta_{n,k} := f^{-1} \left(\left[\frac{k}{n}, \frac{k+1}{n}\right)\right), \ k \in \{0, \dots, n^2 - 1\}.$$
+    $$\Delta_{n,k} := f^{-1} \left(\left[\frac{k}{n}, \frac{k+1}{n}\right)\right), \quad k \in \{0, \dots, n^2 - 1\}.$$
     Рассмотрим
     \[\phi_n(x) = \sum\limits_{k=0}^{n^2 - 1} \frac{k}{n} \cdot \chi_{\Delta_{n,k}} + n \chi (\underbrace{f^{-1}([n, +\infty])}_{\in \mathfrak{M}}).\]
     Заметим, что $\phi_n$ — простая.

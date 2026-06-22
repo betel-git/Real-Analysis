@@ -59,7 +59,8 @@
     На простых функциях это определение переходит в предыдущее.
 \end{remark}
 \begin{statement}
-    Пусть $\widetilde{h}(x) \leqslant h(x)$ на $E$.
+    Пусть $\widetilde{h}(x)$ и $h(x)$ — простые функции и
+    $\widetilde{h}(x) \leqslant h(x)$ на $E$.
     Тогда $$\int_E \widetilde{h}(x) d\mu(x) \leqslant \int_E h(x) d\mu(x).$$
 \end{statement} 
 \begin{proof}
@@ -148,7 +149,7 @@
     Пусть $g$ — простая неотрицательная функция, определённая на всём $X$.
     Пусть
     \begin{equation}
-        0 \leqslant g(x) \leqslant f(x) \ \forall x \in E \label{eq:9.2}
+        0 \leqslant g(x) \leqslant f(x) \quad \forall x \in E \label{eq:9.2}
     \end{equation}
     Поскольку $g$ — простая, то в силу доказанного выше
     \[\int_E g(x) d\mu(x) 
@@ -167,7 +168,7 @@
 \begin{proof}
     \[A \subset B
     \implies
-    \chi_A f(x) \leqslant \chi_B f(x) \ \forall x \in X,\]
+    \chi_A f(x) \leqslant \chi_B f(x) \quad \forall x \in X,\]
     тогда в силу монотонности по функции
     \[\underbrace{\int_X (\chi_A f)(x) d\mu(x)}_{\int_A f(x) d\mu(x)} 
     \leqslant 
@@ -228,7 +229,7 @@
     В общем случае супремум от нуля есть ноль.
 \end{proof} 
 
-\begin{theorem}[Беппо-Леви]
+\begin{theorem}[Леви\footnote{Беппо Леви (1875-1961) — итальянский математик.}]
     Пусть $\{f_n\}$ — последовательность неотрицательных измеримых на $X$ функций:
     \[0 \leqslant f_1(x) \leqslant \dots \leqslant f_n(x) \leqslant \dots.\]
     Тогда 
@@ -286,7 +287,7 @@
     \[\lowlim\limits_{n\to \infty} f_n(x) = \sup\limits_{n \in \N} \underbrace{\inf\limits_{k\geqslant n} f_k(x)}_{g_n(x)} = \lim\limits_{n\to \infty} g_n(x) \ \forall x \in X\]
     Тогда $\{g_n\}$ — последовательность таких измеримых неотрицательных функций, что $g_{n+1}(x) \geqslant g_n(x)$ для любых $x \in X$.
     
-    Применим к $\{g_n\}$ теорему Беппо-Леви:
+    Применим к $\{g_n\}$ теорему Леви:
     \[\underbrace{\int_X \lim\limits_{n\to \infty} g_n(x) d\mu(x)}_{\int_X \lowlim\limits_{n\to \infty} f_n(x) d\mu(x)} 
     =
     \underbrace{\lim\limits_{n\to \infty} \int_X g_n(x) d\mu(x)}_{\lim\limits_{n\to \infty} \int_X \inf\limits_{k \geqslant n} f_k(x) d\mu(x)},\]
@@ -336,7 +337,7 @@
     \[\psi_n \xrightarrow{X} f, \ n \to \infty,\]
     \[h_n \xrightarrow{X} g, \ n \to \infty.\]
     Более того, можно считать $\{\psi_n\}$ и $\{h_n\}$ монотонны.
-    Тогда запишем \eqref{eq:9.3} для $\psi_n$ и $h_n$ и, пользуясь теоремой Беппо-Леви, перейдём к пределу при $n\to \infty$.
+    Тогда запишем \eqref{eq:9.3} для $\psi_n$ и $h_n$ и, пользуясь теоремой Беппо Леви, перейдём к пределу при $n\to \infty$.
 \end{proof} 
 
 \begin{lemma}[Положительная однородность]
@@ -345,7 +346,7 @@
     \[\int_X \alpha \cdot f d\mu(x) = \alpha \cdot \int_X f d\mu(x).\]
 \end{lemma} 
 \begin{proof}
-    Доказательство аналогично предыдущей лемме: сначала доказываем для простых функций, а потом, пользуясь теоремой Беппо-Леви, переходим к пределу.
+    Доказательство аналогично предыдущей лемме: сначала доказываем для простых функций, а потом, пользуясь теоремой Беппо Леви, переходим к пределу.
 \end{proof} 
 
 \begin{lemma}
