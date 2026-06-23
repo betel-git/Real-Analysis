@@ -169,8 +169,8 @@ $(X, \mathfrak{M}, \mu)$ — пространство с $\sigma$-конечно
 \begin{theorem}[Принцип Кавальери]
     Пусть выполнено условие выше. Тогда для любого $C \in \mathfrak{M} \otimes \mathfrak{N}$ выполнено
     \begin{enumerate}
-        \item Для $\mu$-почти всех $x \in X$ верно $C_x \in \mathfrak{N}$,
-        \item $x \to \nu(C_x)$ — измеримая в обобщённом смысле функция (то есть эта функция измерима на множестве $X_0 \subset X$: $\mu(X \setminus X_0) = 0$.
+        \item Для $\mu$-почти всех $x \in X$ верно $C_x \in \mathfrak{N}$;
+        \item $x \to \nu(C_x)$ — измеримая в обобщённом смысле функция (то есть эта функция измерима на множестве $X_0 \subset X$: $\mu(X \setminus X_0) = 0$);
         \item $$\mu \otimes \nu(C) = \int_{X_0} \nu(C_x) d\mu(x).$$
     \end{enumerate}
     аналогичные утверждения верны по переменной $y$.
@@ -303,7 +303,7 @@ $(X, \mathfrak{M}, \mu)$ — пространство с $\sigma$-конечно
 \paragraph{Лекция 14.}
 
 \begin{theorem}[Тонелли]
-    Пусть $(X, \mathfrak{M}, \mu)$ и $(Y, \mathfrak{N}, \nu)$ — пространства с $\sigma$-конечными мерами.
+    Пусть $(X, \mathfrak{M}, \mu)$ и $(Y, \mathfrak{N}, \nu)$ — пространства с $\sigma$-конечными и полными мерами.
     Пусть $f: X \times Y \to [0, +\infty]$ — измеримая относительно $\mathfrak{M} \otimes \mathfrak{N}$ функция.
     Тогда:
     \begin{enumerate}
@@ -390,7 +390,7 @@ $(X, \mathfrak{M}, \mu)$ — пространство с $\sigma$-конечно
         =\\=
         \int_{X \times Y} f_+(x,y)d(\mu \otimes \nu)(x,y) - \int_{X \times Y} f_-(x,y) d(\mu \otimes \nu)(x,y)
         =\\=
-        \int_X \left(\int_Y (f_+)_x(y)d\nu(y)\right)d\mu(x) - \int_X \left(\int_Y (f_+)_x(y)d\nu(y)\right)d\mu(x) = (*)
+        \int_X \left(\int_Y (f_+)_x(y)d\nu(y)\right)d\mu(x) - \int_X \left(\int_Y (f_-)_x(y)d\nu(y)\right)d\mu(x) = (*)
     \end{multline*} 
     \[\phi_+(x) = \int_Y (f_+)_x d\nu, \ \phi_-(x) = \int_X (f_-)_x d\nu, \ \phi_+, \ \phi_- \in \widetilde{L}_1(X, \mathfrak{M}, \mu).\]
     \[(*) = \int_X (\phi_+(x) - \phi_-(x)) d\mu(x).\]

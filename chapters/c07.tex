@@ -41,7 +41,7 @@
     \[\mathcal{L}^1(\{x \in [0,1] \ | \ h_m(x) \geqslant \epsilon\}) \leqslant 2^{-n(m)} \xrightarrow{m \to \infty} 0,\]
     поскольку $n(m) \xrightarrow{m \to \infty} + \infty$.
     Получается,
-    \[h_m \xrightarrow[[0,1]]{\mathcal{L}^1} 0, \ m \to \infty,\]
+    \[h_m \xrightarrow[\mathcal{L}^1]{[0,1]} 0, \ m \to \infty,\]
     но
     \[h_m \cancel{\xrightarrow[\text{п.в.}]{[0,1]}} 0, m \to \infty,\]
     так как $\forall x \in [0,1]$ существует бесконечный набор индексов $m \in \N$, для которых $h_m(x) = 0$ и существует бесконечный набор $m \in \N$, для которых $h_m(x) = 1$.
@@ -150,8 +150,8 @@
 \paragraph{Лекция 8.}
 \begin{definition}
     Пусть $f \in L_0(X, \mu)$, $\{f_n\} \subset L_0(X, \mu)$.
-    Будем говорить, что $\{f_n\}$ \textit{сходится почти равномерно к $f$} и обозначается
-    \[f_n \overset{\text{п.р.}}{\rightrightarrows} f, \ n \to \infty,\]
+    Будем говорить, что $\{f_n\}$ \textit{сходится почти равномерно к $f$ на $X$} и обозначается
+    \[f_n \overset{\text{п.р.}}{\rightrightarrows} f, \ n \to \infty \text{ на } X,\]
     если
     \[\forall \epsilon > 0 \ \exists E_\epsilon \subset X: \ \mu(E_\epsilon) < \epsilon \text{ и } f_n \overset{X \setminus E_\epsilon}{\rightrightarrows} f, \ n \to \infty.\]
 \end{definition} 

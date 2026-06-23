@@ -1,7 +1,7 @@
 \section{Продолжение меры с полукольца}
 
 \begin{definition}
-    Пусть $\mu_0: \mathcal{P} \to [0, + \infty]$ — счётно-аддитивная мера на полукольце $\mathcal{P}$ подмножеств множества $X$. Для любого $E \subset X$ определим его \textit{верхнюю меру по Каратеодори}:
+    Пусть $\mu_0: \mathcal{P} \to [0, + \infty]$ — счётно-аддитивная мера на полукольце $\mathcal{P}$ подмножеств множества $X$. Для любого $E \subset X$ определим его \textit{внешнюю меру по Каратеодори}:
     \[\mu_0^*(E) := \inf \left\{\sum\limits_{j=1}^{\infty} \mu_0(P_j) \ : \ \{P_j\} \subset \mathcal{P}, \ E \subset \bigcup\limits_{j=1}^{\infty}P_j\right\},\]
     то есть инфимум берётся по всем покрывающим множество $E$ последовательностям $\{P_j\} \subset \mathcal{P}$.
 \end{definition} 
@@ -34,7 +34,7 @@
     Тогда $\mu_0^*$ является продолжением $\mu_0$ c $\mathcal{P}$ на $\sigma$-алгебру $\mathfrak{M}_{\mu_0^*}$, то есть:
     \begin{enumerate}
         \item $\mathcal{P} \subset \mathfrak{M}_{\mu_0^*}$;
-        \item $\mu_0^*$ — $\sigma$-аддитивная мера на $\mathfrak{M}_{\mu_0^*}$;
+        \item $\mu_0^*$ — счётно-аддитивная мера на $\mathfrak{M}_{\mu_0^*}$;
         \item $\mu_0^*\vert_{\mathcal{P}} = \mu_0$.
     \end{enumerate}
 \end{theorem} 

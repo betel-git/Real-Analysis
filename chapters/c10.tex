@@ -26,7 +26,7 @@
 
 \begin{theorem}[Счётная аддитивность интеграла Лебега по множествам]
     Пусть $\{E_i\}_{i=1}^\infty \subset \mathfrak{M}$, $E_i \cap E_j = \emptyset$ при $i \neq j$.
-    Тогда для любой неотрицательной измеримой на $E = \bigsqcup\limits_{i=1}^{\infty}E_i$ верно
+    Тогда для любой неотрицательной измеримой на $E = \bigsqcup\limits_{i=1}^{\infty}E_i$ функции верно
     \[\int_E f d\mu = \sum\limits_{i=1}^{\infty}\int_{E_i} f d\mu.\]
 \end{theorem} 
 \begin{remark}
@@ -79,7 +79,7 @@
 \begin{proof}
     Пусть $E_\infty$ — множество всех $x \in X$, на которых $|f(x)| = 0$.
 
-    $f$ интегрируема по Лебегу на $X$ тогда и только тогда, когда $|f|$ интегрируема по Лебегу на $X$.
+    $f$ интегрируема по Лебегу на $X$ тогда и только тогда, когда $|f|$ интегрируем по Лебегу на $X$.
     В силу первого следствия $\mu_{|f|}$ — конечная мера, а в силу второго следствия при
     \[E_n := \left\{x \in X \ | \ |f(x)| < \frac{1}{n}\right\}, \ E_{n+1} \subset E_n, \ E_\infty = \bigcap\limits_{n=1}^{\infty}E_n:\]
     \[0 = \int_{E_\infty} |f| d\mu = \lim\limits_{n \to \infty} \int_{E_n} |f|d\mu \implies\]
@@ -150,7 +150,7 @@
     \begin{enumerate}
         \item Пусть $f = \chi_G$, $G \in \mathfrak{M}$.
         \[\int_E |f| d\mu = \mu(G \cap E),\]
-        тогда, можно взять в качестве $\delta(\epsilon) = \epsilon$.
+        тогда можно взять в качестве $\delta(\epsilon) = \epsilon$.
         \item Если $f$ — простая функция, то $X = \bigsqcup\limits_{k=1}^{N}E_k$ — можно реализовать
         \[f = \sum\limits_{k=1}^{N}a_k \chi_{E_k}
         \implies
