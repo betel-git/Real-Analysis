@@ -20,13 +20,16 @@
 \begin{theorem}[Неравенство Гёльдера для интегралов]
     Пока что считаем, что $p \in (1, +\infty)$. Пусть $f \in \widetilde{L}_p(E, \mu)$, $g \in \widetilde{L}_{p'}(E,\mu)$.
     Тогда $f \cdot g \in \widetilde{L}_1(E,\mu)$. Более того,
-    \[\int_E |fg| d\mu \leqslant \left(\int_E |f|^p d\mu\right)^{\frac{1}{p}} \cdot \left(\int_E |g|^{p'} d\mu\right)^{\frac{1}{p'}}.\]
+    \[\int_E |fg| d\mu \leqslant \left(\int_E |f|^p d\mu\right)^{\frac{1}{p}} \cdot \left(\int_E |g|^{p'} d\mu\right)^{\frac{1}{p'}},\]
+    где
+    \[\frac{1}{p} + \frac{1}{p'} = 1,\]
+    $p'$ — сопряжённый показатель Гёльдера.
     Случай, когда обе части неравенства равны $+\infty$, не исключается.
 \end{theorem} 
 \begin{proof}
     Определим
     \[A:= \left(\int_E |f|^p d\mu\right)^{\frac{1}{p}}, \quad B := \left(\int_E |g|^{p'} d\mu\right)^{\frac{1}{p'}}.\]
-    Предположим, что $A>0$ и $B>0$ (поскольку при $A=0$ или $B=0$ $|fg|=0$ $\mu$-почти всюду и обе части множества равны нулю).
+    Предположим, что $A>0$ и $B>0$ (поскольку при $A=0$ или $B=0$ $|fg|=0$ $\mu$-почти всюду и обе части неравенства равны нулю).
     Случай, когда $A = +\infty$ или $B = +\infty$ тривиален, далее считаем без ограничения общности, что $A,B \in (0, +\infty)$.
     Рассмотрим
     \[\widetilde{f} = \frac{f}{A}, \quad \widetilde{g} = \frac{g}{B}.\]

@@ -98,7 +98,7 @@
 \subsection{Свойства интеграла Лебега для неотрицательных функций}
 \begin{statement}[Монотонность по функциям]
     Пусть $f,g: X \to [0, +\infty]$ — измеримые функции, $E \in \mathfrak{M}$.
-    Пусть $f(x) \leqslant g(x)$ для любого $X \in E$.
+    Пусть $f(x) \leqslant g(x)$ для любого $x \in E$.
     Тогда
     \[\int_E f(x) d\mu(x) \leqslant \int_E g(x) d\mu(x).\]
 \end{statement} 
@@ -106,7 +106,7 @@
     Для простых функций доказано в утверждении выше.
     Пусть $h$ — простая неотрицательная функция:
     \begin{equation}
-        0 \leqslant h(x) \leqslant f(x) \leqslant g(x) \ \forall x \in E. \label{eq:9.1}
+        0 \leqslant h(x) \leqslant f(x) \leqslant g(x) \quad \forall x \in E. \label{eq:9.1}
     \end{equation}
     Тогда по определению интеграла Лебега
     \[\int_E h(x) d\mu(x) \leqslant \int_E g(x) d\mu(x).\]
@@ -248,7 +248,7 @@
     Зафиксируем произвольное число $\theta \in (0, 1)$.
     Определим простую функцию $g$: $0 \leqslant g(x) \leqslant f(x)$, тогда $\theta g(x) < f(x)$.
     \[X_n := X(f_n > \theta g), \ n \in \N \text{ и } X_{n+1} \supset X_n \ \forall n \in \N.\]
-    Кроме того, $X = \bigcup\limits_{n=1}^{\infty} X_n$.
+    Кроме того, $X = \bigcup\limits_{n=1}^{\infty} X_n$:
     Если $g(x) = 0$, то $x \in \bigcup\limits_{n=1}^{\infty} X_n$, поскольку $f_n(x) > \theta g(x)$ для любого $x \in X_n$.
     Если же $\theta g(x) > 0$, то по определению предела поскольку 
     \[\lim\limits_{n \to \infty} f_n(x) \geqslant g(x) > \theta g(x),\]

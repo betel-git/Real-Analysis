@@ -89,7 +89,7 @@
             I_x = \int_Y \sum\limits_{k=1}^{\infty} \chi_{A_k}(x) \chi_{B_k}(y) d\nu(y)
             = \text{(по теореме Беппо Леви)}
             =\\=
-            \sum\limits_{k=1}^{\infty} \chi_{A_k}(x) \cdot \int_Y \chi_{B_k}(y) d\nu(y)
+            \sum\limits_{k=1}^{\infty} \int_Y \chi_{A_k}(x) \cdot \int_Y \chi_{B_k}(y) d\nu(y)
             = \sum\limits_{k=1}^{\infty} \chi_{A_k} (x) \nu(B_k)
         \end{multline*} 
         — измеримая неотрицательная функция как ряд из измеримых неотрицательных функций.
@@ -102,7 +102,7 @@
             = \int_X \sum\limits_{k=1}^{\infty} \chi_{A_k}(x) \nu(B_k) d\mu(x)
             = \text{(по теореме Беппо Леви)}
             =\\=
-            \sum\limits_{k=1}^{\infty} \chi_{A_k} \nu(B_k)d \mu(x)
+            \sum\limits_{k=1}^{\infty} \int_X \chi_{A_k} \nu(B_k)d \mu(x)
             = \sum\limits_{k=1}^{\infty} \mu(A_k) \nu(B_k)
             = \sum\limits_{k=1}^{\infty} \mu \otimes \nu(A_k \times B_k) = (*),
         \end{multline*} 
@@ -310,7 +310,7 @@ $(X, \mathfrak{M}, \mu)$ — пространство с $\sigma$-конечно
         \item Для $\mu$-почти всех $x \in X$ $f_x(\cdot)$ измерима на $Y$:
         \[f_x(y):=f(x,y), \tab \forall y \in Y;\]
         \item $x \to \int_X f_x(y) d\nu(y)$ измерима в широком смысле как функция на $X$;
-        \item \[\iint_{X \times Y} f(x,y)d(\mu \otimes \nu)(x,y) = \int_X \left(\int_Y f(x,y)d\nu(y)\right)d\mu(x).\]
+        \item \[\int_{X \times Y} f(x,y)d(\mu \otimes \nu)(x,y) = \int_X \left(\int_Y f(x,y)d\nu(y)\right)d\mu(x).\]
     \end{enumerate}
     Аналогичные утверждения справедливы при замене ролей $X$ и $Y$.
 \end{theorem} 
@@ -372,7 +372,7 @@ $(X, \mathfrak{M}, \mu)$ — пространство с $\sigma$-конечно
     Пусть $(X, \mathfrak{M}, \mu)$ и $(Y, \mathfrak{N}, \nu)$ — пространства с полными $\sigma$-конечными мерами.
     Пусть $f \in \widetilde{L}_1(X \times Y, \mathfrak{M} \times \mathfrak{N}, \mu \otimes \nu)$. Тогда
     \begin{enumerate}
-        \item Для $\mu$-почти всех $x \in X$ $f_x \in \widetilde{L}_1(X, \mathfrak{M}, \mu)$;
+        \item Для $\mu$-почти всех $x \in X$ $f_x \in \widetilde{L}_1(Y, \mathfrak{N}, \nu)$;
         \item \[\phi(x) = \int_Y f_x(y) d\nu(y), \ \phi \in \widetilde{L}_1(X, \mathfrak{M}, \mu);\]
         \item \[\int_{X \times Y} f(x,y) d(\mu \otimes \nu)(x,y) = \int_X \left(\int_Y f_x(y) d\nu(y)\right)d\mu(x).\]
     \end{enumerate}

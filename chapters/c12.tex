@@ -1,7 +1,7 @@
 \section{Максимальная функция Харди-Литтлвуда и дифференцируемость интеграла Лебега}
 \begin{definition}
     $\widetilde{L}_1^{loc}(\R^n, \mathcal{L}^n)$ — множество всех измеримых в широком смысле на $\R^n$ функций, которые интегрируемы по Лебегу на любом шаре в $\R^n$, то есть
-    \[\int_{B_R(x)} |f(y)|dy < +\infty, \quad \forall x \in \R^n, \ R > 0.\]
+    \[\int_{B_R(x)} |f(y)|d\mathcal{L}^n(y) < +\infty, \quad \forall x \in \R^n, \ R > 0.\]
 \end{definition} 
 \begin{definition}
     Пусть $f \in \widetilde{L}_1^{loc}(\R^n, \mathcal{L}^n)$, то $$M[f](x) := \sup\limits_{r>0} \fint_{B_r(x)}|f(y)|d \mathcal{L}^n(y),$$
@@ -31,7 +31,7 @@
     Если $f \in \widetilde{L}_1(\R^n)$, то $M[f](x)<+\infty$ $\mathcal{L}^n$-почти всюду на $\R^n$.
     Более того, справедливо неравенство:
     \begin{equation}
-        \forall t > 0 \ \mathcal{L}^n\left(\{x \in \R^n \ | \ M[f](x) > t\}\right) \leqslant \frac{5^n}{t} \int_{\R^n} |f(y)| dy \label{eq:12.1}
+        \forall t > 0 \quad \mathcal{L}^n\left(\{x \in \R^n \ | \ M[f](x) > t\}\right) \leqslant \frac{5^n}{t} \int_{\R^n} |f(y)| dy \label{eq:12.1}
     \end{equation}
     (оценка слабого типа).
 \end{theorem} 
@@ -143,7 +143,7 @@
     \[E_t(f) := \left\{x \in \R^n \ | \ \uplim\limits_{r \to 0}\fint_{B_r(x)} |f(y) - f(x)| dy > t\right\}.\]
     Не будем доказывать измеримость $E_t(f)$, но оценим его верхнюю меру.
     Сначала докажем, что
-    \[(\mathcal{L})^* (E_t(f))=0 \ \forall t > 0.\]
+    \[(\mathcal{L}^n)^* (E_t(f))=0 \quad \forall t > 0.\]
     Этого будет достаточно, поскольку
     \[\left\{x \in \R^n \ | \ \uplim\limits_{r\to 0} \fint_{B_r(x)}|f(y) - f(x)|dy > 0\right\} \subset \bigcup\limits_{n=1}^{\infty}E_{\frac{1}{n}}(f).\]
     \[\forall r > 0:

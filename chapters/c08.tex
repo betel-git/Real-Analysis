@@ -24,9 +24,9 @@
     $\R^n \setminus K$ — открытое множество, поэтому существует последовательность компактов $\{K_n\}$:
     \[K_{n+1} \supset K_n \ \forall n \in \N \text{ и } \bigcup\limits_{n=1}^{\infty} K_n = \R^n \setminus K.\]
     Пользуясь предыдущей леммой, определим
-    \[h_m(x) := h_{k_m, k}(x), \ m \in \N, \ x \in \R^n:\]
+    \[h_m(x) := h_{K_m, K}(x), \ m \in \N, \ x \in \R^n:\]
     \begin{enumerate}
-        \item $h_m(x) = 1 \ \forall m \in \N,$
+        \item $h_m(x) = 1 \ \forall m \in \N, \ \forall x \in K,$
         \item $h_m \in C(\R^n) \ \forall m \in \N,$
         \item $h_m \equiv 0$ на $K_m$,
         \item $h_m \xrightarrow{\R^n \setminus K} 0, \ m \to \infty$.
@@ -75,7 +75,7 @@
     \end{enumerate}
 \end{theorem} 
 \begin{proof}
-    $$\R^n = \bigcup\limits_{m=1}^{\infty} B_m(0) \setminus \overline{B_{m+1}(0)}.$$
+    $$\R^n = \bigcup\limits_{m=1}^{\infty} \underbrace{B_m(0) \setminus \overline{B_{m-1}(0)}}_{E_m}.$$
     Поскольку $\mathcal{L}^n (E_m) < +\infty$ для любого $m \in \N$, то рассмотрим $f|_{E_m}$ и построим последовательность непрерывных функций $\{f_{m,j}\} \subset C(\R^n):$
     \[f_{m,j} \xrightarrow[E_m]{\text{п.в.}} f|_{E_m}, \ j \to \infty.\]
     По теореме Егорова $f_{m,j} \overset{\text{п.р.}}{\rightrightarrows} f|_{E_m}$ на $E_m$, тогда
