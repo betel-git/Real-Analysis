@@ -121,7 +121,7 @@
     Система $\mathcal{P} \subset 2^X$ — \textit{полукольцо}, если:
     \begin{enumerate}
         \item $\emptyset \in \mathcal{P}$;
-        \item $A \cap B \in \mathcal{P} \ \forall A, B \in \mathcal{P}$;
+        \item $A \cap B \in \mathcal{P} \quad \forall A, B \in \mathcal{P}$;
         \item Если $A, B \in \mathcal{P}$ и $A \subset B$, то $\exists \{P_i\}_{i = 1}^N \subset \mathcal{P}: B \setminus A = \bigsqcup\limits_{i = 1}^{N} P_i$.
     \end{enumerate}
 \end{definition} 
@@ -180,7 +180,7 @@
     \begin{enumerate}
         \item Тогда $\forall P \in \mathcal{P}$ и $\forall \{P_i\}_{i = 1}^N \subset \mathcal{P}$, $N \in \N$ существует набор $\{S_j\}_{j=1}^M \subset \mathcal{P}:$
         \[P \setminus \bigcup\limits_{i=1}^N P_i = \bigsqcup\limits_{j=1}^M S_j\]
-        \item Тогда $\forall \{P_i\}_{i = 1}^N \subset \mathcal{P}$, $N \in \N$ существует дизъюнктный конечный набор $\{Q_j\}_{j=1}^L$, $L \in \N$: 
+        \item Тогда $\forall \{P_i\}_{i = 1}^N \subset \mathcal{P}$, $N \in \N$ существует дизъюнктный конечный набор $\{Q_j\}_{j=1}^L \subset \mathcal{P}$, $L \in \N$: 
         $$\bigcup_{i=1}^N P_i = \bigsqcup_{j=1}^L Q_j,$$
         при этом $\forall j \in \{1, \dots, L\}$ $\forall i \in \{1, \dots, N\}$ верно
         \[
@@ -288,7 +288,7 @@
     \[
     \{
         \{Q_{n,j}\}_{j=1}^{m_n}
-    \}_{n=1}^{\infty}:
+    \}_{n=1}^{\infty} \subset \mathcal{P}:
     \
     \bigcup\limits_{n=1}^{\infty} P_n = \bigsqcup\limits_{n=1}^{\infty} \bigsqcup_{j=1}^{m_n} Q_{n,j}: \
     \forall n \in \N \ Q_{n,j} \subset P_n \ \forall j \in \{1, \dots, m_n\}.

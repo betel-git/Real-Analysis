@@ -5,11 +5,11 @@
     Будем говорить, что $\mu$ — \textit{конечно-аддитивная мера} на $\mathcal{P}$, если:
     \begin{enumerate}
         \item $\mu(\emptyset) = 0,$
-        \item $A \in \mathcal{P}$, $A = \bigsqcup\limits_{i=1}^N A_i$, $\{A_i\} \in \mathcal{P}$, то $\mu(A) = \sum\limits_{i=1}^N \mu(A_i)$.
+        \item $A \in \mathcal{P}$, $A = \bigsqcup\limits_{i=1}^N A_i$, $\{A_i\} \subset \mathcal{P}$, то $\mu(A) = \sum\limits_{i=1}^N \mu(A_i)$.
     \end{enumerate}
     Если же выполнено условие
     \begin{enumerate}
-        \item[$2'.$] $A = \bigsqcup\limits_{i=1}^{\infty} A_i$, $A, \{A_i\} \in \mathcal{P}$, то $\mu(A) = \sum\limits_{i=1}^{\infty} \mu(A_i)$,
+        \item[$2'.$] $A \in \mathcal{P}$, $A = \bigsqcup\limits_{i=1}^{\infty} A_i$, $\{A_i\} \subset \mathcal{P}$, то $\mu(A) = \sum\limits_{i=1}^{\infty} \mu(A_i)$,
     \end{enumerate}
     то говорят, что $\mu$ — \textit{счётно-аддитивная мера} (\textit{$\sigma$-аддитивная мера} или просто \textit{мера}) на $\mathcal{P}$.
 \end{definition} 
@@ -62,7 +62,7 @@
     \end{figure}
 
     \begin{multline*}
-        \mu(A \times B) := \mu_1(A) \cdot \mu_2(B) = \left(\sum\limits_{i=1}^{N}\mu_1(P_i)\right) \left(\sum\limits_{j=1}^{M}\mu_2(Q_j)\right) =\\= \sum\limits_{i=1}^{N} \sum\limits_{j=1}^{M} \mu_1(P_i) \mu_2(Q_j) = \sum\limits_{i=1}^{N} \sum\limits_{j=1}^{M} \mu(P_i \times Q_j).
+        \mu(A \times B) := \mu_1(A) \cdot \mu_2(B) = \left(\sum\limits_{i=1}^{N}\mu_1(P_i)\right) \cdot \left(\sum\limits_{j=1}^{M}\mu_2(Q_j)\right) =\\= \sum\limits_{i=1}^{N} \sum\limits_{j=1}^{M} \mu_1(P_i) \mu_2(Q_j) = \sum\limits_{i=1}^{N} \sum\limits_{j=1}^{M} \mu(P_i \times Q_j).
     \end{multline*}
 
     В общем случае:
